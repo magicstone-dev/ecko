@@ -635,6 +635,9 @@ en:
         deletion:
           desc_html: Allow anyone to delete their account
           title: Open account deletion
+        invite_text_filter:
+          desc_html: 'Regular expression used to automatically reject users based on their invite request text. This can be used to cut down on registration spam. For instance, to reject registrations refering to blockchains or featuring links, you can use the following filter: <code>blockchain|https://</code>'
+          title: Registration text filter
         min_invite_role:
           disabled: No one
           title: Allow invitations by
@@ -1153,6 +1156,8 @@ en:
     errors:
       limit_reached: Limit of different reactions reached
       unrecognized_emoji: is not a recognized emoji
+  regex_validator:
+    invalid_regexp: 'error parsing regular expression: %{error}'
   relationships:
     activity: Account activity
     dormant: Dormant
@@ -1468,6 +1473,7 @@ en:
   users:
     follow_limit_reached: You cannot follow more than %{limit} people
     generic_access_help_html: Trouble accessing your account? You may get in touch with %{email} for assistance
+    invalid_invite_request_text: This text includes forbidden words or expressions
     invalid_otp_token: Invalid two-factor code
     invalid_sign_in_token: Invalid security code
     otp_lost_help_html: If you lost access to both, you may get in touch with %{email}

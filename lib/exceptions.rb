@@ -30,6 +30,7 @@ module Mastodon
 
     def initialize(host)
       @host = host
+      super()
     end
   end
 end

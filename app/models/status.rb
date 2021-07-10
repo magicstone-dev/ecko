@@ -101,10 +101,8 @@ class Status < ApplicationRecord
     end
   }
   scope :tagged_with_none, ->(tag_ids) {
-    Array(tag_ids).map(&:to_i).reduce(self) do |result, id|
-      result.joins("LEFT OUTER JOIN statuses_tags t#{id} ON t#{id}.status_id = statuses.id AND t#{id}.tag_id = #{id}")
-            .where("t#{id}.tag_id IS NULL")
-    end
+    joins(sanitize_sql_array(['LEFT OUTER JOIN statuses_tags forbidden ON forbidden.status_id = statuses.id AND forbidden.tag_id IN (?)', tag_ids]))
+      .where('forbidden.tag_id IS NULL')
   }
 
   cache_associated :application,

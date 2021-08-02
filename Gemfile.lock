@@ -349,7 +349,7 @@ GEM
       nokogiri (~> 1.10)
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2020.0512)
+    mime-types-data (3.2021.0704)
     mimemagic (0.3.10)
       nokogiri (~> 1)
       rake
@@ -392,7 +392,7 @@ GEM
     openssl-signature_algorithm (0.4.0)
     orm_adapter (0.5.0)
     ox (2.14.5)
-    paperclip (6.0.0)
+    paperclip (6.1.0)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
       mime-types
@@ -479,7 +479,7 @@ GEM
       rake (>= 0.13)
       thor (~> 1.0)
     rainbow (3.0.0)
-    rake (13.0.3)
+    rake (13.0.6)
     rdf (3.1.15)
       hamster (~> 3.0)
       link_header (~> 0.0, >= 0.0.8)
@@ -739,7 +739,7 @@ DEPENDENCIES
   omniauth-rails_csrf_protection (~> 0.1)
   omniauth-saml (~> 1.10)
   ox (~> 2.14)
-  paperclip (~> 6.0)
+  paperclip (~> 6.1)
   parallel (~> 1.20)
   parallel_tests (~> 3.7)
   parslet

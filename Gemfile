@@ -19,7 +19,7 @@ gem 'dotenv-rails', '~> 2.7'
 
 gem 'aws-sdk-s3', '~> 1.96', require: false
 gem 'fog-core', '<= 2.1.0'
-gem 'fog-openstack', '~> 0.3', require: false
+gem 'fog-openstack', '~> 1.0', require: false
 gem 'paperclip', '~> 6.0'
 gem 'blurhash', '~> 0.1'
 

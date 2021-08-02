@@ -107,7 +107,7 @@ GEM
     bootsnap (1.6.0)
       msgpack (~> 1.0)
     brakeman (5.1.1)
-    browser (4.2.0)
+    browser (5.3.1)
     brpoplpush-redis_script (0.1.2)
       concurrent-ruby (~> 1.0, >= 1.0.5)
       redis (>= 1.0, <= 5.0)

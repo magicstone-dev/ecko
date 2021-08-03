@@ -36,6 +36,7 @@ class Conversation extends ImmutablePureComponent {
     accounts: ImmutablePropTypes.list.isRequired,
     lastStatus: ImmutablePropTypes.map,
     unread:PropTypes.bool.isRequired,
+    scrollKey: PropTypes.string,
     onMoveUp: PropTypes.func,
     onMoveDown: PropTypes.func,
     markRead: PropTypes.func.isRequired,
@@ -43,41 +44,30 @@ class Conversation extends ImmutablePureComponent {
     intl: PropTypes.object.isRequired,
   };
 
-  _updateEmojis () {
-    const node = this.namesNode;
-
-    if (!node || autoPlayGif) {
+  handleMouseEnter = ({ currentTarget }) => {
+    if (autoPlayGif) {
       return;
     }
 
-    const emojis = node.querySelectorAll('.custom-emoji');
+    const emojis = currentTarget.querySelectorAll('.custom-emoji');
 
     for (var i = 0; i < emojis.length; i++) {
       let emoji = emojis[i];
-      if (emoji.classList.contains('status-emoji')) {
-        continue;
-      }
-      emoji.classList.add('status-emoji');
-
-      emoji.addEventListener('mouseenter', this.handleEmojiMouseEnter, false);
-      emoji.addEventListener('mouseleave', this.handleEmojiMouseLeave, false);
+      emoji.src = emoji.getAttribute('data-original');
     }
   }
 
-  componentDidMount () {
-    this._updateEmojis();
-  }
+  handleMouseLeave = ({ currentTarget }) => {
+    if (autoPlayGif) {
+      return;
+    }
 
-  componentDidUpdate () {
-    this._updateEmojis();
-  }
+    const emojis = currentTarget.querySelectorAll('.custom-emoji');
 
-  handleEmojiMouseEnter = ({ target }) => {
-    target.src = target.getAttribute('data-original');
-  }
-
-  handleEmojiMouseLeave = ({ target }) => {
-    target.src = target.getAttribute('data-static');
+    for (var i = 0; i < emojis.length; i++) {
+      let emoji = emojis[i];
+      emoji.src = emoji.getAttribute('data-static');
+    }
   }
 
   handleClick = () => {
@@ -122,12 +112,8 @@ class Conversation extends ImmutablePureComponent {
     this.props.onToggleHidden(this.props.lastStatus);
   }
 
-  setNamesRef = (c) => {
-    this.namesNode = c;
-  }
-
   render () {
-    const { accounts, lastStatus, unread, intl } = this.props;
+    const { accounts, lastStatus, unread, scrollKey, intl } = this.props;
 
     if (lastStatus === null) {
       return null;
@@ -160,7 +146,7 @@ class Conversation extends ImmutablePureComponent {
     return (
       <HotKeys handlers={handlers}>
         <div className={classNames('conversation focusable muted', { 'conversation--unread': unread })} tabIndex='0'>
-          <div className='conversation__avatar'>
+          <div className='conversation__avatar' onClick={this.handleClick} role='presentation'>
             <AvatarComposite accounts={accounts} size={48} />
           </div>
 
@@ -170,7 +156,7 @@ class Conversation extends ImmutablePureComponent {
                 {unread && <span className='conversation__unread' />} <RelativeTimestamp timestamp={lastStatus.get('created_at')} />
               </div>
 
-              <div className='conversation__content__names' ref={this.setNamesRef}>
+              <div className='conversation__content__names' onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
                 <FormattedMessage id='conversation.with' defaultMessage='With {names}' values={{ names: <span>{names}</span> }} />
               </div>
             </div>
@@ -194,7 +180,15 @@ class Conversation extends ImmutablePureComponent {
               <IconButton className='status__action-bar-button' title={intl.formatMessage(messages.reply)} icon='reply' onClick={this.handleReply} />
 
               <div className='status__action-bar-dropdown'>
-                <DropdownMenuContainer status={lastStatus} items={menu} icon='ellipsis-h' size={18} direction='right' title={intl.formatMessage(messages.more)} />
+                <DropdownMenuContainer
+                  scrollKey={scrollKey}
+                  status={lastStatus}
+                  items={menu}
+                  icon='ellipsis-h'
+                  size={18}
+                  direction='right'
+                  title={intl.formatMessage(messages.more)}
+                />
               </div>
             </div>
           </div>

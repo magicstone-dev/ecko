@@ -11,7 +11,7 @@ class Api::V1::AnnouncementsController < Api::BaseController
   end
 
   def dismiss
-    AnnouncementMute.create!(account: current_account, announcement: @announcement)
+    AnnouncementMute.find_or_create_by!(account: current_account, announcement: @announcement)
     render_empty
   end
 
@@ -19,11 +19,7 @@ class Api::V1::AnnouncementsController < Api::BaseController
 
   def set_announcements
     @announcements = begin
-      scope = Announcement.published
-
-      scope.merge!(Announcement.without_muted(current_account)) unless truthy_param?(:with_dismissed)
-
-      scope.chronological
+      Announcement.published.chronological
     end
   end
 

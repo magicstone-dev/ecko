@@ -8,7 +8,7 @@ class FollowerAccountsController < ApplicationController
   before_action :set_cache_headers
 
   skip_around_action :set_locale, if: -> { request.format == :json }
-  skip_before_action :require_functional!
+  skip_before_action :require_functional!, unless: :whitelist_mode?
 
   def index
     respond_to do |format|
@@ -28,7 +28,8 @@ class FollowerAccountsController < ApplicationController
         render json: collection_presenter,
                serializer: ActivityPub::CollectionSerializer,
                adapter: ActivityPub::Adapter,
-               content_type: 'application/activity+json'
+               content_type: 'application/activity+json',
+               fields: restrict_fields_to
       end
     end
   end
@@ -51,6 +52,14 @@ class FollowerAccountsController < ApplicationController
     account_followers_url(@account, page: page) unless page.nil?
   end
 
+  def next_page_url
+    page_url(follows.next_page) if follows.respond_to?(:next_page)
+  end
+
+  def prev_page_url
+    page_url(follows.prev_page) if follows.respond_to?(:prev_page)
+  end
+
   def collection_presenter
     if page_requested?
       ActivityPub::CollectionPresenter.new(
@@ -59,8 +68,8 @@ class FollowerAccountsController < ApplicationController
         size: @account.followers_count,
         items: follows.map { |f| ActivityPub::TagManager.instance.uri_for(f.account) },
         part_of: account_followers_url(@account),
-        next: page_url(follows.next_page),
-        prev: page_url(follows.prev_page)
+        next: next_page_url,
+        prev: prev_page_url
       )
     else
       ActivityPub::CollectionPresenter.new(
@@ -69,6 +78,14 @@ class FollowerAccountsController < ApplicationController
         size: @account.followers_count,
         first: page_url(1)
       )
+    end
+  end
+
+  def restrict_fields_to
+    if page_requested? || !@account.user_hides_network?
+      # Return all fields
+    else
+      %i(id type total_items)
     end
   end
 end

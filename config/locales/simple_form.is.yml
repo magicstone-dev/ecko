@@ -8,12 +8,25 @@ is:
         acct: Tilgreindu notandanafn@lén á notandaaðgangnum sem þú vilt flytjast til
       account_warning_preset:
         text: Þú getur notað sömu skilgreiningar og fyrir tíst, svo sem URL-slóðir, myllumerki og tilvísanir
+        title: Valkvætt. Ekki sýnilegt viðtakandanum
       admin_account_action:
         include_statuses: Notandinn mun sjá hvaða tíst hafa valdið viðbrögðum umsjónarmanns eða aðvörun kerfisins
         send_email_notification: Notandinn mun fá útskýringar á því hvað gerðist með notandaaðganginn hans
         text_html: Valfrjálst. Þú getur notað sömu skilgreiningar og fyrir tíst. Þú getur <a href="%{path}">bætt inn forstilltum aðvörunum</a> til að spara tíma
         type_html: Veldu hvað eigi að gera við <strong>%{acct}</strong>
+        types:
+          disable: Koma í veg fyrir að notandinn noti aðganginn sinn, en ekki eyða eða fela efnið þeirra.
+          none: Nota þetta til að senda aðvörun til notandans, án þess að setja neina aðra aðgerð í gang.
+          sensitive: Þvinga fram að öll myndefnisviðhengi þessa notanda verði flögguð sem viðkvæmt efni.
+          silence: Koma í veg fyrir að notandinn geti birt færslur opinberlega, fela færslur þeirra og tilkynningar fyrir fólki sem ekki er að fylgjast með notandanum.
+          suspend: Koma í veg fyrir öll samskipti til eða frá þessum aðgangi og eyða öllu efni hans. Afturkallanlegt innan 30 daga.
         warning_preset_id: Valkvætt. Þú getur ennþá bætt sérsniðnum texta við enda forstillinga
+      announcement:
+        all_day: Þegar merkt er við þetta, munu einungis birtast dagsetningar tímarammans
+        ends_at: Valfrjálst. Auglýsing verðut tekin úr birtingu á þessum tíma
+        scheduled_at: Skildu þetta eftir autt til að birta auglýsinguna samstundis
+        starts_at: Valfrjálst. Notað ef auglýsing er bundin við tiltekinn tímaramma
+        text: Þú getur notað sömu skilgreiningar og fyrir tíst. Hafðu í huga það pláss sem auglýsingin mun taka á skjá notandans
       defaults:
         autofollow: Fólk sem skráir sig í gegnum boðið mun sjálfkrafa fylgjast með þér
         avatar: PNG, GIF eða JPG. Mest %{size}. Verður smækkað í %{dimensions}px
@@ -47,6 +60,9 @@ is:
         whole_word: Þegar stikkorð eða frasi er einungis tölur og bókstafir, verður það aðeins notað ef það samsvarar heilu orði
       domain_allow:
         domain: Þetta lén mun geta sótt gögn af þessum vefþjóni og tekið verður á móti innsendum gögnum frá léninu til vinnslu og geymslu
+      email_domain_block:
+        domain: Þetta getur verið heiti lénsins sem birtist í tölvupóstfanginu, MX-færslan sem það lén beinist að, eða IP-vistfang netþjónsins sem sú MX-færsla beinist að. Þetta verður athugað um leið og notandi skráir sig, og verður þá skráningunni hafnað.
+        with_dns_records: Tilraun verður gerð til að leysa DNS-færslur uppgefins léns og munu niðurstöðurnar einnig verða útilokaðar
       featured_tag:
         name: 'Þú gætir viljað nota eitt af þessum:'
       form_challenge:
@@ -55,8 +71,19 @@ is:
         data: CSV-skrá sem flutt hefur verið út af öðrum Mastodon-þjóni
       invite_request:
         text: Þetta mun hjálpa okkur við að yfirfara umsóknina þína
+      ip_block:
+        comment: Valfrjálst. Mundu hvers vegna þú bættir þessari reglu við.
+        expires_in: IP-vistföng eru ekki óendanleg, þeim er stundum deilt og skipta oftu um eigendur. Af þessum ástæðum er ekki mælt með ótakmörkuðum lokunum á blokkir IP-vistfanga.
+        ip: Settu inn IPv4 eða IPv6 vistfang. Þú getur lokað á svið vistfanga með því að nota CIDR-framsetningu. Gættu þess að loka ekki sjálfa/n þig úti!
+        severities:
+          no_access: Loka á aðgang að öllum tilföngum
+          sign_up_requires_approval: Nýskráningar munu þurfa samþykki þitt
+        severity: Veldu hvað munir gerast við beiðnir frá þessu IP-vistfangi
+      rule:
+        text: Lýstu reglum eða kröfum sem gerðar eru til notenda á þessum netþjóni. Reyndu að hafa þetta skýrt og skorinort
       sessions:
         otp: 'Settu inn tveggja-þátta kóðann sem farsímaforritið útbjó eða notaðu einn af endurheimtukóðunum þínum:'
+        webauthn: Ef þetta er USB-lykill, gakktu úr skugga um að honum sé stungið í samband og ef þörf þykir að ýta á hann.
       tag:
         name: Þú getur aðeins breytt stafstöði mill há-/lágstafa, til gæmis til að gera þetta læsilegra
       user:
@@ -72,6 +99,7 @@ is:
         acct: Auðkenni nýja aðgangsins
       account_warning_preset:
         text: Forstilltur texti
+        title: Titill
       admin_account_action:
         include_statuses: Innifela kærð tíst í tölvupóstinum
         send_email_notification: Láta notanda vita með tölvupósti
@@ -80,9 +108,16 @@ is:
         types:
           disable: Gera innskráningu óvirka
           none: Gera ekkert
+          sensitive: Viðkvæmt
           silence: Hylja
           suspend: Setja í bið og eyða endanlega gögnum notandaaðgangsins
         warning_preset_id: Nota forstillta aðvörun
+      announcement:
+        all_day: Heilsdags atburður
+        ends_at: Lok atburðar
+        scheduled_at: Áætla birtingu
+        starts_at: Upphaf atburðar
+        text: Auglýsing
       defaults:
         autofollow: Bjóða að fylgjast með aðgangnum þínum
         avatar: Auðkennismynd
@@ -99,6 +134,7 @@ is:
         expires_in: Rennur út eftir
         fields: Lýsigögn notandasniðs
         header: Síðuhaus
+        honeypot: "%{label} (ekki fylla út)"
         inbox_url: URL-slóð á innhólf endurvarpa
         irreversible: Fella niður í staðinn fyrir að fela
         locale: Tungumál viðmóts
@@ -118,6 +154,7 @@ is:
         setting_default_privacy: Gagnaleynd færslna
         setting_default_sensitive: Alltaf merkja myndefni sem viðkvæmt
         setting_delete_modal: Birta staðfestingarglugga áður en tísti er eytt
+        setting_disable_swiping: Gera strokuhreyfingar óvirkar
         setting_display_media: Birting myndefnis
         setting_display_media_default: Sjálfgefið
         setting_display_media_hide_all: Fela allt
@@ -134,10 +171,13 @@ is:
         setting_use_blurhash: Sýna skæra litstigla í stað falins myndefnis
         setting_use_pending_items: Rólegur hamur
         severity: Mikilvægi
+        sign_in_token_attempt: Öryggiskóði
         type: Tegund innflutnings
         username: Notandanafn
         username_or_email: Notandanafn eða tölvupóstfang
         whole_word: Heil orð
+      email_domain_block:
+        with_dns_records: Hafa með MX-færslur og IP-vistföng lénsins
       featured_tag:
         name: Myllumerki
       interactions:
@@ -148,6 +188,13 @@ is:
         comment: Athugasemd
       invite_request:
         text: Hvers vegna viltu taka þátt?
+      ip_block:
+        comment: Athugasemd
+        ip: IP-vistfang
+        severities:
+          no_access: Loka á aðgang
+          sign_up_requires_approval: Takmarka nýskráningar
+        severity: Regla
       notification_emails:
         digest: Senda uppsafnaðan tölvupóst
         favourite: Einhver setti stöðufærslu þína í eftirlæti
@@ -158,6 +205,8 @@ is:
         reblog: Einhver endurbirti stöðufærslu þína
         report: Ný kæra hefur verið send inn
         trending_tag: Óyfirfarið myllumerki er í umræðunni
+      rule:
+        text: Regla
       tag:
         listable: Leyfa þessu myllumerki að birtast í leitum og í persónusniðamöppunni
         name: Myllumerki
@@ -168,4 +217,7 @@ is:
     required:
       mark: "*"
       text: nauðsynlegt
+    title:
+      sessions:
+        webauthn: Nota einn af öryggislyklunum þínum til að skrá inn
     'yes': Já

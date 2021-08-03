@@ -3,7 +3,7 @@ require 'rails_helper'
 describe FollowerAccountsController do
   render_views
 
-  let(:alice) { Fabricate(:account, username: 'alice') }
+  let(:alice) { Fabricate(:user).account }
   let(:follower0) { Fabricate(:account) }
   let(:follower1) { Fabricate(:account) }
 
@@ -13,6 +13,27 @@ describe FollowerAccountsController do
 
     context 'when format is html' do
       subject(:response) { get :index, params: { account_username: alice.username, format: :html } }
+
+      context 'when account is permanently suspended' do
+        before do
+          alice.suspend!
+          alice.deletion_request.destroy
+        end
+
+        it 'returns http gone' do
+          expect(response).to have_http_status(410)
+        end
+      end
+
+      context 'when account is temporarily suspended' do
+        before do
+          alice.suspend!
+        end
+
+        it 'returns http forbidden' do
+          expect(response).to have_http_status(403)
+        end
+      end
 
       it 'assigns follows' do
         expect(response).to have_http_status(200)
@@ -48,6 +69,27 @@ describe FollowerAccountsController do
           expect(body['totalItems']).to eq 2
           expect(body['partOf']).to be_present
         end
+
+        context 'when account is permanently suspended' do
+          before do
+            alice.suspend!
+            alice.deletion_request.destroy
+          end
+
+          it 'returns http gone' do
+            expect(response).to have_http_status(410)
+          end
+        end
+
+        context 'when account is temporarily suspended' do
+          before do
+            alice.suspend!
+          end
+
+          it 'returns http forbidden' do
+            expect(response).to have_http_status(403)
+          end
+        end
       end
 
       context 'without page' do
@@ -57,6 +99,44 @@ describe FollowerAccountsController do
           expect(response).to have_http_status(200)
           expect(body['totalItems']).to eq 2
           expect(body['partOf']).to be_blank
+        end
+
+        context 'when account hides their network' do
+          before do
+            alice.user.settings.hide_network = true
+          end
+
+          it 'returns followers count' do
+            expect(body['totalItems']).to eq 2
+          end
+
+          it 'does not return items' do
+            expect(body['items']).to be_blank
+            expect(body['orderedItems']).to be_blank
+            expect(body['first']).to be_blank
+            expect(body['last']).to be_blank
+          end
+        end
+
+        context 'when account is permanently suspended' do
+          before do
+            alice.suspend!
+            alice.deletion_request.destroy
+          end
+
+          it 'returns http gone' do
+            expect(response).to have_http_status(410)
+          end
+        end
+
+        context 'when account is temporarily suspended' do
+          before do
+            alice.suspend!
+          end
+
+          it 'returns http forbidden' do
+            expect(response).to have_http_status(403)
+          end
         end
       end
     end

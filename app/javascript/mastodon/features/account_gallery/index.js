@@ -11,22 +11,24 @@ import ImmutablePureComponent from 'react-immutable-pure-component';
 import { getAccountGallery } from 'mastodon/selectors';
 import MediaItem from './components/media_item';
 import HeaderContainer from '../account_timeline/containers/header_container';
-import { ScrollContainer } from 'react-router-scroll-4';
+import ScrollContainer from 'mastodon/containers/scroll_container';
 import LoadMore from 'mastodon/components/load_more';
 import MissingIndicator from 'mastodon/components/missing_indicator';
 import { openModal } from 'mastodon/actions/modal';
+import { FormattedMessage } from 'react-intl';
 
 const mapStateToProps = (state, props) => ({
   isAccount: !!state.getIn(['accounts', props.params.accountId]),
   attachments: getAccountGallery(state, props.params.accountId),
   isLoading: state.getIn(['timelines', `account:${props.params.accountId}:media`, 'isLoading']),
   hasMore: state.getIn(['timelines', `account:${props.params.accountId}:media`, 'hasMore']),
+  suspended: state.getIn(['accounts', props.params.accountId, 'suspended'], false),
+  blockedBy: state.getIn(['relationships', props.params.accountId, 'blocked_by'], false),
 });
 
 class LoadMoreMedia extends ImmutablePureComponent {
 
   static propTypes = {
-    shouldUpdateScroll: PropTypes.func,
     maxId: PropTypes.string,
     onLoadMore: PropTypes.func.isRequired,
   };
@@ -56,6 +58,8 @@ class AccountGallery extends ImmutablePureComponent {
     isLoading: PropTypes.bool,
     hasMore: PropTypes.bool,
     isAccount: PropTypes.bool,
+    blockedBy: PropTypes.bool,
+    suspended: PropTypes.bool,
     multiColumn: PropTypes.bool,
   };
 
@@ -100,15 +104,18 @@ class AccountGallery extends ImmutablePureComponent {
   }
 
   handleOpenMedia = attachment => {
+    const { dispatch } = this.props;
+    const statusId = attachment.getIn(['status', 'id']);
+
     if (attachment.get('type') === 'video') {
-      this.props.dispatch(openModal('VIDEO', { media: attachment, status: attachment.get('status') }));
+      dispatch(openModal('VIDEO', { media: attachment, statusId, options: { autoPlay: true } }));
     } else if (attachment.get('type') === 'audio') {
-      this.props.dispatch(openModal('AUDIO', { media: attachment, status: attachment.get('status') }));
+      dispatch(openModal('AUDIO', { media: attachment, statusId, options: { autoPlay: true } }));
     } else {
       const media = attachment.getIn(['status', 'media_attachments']);
       const index = media.findIndex(x => x.get('id') === attachment.get('id'));
 
-      this.props.dispatch(openModal('MEDIA', { media, index, status: attachment.get('status') }));
+      dispatch(openModal('MEDIA', { media, index, statusId }));
     }
   }
 
@@ -119,7 +126,7 @@ class AccountGallery extends ImmutablePureComponent {
   }
 
   render () {
-    const { attachments, shouldUpdateScroll, isLoading, hasMore, isAccount, multiColumn } = this.props;
+    const { attachments, isLoading, hasMore, isAccount, multiColumn, blockedBy, suspended } = this.props;
     const { width } = this.state;
 
     if (!isAccount) {
@@ -144,23 +151,37 @@ class AccountGallery extends ImmutablePureComponent {
       loadOlder = <LoadMore visible={!isLoading} onClick={this.handleLoadOlder} />;
     }
 
+    let emptyMessage;
+
+    if (suspended) {
+      emptyMessage = <FormattedMessage id='empty_column.account_suspended' defaultMessage='Account suspended' />;
+    } else if (blockedBy) {
+      emptyMessage = <FormattedMessage id='empty_column.account_unavailable' defaultMessage='Profile unavailable' />;
+    }
+
     return (
       <Column>
         <ColumnBackButton multiColumn={multiColumn} />
 
-        <ScrollContainer scrollKey='account_gallery' shouldUpdateScroll={shouldUpdateScroll}>
+        <ScrollContainer scrollKey='account_gallery'>
           <div className='scrollable scrollable--flex' onScroll={this.handleScroll}>
             <HeaderContainer accountId={this.props.params.accountId} />
 
-            <div role='feed' className='account-gallery__container' ref={this.handleRef}>
-              {attachments.map((attachment, index) => attachment === null ? (
-                <LoadMoreMedia key={'more:' + attachments.getIn(index + 1, 'id')} maxId={index > 0 ? attachments.getIn(index - 1, 'id') : null} onLoadMore={this.handleLoadMore} />
-              ) : (
-                <MediaItem key={attachment.get('id')} attachment={attachment} displayWidth={width} onOpenMedia={this.handleOpenMedia} />
-              ))}
+            {(suspended || blockedBy) ? (
+              <div className='empty-column-indicator'>
+                {emptyMessage}
+              </div>
+            ) : (
+              <div role='feed' className='account-gallery__container' ref={this.handleRef}>
+                {attachments.map((attachment, index) => attachment === null ? (
+                  <LoadMoreMedia key={'more:' + attachments.getIn(index + 1, 'id')} maxId={index > 0 ? attachments.getIn(index - 1, 'id') : null} onLoadMore={this.handleLoadMore} />
+                ) : (
+                  <MediaItem key={attachment.get('id')} attachment={attachment} displayWidth={width} onOpenMedia={this.handleOpenMedia} />
+                ))}
 
-              {loadOlder}
-            </div>
+                {loadOlder}
+              </div>
+            )}
 
             {isLoading && attachments.size === 0 && (
               <div className='scrollable__append'>

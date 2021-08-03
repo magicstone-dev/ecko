@@ -3,11 +3,10 @@
   about:
     about_hashtag_html: Dette er offentlige toots merket med <strong>#%{hashtag}</strong>. Du kan interagere med dem om du har en konto et sted i fediverset.
     about_mastodon_html: Mastodon er et sosialt nettverk laget med <em>fri programvare</em>. Et <em>desentralisert</em> alternativ til kommersielle plattformer. Slik kan det unngå risikoene ved å ha et enkelt selskap som monopoliserer din kommunikasjon. Velg en tjener du stoler på &mdash; uansett hvilken du velger så kan du kommunisere med alle andre. Alle kan kjøre sin egen Mastodon og delta sømløst i det sosiale nettverket.
-    about_this: Om denne instansen
+    about_this: Om
     active_count_after: aktive
     active_footnote: Månedlige aktive brukere (MAU)
     administered_by: 'Administrert av:'
-    api: API
     apps: Mobilapper
     apps_platforms: Bruk Mastodon gjennom iOS, Android og andre plattformer
     browse_directory: Bla gjennom en profilmappe og filtrer etter interesser
@@ -21,17 +20,12 @@
     federation_hint_html: Med en konto på %{instance} vil du kunne følge folk på enhver Mastodon-tjener, og mer til.
     get_apps: Prøv en mobilapp
     hosted_on: Mastodon driftet på %{domain}
-    instance_actor_flash: 'Denne brukeren er en virtuell aktør brukt til å representere selve serveren og ingen individuell bruker. Det brukes til foreningsformål og bør ikke blokkeres med mindre du vil blokkere hele instansen, hvor domeneblokkering bør brukes i stedet.
-
-'
+    instance_actor_flash: "Denne brukeren er en virtuell aktør brukt til å representere selve serveren og ingen individuell bruker. Det brukes til foreningsformål og bør ikke blokkeres med mindre du vil blokkere hele instansen, hvor domeneblokkering bør brukes i stedet. \n"
     learn_more: Lær mer
     privacy_policy: Privatlivsretningslinjer
     see_whats_happening: Se hva som skjer
     server_stats: 'Tjenerstatistikker:'
     source_code: Kildekode
-    status_count_after:
-      one: status
-      other: statuser
     status_count_before: Som skrev
     tagline: Følg venner og oppdag nye
     terms: Bruksvilkår
@@ -40,8 +34,11 @@
       domain: Tjener
       reason: Årsak
       rejecting_media: 'Mediafiler fra disse tjenerne vil ikke bli behandlet eller lagret, og ingen miniatyrbilder vil bli vist, noe som vil kreve manuell klikking for å besøke den opprinnelige filen:'
+      rejecting_media_title: Filtrert media
       silenced: 'Innlegg fra disse tjenerne vil bli skjult fra offentlige tidslinjer og samtaler, og ingen varslinger vil bli generert fra disse brukernes samhandlinger, med mindre du følger dem:'
+      silenced_title: Stilnede tjenere
       suspended: 'Ingen data fra disse tjenerne vil bli behandlet, lagret, eller utvekslet, noe som vil gjøre enhver samhandling eller kommunikasjon med brukere fra disse tjenerne umulig:'
+      suspended_title: Suspenderte tjenere
     unavailable_content_html: Mastodon lar deg vanligvis se innhold fra og samhandle med brukere fra enhver annen tjener i strømiverset. Dette er unntakene som har blitt gjort på denne spesifikke tjeneren.
     user_count_after:
       one: bruker
@@ -58,9 +55,8 @@
       other: Følgere
     following: Følger
     joined: Ble med den %{date}
-    last_active: senest aktiv
+    last_active: sist aktiv
     link_verified_on: Eierskap av denne lenken ble sjekket %{date}
-    media: Media
     moved_html: "%{name} har flyttet til %{new_profile_link}:"
     network_hidden: Denne informasjonen er ikke tilgjengelig
     never_active: Aldri
@@ -74,10 +70,8 @@
       other: Tuter
     posts_tab_heading: Tuter
     posts_with_replies: Tuter med svar
-    reserved_username: Brukernavnet er reservert
     roles:
       admin: Administrator
-      bot: Bot
       group: Gruppe
       moderator: Moderere
     unavailable: Profilen er utilgjengelig
@@ -92,6 +86,7 @@
       delete: Slett
       destroyed_msg: Moderasjonsnotat slettet uten problem!
     accounts:
+      add_email_domain_block: Svartelist E-postdomenet
       approve: Godkjenn
       approve_all: Godkjenn alle
       are_you_sure: Er du sikker?
@@ -107,6 +102,7 @@
       confirm: Bekreft
       confirmed: Bekreftet
       confirming: Bekrefte
+      delete: Slett data
       deleted: Slettet
       demote: Degrader
       disable: Deaktiver
@@ -167,11 +163,10 @@
       resubscribe: Abonner på nytt
       role: Rettigheter
       roles:
-        admin: Administrator
-        moderator: Moderator
         staff: Personale
         user: Bruker
       search: Søk
+      search_same_email_domain: Andre brukere med samme E-postdomene
       search_same_ip: Andre brukere med den samme IP-en
       shared_inbox_url: Delt Innboks URL
       show:
@@ -187,51 +182,54 @@
       unconfirmed_email: Ubekreftet E-postadresse
       undo_silenced: Angre målbinding
       undo_suspension: Angre utvisning
+      unsilenced_msg: Opphevde vellykket begrensningen av %{username} sin konto
       unsubscribe: Avslutt abonnementet
+      unsuspended_msg: Opphevde vellykket suspenderingen av %{username} sin konto
       username: Brukernavn
+      view_domain: Vis sammendrag for domenet
       warn: Advar
       web: Nett
       whitelisted: Hvitelistet
     action_logs:
-      actions:
-        assigned_to_self_report: "%{name} tilegnet rapport %{target} til seg selv"
-        change_email_user: "%{name} forandret e-postadressen for bruker %{target}"
-        confirm_user: "%{name} bekreftet e-postadresse for bruker %{target}"
-        create_account_warning: "%{name} sendte en advarsel til %{target}"
-        create_announcement: "%{name} laget en ny kunngjøring %{target}"
-        create_custom_emoji: "%{name} lastet opp ny emoji %{target}"
-        create_domain_allow: "%{name} hvitelistet domenet %{target}"
-        create_domain_block: "%{name} blokkerte domenet %{target}"
-        create_email_domain_block: "%{name} svartelistet e-postdomenet %{target}"
-        demote_user: "%{name} degraderte bruker %{target}"
-        destroy_announcement: "%{name} slettet kunngjøring %{target}"
-        destroy_custom_emoji: "%{name} ødela emojien %{target}"
-        destroy_domain_allow: "%{name} fjernet domenet %{target} fra hvitelisten"
-        destroy_domain_block: "%{name} fjernet blokkeringen av domenet %{target}"
-        destroy_email_domain_block: "%{name} hvitelistet e-postdomenet %{target}"
-        destroy_status: "%{name} fjernet status av %{target}"
-        disable_2fa_user: "%{name} deaktiverte tofaktor-autentiseringskravet for bruker %{target}"
-        disable_custom_emoji: "%{name} deaktiverte emoji %{target}"
-        disable_user: "%{name} deaktiverte innlogging for bruker %{target}"
-        enable_custom_emoji: "%{name} aktiverte emoji %{target}"
-        enable_user: "%{name} aktiverte innlogging for bruker %{target}"
-        memorialize_account: "%{name} endret %{target}s konto til en minneside"
-        promote_user: "%{name} oppgraderte bruker %{target}"
-        remove_avatar_user: "%{name} fjernet %{target} sitt profilbilde"
-        reopen_report: "%{name} gjenåpnet rapporten %{target}"
-        reset_password_user: "%{name} nullstilte passordet til bruker %{target}"
-        resolve_report: "%{name} avviste rapporten %{target}"
-        silence_account: "%{name} forstummet %{target}s konto"
-        suspend_account: "%{name} suspendert %{target}s konto"
-        unassigned_report: "%{name} avtilegnet rapport %{target}"
-        unsilence_account: "%{name} fjernet forstummingen av %{target}s konto"
-        unsuspend_account: "%{name} opphevde suspenderingen av %{target}s konto"
-        update_announcement: "%{name} oppdaterte kunngjøring %{target}"
-        update_custom_emoji: "%{name} oppdaterte emoji %{target}"
-        update_status: "%{name} oppdaterte status for %{target}"
+      action_types:
+        assigned_to_self_report: Tilordne rapport
+        change_email_user: Endre brukerens E-postadresse
+        confirm_user: Bekreft brukeren
+        create_account_warning: Opprett en advarsel
+        create_announcement: Opprett en kunngjøring
+        create_custom_emoji: Opprett en tilpasset emoji
+        create_domain_allow: Opprett domene tillatt
+        create_domain_block: Opprett domene-blokk
+        create_email_domain_block: Opprett e-post domeneblokk
+        create_ip_block: Opprett IP-regel
+        demote_user: Degrader bruker
+        destroy_announcement: Slett kunngjøringen
+        destroy_custom_emoji: Slett den tilpassede emojien
+        destroy_ip_block: Slett IP-regel
+        destroy_status: Slett statusen
+        disable_2fa_user: Skru av 2-trinnsinnlogging
+        disable_custom_emoji: Skru av tilpassede emojier
+        disable_user: Deaktiver bruker
+        enable_custom_emoji: Skru på tilpassede emojier
+        enable_user: Aktiver bruker
+        promote_user: Promoter bruker
+        remove_avatar_user: Fjern Avatar
+        reopen_report: Gjenåpne rapporten
+        reset_password_user: Tilbakestill passord
+        resolve_report: Løs rapport
+        silence_account: Demp konto
+        suspend_account: Suspender kontoen
+        unsuspend_account: Opphev suspensjonen av kontoen
+        update_announcement: Oppdater kunngjøringen
+        update_custom_emoji: Oppdater tilpasset Emoji
+        update_status: Oppdater statusen
       deleted_status: "(statusen er slettet)"
+      empty: Ingen loggføringer ble funnet.
+      filter_by_action: Sorter etter handling
+      filter_by_user: Sorter etter bruker
       title: Revisionslogg
     announcements:
+      destroyed_msg: Kunngjøringen er slettet!
       edit:
         title: Rediger kunngjøring
       empty: Ingen kunngjøringer funnet.
@@ -239,9 +237,12 @@
       new:
         create: Lag kunngjøring
         title: Ny kunngjøring
-      published: Publisert
-      time_range: Tidsramme
+      published_msg: Kunngjøring publisert!
+      scheduled_for: Planlagt for %{time}
+      scheduled_msg: Kunngjøring planlagt for publisering!
       title: Kunngjøringer
+      unpublished_msg: Kunngjøring upublisert!
+      updated_msg: Kunngjøringen er oppdatert!
     custom_emojis:
       assign_category: Tilegn kategori
       by_domain: Domene
@@ -255,7 +256,6 @@
       disable: Deaktivere
       disabled: Skrudd av
       disabled_msg: Deaktiverte emoji uten problem
-      emoji: Emoji
       enable: Aktivere
       enabled: Skrudd på
       enabled_msg: Aktiverte emojien uten problem
@@ -264,6 +264,7 @@
       listed: Oppførte
       new:
         title: Legg til ny egen emoji
+      not_permitted: Du har ikke rettigheter til å utføre denne handlingen
       overwrite: Overskrive
       shortcode: Kortkode
       shortcode_hint: Minst 2 tegn, kun alfanumeriske tegn og understrek
@@ -283,7 +284,6 @@
       feature_profile_directory: Profilmappe
       feature_registrations: Registreringer
       feature_relay: Føderasjonsoverganger
-      feature_spam_check: Anti-spam
       feature_timeline_preview: Tidslinje-forhåndsvisning
       features: Egenskaper
       hidden_service: Føderering med skjulte tjenester
@@ -354,6 +354,7 @@
       destroyed_msg: E-postdomenet har blitt fjernet fra blokkeringslisten uten problemer
       domain: Domene
       empty: Ingen e-mail-domener er sortelistet på dette tidspunkt.
+      from_html: fra %{domain}
       new:
         create: Legg til domene
         title: Ny blokkeringsoppføring av e-postdomene
@@ -384,6 +385,20 @@
         expired: Utløpt
         title: Filtrer
       title: Invitasjoner
+    ip_blocks:
+      add_new: Opprett regel
+      created_msg: La vellykket til en ny IP-regel
+      delete: Slett
+      expires_in:
+        '1209600': 2 uker
+        '15778476': 6 måneder
+        '2629746': 1 måned
+        '31556952': 1 år
+        '86400': 1 dag
+        '94670856': 3 år
+      new:
+        title: Opprett ny IP-regel
+      title: IP-regler
     pending_accounts:
       title: Avventende brukere (%{count})
     relationships:
@@ -402,7 +417,6 @@
       save_and_enable: Lagre og skru på
       setup: Sett opp en overgangsforbindelse
       signatures_not_enabled: Overganger vil ikke fungere riktig mens sikkermodus eller hvitelistingsmodus er skrudd på
-      status: Status
       title: Overganger
     report_notes:
       created_msg: Rapportnotat opprettet!
@@ -437,7 +451,6 @@
       reported_by: Rapportert av
       resolved: Løst
       resolved_msg: Rapport løst!
-      status: Status
       title: Rapporter
       unassign: Fjern tilegning
       unresolved: Uløst
@@ -455,10 +468,13 @@
       custom_css:
         desc_html: Modifiser utseendet med CSS lastet på hver side
         title: Egendefinert CSS
+      default_noindex:
+        desc_html: Påvirker alle brukerne som ikke har justert denne innstillingen selv
       domain_blocks:
         all: Til alle
         disabled: Til ingen
         title: Vis domeneblokkeringer
+        users: Til lokale brukere som er logget inn
       domain_blocks_rationale:
         title: Vis grunnlaget
       hero:
@@ -472,7 +488,9 @@
         title: Publiser liste over oppdagede instanser
       preview_sensitive_media:
         desc_html: Lenkeforhåndsvisninger på andre nettsteder vil vise et miniatyrbilde selv dersom mediet er merket som sensitivt
+        title: Vis sensitive medier i OpenGraph-forhåndsvisninger
       profile_directory:
+        desc_html: Tillat brukere å bli oppdagelige
         title: Skru på profilmappen
       registrations:
         closed_message:
@@ -484,6 +502,12 @@
         min_invite_role:
           disabled: Ingen
           title: Tillat invitasjoner fra
+      registrations_mode:
+        modes:
+          approved: Godkjenning kreves for påmelding
+          none: Ingen kan melde seg inn
+          open: Hvem som helst kan melde seg inn
+        title: Registreringsmodus
       show_staff_badge:
         desc_html: Vis personalemerke på brukersiden
         title: Vis personalemerke
@@ -500,9 +524,6 @@
         desc_html: Du kan skrive din egen personverns-strategi, bruksviklår og andre regler. Du kan bruke HTML tagger
         title: Skreddersydde bruksvilkår
       site_title: Nettstedstittel
-      spam_check_enabled:
-        desc_html: Mastodon kan auto-rapportere kontoer som sender gjentatte uforespurte meldinger. Det kan oppstå falske positive treff.
-        title: Anti-spam-automatisering
       thumbnail:
         desc_html: Brukes ved forhandsvisning via OpenGraph og API. 1200x630px anbefales
         title: Miniatyrbilde for instans
@@ -512,6 +533,8 @@
       title: Nettstedsinnstillinger
       trends:
         title: Trendende emneknagger
+    site_uploads:
+      delete: Slett den opplastede filen
     statuses:
       back_to_account: Tilbake til kontosiden
       batch:
@@ -520,16 +543,13 @@
         nsfw_on: NSFW PÅ
       deleted: Slettet
       failed_to_execute: Utføring mislyktes
-      media:
-        title: Media
       no_media: Ingen media
+      no_status_selected: Ingen statuser ble endret da ingen ble valgt
       title: Kontostatuser
       with_media: Med media
     tags:
+      accounts_today: Ulike brukere i dag
       accounts_week: Unike brukstilfeller denne uken
-      context: Sammenheng
-      directory: I mappen
-      in_directory: "%{count} i mappen"
       last_active: Senest aktiv
       most_popular: Mest populært
       most_recent: Nyligst
@@ -544,15 +564,19 @@
     warning_presets:
       add_new: Legg til ny
       delete: Slett
-      edit: Rediger
   admin_mailer:
+    new_pending_account:
+      body: Detaljer om den nye kontoen er nedenfor. Du kan godkjenne eller avvise denne søknaden.
+      subject: Ny konto opp til vurdering på %{instance} (%{username})
     new_report:
       body: "%{reporter} har rapportert %{target}"
+      body_remote: Noen fra %{domain} har rapportert %{target}
       subject: Ny rapport for %{instance} (#%{id})
     new_trending_tag:
       body: 'Emneknaggen #%{name} trender i dag, men den har ikke blitt gjennomgått tidligere. Den vil ikke bli vist offentlig med mindre du tillater at den blir det, eller du kan bare lagre skjemaet slik det er for å aldri høre om det igjen.'
   aliases:
     add_new: Lag et alias
+    empty: Du har ingen aliaser.
     hint_html: Dersom du vil flytte fra en annen konto til den, kan du lage et alias her, som er påkrevd før du kan gå videre med å flytte følgere fra den gamle kontoen til den nye. Handlingen i seg selv er <strong>harmløs og reversibel</strong>. <strong>Kontoflyttingen har blitt satt i gang fra den gamle kontoen</strong>.
     remove: Fjern aliaslenking
   appearance:
@@ -561,11 +585,13 @@
     animations_and_accessibility: Animasjoner og tilgjengelighet
     confirmation_dialogs: Bekreftelsesdialoger
     discovery: Oppdagelse
+    localization:
+      body: Mastodon er oversatt av frivillige.
+      guide_link_text: Alle kan bidra.
     sensitive_content: Sensitivt innhold
     toot_layout: Tut-utseende
   application_mailer:
     notification_preferences: Endre E-postinnstillingene
-    salutation: "%{name},"
     settings: 'Endre foretrukne e-postinnstillinger: %{link}'
     view: 'Se:'
     view_profile: Vis Profil
@@ -586,20 +612,22 @@
     delete_account: Slett konto
     delete_account_html: Hvis du ønsker å slette kontoen din, kan du <a href="%{path}">gå hit</a>. Du vil bli spurt om bekreftelse.
     description:
+      prefix_invited_by_user: "@%{name} inviterer deg til å bli med på denne serveren til Mastodon!"
       prefix_sign_up: Meld deg opp på Mastodon i dag!
       suffix: Med en konto, vil kunne følge folk, legge ut oppdateringer, og utveksle meldinger med brukere fra enhver Mastodon-tjener, og mer til!
     didnt_get_confirmation: Mottok du ikke instruksjoner om bekreftelse?
+    dont_have_your_security_key: Har du ikke sikkerhetsnøkkelen din?
     forgot_password: Har du glemt passordet ditt?
     invalid_reset_password_token: Tilbakestillingsnøkkelen for passord er ugyldig eller utløpt. Vennligst be om en ny.
+    link_to_otp: Skriv inn en 2-trinnskode fra din 2-trinnspåloggingsenhet eller en gjenopprettingskode
+    link_to_webauth: Bruk sikkerhetsnøkkel-enheten din
     login: Logg på
     logout: Logg ut
     migrate_account: Flytt til en annen konto
     migrate_account_html: Hvis du ønsker å henvise denne kontoen til en annen, kan du <a href="%{path}">konfigurere det her</a>.
     or_log_in_with: Eller logg på med
-    providers:
-      cas: CAS
-      saml: SAML
     register: Bli med
+    registration_closed: "%{instance} godtar ikke nye medlemmer"
     resend_confirmation: Send bekreftelsesinstruksjoner på nytt
     reset_password: Nullstill passord
     security: Sikkerhet
@@ -610,10 +638,14 @@
       title: Innstillinger
     status:
       account_status: Kontostatus
+      confirming: Venter på at e-postbekreftelsen er fullført.
       functional: Kontoen din er fullt operativt.
       pending: Søknaden din avventer gjennomgang av styret vårt. Dette kan ta litt tid. Du vil motta en E-post dersom søknaden din blir godkjent.
+      redirecting_to: Kontoen din er inaktiv fordi den for øyeblikket omdirigerer til %{acct}.
     trouble_logging_in: Har du problemer med å logge på?
+    use_security_key: Bruk sikkerhetsnøkkel
   authorize_follow:
+    already_following: Du følger allerede denne kontoen
     error: Uheldigvis skjedde det en feil da vi prøvde å få tak i en bruker fra en annen instans
     follow: Følg
     follow_request: 'Du har sendt en følgeforespørsel til:'
@@ -625,8 +657,13 @@
     title: Følg %{acct}
   challenge:
     confirm: Fortsett
+    hint_html: "<strong>Tips:</strong> Vi ber deg ikke om passordet ditt igjen i løpet av neste time."
     invalid_password: Ugyldig passord
     prompt: Bekreft passordet for å fortsette
+  crypto:
+    errors:
+      invalid_key: er ikke en gyldig Ed25519- eller Curve25519-nøkkel
+      invalid_signature: er ikke en gyldig Ed25519-signatur
   datetime:
     distance_in_words:
       about_x_hours: "%{count} timer"
@@ -642,6 +679,7 @@
       x_months: "%{count} mnd"
       x_seconds: "%{count} sek"
   deletes:
+    challenge_not_passed: Informasjonen du oppga var ikke korrekt
     confirm_password: Skriv inn ditt passord for å verifisere din identitet
     confirm_username: Skriv inn brukernavnet ditt for å bekrefte prosedyren
     proceed: Slett konto
@@ -664,10 +702,10 @@
   domain_validator:
     invalid_domain: er ikke et gyldig domenenavn
   errors:
-    '400': The request you submitted was invalid or malformed.
+    '400': Forespørselen du sendte inn var ugyldig eller feil.
     '403': Du har ikke tillatelse til å vise denne siden.
     '404': Siden du leter etter finnes ikke.
-    '406': This page is not available in the requested format.
+    '406': Denne siden er ikke tilgjengelig i ønsket format.
     '410': Siden du leter etter finnes ikke lenger.
     '422':
       content: Sikkerhetsverifisering feilet. Blokkerer du informasjonskapsler?
@@ -676,19 +714,20 @@
     '500':
       content: Beklager men noe gikk galt ved vår ende.
       title: Denne siden er ikke korrekt
-    '503': The page could not be served due to a temporary server failure.
+    '503': Siden kunne ikke vises på grunn av en midlertidig serverfeil.
     noscript_html: For å bruke Mastodon webapplikasjon må du aktivere JavaScript. Alternativt kan du forsøke en av de mange <a href="%{apps_path}">integrerte appene</a> for Mastodon til din plattform.
   existing_username_validator:
+    not_found: kunne ikke finne en lokal bruker med det brukernavnet
     not_found_multiple: klarte ikke å finne %{usernames}
   exports:
     archive_takeout:
       date: Dato
       download: Last ned arkivet ditt
       hint_html: Du kan be om et arkiv med dine <strong>tuter og opplastede media</strong>. Den eksporterte dataen vil være i ActivityPub-formatet, som kan leses av programmer som støtter det. Du kan be om et arkiv opptil hver 7. dag.
+      in_progress: Samler arkivet ditt...
       request: Be om ditt arkiv
       size: Størrelse
     blocks: Du blokkerer
-    csv: CSV
     domain_blocks: Domeneblokkeringer
     lists: Lister
     mutes: Du demper
@@ -698,6 +737,7 @@
     hint_html: "<strong>Hva er utvalgte emneknagger?</strong> De vises frem tydelig på din offentlige profil, og lar folk bla i dine offentlige innlegg som spesifikt har de emneknaggene. De er et bra verktøy for å holde styr på kreative verk eller langtidsprosjekter."
   filters:
     contexts:
+      account: Profiler
       home: Hjemmetidslinje
       notifications: Varslinger
       public: Offentlige tidslinjer
@@ -706,6 +746,7 @@
       title: Rediger filter
     index:
       delete: Slett
+      empty: Du har ingen filtre.
       title: Filtre
     new:
       title: Legg til nytt filter
@@ -718,6 +759,7 @@
     all: Alle
     changes_saved_msg: Vellykket lagring av endringer!
     copy: Kopier
+    delete: Slett
     order_by: Sorter etter
     save_changes: Lagre endringer
     validation_errors:
@@ -726,6 +768,7 @@
   identity_proofs:
     active: Aktive
     authorize: Ja, autoriser
+    authorize_connection_prompt: Vil du autorisere denne kryptografiske forbindelsen?
     errors:
       keybase:
         verification_failed: Keybase kjenner ikke igjen denne sjetongen som en signatur for Keybase-brukeren %{kb_username}. Vennligst prøv igjen gjennom Keybase.
@@ -736,6 +779,7 @@
     inactive: Inaktive
     publicize_checkbox: 'Og tut ut dette:'
     publicize_toot: 'Det er bevist! Jeg er %{username} på %{service}: %{url}'
+    remove: Fjern bevis fra kontoen
     status: Verifiseringsstatus
     view_proof: Se bevis
   imports:
@@ -784,19 +828,39 @@
     acct: brukernavn@domene til den nye kontoen
     cancel: Avbryt omdirigeringen
     cancel_explanation: Å avbryte omdirigeringen vil reaktivere din nåværende konto, men vil ikke bringe tilbake følgere som har blitt flyttet til den kontoen.
+    cancelled_msg: Avbrøt omdirigeringen med suksess.
     errors:
+      already_moved: er den samme kontoen du allerede har flyttet til
+      missing_also_known_as: er ikke en av denne kontoens aliaser
       move_to_self: kan ikke være den nåværende kontoen
       not_found: ble ikke funnet
+      on_cooldown: Du er i en nedkjølingsperiode
+    followers_count: Følgere på flyttetidspunktet
     incoming_migrations: Flytte fra en annen konto
     incoming_migrations_html: For å flytte fra en annen konto til denne, må du først <a href="%{path}">sette opp et kontoalias</a>.
+    moved_msg: Kontoen din omdirigeres nå til %{acct}, og følgerne dine blir flyttet over.
+    not_redirecting: Kontoen din omdirigeres ikke til noen andre kontoer for øyeblikket.
+    on_cooldown: Du har nylig overført kontoen din. Denne funksjonen blir tilgjengelig igjen om %{count} dager.
     past_migrations: Tidligere migreringer
     proceed_with_move: Flytt følgere
+    redirected_msg: Kontoen din omdirigeres nå til %{acct}.
+    redirecting_to: Kontoen din omdirigeres til %{acct}.
     set_redirect: Bestem omdirigering
     warning:
+      backreference_required: Den nye kontoen må først settes opp til å henvise tilbake til denne
       before: 'Før du fortsetter, vennligst les disse notisene nøye:'
+      cooldown: Etter flytting er det en nedkjølingsperiode der du ikke vil kunne flytte igjen
       disabled_account: Din nåværende konto vil ikke være fullt brukbar etterpå. Men du vil ha tilgang til dataeksportering såvel som reaktivering.
+      followers: Denne handlingen vil flytte alle følgere fra den nåværende kontoen til den nye kontoen
+      only_redirect_html: Alternativt kan du velge å <a href="%{path}">bare legge ut en omdirigering på profilen din</a>.
+      other_data: Ingen andre data vil bli flyttet automatisk
+      redirect: Profilen til din nåværende konto vil bli oppdatert med en omdirigeringsnotis og bli fjernet fra søk
   moderation:
     title: Moderasjon
+  move_handler:
+    carry_blocks_over_text: Denne brukeren flyttet fra %{acct}, som du hadde blokkert.
+    carry_mutes_over_text: Denne brukeren flyttet fra %{acct}, som du hadde dempet.
+    copy_account_note_text: 'Denne brukeren flyttet fra %{acct}, her var dine tidligere notater om dem:'
   notification_mailer:
     digest:
       action: Vis alle varslinger
@@ -845,29 +909,44 @@
           quadrillion: Kvd
           thousand: T
           trillion: Trl
+  otp_authentication:
+    code_hint: Skriv inn koden generert av autentiseringsappen din for å bekrefte
+    description_html: Hvis du skrur på <strong>2-trinnsautentisering</strong> ved hjelp av en autentiseringsapp, vil pålogging kreve at du er i besittelse av autentiseringsenheten din, som genererer sjetonger som du skal skrive inn.
+    enable: Aktiver
+    instructions_html: "<strong>Skann denne QR-koden i Authy, Google Autentisering, eller en lignende TOTP-app på en av dine enheter</strong>. Fra nå av, vil den appen generere sjetonger som du vil måtte skrive inn når du logger på."
+    manual_instructions: 'Hvis du ikke kan skanne QR-koden og må skrive den inn manuelt, her er tekstkoden i ren tekst:'
+    setup: Sett opp
+    wrong_code: Den innskrevne koden var ugyldig! Er tjenertiden og enhetstiden riktige?
   pagination:
     newer: Nyere
     next: Neste
     older: Eldre
     prev: Forrige
-    truncate: "&hellip;"
   polls:
     errors:
       already_voted: Du har allerede stemt i denne avstemningen
+      duplicate_options: inneholder duplikatgjenstander
       duration_too_long: er for langt frem i tid
       duration_too_short: er for snart
       expired: Denne avstemningen er allerede ferdig
+      invalid_choice: Det valgte stemmealternativet eksisterer ikke
+      over_character_limit: kan ikke være lengre enn %{max} tegn hver
       too_few_options: må ha mer enn én gjenstand
       too_many_options: kan ikke ha mer enn %{max} gjenstander
   preferences:
     other: Annet
     posting_defaults: Innleggsstandarder
     public_timelines: Offentlige tidslinjer
+  reactions:
+    errors:
+      limit_reached: Grensen for forskjellige reaksjoner nådd
+      unrecognized_emoji: er ikke en gjenkjent emoji
   relationships:
     activity: Kontoaktivitet
     dormant: Dormende
     followers: Følgere
     following: Følginger
+    invited: Invitert
     last_active: Senest aktiv
     most_recent: Nyligst
     moved: Flyttet
@@ -895,44 +974,27 @@
     reply:
       proceed: Fortsett til svaret
       prompt: 'Du ønsker å svare på denne tuten:'
+  scheduled_statuses:
+    over_daily_limit: Du har overskredet grensen på %{limit} planlagte tuter for den dagen
+    over_total_limit: Du har overskredet grensen på %{limit} planlagte tuter
+    too_soon: Den planlagte datoen må være i fremtiden
   sessions:
     activity: Siste aktivitet
     browser: Nettleser
     browsers:
       alipay: AliPay
       blackberry: BlackBerry
-      chrome: Chrome
-      edge: Microsoft Edge
-      electron: Electron
-      firefox: Firefox
       generic: Ukjent nettleser
-      ie: Internet Explorer
-      micro_messenger: MicroMessenger
       nokia: Nokia S40 Ovi-nettleser
-      opera: Opera
-      otter: Otter
-      phantom_js: PhantomJS
-      qq: QQ Browser
-      safari: Safari
       uc_browser: UC Browser
-      weibo: Weibo
     current_session: Nåværende økt
     description: "%{browser} på %{platform}"
     explanation: Dette er nettlesere som er pålogget på din Mastodon-konto akkurat nå.
     ip: IP-adresse
     platforms:
-      adobe_air: Adobe Air
-      android: Android
       blackberry: BlackBerry
       chrome_os: Chrome OS
-      firefox_os: Firefox OS
-      ios: iOS
-      linux: Linux
-      mac: macOS
       other: ukjent plattform
-      windows: Windows
-      windows_mobile: Windows Mobile
-      windows_phone: Windows Phone
     revoke: Tilbakekall
     revoke_success: Økt tilbakekalt
     title: Økter
@@ -953,19 +1015,20 @@
     import_and_export: Importer og eksporter
     migrate: Kontomigrering
     notifications: Varslinger
-    preferences: Preferanser
+    preferences: Innstillinger
     profile: Profil
     relationships: Følginger og følgere
     two_factor_authentication: Tofaktorautentisering
+    webauthn_authentication: Sikkerhetsnøkler
   statuses:
     attached:
+      audio:
+        one: "%{count} lyd"
+        other: "%{count} lyd"
       description: 'Vedlagt: %{attached}'
       image:
         one: "%{count} bilde"
         other: "%{count} bilder"
-      video:
-        one: "%{count} video"
-        other: "%{count} videoer"
     content_warning: 'Innholdsadvarsel: %{warning}'
     language_detection: Oppdag språk automatisk
     open_in_web: Åpne i nettleser
@@ -976,14 +1039,13 @@
       private: Kun offentlige tuter kan festes
       reblog: En fremheving kan ikke festes
     poll:
-      total_people:
-        one: "%{count} person"
-        other: "%{count} personer"
       total_votes:
         one: "%{count} stemme"
         other: "%{count} stemmer"
       vote: Stem
     show_more: Vis mer
+    show_thread: Vis tråden
+    sign_in_to_participate: Logg på for å delta i samtalen
     title: "%{name}: «%{quote}»"
     visibilities:
       private: Privat
@@ -1088,32 +1150,35 @@
   time:
     formats:
       default: "%-d. %b %Y, %H:%M"
-      month: "%b %Y"
   two_factor_authentication:
-    code_hint: Tast koden som ble generert av din autentiseringsapp for å bekrefte
-    description_html: Hvis du skrur på <strong>tofaktorautentisering</strong> må du ha din telefon for å logge inn. Denne vil generere koder som du må taste inn.
+    add: Legg til
     disable: Skru av
-    enable: Skru på
+    disabled_success: 2-trinnsautentisering ble vellykket skrudd av
+    edit: Redigering
     enabled: To-faktor autentisering er aktivert
     enabled_success: Aktivering av tofaktorautentisering vellykket
     generate_recovery_codes: Generér gjenopprettingskoder
-    instructions_html: "<strong>Scan denne QR-koden med Google Authenticator eller en lignende app på telefonen din</strong>. Fra nå av vil denne applikasjonen generere koder for deg som skal brukes under innlogging."
     lost_recovery_codes: Gjenopprettingskoder lar deg gjenoppnå tilgang til din konto hvis du mister din telefon. Hvis du har mistet gjenopprettingskodene, kan du regenerere dem her. Dine gamle gjenopprettingskoder vil bli ugyldige.
-    manual_instructions: 'Hvis du ikke får scannet QR-koden må du skrive inn følgende kode manuelt:'
+    methods: 2-trinnsmetoder
+    otp: Autentiseringsapp
     recovery_codes: Reservekoder
     recovery_codes_regenerated: Generering av reservekoder fullført
     recovery_instructions_html: Hvis du skulle miste tilgang til telefonen din, kan du bruke en av gjenopprettingskodene nedenfor til å gjenopprette tilgang til din konto. <strong>Oppbevar gjenopprettingskodene sikkert</strong>, for eksempel ved å skrive dem ut og gjemme dem på et lurt sted bare du vet om.
-    setup: Sett opp
-    wrong_code: Den angitte koden var ugyldig! Stemmer instansens tid overalt med enhetens tid?
+    webauthn: Sikkerhetsnøkler
   user_mailer:
     backup_ready:
+      explanation: Du ba om en fullstendig sikkerhetskopi av Mastodon-kontoen din. Den er nå klar for nedlasting!
       subject: Arkivet ditt er klart til å lastes ned
+    sign_in_token:
+      details: 'Her er detaljene om forsøket:'
+      title: Påloggingsforsøk
     warning:
       explanation:
         disable: Mens kontoen din er fryst, forblir dine kontodata intakt, men du kan ikke utføre noen handlinger før den har blitt tint opp.
         silence: Mens kontoen din er begrenset, vil bare folk som allerede følger deg se dine tuter på denne tjeneren, og du kan bli ekskludert fra diverse offentlige oppføringer. Men andre kan fortsatt følge deg manuelt.
         suspend: Kontoen din har blitt suspendert, og alle dine tuter og opplastede media har blitt ugjenkallelig fjernet fra denne tjeneren, og fra tjenere der du hadde følgere.
       get_in_touch: Du kan svare på denne E-posten for å komme i kontakt med styret i %{instance}.
+      review_server_policies: Gjennomgå serverretningslinjer
       statuses: 'Spesifikt for å:'
       subject:
         disable: Kontoen din, %{acct}, har blitt fryst
@@ -1140,12 +1205,24 @@
       tip_following: Du følger din tjeners administrator(er) som standard. For å finne mer interessante personer, sjekk den lokale og forente tidslinjen.
       tip_local_timeline: Den lokale tidslinjen blir kontant matet med meldinger fra personer på %{instance}. Dette er dine nærmeste naboer!
       tip_mobile_webapp: Hvis din mobile nettleser tilbyr deg å legge Mastadon til din hjemmeskjerm kan du motta push-varslinger. Det er nesten som en integrert app på mange måter!
-      tips: Tips
       title: Velkommen ombord, %{name}!
   users:
-    invalid_email: E-postaddressen er ugyldig
+    follow_limit_reached: Du kan ikke følge mer enn %{limit} personer
     invalid_otp_token: Ugyldig to-faktorkode
+    invalid_sign_in_token: Ugyldig sikkerhetskode
+    otp_lost_help_html: Hvis du mistet tilgangen til begge deler, kan du komme i kontakt med %{email}
     signed_in_as: 'Innlogget som:'
   verification:
     explanation_html: 'Du kan <strong>bekrefte at du selv er eieren av lenkene i din profilmetadata</strong>. For å gjøre det, må det tillenkede nettstedet inneholde en lenke som fører tilbake til Mastodon-profilen din. Lenken tilbake <strong>må</strong> ha en <code>rel="me"</code>-attributt. Tekstinnholdet til lenken er irrelevant. Her er et eksempel:'
     verification: Bekreftelse
+  webauthn_credentials:
+    add: Legg til ny sikkerhetsnøkkel
+    create:
+      success: Sikkerhetsnøkkelen din ble vellykket lagt til.
+    delete: Slett
+    delete_confirmation: Er du sikker på at du vil slette denne sikkerhetsnøkkelen?
+    destroy:
+      success: Sikkerhetsnøkkelen din ble vellykket slettet.
+    invalid_credential: Ugyldig sikkerhetsnøkkel
+    not_supported: Denne nettleseren støtter ikke sikkerhetsnøkler
+    registered_on: Registrert den %{date}

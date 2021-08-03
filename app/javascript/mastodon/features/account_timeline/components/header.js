@@ -55,6 +55,10 @@ export default class Header extends ImmutablePureComponent {
     this.props.onReblogToggle(this.props.account);
   }
 
+  handleNotifyToggle = () => {
+    this.props.onNotifyToggle(this.props.account);
+  }
+
   handleMute = () => {
     this.props.onMute(this.props.account);
   }
@@ -83,6 +87,10 @@ export default class Header extends ImmutablePureComponent {
     this.props.onAddToList(this.props.account);
   }
 
+  handleEditAccountNote = () => {
+    this.props.onEditAccountNote(this.props.account);
+  }
+
   render () {
     const { account, hideTabs, identity_proofs } = this.props;
 
@@ -102,12 +110,14 @@ export default class Header extends ImmutablePureComponent {
           onMention={this.handleMention}
           onDirect={this.handleDirect}
           onReblogToggle={this.handleReblogToggle}
+          onNotifyToggle={this.handleNotifyToggle}
           onReport={this.handleReport}
           onMute={this.handleMute}
           onBlockDomain={this.handleBlockDomain}
           onUnblockDomain={this.handleUnblockDomain}
           onEndorseToggle={this.handleEndorseToggle}
           onAddToList={this.handleAddToList}
+          onEditAccountNote={this.handleEditAccountNote}
           domain={this.props.domain}
         />
 

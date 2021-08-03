@@ -2,12 +2,13 @@
 
 class FetchLinkCardService < BaseService
   URL_PATTERN = %r{
-    (                                                                                                 #   $1 URL
-      (https?:\/\/)                                                                                   #   $2 Protocol (required)
-      (#{Twitter::Regex[:valid_domain]})                                                              #   $3 Domain(s)
-      (?::(#{Twitter::Regex[:valid_port_number]}))?                                                   #   $4 Port number (optional)
-      (/#{Twitter::Regex[:valid_url_path]}*)?                                                         #   $5 URL Path and anchor
-      (\?#{Twitter::Regex[:valid_url_query_chars]}*#{Twitter::Regex[:valid_url_query_ending_chars]})? #   $6 Query String
+    (#{Twitter::TwitterText::Regex[:valid_url_preceding_chars]})                                                                #   $1 preceeding chars
+    (                                                                                                                           #   $2 URL
+      (https?:\/\/)                                                                                                             #   $3 Protocol (required)
+      (#{Twitter::TwitterText::Regex[:valid_domain]})                                                                           #   $4 Domain(s)
+      (?::(#{Twitter::TwitterText::Regex[:valid_port_number]}))?                                                                #   $5 Port number (optional)
+      (/#{Twitter::TwitterText::Regex[:valid_url_path]}*)?                                                                      #   $6 URL Path and anchor
+      (\?#{Twitter::TwitterText::Regex[:valid_url_query_chars]}*#{Twitter::TwitterText::Regex[:valid_url_query_ending_chars]})? #   $7 Query String
     )
   }iox
 
@@ -45,13 +46,13 @@ class FetchLinkCardService < BaseService
   def html
     return @html if defined?(@html)
 
-    Request.new(:get, @url).add_headers('Accept' => 'text/html').perform do |res|
+    Request.new(:get, @url).add_headers('Accept' => 'text/html', 'User-Agent' => Mastodon::Version.user_agent + ' Bot').perform do |res|
       if res.code == 200 && res.mime_type == 'text/html'
-        @html = res.body_with_limit
         @html_charset = res.charset
+        @html = res.body_with_limit
       else
-        @html = nil
         @html_charset = nil
+        @html = nil
       end
     end
   end
@@ -63,11 +64,11 @@ class FetchLinkCardService < BaseService
 
   def parse_urls
     if @status.local?
-      urls = @status.text.scan(URL_PATTERN).map { |array| Addressable::URI.parse(array[0]).normalize }
+      urls = @status.text.scan(URL_PATTERN).map { |array| Addressable::URI.parse(array[1]).normalize }
     else
       html  = Nokogiri::HTML(@status.text)
       links = html.css('a')
-      urls  = links.map { |a| Addressable::URI.parse(a['href']) unless skip_link?(a) }.compact.map(&:normalize).compact
+      urls  = links.filter_map { |a| Addressable::URI.parse(a['href']) unless skip_link?(a) }.filter_map(&:normalize)
     end
 
     urls.reject { |uri| bad_url?(uri) }.first
@@ -78,6 +79,7 @@ class FetchLinkCardService < BaseService
     uri.host.blank? || TagManager.instance.local_url?(uri.to_s) || !%w(http https).include?(uri.scheme)
   end
 
+  # rubocop:disable Naming/MethodParameterName
   def mention_link?(a)
     @status.mentions.any? do |mention|
       a['href'] == ActivityPub::TagManager.instance.url_for(mention.account)
@@ -88,6 +90,7 @@ class FetchLinkCardService < BaseService
     # Avoid links for hashtags and mentions (microformats)
     a['rel']&.include?('tag') || a['class']&.match?(/u-url|h-card/) || mention_link?(a)
   end
+  # rubocop:enable Naming/MethodParameterName
 
   def attempt_oembed
     service         = FetchOEmbedService.new
@@ -172,6 +175,6 @@ class FetchLinkCardService < BaseService
   end
 
   def lock_options
-    { redis: Redis.current, key: "fetch:#{@url}" }
+    { redis: Redis.current, key: "fetch:#{@url}", autorelease: 15.minutes.seconds }
   end
 end

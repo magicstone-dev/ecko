@@ -33,11 +33,12 @@ zh-CN:
       help:
         native_redirect_uri: 本地测试请使用 %{native_redirect_uri}
         redirect_uri: 每行只能有一个 URL
-        scopes: 用空格分割权限范围，留空则使用默认设置
+        scopes: 用空格分隔权限范围，留空则使用默认设置。
       index:
         application: 应用
         callback_url: 回调 URL
         delete: 删除
+        empty: 你没有申请。
         name: 名称
         new: 创建新应用
         scopes: 权限范围
@@ -51,7 +52,7 @@ zh-CN:
         callback_urls: 回调 URL
         scopes: 权限范围
         secret: 应用密钥
-        title: 应用：%{name}
+        title: 应用名称：%{name}
     authorizations:
       buttons:
         authorize: 同意授权
@@ -60,7 +61,7 @@ zh-CN:
         title: 发生错误
       new:
         able_to: 此应用将能够
-        prompt: 授权 %{client_name} 使用你的帐户？
+        prompt: 授权 %{client_name} 访问你的帐户？
         title: 需要授权
       show:
         title: 接下来请复制此处的授权代码并粘贴到应用中。
@@ -72,7 +73,7 @@ zh-CN:
       index:
         application: 应用
         created_at: 授权时间
-        date_format: "%H:%M:%S"
+        date_format: "%Y年%m月%d日 %H:%M:%S"
         scopes: 权限范围
         title: 已授权的应用列表
     errors:
@@ -82,7 +83,10 @@ zh-CN:
         invalid_client: 由于应用信息未知、未提交认证信息或使用了不支持的认证方式，认证失败
         invalid_grant: 授权方式无效、过期或已被撤销、与授权请求中的回调地址不一致，或使用了其他应用的回调地址
         invalid_redirect_uri: 无效的登录回调地址
-        invalid_request: 请求缺少必要的参数，或者参数值、格式不正确
+        invalid_request:
+          missing_param: 缺少必需的参数：%{value}
+          request_not_authorized: 请求需要被授权。授权请求所需的参数缺失或无效。
+          unknown: 该请求缺少一个必要的参数，包括一个不支持的参数值，或者其他格式错误。
         invalid_resource_owner: 资源所有者认证无效，或找不到所有者
         invalid_scope: 请求的权限范围无效、未知或格式不正确
         invalid_token:
@@ -125,7 +129,7 @@ zh-CN:
       read: 读取你的帐户数据
       read:accounts: 查看账号信息
       read:blocks: 查看你的屏蔽列表
-      read:bookmarks: 查看您的书签
+      read:bookmarks: 查看你的书签
       read:favourites: 查看喜欢的嘟文
       read:filters: 查看你的过滤器
       read:follows: 查看你的关注

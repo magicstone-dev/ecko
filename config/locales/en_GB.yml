@@ -474,7 +474,6 @@ en_GB:
     warning_presets:
       add_new: Add new
       delete: Delete
-      edit: Edit
       edit_preset: Edit warning preset
       title: Manage warning presets
   admin_mailer:
@@ -601,7 +600,7 @@ en_GB:
       limit: You have already featured the maximum amount of hashtags
   filters:
     contexts:
-      home: Home timeline
+      home: Home and lists
       notifications: Notifications
       public: Public timelines
       thread: Conversations

@@ -58,6 +58,14 @@ class REST::StatusSerializer < ActiveModel::Serializer
     end
   end
 
+  def sensitive
+    if current_user? && current_user.account_id == object.account_id
+      object.sensitive
+    else
+      object.account.sensitized? || object.sensitive
+    end
+  end
+
   def uri
     ActivityPub::TagManager.instance.uri_for(object)
   end
@@ -145,7 +153,7 @@ class REST::StatusSerializer < ActiveModel::Serializer
     end
 
     def acct
-      object.account_acct
+      object.account.pretty_acct
     end
   end
 

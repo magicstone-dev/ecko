@@ -1,6 +1,7 @@
 import React from 'react';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import PropTypes from 'prop-types';
+import { autoPlayGif } from 'mastodon/initial_state';
 
 export default class DisplayName extends React.PureComponent {
 
@@ -9,6 +10,32 @@ export default class DisplayName extends React.PureComponent {
     others: ImmutablePropTypes.list,
     localDomain: PropTypes.string,
   };
+
+  handleMouseEnter = ({ currentTarget }) => {
+    if (autoPlayGif) {
+      return;
+    }
+
+    const emojis = currentTarget.querySelectorAll('.custom-emoji');
+
+    for (var i = 0; i < emojis.length; i++) {
+      let emoji = emojis[i];
+      emoji.src = emoji.getAttribute('data-original');
+    }
+  }
+
+  handleMouseLeave = ({ currentTarget }) => {
+    if (autoPlayGif) {
+      return;
+    }
+
+    const emojis = currentTarget.querySelectorAll('.custom-emoji');
+
+    for (var i = 0; i < emojis.length; i++) {
+      let emoji = emojis[i];
+      emoji.src = emoji.getAttribute('data-static');
+    }
+  }
 
   render () {
     const { others, localDomain } = this.props;
@@ -39,7 +66,7 @@ export default class DisplayName extends React.PureComponent {
     }
 
     return (
-      <span className='display-name'>
+      <span className='display-name' onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
         {displayName} {suffix}
       </span>
     );

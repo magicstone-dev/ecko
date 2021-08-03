@@ -5,32 +5,64 @@
   li {
     margin-bottom: 10px;
     position: relative;
-    height: 18px + 12px;
   }
 
   &__chart {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    display: inline-block;
     border-radius: 4px;
-    background: darken($ui-primary-color, 14%);
+    display: block;
+    background: darken($ui-primary-color, 5%);
+    height: 5px;
+    min-width: 1%;
 
     &.leading {
       background: $ui-highlight-color;
     }
   }
 
-  &__text {
+  progress {
+    border: 0;
+    display: block;
+    width: 100%;
+    height: 5px;
+    appearance: none;
+    background: transparent;
+
+    &::-webkit-progress-bar {
+      background: transparent;
+    }
+
+    // Those rules need to be entirely separate or they won't work, hence the
+    // duplication
+    &::-moz-progress-bar {
+      border-radius: 4px;
+      background: darken($ui-primary-color, 5%);
+    }
+
+    &::-ms-fill {
+      border-radius: 4px;
+      background: darken($ui-primary-color, 5%);
+    }
+
+    &::-webkit-progress-value {
+      border-radius: 4px;
+      background: darken($ui-primary-color, 5%);
+    }
+  }
+
+  &__option {
     position: relative;
-    display: inline-block;
+    display: flex;
     padding: 6px 0;
     line-height: 18px;
     cursor: default;
-    white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;
+
+    &__text {
+      display: inline-block;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      max-width: calc(100% - 45px - 25px);
+    }
 
     input[type=radio],
     input[type=checkbox] {
@@ -47,7 +79,6 @@
       width: 100%;
       font-size: 14px;
       color: $inverted-text-color;
-      display: block;
       outline: 0;
       font-family: inherit;
       background: $simple-background-color;
@@ -83,6 +114,9 @@
     top: -1px;
     border-radius: 50%;
     vertical-align: middle;
+    margin-top: auto;
+    margin-bottom: auto;
+    flex: 0 0 18px;
 
     &.checkbox {
       border-radius: 4px;
@@ -92,14 +126,39 @@
       border-color: $valid-value-color;
       background: $valid-value-color;
     }
+
+    &:active,
+    &:focus,
+    &:hover {
+      border-color: lighten($valid-value-color, 15%);
+      border-width: 4px;
+    }
+
+    &::-moz-focus-inner {
+      outline: 0 !important;
+      border: 0;
+    }
+
+    &:focus,
+    &:active {
+      outline: 0 !important;
+    }
   }
 
   &__number {
     display: inline-block;
-    width: 36px;
+    width: 45px;
     font-weight: 700;
-    padding: 0 10px;
-    text-align: right;
+    flex: 0 0 45px;
+  }
+
+  &__voted {
+    padding: 0 5px;
+    display: inline-block;
+
+    &__mark {
+      font-size: 18px;
+    }
   }
 
   &__footer {
@@ -152,6 +211,10 @@
     button,
     select {
       flex: 1 1 50%;
+
+      &:focus {
+        border-color: $highlight-text-color;
+      }
     }
   }
 
@@ -170,7 +233,7 @@
     display: flex;
     align-items: center;
 
-    .poll__text {
+    .poll__option {
       flex: 0 0 auto;
       width: calc(100% - (23px + 6px));
       margin-right: 6px;

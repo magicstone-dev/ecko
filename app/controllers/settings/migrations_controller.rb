@@ -1,34 +1,44 @@
 # frozen_string_literal: true
 
 class Settings::MigrationsController < Settings::BaseController
-  layout 'admin'
+  skip_before_action :require_functional!
 
-  before_action :authenticate_user!
+  before_action :require_not_suspended!
+  before_action :set_migrations
+  before_action :set_cooldown
 
   def show
-    @migration = Form::Migration.new(account: current_account.moved_to_account)
+    @migration = current_account.migrations.build
   end
 
-  def update
-    @migration = Form::Migration.new(resource_params)
+  def create
+    @migration = current_account.migrations.build(resource_params)
 
-    if @migration.valid? && migration_account_changed?
-      current_account.update!(moved_to_account: @migration.account)
-      ActivityPub::UpdateDistributionWorker.perform_async(current_account.id)
-      redirect_to settings_migration_path, notice: I18n.t('migrations.updated_msg')
+    if @migration.save_with_challenge(current_user)
+      MoveService.new.call(@migration)
+      redirect_to settings_migration_path, notice: I18n.t('migrations.moved_msg', acct: current_account.moved_to_account.acct)
     else
       render :show
     end
   end
 
+  helper_method :on_cooldown?
+
   private
 
   def resource_params
-    params.require(:migration).permit(:acct)
+    params.require(:account_migration).permit(:acct, :current_password, :current_username)
   end
 
-  def migration_account_changed?
-    current_account.moved_to_account_id != @migration.account&.id &&
-      current_account.id != @migration.account&.id
+  def set_migrations
+    @migrations = current_account.migrations.includes(:target_account).order(id: :desc).reject(&:new_record?)
+  end
+
+  def set_cooldown
+    @cooldown = current_account.migrations.within_cooldown.first
+  end
+
+  def on_cooldown?
+    @cooldown.present?
   end
 end

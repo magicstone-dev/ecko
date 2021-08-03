@@ -1,194 +1,229 @@
 Authors
 =======
 
-Mastodon is available on [GitHub](https://github.com/tootsuite/mastodon)
+Mastodon is available on [GitHub](https://github.com/mastodon/mastodon)
 and provided thanks to the work of the following contributors:
 
 * [Gargron](https://github.com/Gargron)
+* [dependabot[bot]](https://github.com/apps/dependabot)
+* [ClearlyClaire](https://github.com/ClearlyClaire)
+* [dependabot-preview[bot]](https://github.com/apps/dependabot-preview)
 * [ykzts](https://github.com/ykzts)
-* [ThibG](https://github.com/ThibG)
 * [akihikodaki](https://github.com/akihikodaki)
 * [mjankowski](https://github.com/mjankowski)
-* [dependabot[bot]](https://github.com/apps/dependabot)
 * [unarist](https://github.com/unarist)
-* [m4sk1n](https://github.com/m4sk1n)
+* [abcang](https://github.com/abcang)
 * [yiskah](https://github.com/yiskah)
+* [noellabo](https://github.com/noellabo)
 * [nolanlawson](https://github.com/nolanlawson)
+* [mayaeh](https://github.com/mayaeh)
 * [ysksn](https://github.com/ysksn)
 * [sorin-davidoi](https://github.com/sorin-davidoi)
-* [abcang](https://github.com/abcang)
 * [lynlynlynx](https://github.com/lynlynlynx)
-* [mayaeh](https://github.com/mayaeh)
+* [m4sk1n](mailto:me@m4sk.in)
+* [Marcin Mikołajczak](mailto:me@m4sk.in)
+* [tribela](https://github.com/tribela)
 * [renatolond](https://github.com/renatolond)
 * [alpaca-tc](https://github.com/alpaca-tc)
+* [zunda](https://github.com/zunda)
 * [nclm](https://github.com/nclm)
 * [ineffyble](https://github.com/ineffyble)
-* [jeroenpraat](https://github.com/jeroenpraat)
+* [shleeable](https://github.com/shleeable)
+* [Masoud Abkenar](mailto:ampbox@gmail.com)
 * [blackle](https://github.com/blackle)
 * [Quent-in](https://github.com/Quent-in)
 * [JantsoP](https://github.com/JantsoP)
-* [Kjwon15](https://github.com/Kjwon15)
-* [mabkenar](https://github.com/mabkenar)
+* [ariasuni](https://github.com/ariasuni)
 * [nullkal](https://github.com/nullkal)
 * [yookoala](https://github.com/yookoala)
+* [Brawaru](https://github.com/Brawaru)
+* [Aditoo17](https://github.com/Aditoo17)
+* [Quenty31](https://github.com/Quenty31)
+* [marek-lach](https://github.com/marek-lach)
 * [shuheiktgw](https://github.com/shuheiktgw)
 * [ashfurrow](https://github.com/ashfurrow)
-* [zunda](https://github.com/zunda)
-* [Quenty31](https://github.com/Quenty31)
+* [danhunsaker](https://github.com/danhunsaker)
 * [eramdam](https://github.com/eramdam)
+* [Jeroen](mailto:jeroenpraat@users.noreply.github.com)
 * [takayamaki](https://github.com/takayamaki)
+* [dunn](https://github.com/dunn)
 * [masarakki](https://github.com/masarakki)
 * [ticky](https://github.com/ticky)
-* [danhunsaker](https://github.com/danhunsaker)
+* [trwnh](https://github.com/trwnh)
 * [ThisIsMissEm](https://github.com/ThisIsMissEm)
+* [hinaloe](https://github.com/hinaloe)
 * [hcmiya](https://github.com/hcmiya)
 * [stephenburgess8](https://github.com/stephenburgess8)
 * [Wonderfall](https://github.com/Wonderfall)
 * [matteoaquila](https://github.com/matteoaquila)
 * [yukimochi](https://github.com/yukimochi)
+* [palindromordnilap](https://github.com/palindromordnilap)
 * [rkarabut](https://github.com/rkarabut)
-* [Artoria2e5](https://github.com/Artoria2e5)
+* [jeroenpraat](mailto:jeroenpraat@users.noreply.github.com)
 * [nightpool](https://github.com/nightpool)
+* [Artoria2e5](https://github.com/Artoria2e5)
 * [marrus-sh](https://github.com/marrus-sh)
 * [krainboltgreene](https://github.com/krainboltgreene)
 * [pfigel](https://github.com/pfigel)
-* [Aldarone](https://github.com/Aldarone)
 * [BoFFire](https://github.com/BoFFire)
+* [Aldarone](https://github.com/Aldarone)
 * [clworld](https://github.com/clworld)
+* [MasterGroosha](https://github.com/MasterGroosha)
 * [dracos](https://github.com/dracos)
+* [MaciekBaron](https://github.com/MaciekBaron)
 * [SerCom_KC](mailto:sercom-kc@users.noreply.github.com)
 * [Sylvhem](https://github.com/Sylvhem)
-* [MasterGroosha](https://github.com/MasterGroosha)
+* [MitarashiDango](https://github.com/MitarashiDango)
+* [rinsuki](https://github.com/rinsuki)
+* [angristan](https://github.com/angristan)
 * [JeanGauthier](https://github.com/JeanGauthier)
 * [kschaper](https://github.com/kschaper)
-* [MaciekBaron](https://github.com/MaciekBaron)
-* [MitarashiDango](mailto:mitarashidango@users.noreply.github.com)
 * [beatrix-bitrot](https://github.com/beatrix-bitrot)
-* [Aditoo17](https://github.com/Aditoo17)
+* [koyuawsmbrtn](https://github.com/koyuawsmbrtn)
+* [BenLubar](https://github.com/BenLubar)
+* [mkljczk](https://github.com/mkljczk)
 * [adbelle](https://github.com/adbelle)
 * [evanminto](https://github.com/evanminto)
 * [MightyPork](https://github.com/MightyPork)
+* [ashleyhull-versent](https://github.com/ashleyhull-versent)
 * [yhirano55](https://github.com/yhirano55)
-* [rinsuki](https://github.com/rinsuki)
-* [camponez](https://github.com/camponez)
-* [hinaloe](https://github.com/hinaloe)
-* [SerCom-KC](https://github.com/SerCom-KC)
-* [aschmitz](https://github.com/aschmitz)
 * [devkral](https://github.com/devkral)
+* [camponez](https://github.com/camponez)
+* [hugogameiro](https://github.com/hugogameiro)
+* [SerCom_KC](mailto:szescxz@gmail.com)
+* [aschmitz](https://github.com/aschmitz)
+* [mfmfuyu](https://github.com/mfmfuyu)
+* [kedamaDQ](https://github.com/kedamaDQ)
 * [fpiesche](https://github.com/fpiesche)
 * [gandaro](https://github.com/gandaro)
 * [johnsudaar](https://github.com/johnsudaar)
 * [trebmuh](https://github.com/trebmuh)
-* [Rakib Hasan](mailto:rmhasan@gmail.com)
-* [ashleyhull-versent](https://github.com/ashleyhull-versent)
+* [rmhasan](https://github.com/rmhasan)
 * [lindwurm](https://github.com/lindwurm)
 * [victorhck](mailto:victorhck@geeko.site)
 * [voidsatisfaction](https://github.com/voidsatisfaction)
 * [hikari-no-yume](https://github.com/hikari-no-yume)
-* [angristan](https://github.com/angristan)
 * [seefood](https://github.com/seefood)
 * [jackjennings](https://github.com/jackjennings)
+* [puckipedia](https://github.com/puckipedia)
 * [spla](mailto:spla@mastodont.cat)
-* [expenses](https://github.com/expenses)
 * [walf443](https://github.com/walf443)
 * [JoelQ](https://github.com/JoelQ)
 * [mistydemeo](https://github.com/mistydemeo)
-* [dunn](https://github.com/dunn)
+* [Ashley](mailto:expenses@airmail.cc)
 * [xqus](https://github.com/xqus)
-* [hugogameiro](https://github.com/hugogameiro)
-* [ariasuni](https://github.com/ariasuni)
 * [pfm-eyesightjp](https://github.com/pfm-eyesightjp)
 * [fakenine](https://github.com/fakenine)
 * [tsuwatch](https://github.com/tsuwatch)
 * [victorhck](https://github.com/victorhck)
-* [kedamaDQ](https://github.com/kedamaDQ)
-* [puckipedia](https://github.com/puckipedia)
-* [trwnh](https://github.com/trwnh)
+* [manuelviens](https://github.com/manuelviens)
+* [tateisu](https://github.com/tateisu)
 * [fvh-P](https://github.com/fvh-P)
+* [rtucker](https://github.com/rtucker)
 * [Anna e só](mailto:contraexemplos@gmail.com)
-* [BenLubar](https://github.com/BenLubar)
+* [dariusk](https://github.com/dariusk)
 * [kazu9su](https://github.com/kazu9su)
 * [Komic](https://github.com/Komic)
 * [lmorchard](https://github.com/lmorchard)
 * [diomed](https://github.com/diomed)
 * [Neetshin](mailto:neetshin@neetsh.in)
 * [rainyday](https://github.com/rainyday)
+* [tcitworld](https://github.com/tcitworld)
 * [ProgVal](https://github.com/ProgVal)
 * [valentin2105](https://github.com/valentin2105)
 * [yuntan](https://github.com/yuntan)
 * [goofy-bz](mailto:goofy@babelzilla.org)
 * [kadiix](https://github.com/kadiix)
 * [kodacs](https://github.com/kodacs)
-* [JMendyk](https://github.com/JMendyk)
+* [marcin mikołajczak](mailto:me@m4sk.in)
 * [KScl](https://github.com/KScl)
 * [sterdev](https://github.com/sterdev)
+* [mashirozx](https://github.com/mashirozx)
 * [TheKinrar](https://github.com/TheKinrar)
+* [007lva](https://github.com/007lva)
 * [AA4ch1](https://github.com/AA4ch1)
 * [alexgleason](https://github.com/alexgleason)
+* [Bèr Kessels](mailto:ber@berk.es)
 * [cpytel](https://github.com/cpytel)
 * [northerner](https://github.com/northerner)
 * [fhemberger](https://github.com/fhemberger)
+* [Gomasy](https://github.com/Gomasy)
 * [greysteil](https://github.com/greysteil)
-* [hensmith](https://github.com/hensmith)
+* [hendotcat](https://github.com/hendotcat)
 * [d6rkaiz](https://github.com/d6rkaiz)
-* [Reverite](https://github.com/Reverite)
+* [ladyisatis](https://github.com/ladyisatis)
+* [JMendyk](https://github.com/JMendyk)
 * [JohnD28](https://github.com/JohnD28)
 * [znz](https://github.com/znz)
-* [marek-lach](https://github.com/marek-lach)
+* [saper](https://github.com/saper)
 * [Naouak](https://github.com/Naouak)
 * [pawelngei](https://github.com/pawelngei)
-* [rtucker](https://github.com/rtucker)
 * [reneklacan](https://github.com/reneklacan)
 * [ekiru](https://github.com/ekiru)
-* [noellabo](https://github.com/noellabo)
-* [tcitworld](https://github.com/tcitworld)
 * [geta6](https://github.com/geta6)
 * [happycoloredbanana](https://github.com/happycoloredbanana)
+* [joenepraat](https://github.com/joenepraat)
 * [leopku](https://github.com/leopku)
 * [SansPseudoFix](https://github.com/SansPseudoFix)
+* [spla](mailto:sp@mastodont.cat)
 * [tomfhowe](https://github.com/tomfhowe)
 * [noraworld](https://github.com/noraworld)
-* [theboss](https://github.com/theboss)
+* [lfuelling](https://github.com/lfuelling)
+* [aji-su](https://github.com/aji-su)
+* [nzws](https://github.com/nzws)
+* [duxovni](https://github.com/duxovni)
+* [smorimoto](https://github.com/smorimoto)
 * [178inaba](https://github.com/178inaba)
+* [acid-chicken](https://github.com/acid-chicken)
+* [xgess](https://github.com/xgess)
 * [alyssais](https://github.com/alyssais)
-* [hiphref](https://github.com/hiphref)
+* [aablinov](https://github.com/aablinov)
 * [stalker314314](https://github.com/stalker314314)
+* [cohosh](https://github.com/cohosh)
+* [cutls](https://github.com/cutls)
 * [huertanix](https://github.com/huertanix)
-* [genesixx](https://github.com/genesixx)
+* [eleboucher](https://github.com/eleboucher)
 * [halkeye](https://github.com/halkeye)
+* [Hanage999](https://github.com/Hanage999)
 * [treby](https://github.com/treby)
 * [jpdevries](https://github.com/jpdevries)
 * [gdpelican](https://github.com/gdpelican)
-* [kmichl](https://github.com/kmichl)
+* [MonaLisaOverrdrive](https://github.com/MonaLisaOverrdrive)
 * [Kurtis Rainbolt-Greene](mailto:me@kurtisrainboltgreene.name)
-* [saper](https://github.com/saper)
+* [panarom](https://github.com/panarom)
+* [Dar13](https://github.com/Dar13)
 * [nevillepark](https://github.com/nevillepark)
 * [ornithocoder](https://github.com/ornithocoder)
+* [pwoolcoc](https://github.com/pwoolcoc)
 * [pierreozoux](https://github.com/pierreozoux)
 * [qguv](https://github.com/qguv)
 * [Ram Lmn](mailto:ramlmn@users.noreply.github.com)
-* [sascha-sl](https://github.com/sascha-sl)
+* [Sascha](mailto:sascha@serenitylabs.cloud)
 * [harukasan](https://github.com/harukasan)
 * [stamak](https://github.com/stamak)
-* [Technowix](mailto:technowix@users.noreply.github.com)
+* [Technowix](https://github.com/Technowix)
 * [Zoeille](https://github.com/Zoeille)
 * [Thor Harald Johansen](mailto:thj@thj.no)
 * [0x70b1a5](https://github.com/0x70b1a5)
 * [gled-rs](https://github.com/gled-rs)
 * [Valentin_NC](mailto:valentin.ouvrard@nautile.sarl)
 * [R0ckweb](https://github.com/R0ckweb)
+* [Izorkin](https://github.com/Izorkin)
+* [unasuke](https://github.com/unasuke)
 * [caasi](https://github.com/caasi)
 * [chr-1x](https://github.com/chr-1x)
 * [esetomo](https://github.com/esetomo)
 * [foxiehkins](https://github.com/foxiehkins)
+* [highemerly](https://github.com/highemerly)
 * [hoodie](mailto:hoodiekitten@outlook.com)
+* [kaiyou](https://github.com/kaiyou)
 * [luzi82](https://github.com/luzi82)
-* [duxovni](https://github.com/duxovni)
+* [slice](https://github.com/slice)
 * [tmm576](https://github.com/tmm576)
-* [unsmell](https://github.com/unsmell)
+* [unsmell](mailto:unsmell@users.noreply.github.com)
 * [valerauko](https://github.com/valerauko)
 * [chriswmartin](https://github.com/chriswmartin)
-* [vahnj](https://github.com/vahnj)
+* [SuperSandro2000](https://github.com/SuperSandro2000)
 * [ikuradon](https://github.com/ikuradon)
 * [AndreLewin](https://github.com/AndreLewin)
 * [0xflotus](https://github.com/0xflotus)
@@ -197,23 +232,27 @@ and provided thanks to the work of the following contributors:
 * [aaribaud](https://github.com/aaribaud)
 * [pointlessone](https://github.com/pointlessone)
 * [Andrew](mailto:andrewlchronister@gmail.com)
+* [arielrodrigues](https://github.com/arielrodrigues)
+* [aurelien-reeves](https://github.com/aurelien-reeves)
+* [elegaanz](https://github.com/elegaanz)
 * [estuans](https://github.com/estuans)
 * [dissolve](https://github.com/dissolve)
 * [PurpleBooth](https://github.com/PurpleBooth)
 * [bradurani](https://github.com/bradurani)
 * [wavebeem](https://github.com/wavebeem)
 * [bruwalfas](https://github.com/bruwalfas)
-* [foxsan48](https://github.com/foxsan48)
+* [LottieVixen](https://github.com/LottieVixen)
 * [wchristian](https://github.com/wchristian)
 * [muffinista](https://github.com/muffinista)
 * [cdutson](https://github.com/cdutson)
 * [farlistener](https://github.com/farlistener)
+* [divergentdave](https://github.com/divergentdave)
 * [DavidLibeau](https://github.com/DavidLibeau)
+* [dmerejkowsky](https://github.com/dmerejkowsky)
 * [ddevault](https://github.com/ddevault)
 * [Fjoerfoks](https://github.com/Fjoerfoks)
 * [fmauNeko](https://github.com/fmauNeko)
 * [gloaec](https://github.com/gloaec)
-* [Gomasy](https://github.com/Gomasy)
 * [unstabler](https://github.com/unstabler)
 * [potato4d](https://github.com/potato4d)
 * [h-izumi](https://github.com/h-izumi)
@@ -221,37 +260,47 @@ and provided thanks to the work of the following contributors:
 * [ian-kelling](https://github.com/ian-kelling)
 * [immae](https://github.com/immae)
 * [J0WI](https://github.com/J0WI)
+* [vahnj](https://github.com/vahnj)
 * [foozmeat](https://github.com/foozmeat)
 * [jasonrhodes](https://github.com/jasonrhodes)
 * [Jason Snell](mailto:jason@newrelic.com)
 * [jviide](https://github.com/jviide)
 * [YuleZ](https://github.com/YuleZ)
+* [jtracey](https://github.com/jtracey)
 * [crakaC](https://github.com/crakaC)
 * [tkbky](https://github.com/tkbky)
 * [Kaylee](mailto:kaylee@codethat.sucks)
 * [Kazhnuz](https://github.com/Kazhnuz)
+* [mkody](https://github.com/mkody)
 * [connyduck](https://github.com/connyduck)
-* [Lindsey Bieda](mailto:lindseyb@users.noreply.github.com)
+* [Tak](https://github.com/Tak)
+* [LindseyB](https://github.com/LindseyB)
 * [Lorenz Diener](mailto:halcyon@icosahedron.website)
-* [alimony](https://github.com/alimony)
+* [Markus Amalthea Magnuson](mailto:markus.magnuson@gmail.com)
+* [madmath03](https://github.com/madmath03)
 * [mig5](https://github.com/mig5)
 * [moritzheiber](https://github.com/moritzheiber)
+* [Nathaniel Suchy](mailto:me@lunorian.is)
 * [ndarville](https://github.com/ndarville)
+* [NimaBoscarino](https://github.com/NimaBoscarino)
 * [Abzol](https://github.com/Abzol)
-* [pwoolcoc](https://github.com/pwoolcoc)
+* [PatOnTheBack](https://github.com/PatOnTheBack)
 * [xPaw](https://github.com/xPaw)
 * [petzah](https://github.com/petzah)
 * [ignisf](https://github.com/ignisf)
-* [raymestalez](https://github.com/raymestalez)
+* [lumenwrites](https://github.com/lumenwrites)
 * [remram44](https://github.com/remram44)
 * [sts10](https://github.com/sts10)
 * [u1-liquid](https://github.com/u1-liquid)
+* [rosylilly](https://github.com/rosylilly)
+* [withshubh](https://github.com/withshubh)
 * [sim6](https://github.com/sim6)
 * [Sir-Boops](https://github.com/Sir-Boops)
 * [stemid](https://github.com/stemid)
 * [sumdog](https://github.com/sumdog)
+* [OmmyZhang](https://github.com/OmmyZhang)
 * [ThomasLeister](https://github.com/ThomasLeister)
-* [mcat-ee](https://github.com/mcat-ee)
+* [Tom McAtee](mailto:a1608768@student.adelaide.edu.au)
 * [tototoshi](https://github.com/tototoshi)
 * [TrashMacNugget](https://github.com/TrashMacNugget)
 * [VirtuBox](https://github.com/VirtuBox)
@@ -264,42 +313,47 @@ and provided thanks to the work of the following contributors:
 * [amazedkoumei](https://github.com/amazedkoumei)
 * [anon5r](https://github.com/anon5r)
 * [aus-social](https://github.com/aus-social)
-* [imbsky](https://github.com/imbsky)
 * [bsky](mailto:me@imbsky.net)
+* [chandrn7](https://github.com/chandrn7)
 * [codl](https://github.com/codl)
 * [cpsdqs](https://github.com/cpsdqs)
 * [barzamin](https://github.com/barzamin)
+* [gol-cha](https://github.com/gol-cha)
 * [fhalna](https://github.com/fhalna)
 * [haoyayoi](https://github.com/haoyayoi)
 * [ik11235](https://github.com/ik11235)
 * [kawax](https://github.com/kawax)
-* [007lva](https://github.com/007lva)
+* [shrft](https://github.com/shrft)
 * [mbajur](https://github.com/mbajur)
 * [matsurai25](https://github.com/matsurai25)
 * [mecab](https://github.com/mecab)
 * [nicobz25](https://github.com/nicobz25)
+* [niwatori24](https://github.com/niwatori24)
 * [oliverkeeble](https://github.com/oliverkeeble)
+* [partev](https://github.com/partev)
 * [pinfort](https://github.com/pinfort)
 * [rbaumert](https://github.com/rbaumert)
 * [rhoio](https://github.com/rhoio)
+* [santiagorodriguez96](https://github.com/santiagorodriguez96)
+* [sclaire-1](https://github.com/sclaire-1)
+* [umonaca](https://github.com/umonaca)
 * [usagi-f](https://github.com/usagi-f)
 * [vidarlee](https://github.com/vidarlee)
 * [vjackson725](https://github.com/vjackson725)
 * [wxcafe](https://github.com/wxcafe)
+* [Grawl](https://github.com/Grawl)
 * [新都心(Neet Shin)](mailto:nucx@dio-vox.com)
+* [clarfonthey](https://github.com/clarfonthey)
 * [cygnan](https://github.com/cygnan)
 * [Awea](https://github.com/Awea)
-* [halcy](https://github.com/halcy)
-* [naaaaaaaaaaaf](https://github.com/naaaaaaaaaaaf)
+* [eai04191](https://github.com/eai04191)
 * [8398a7](https://github.com/8398a7)
 * [857b](https://github.com/857b)
 * [insom](https://github.com/insom)
 * [tachyons](https://github.com/tachyons)
-* [acid-chicken](https://github.com/acid-chicken)
 * [Esteth](https://github.com/Esteth)
 * [unascribed](https://github.com/unascribed)
 * [Aguay-val](https://github.com/Aguay-val)
-* [Akihiko Odaki](mailto:nekomanma@pixiv.co.jp)
 * [knu](https://github.com/knu)
 * [h3poteto](https://github.com/h3poteto)
 * [unleashed](https://github.com/unleashed)
@@ -307,8 +361,9 @@ and provided thanks to the work of the following contributors:
 * [console-cowboy](https://github.com/console-cowboy)
 * [Alkarex](https://github.com/Alkarex)
 * [a2](https://github.com/a2)
+* [alfiedotwtf](https://github.com/alfiedotwtf)
 * [0xa](https://github.com/0xa)
-* [palindromordnilap](https://github.com/palindromordnilap)
+* [ashpieboop](https://github.com/ashpieboop)
 * [virtualpain](https://github.com/virtualpain)
 * [sapphirus](https://github.com/sapphirus)
 * [amandavisconti](https://github.com/amandavisconti)
@@ -319,16 +374,23 @@ and provided thanks to the work of the following contributors:
 * [schas002](https://github.com/schas002)
 * [contraexemplo](https://github.com/contraexemplo)
 * [abackstrom](https://github.com/abackstrom)
+* [orlea](https://github.com/orlea)
 * [armandfardeau](https://github.com/armandfardeau)
+* [raboof](https://github.com/raboof)
+* [aldatsa](https://github.com/aldatsa)
 * [jumbosushi](https://github.com/jumbosushi)
-* [aurelien-reeves](https://github.com/aurelien-reeves)
+* [acuteaura](https://github.com/acuteaura)
 * [ayumin](https://github.com/ayumin)
-* [BaptisteGelez](https://github.com/BaptisteGelez)
 * [bzg](https://github.com/bzg)
-* [benediktg](https://github.com/benediktg)
-* [blakebarnett](https://github.com/blakebarnett)
-* [bradj](https://github.com/bradj)
+* [BastienDurel](https://github.com/BastienDurel)
+* [li-bei](https://github.com/li-bei)
+* [Benedikt Geißler](mailto:benedikt@g5r.eu)
+* [BenisonSebastian](https://github.com/BenisonSebastian)
+* [Blake](mailto:blake.barnett@postmates.com)
+* [Brad Janke](mailto:brad.janke@gmail.com)
+* [bclindner](https://github.com/bclindner)
 * [brycied00d](https://github.com/brycied00d)
+* [berkes](https://github.com/berkes)
 * [carlosjs23](https://github.com/carlosjs23)
 * [cgxxx](https://github.com/cgxxx)
 * [kibitan](https://github.com/kibitan)
@@ -336,47 +398,59 @@ and provided thanks to the work of the following contributors:
 * [chris-martin](https://github.com/chris-martin)
 * [DoubleMalt](https://github.com/DoubleMalt)
 * [Moosh-be](https://github.com/Moosh-be)
+* [cchoi12](https://github.com/cchoi12)
 * [Motoma](https://github.com/Motoma)
-* [chriswk](https://github.com/chriswk)
+* [Christopher Kolstad](mailto:christopher.kolstad@finn.no)
 * [csu](https://github.com/csu)
-* [clarfon](https://github.com/clarfon)
 * [kklleemm](https://github.com/kklleemm)
 * [colindean](https://github.com/colindean)
+* [DeeUnderscore](https://github.com/DeeUnderscore)
 * [dachinat](https://github.com/dachinat)
-* [multiple-creatures](https://github.com/multiple-creatures)
+* [Daggertooth](mailto:dev@monsterpit.net)
 * [watilde](https://github.com/watilde)
+* [dalehenries](https://github.com/dalehenries)
 * [daprice](https://github.com/daprice)
+* [da2x](https://github.com/da2x)
+* [danieljakots](https://github.com/danieljakots)
+* [codesections](https://github.com/codesections)
 * [dar5hak](https://github.com/dar5hak)
 * [kant](https://github.com/kant)
 * [maxolasersquad](https://github.com/maxolasersquad)
 * [singingwolfboy](https://github.com/singingwolfboy)
+* [caldwell](https://github.com/caldwell)
 * [davidcelis](https://github.com/davidcelis)
 * [davefp](https://github.com/davefp)
 * [yipdw](https://github.com/yipdw)
 * [debanshuk](https://github.com/debanshuk)
-* [Derek Lewis](mailto:derekcecillewis@gmail.com)
+* [mascali33](https://github.com/mascali33)
+* [DerekNonGeneric](https://github.com/DerekNonGeneric)
 * [dblandin](https://github.com/dblandin)
-* [Drew Gates](mailto:aranaur@users.noreply.github.com)
+* [Aranaur](https://github.com/Aranaur)
 * [dtschust](https://github.com/dtschust)
 * [Dryusdan](https://github.com/Dryusdan)
-* [eai04191](https://github.com/eai04191)
 * [d3vgru](https://github.com/d3vgru)
 * [Elizafox](https://github.com/Elizafox)
 * [enewhuis](https://github.com/enewhuis)
 * [ericblade](https://github.com/ericblade)
 * [mikoim](https://github.com/mikoim)
 * [espenronnevik](https://github.com/espenronnevik)
+* [Expenses](mailto:expenses@airmail.cc)
+* [fabianonline](https://github.com/fabianonline)
+* [shello](https://github.com/shello)
 * [Finariel](https://github.com/Finariel)
 * [siuying](https://github.com/siuying)
 * [zoc](https://github.com/zoc)
 * [fwenzel](https://github.com/fwenzel)
+* [gabrielrumiranda](https://github.com/gabrielrumiranda)
 * [GenbuHase](https://github.com/GenbuHase)
+* [nilsding](https://github.com/nilsding)
 * [hattori6789](https://github.com/hattori6789)
 * [algernon](https://github.com/algernon)
 * [Fastbyte01](https://github.com/Fastbyte01)
-* [myfreeweb](https://github.com/myfreeweb)
+* [unrelentingtech](https://github.com/unrelentingtech)
 * [gfaivre](https://github.com/gfaivre)
 * [Fiaxhs](https://github.com/Fiaxhs)
+* [rasjonell](https://github.com/rasjonell)
 * [reedcourty](https://github.com/reedcourty)
 * [anneau](https://github.com/anneau)
 * [lanodan](https://github.com/lanodan)
@@ -385,96 +459,112 @@ and provided thanks to the work of the following contributors:
 * [Habu-Kagumba](https://github.com/Habu-Kagumba)
 * [suzukaze](https://github.com/suzukaze)
 * [Hiromi-Kai](https://github.com/Hiromi-Kai)
-* [hishamhm](https://github.com/hishamhm)
-* [musashino205](https://github.com/musashino205)
-* [iwaim](https://github.com/iwaim)
-* [valrus](https://github.com/valrus)
-* [IMcD23](https://github.com/IMcD23)
-* [yi0713](https://github.com/yi0713)
-* [iblech](https://github.com/iblech)
-* [usbsnowcrash](https://github.com/usbsnowcrash)
-* [jack-michaud](https://github.com/jack-michaud)
-* [Floppy](https://github.com/Floppy)
-* [loomchild](https://github.com/loomchild)
-* [jenkr55](https://github.com/jenkr55)
-* [press5](https://github.com/press5)
-* [TrollDecker](https://github.com/TrollDecker)
-* [jmontane](https://github.com/jmontane)
-* [jonathanklee](https://github.com/jonathanklee)
-* [jguerder](https://github.com/jguerder)
-* [Jehops](https://github.com/Jehops)
-* [joshuap](https://github.com/joshuap)
-* [Tiwy57](https://github.com/Tiwy57)
-* [xuv](https://github.com/xuv)
+* [Hisham Muhammad](mailto:hisham@gobolinux.org)
+* [Hugo "Slaynash" Flores](mailto:hugoflores@hotmail.fr)
+* [INAGAKI Hiroshi](mailto:musashino205@users.noreply.github.com)
+* [IWAI, Masaharu](mailto:iwaim.sub@gmail.com)
+* [Ian McCowan](mailto:imccowan@gmail.com)
+* [Ian McDowell](mailto:me@ianmcdowell.net)
+* [Iijima Yasushi](mailto:kurage.cc@gmail.com)
+* [Ikko Ashimine](mailto:eltociear@gmail.com)
+* [Ingo Blechschmidt](mailto:iblech@web.de)
+* [J Yeary](mailto:usbsnowcrash@users.noreply.github.com)
+* [Jack Michaud](mailto:jack-michaud@users.noreply.github.com)
+* [Jakub Mendyk](mailto:jakubmendyk.szkola@gmail.com)
+* [James](mailto:james.allen.vaughan@gmail.com)
+* [James Smith](mailto:james@floppy.org.uk)
+* [Jarek Lipski](mailto:pub@loomchild.net)
+* [Jennifer Glauche](mailto:=^.^=@github19.jglauche.de)
+* [Jennifer Kruse](mailto:jenkr55@gmail.com)
+* [Jeremy Rose](mailto:nornagon@nornagon.net)
+* [Jessica](mailto:46502909+hyenagirl64@users.noreply.github.com)
+* [Jessica K. Litwin](mailto:jessica@litw.in)
+* [Jo Decker](mailto:trolldecker@users.noreply.github.com)
+* [Joan Montané](mailto:jmontane@users.noreply.github.com)
+* [Joe](mailto:401283+htmlbyjoe@users.noreply.github.com)
+* [Jonathan Klee](mailto:klee.jonathan@gmail.com)
+* [Jordan Guerder](mailto:jguerder@fr.pulseheberg.net)
+* [Joseph Mingrone](mailto:jehops@users.noreply.github.com)
+* [Josh Leeb-du Toit](mailto:mail@joshleeb.com)
+* [Joshua Wood](mailto:josh@joshuawood.net)
+* [Julien](mailto:tiwy57@users.noreply.github.com)
+* [Julien Deswaef](mailto:juego@requiem4tv.com)
 * [June Sallou](mailto:jnsll@users.noreply.github.com)
-* [j0k3r](https://github.com/j0k3r)
-* [KEINOS](https://github.com/KEINOS)
-* [futoase](https://github.com/futoase)
-* [Pneumaticat](https://github.com/Pneumaticat)
+* [Jérémy Benoist](mailto:j0k3r@users.noreply.github.com)
+* [KEINOS](mailto:github@keinos.com)
+* [Kairui Song | 宋恺睿](mailto:ryncsn@gmail.com)
+* [Keiji Matsuzaki](mailto:futoase@gmail.com)
+* [Kevin Liu](mailto:kevin@potatofrom.space)
 * [Kit Redgrave](mailto:qwertyitis@gmail.com)
 * [Knut Erik](mailto:abjectio@users.noreply.github.com)
-* [mkody](https://github.com/mkody)
-* [k0ta0uchi](https://github.com/k0ta0uchi)
-* [KrzysiekJ](https://github.com/KrzysiekJ)
-* [leowzukw](https://github.com/leowzukw)
-* [Tak](https://github.com/Tak)
-* [cacheflow](https://github.com/cacheflow)
-* [ldidry](https://github.com/ldidry)
-* [jemus42](https://github.com/jemus42)
-* [lfuelling](https://github.com/lfuelling)
-* [Grabacr07](https://github.com/Grabacr07)
-* [mistermantas](https://github.com/mistermantas)
-* [mareklach](https://github.com/mareklach)
-* [wirehack7](https://github.com/wirehack7)
-* [martymcguire](https://github.com/martymcguire)
-* [marvinkopf](https://github.com/marvinkopf)
-* [otsune](https://github.com/otsune)
-* [mbugowski](https://github.com/mbugowski)
+* [Kota Ouchi](mailto:k0ta0uchi@gmail.com)
+* [Krzysztof Jurewicz](mailto:krzysztof.jurewicz@gmail.com)
+* [Leo Wzukw](mailto:leowzukw@users.noreply.github.com)
+* [Leonie](mailto:62470640+bubblineyuri@users.noreply.github.com)
+* [Lex Alexander](mailto:l.alexander10@gmail.com)
+* [Lorenz Diener](mailto:lorenzd@gmail.com)
+* [Luc Didry](mailto:ldidry@users.noreply.github.com)
+* [Lukas Burk](mailto:jemus42@users.noreply.github.com)
+* [Manato Kameya](mailto:grabacr07+github@gmail.com)
+* [Mantas](mailto:mistermantas@users.noreply.github.com)
+* [Mareena Kunjachan](mailto:mareenakunjachan@gmail.com)
+* [Marek Lach](mailto:marek.brohatwack.lach@gmail.com)
+* [Markus R](mailto:wirehack7@users.noreply.github.com)
+* [Marty McGuire](mailto:schmartissimo@gmail.com)
+* [Marvin Kopf](mailto:marvinkopf@posteo.de)
+* [Masafumi Otsune](mailto:info@otsune.com)
+* [Matej Ľach](mailto:matejlach@users.noreply.github.com)
+* [Mateusz Bugowski](mailto:23140767+mbugowski@users.noreply.github.com)
 * [Mathias B](mailto:10813340+mathias-b@users.noreply.github.com)
-* [matt-auckland](https://github.com/matt-auckland)
-* [webroo](https://github.com/webroo)
-* [matthiasbeyer](https://github.com/matthiasbeyer)
-* [mattjmattj](https://github.com/mattjmattj)
-* [mtparet](https://github.com/mtparet)
-* [maximeborges](https://github.com/maximeborges)
-* [minacle](https://github.com/minacle)
-* [michaeljdeeb](https://github.com/michaeljdeeb)
-* [Themimitoof](https://github.com/Themimitoof)
-* [cyweo](https://github.com/cyweo)
+* [Mathieu Brunot](mailto:mb.mathieu.brunot@gmail.com)
+* [Matt](mailto:matt-auckland@users.noreply.github.com)
+* [Matt Sweetman](mailto:webroo@gmail.com)
+* [Matthias Beyer](mailto:mail@beyermatthias.de)
+* [Matthias Jouan](mailto:matthias.jouan@gmail.com)
+* [Matthieu Paret](mailto:matthieuparet69@gmail.com)
+* [Maxime BORGES](mailto:maxime.borges@gmail.com)
+* [Mayu Laierlence](mailto:minacle@live.com)
+* [Michael Deeb](mailto:michaeldeeb@me.com)
+* [Michael Vieira](mailto:dtox94@gmail.com)
+* [Michel](mailto:michel@cyweo.com)
 * [Midgard](mailto:m1dgard@users.noreply.github.com)
-* [mike-burns](https://github.com/mike-burns)
-* [verymilan](https://github.com/verymilan)
-* [milmazz](https://github.com/milmazz)
-* [premist](https://github.com/premist)
-* [Mnkai](https://github.com/Mnkai)
-* [mitchhentges](https://github.com/mitchhentges)
-* [mouse-reeve](https://github.com/mouse-reeve)
-* [Mozinet-fr](https://github.com/Mozinet-fr)
-* [lae](https://github.com/lae)
-* [nosada](https://github.com/nosada)
-* [Nanamachi](https://github.com/Nanamachi)
-* [orinthe](https://github.com/orinthe)
-* [NecroTechno](https://github.com/NecroTechno)
-* [Dar13](https://github.com/Dar13)
-* [ngerakines](https://github.com/ngerakines)
-* [vonneudeck](https://github.com/vonneudeck)
-* [Ninetailed](https://github.com/Ninetailed)
-* [k24](https://github.com/k24)
-* [noiob](https://github.com/noiob)
-* [kwaio](https://github.com/kwaio)
-* [norayr](https://github.com/norayr)
-* [joyeusenoelle](https://github.com/joyeusenoelle)
-* [OlivierNicole](https://github.com/OlivierNicole)
-* [noppa](https://github.com/noppa)
-* [Otakan951](https://github.com/Otakan951)
-* [fahy](https://github.com/fahy)
+* [Mike Burns](mailto:mburns@thoughtbot.com)
+* [Milan](mailto:me@petabyteboy.de)
+* [Milan*](mailto:tchncs@vivaldi.net)
+* [Milton Mazzarri](mailto:milmazz@gmail.com)
+* [Minku Lee](mailto:premist@me.com)
+* [Minori Hiraoka](mailto:mnkai@users.noreply.github.com)
+* [Mitchell Hentges](mailto:mitch9654@gmail.com)
+* [Mostafa Ahangarha](mailto:ahangarha@users.noreply.github.com)
+* [Mouse Reeve](mailto:mousereeve@riseup.net)
+* [Mozinet](mailto:mozinet-fr@users.noreply.github.com)
+* [Musee U](mailto:lae@users.noreply.github.com)
+* [NOGISAKA Sadata](mailto:ngsksdt@gmail.com)
+* [Naf](mailto:uenok.htc@gmail.com)
+* [Nanamachi](mailto:town7.haruki@gmail.com)
+* [Nathaniel Ekoniak](mailto:nekoniak@ennate.tech)
+* [NecroTechno](mailto:necrotechno@riseup.net)
+* [Nick Gerakines](mailto:nick@gerakines.net)
+* [Nicolai von Neudeck](mailto:nicolai@vonneudeck.com)
+* [Ninetailed](mailto:ninetailed@gmail.com)
+* [Nishi, Keisuke](mailto:k24@users.noreply.github.com)
+* [Noiob](mailto:noiob@users.noreply.github.com)
+* [Nope Nope](mailto:hireme@kwaio.ninja)
+* [Norayr Chilingarian](mailto:norayr@arnet.am)
+* [Noëlle Anthony](mailto:noelle.d.anthony@gmail.com)
+* [N氏](mailto:uenok.htc@gmail.com)
+* [OSAMU SATO](mailto:satosamu@gmail.com)
+* [Olivier Nicole](mailto:olivierthnicole@gmail.com)
+* [Oskari Noppa](mailto:noppa@users.noreply.github.com)
+* [Otakan](mailto:otakan951@gmail.com)
+* [Padraig Fahy](mailto:tech@padraigfahy.com)
+* [Patrice Ferlet](mailto:metal3d@gmail.com)
 * [PatrickRWells](mailto:32802366+patrickrwells@users.noreply.github.com)
 * [Paul](mailto:naydex.mc+github@gmail.com)
 * [Pete Keen](mailto:pete@petekeen.net)
 * [Pierre-Morgan Gate](mailto:pgate@users.noreply.github.com)
 * [Ratmir Karabut](mailto:rkarabut@sfmodern.ru)
 * [Reto Kromer](mailto:retokromer@users.noreply.github.com)
-* [Rey Tucker](mailto:git@reytucker.us)
 * [Rob Watson](mailto:rfwatson@users.noreply.github.com)
 * [Ryan Freebern](mailto:ryan@freebern.org)
 * [Ryan Wade](mailto:ryan.wade@protonmail.com)
@@ -482,9 +572,12 @@ and provided thanks to the work of the following contributors:
 * [S.H](mailto:gamelinks007@gmail.com)
 * [Sadiq Saif](mailto:staticsafe@users.noreply.github.com)
 * [Sam Hewitt](mailto:hewittsamuel@gmail.com)
+* [Sara Aimée Smiseth](mailto:51710585+sarasmiseth@users.noreply.github.com)
 * [Satoshi KOJIMA](mailto:skoji@mac.com)
 * [ScienJus](mailto:i@scienjus.com)
 * [Scott Larkin](mailto:scott@codeclimate.com)
+* [Scott Sweeny](mailto:scott@ssweeny.net)
+* [Sean](mailto:sean@sean.taipei)
 * [Sebastian Hübner](mailto:imolein@users.noreply.github.com)
 * [Sebastian Morr](mailto:sebastian@morr.cc)
 * [Sergei Č](mailto:noiwex1911@gmail.com)
@@ -492,21 +585,26 @@ and provided thanks to the work of the following contributors:
 * [Shaun Gillies](mailto:me@shaungillies.net)
 * [Shin Adachi](mailto:shn@glucose.jp)
 * [Shin Kojima](mailto:shin@kojima.org)
-* [Sho Kusano](mailto:rosylilly@aduca.org)
 * [Shouko Yu](mailto:imshouko@gmail.com)
 * [Sina Mashek](mailto:sina@mashek.xyz)
+* [Soft. Dev](mailto:24978+nileshkumar@users.noreply.github.com)
+* [Sophie Parker](mailto:dev@cortices.me)
 * [Soshi Kato](mailto:mail@sossii.com)
 * [Spanky](mailto:2788886+spankyworks@users.noreply.github.com)
-* [Stanislas](mailto:angristan@pm.me)
+* [Stanislas](mailto:stanislas.lange@pm.me)
 * [StefOfficiel](mailto:pichard.stephane@free.fr)
 * [Steven Tappert](mailto:admin@dark-it.net)
+* [Stéphane Guillou](mailto:stephane.guillou@member.fsf.org)
 * [Svetlozar Todorov](mailto:svetlik@users.noreply.github.com)
 * [Sébastien Santoro](mailto:dereckson@espace-win.org)
 * [Tad Thorley](mailto:phaedryx@users.noreply.github.com)
 * [Takayoshi Nishida](mailto:takayoshi.nishida@gmail.com)
 * [Takayuki KUSANO](mailto:github@tkusano.jp)
 * [TakesxiSximada](mailto:takesxi.sximada@gmail.com)
+* [Tao Bror Bojlén](mailto:brortao@users.noreply.github.com)
+* [Taras Gogol](mailto:taras2358@gmail.com)
 * [TheInventrix](mailto:theinventrix@users.noreply.github.com)
+* [TheMainOne](mailto:50847364+theevilskeleton@users.noreply.github.com)
 * [Thomas Alberola](mailto:thomas@needacoffee.fr)
 * [Toby Deshane](mailto:fortyseven@users.noreply.github.com)
 * [Toby Pinder](mailto:gigitrix@gmail.com)
@@ -515,13 +613,16 @@ and provided thanks to the work of the following contributors:
 * [Treyssat-Vincent Nino](mailto:treyssatvincent@users.noreply.github.com)
 * [Udo Kramer](mailto:optik@fluffel.io)
 * [Una](mailto:una@unascribed.com)
+* [Ushitora Anqou](mailto:ushitora@anqou.net)
 * [Ushitora Anqou](mailto:ushitora_anqou@yahoo.co.jp)
 * [Valentin Lorentz](mailto:progval+git@progval.net)
 * [Vladimir Mincev](mailto:vladimir@canicinteractive.com)
 * [Waldir Pimenta](mailto:waldyrious@gmail.com)
+* [Wenceslao Páez Chávez](mailto:wcpaez@gmail.com)
 * [Wesley Ellis](mailto:tahnok@gmail.com)
 * [Wiktor](mailto:wiktor@metacode.biz)
 * [Wonderfall](mailto:wonderfall@schrodinger.io)
+* [Y.Yamashiro](mailto:shukukei@mojizuri.jp)
 * [YDrogen](mailto:ydrogen45@gmail.com)
 * [YMHuang](mailto:ymhuang@fmbase.tw)
 * [YOSHIOKA Eiichiro](mailto:yoshioka.eiichiro@gmail.com)
@@ -529,7 +630,9 @@ and provided thanks to the work of the following contributors:
 * [YaQ](mailto:i_k_o_m_a_7@yahoo.co.jp)
 * [Yanaken](mailto:yanakend@gmail.com)
 * [Yann Klis](mailto:yann.klis@gmail.com)
+* [Yağızhan](mailto:35808275+yagizhan49@users.noreply.github.com)
 * [Yeechan Lu](mailto:wz.bluesnow@gmail.com)
+* [Your Name](mailto:lorenzd@gmail.com)
 * [Yusuke Abe](mailto:moonset20@gmail.com)
 * [Zachary Spector](mailto:logicaldash@gmail.com)
 * [ZiiX](mailto:ziix@users.noreply.github.com)
@@ -539,17 +642,21 @@ and provided thanks to the work of the following contributors:
 * [bsky](mailto:git@imbsky.net)
 * [caesarologia](mailto:lopesgemelli.1@gmail.com)
 * [cbayerlein](mailto:c.bayerlein@gmail.com)
+* [chr v1.x](mailto:chr@cybre.space)
 * [chrolis](mailto:chrolis@users.noreply.github.com)
 * [cormo](mailto:cormorant2+github@gmail.com)
 * [d0p1](mailto:dopi-sama@hush.com)
+* [dxwc](mailto:dxwc@users.noreply.github.com)
 * [evilny0](mailto:evilny0@moomoocamp.net)
 * [febrezo](mailto:felixbrezo@gmail.com)
 * [fsubal](mailto:fsubal@users.noreply.github.com)
+* [fusagiko / takayamaki](mailto:24884114+takayamaki@users.noreply.github.com)
 * [fusshi-](mailto:dikky1218@users.noreply.github.com)
 * [gentaro](mailto:gentaroooo@gmail.com)
-* [gol-cha](mailto:info@mevo.xyz)
+* [guigeekz](mailto:pattusg@gmail.com)
 * [hakoai](mailto:hk--76@qa2.so-net.ne.jp)
 * [haosbvnker](mailto:github@chaosbunker.com)
+* [ichi_i](mailto:51489410+ichi-i@users.noreply.github.com)
 * [isati](mailto:phil@juchnowi.cz)
 * [jacob](mailto:jacobherringtondeveloper@gmail.com)
 * [jenn kaplan](mailto:me@jkap.io)
@@ -558,11 +665,12 @@ and provided thanks to the work of the following contributors:
 * [jooops](mailto:joops@autistici.org)
 * [jukper](mailto:jukkaperanto@gmail.com)
 * [jumoru](mailto:jumoru@mailbox.org)
+* [kaias1jp](mailto:kaias1jp@gmail.com)
 * [karlyeurl](mailto:karl.yeurl@gmail.com)
+* [kawaguchi](mailto:jiikko@users.noreply.github.com)
 * [kedama](mailto:32974885+kedamadq@users.noreply.github.com)
-* [kodai](mailto:shirafuta.kodai@gmail.com)
-* [koyu](mailto:me@koyu.space)
 * [kuro5hin](mailto:rusty@kuro5hin.org)
+* [leo60228](mailto:leo@60228.dev)
 * [luzpaz](mailto:luzpaz@users.noreply.github.com)
 * [maxypy](mailto:maxime@mpigou.fr)
 * [mhe](mailto:mail@marcus-herrmann.com)
@@ -573,18 +681,26 @@ and provided thanks to the work of the following contributors:
 * [muan](mailto:muan@github.com)
 * [namelessGonbai](mailto:43787036+namelessgonbai@users.noreply.github.com)
 * [neetshin](mailto:neetshin@neetsh.in)
+* [noiob](mailto:8197071+noiob@users.noreply.github.com)
+* [notozeki](mailto:notozeki@users.noreply.github.com)
+* [ntl-purism](mailto:57806346+ntl-purism@users.noreply.github.com)
+* [nzws](mailto:git-yuzu@svk.jp)
+* [proxy](mailto:51172302+3n-k1@users.noreply.github.com)
 * [rch850](mailto:rich850@gmail.com)
 * [roikale](mailto:roikale@users.noreply.github.com)
 * [rysiekpl](mailto:rysiek@hackerspace.pl)
 * [saturday06](mailto:dyob@lunaport.net)
+* [scd31](mailto:57571338+scd31@users.noreply.github.com)
 * [scriptjunkie](mailto:scriptjunkie@scriptjunkie.us)
 * [seekr](mailto:mario.drs@gmail.com)
+* [sternenseemann](mailto:git@lukasepple.de)
 * [sundevour](mailto:31990469+sundevour@users.noreply.github.com)
 * [syui](mailto:syui@users.noreply.github.com)
 * [tackeyy](mailto:mailto.takita.yusuke@gmail.com)
-* [tateisu](mailto:tateisu@gmail.com)
+* [taicv](mailto:chuvantai@gmail.com)
 * [tmyt](mailto:shigure@refy.net)
 * [trevDev()](mailto:trev@trevdev.ca)
+* [tsia](mailto:github@tsia.de)
 * [utam0k](mailto:k0ma@utam0k.jp)
 * [vpzomtrrfrt](mailto:vpzomtrrfrt@gmail.com)
 * [walfie](mailto:walfington@gmail.com)
@@ -593,352 +709,519 @@ and provided thanks to the work of the following contributors:
 * [yoshipc](mailto:yoooo@yoshipc.net)
 * [Özcan Zafer AYAN](mailto:ozcanzaferayan@gmail.com)
 * [ばん](mailto:detteiu0321@gmail.com)
-* [みたらしだんご](mailto:mitarashidango@users.noreply.github.com)
+* [ふるふる](mailto:frfs@users.noreply.github.com)
 * [りんすき](mailto:6533808+rinsuki@users.noreply.github.com)
 * [ヨイツの賢狼ホロ | 3rd style](mailto:horo@yoitsu.moe)
+* [唐宗勛](mailto:tangzongxun@hotmail.com)
+* [夕日](mailto:xirikm@gmail.com)
 * [猫吸血鬼ディフリス / 猫ロキP](mailto:deflis@gmail.com)
 * [艮 鮟鱇](mailto:ushitora_anqou@yahoo.co.jp)
 * [西小倉宏信](mailto:nishiko@mindia.jp)
 * [雨宮美羽](mailto:k737566@gmail.com)
 
-This document is provided for informational purposes only. Since it is only updated once per release, the version you are looking at may be currently out of date. To see the full list of contributors, consider looking at the [git history](https://github.com/tootsuite/mastodon/graphs/contributors) instead.
+This document is provided for informational purposes only. Since it is only updated once per release, the version you are looking at may be currently out of date. To see the full list of contributors, consider looking at the [git history](https://github.com/mastodon/mastodon/graphs/contributors) instead.
 
 ## Translators
 
 Following people have contributed to translation of Mastodon:
 
-- **Albanian**
-  - Besnik Bleta
-  - Aditoo
-- **Arabic**
-  - ButterflyOfFire
-  - Aditoo
-  - Amrz0
-- **Asturian**
-  - ButterflyOfFire
-  - Enol P.
-  - Aditoo
-- **Basque**
-  - Osoitz
-  - Aditoo
-  - Aitzol
-  - ButterflyOfFire
-  - Peru Iparragirre
-  - Gorka Azkarate
-- **Bengali**
-  - dxwc
-- **Bulgarian**
-  - ButterflyOfFire
-  - Aditoo
-- **Catalan**
-  - spla
-  - Aditoo
-  - ButterflyOfFire
-  - Joan Montané
-  - Jose Luis
-- **Chinese (Hong Kong)**
-  - ButterflyOfFire
-  - Luzi Leung
-  - Aditoo
-- **Chinese (Simplified)**
-  - Allen Zhong
-  - ButterflyOfFire
-  - SerCom_KC
-  - martialarts
-  - Kaitian Xie
-  - Aditoo
-  - pan93412
-- **Chinese (Traditional)**
-  - Aditoo
-  - ButterflyOfFire
-  - James58899
-  - pan93412
-  - S1ttidoe477
-  - SHA265
-  - Jeff Huang
-- **Corsican**
-  - Alix D. R.
-  - Aditoo
-  - ButterflyOfFire
-- **Croatian**
-  - ButterflyOfFire
-  - Aditoo
-- **Czech**
-  - Aditoo
-  - Marek Ľach
-  - ButterflyOfFire
-- **Danish**
-  - Einhjeriar
-  - Rasmus Sæderup
-  - Aditoo
-  - ButterflyOfFire
-- **Dutch**
-  - Albakham
-  - ButterflyOfFire
-  - jeroenpraat
-  - rscmbbng
-  - Aditoo
-  - Jelv
-- **English**
-  - ButterflyOfFire
-  - Renato "Lond" Cerqueira
-- **English (United Kingdom)**
-  - Albakham
-- **Esperanto**
-  - Aditoo
-  - ButterflyOfFire
-  - Becci Cat
-  - Jeong Arm
-  - Mélanie Chauvel
-  - Vanege
-  - Martin Bodin
-  - tuxayo/Victor Grousset
-- **Finnish**
-  - ButterflyOfFire
-  - Mikko Poussu
-  - Taru Luojola
-  - S Heija
-  - Aditoo
-  - Jonne Arjoranta
-- **French**
-  - Albakham
-  - Alix D. R.
-  - ButterflyOfFire
-  - codl
-  - Leia
-  - Alda Marteau-Hardi
-  - Mélanie Chauvel
-  - Paul Marques Mota
-  - azenet
-  - Olivier Humbert
-  - Aditoo
-  - Jonathan Chan
-  - Letiteuf55
-  - Baptiste Jonglez
-  - goofy-mdn
-  - Jean-Baptiste Holcroft
-  - Technowix
-  - Martin Bodin
-  - Théodore
-  - Thibaut Girka
-  - Franck Paul
-  - Sylvhem
-- **Galician**
-  - ButterflyOfFire
-  - Xose M.
-  - Aditoo
-  - manequim
-- **Georgian**
-  - ButterflyOfFire
-  - Aditoo
-- **German**
-  - Aditoo
-  - ButterflyOfFire
-  - Daniel
-  - averageunicorn
-  - Koyu Berteon
-  - larsreineke
-  - koyu
-  - Austin Jones
-  - lilo
-  - Benedikt Geißler
-  - ePirat
-  - Eugen Rochko
-  - Weblate Admin
-  - Patrick Figel
-- **Greek**
-  - Dimitris Maroulidis
-  - Antonis
-  - Aditoo
-  - ButterflyOfFire
-  - Konstantinos Grevenitis
-- **Hebrew**
-  - ButterflyOfFire
-  - Aditoo
-  - Ira
-  - Yaron Shahrabani
-- **Hungarian**
-  - ButterflyOfFire
-  - Adam Paszternak
-  - Aditoo
-  - Tibike Miklós
-- **Ido**
-  - ButterflyOfFire
-  - Aditoo
-- **Indonesian**
-  - afachri
-  - ButterflyOfFire
-  - Dito Kurnia Pratama
-  - Eirworks
-  - Aditoo
-  - Alfiana Sibuea
-  - se7entime
-- **Irish**
-  - Albakham
-  - Kevin Houlihan
-- **Italian**
-  - Alessandro Levati
-  - Albakham
-  - ButterflyOfFire
-  - Marcin Mikołajczak
-  - Aditoo
-  - Giuseppe Pignataro
-  - Stefano
-- **Japanese**
-  - Hinaloe
-  - 小鳥遊まりあ
-  - mayaeh
-  - osapon
-  - 森の子リスのミーコの大冒険
-  - Kumasun Morino
-  - Yamagishi Kazutoshi
-  - Aditoo
-  - ButterflyOfFire
-  - Jeong Arm
-  - unarist
-- **Kazakh**
-  - arshat
-  - Aditoo
-- **Korean**
-  - Aditoo
-  - Jeong Arm
-  - ButterflyOfFire
-  - Minori Hiraoka
-  - Yamagishi Kazutoshi
-- **Lithuanian**
-  - Sarunas Medeikis
-- **Malay**
-  - Muhammad Nur Hidayat (MNH48)
-  - Aditoo
-  - ButterflyOfFire
-- **Norwegian (old code)**
-  - ButterflyOfFire
-  - Espen Rønnevik
-  - Aditoo
-  - Tale
-- **Occitan**
-  - Aditoo
-  - ButterflyOfFire
-  - Quenti2
-  - Quentí
-  - Maxenç
-- **Persian**
-  - Masoud Abkenar
-  - Aditoo
-  - ButterflyOfFire
-- **Polish**
-  - Aditoo
-  - Albakham
-  - ButterflyOfFire
-  - Stasiek Michalski
-  - Marcin Mikołajczak
-  - Jakub Mendyk
-  - Marek Ľach
-  - krkk
-- **Portuguese**
-  - Albakham
-  - João Pinheiro
-  - manequim
-  - Aditoo
-  - ButterflyOfFire
-  - Hugo Gameiro
-- **Portuguese (Brazil)**
-  - Aditoo
-  - Albakham
-  - Anna e só
-  - Renato "Lond" Cerqueira
-  - André Andrade
-  - ButterflyOfFire
-- **Romanian**
-  - adrianbblk
-  - ButterflyOfFire
-  - Aditoo
-- **Russian**
-  - Albakham
-  - ButterflyOfFire
-  - Evgeny Petrov
-  - Aditoo
-  - Павел Гастелло
-  - Andrew Zyabin
-  - Yaron Shahrabani
-- **Serbian**
-  - Branko Kokanovic
-  - Burekz Finezt
-  - Aditoo
-  - ButterflyOfFire
-- **Serbian (latin)**
-  - ButterflyOfFire
-  - Aditoo
-- **Slovak**
-  - Aditoo
-  - ButterflyOfFire
-  - Ivan Pleva
-  - Marek Ľach
-  - Peter
-- **Slovenian**
-  - Kristijan Tkalec
-  - Aditoo
-  - ButterflyOfFire
-- **Spanish**
-  - Albakham
-  - ButterflyOfFire
-  - Carlos Mondragon
-  - Antón López
-  - Max Winkler
-  - Pablo de la Concepción Sanz
-  - Sergio Soriano
-  - Angeles Broullón
-  - Lothar Wolf
-  - Aditoo
-  - David Charte
-  - Emmanuel
-- **Swedish**
-  - ButterflyOfFire
-  - Isak Holmström
-  - Shellkr
-  - Aditoo
-  - Elias Mårtenson
-  - Stefan Midjich
-  - Tim Stahel
-  - Jonas Hultén
-- **Telugu**
-  - avndp
-  - Ranjith Tellakula
-  - Aditoo
-  - ButterflyOfFire
-  - Joseph Nuthalapati
-- **Thai**
-  - ButterflyOfFire
-  - parnikkapore
-  - Thai Localization
-  - Aditoo
-- **Turkish**
-  - Ali Demirtas
-  - ButterflyOfFire
-  - Aditoo
-- **Ukrainian**
-  - alexcleac
-  - ButterflyOfFire
-  - Aditoo
-  - Ivan Verchenko
-- **Welsh**
-  - carl morris
-  - Jaz-Michael King
-  - Owain Rhys Lewis
-  - Rhoslyn Prys
-  - Aditoo
-  - ButterflyOfFire
-  - Renato "Lond" Cerqueira
-  - Albakham
-  - Kevin Beynon
-- **Armenian**
-  - Aditoo
-  - ButterflyOfFire
-- **Latvian**
-  - Aditoo
-  - ButterflyOfFire
-  - Maigonis
-- **Tamil**
-  - Aditoo
-  - ButterflyOfFire
-  - Prasanna Venkadesh
+- GunChleoc (*Scottish Gaelic*)
+- ᛤᚤᛠᛥⴲ 👽 (KNTRO) (*Spanish, Argentina*)
+- adrmzz (*Sardinian*)
+- Hồ Nhất Duy (kantcer) (*Vietnamese*)
+- Zoltán Gera (gerazo) (*Hungarian*)
+- Sveinn í Felli (sveinki) (*Icelandic*)
+- qezwan (*Persian, Sorani (Kurdish)*)
+- NCAA (*Danish*)
+- Ramdziana F Y (rafeyu) (*Indonesian*)
+- taicv (*Vietnamese*)
+- ButterflyOfFire (BoFFire) (*French, Arabic, Kabyle*)
+- Xosé M. (XoseM) (*Spanish, Galician*)
+- Evert Prants (IcyDiamond) (*Estonian*)
+- Besnik_b (*Albanian*)
+- Emanuel Pina (emanuelpina) (*Portuguese*)
+- Jeong Arm (Kjwon15) (*Japanese, Korean, Esperanto*)
+- Alix Rossi (palindromordnilap) (*French, Esperanto, Corsican*)
+- Thai Localization (thl10n) (*Thai*)
+- Daniele Lira Mereb (danilmereb) (*Portuguese, Brazilian*)
+- Joene (joenepraat) (*Dutch*)
+- Kristijan Tkalec (lapor) (*Slovenian*)
+- stan ionut (stanionut12) (*Romanian*)
+- spla (*Spanish, Catalan*)
+- мачко (ma4ko) (*Bulgarian*)
+- 奈卜拉 (nebula_moe) (*Chinese Simplified*)
+- kamee (*Armenian*)
+- AJ-عجائب البرمجة (Esmail_Hazem) (*Arabic*)
+- Michal Stanke (mstanke) (*Czech*)
+- Danial Behzadi (danialbehzadi) (*Persian*)
+- borys_sh (*Ukrainian*)
+- Asier Iturralde Sarasola (aldatsa) (*Basque*)
+- Imre Kristoffer Eilertsen (DandelionSprout) (*Norwegian*)
+- koyu (*German*)
+- yeft (*Chinese Traditional, Chinese Traditional, Hong Kong*)
+- Miguel Mayol (mitcoes) (*Spanish, Catalan*)
+- Sasha Sorokin (Brawaru) (*French, Catalan, Danish, German, Greek, Hungarian, Armenian, Korean, Russian, Albanian, Swedish, Ukrainian, Vietnamese, Galician*)
+- Roboron (*Spanish*)
+- Koala Yeung (yookoala) (*Chinese Traditional, Hong Kong*)
+- Ondřej Pokorný (unextro) (*Czech*)
+- Osoitz (*Basque*)
+- Peterandre (*Norwegian, Norwegian Nynorsk*)
+- tzium (*Sardinian*)
+- Mélanie Chauvel (ariasuni) (*French, Arabic, Czech, German, Greek, Hungarian, Slovenian, Ukrainian, Chinese Simplified, Portuguese, Brazilian, Persian, Norwegian Nynorsk, Esperanto, Breton, Corsican, Sardinian, Kabyle*)
+- Iváns (Ivans_translator) (*Galician*)
+- Maya Minatsuki (mayaeh) (*Japanese*)
+- Manuel Viens (manuelviens) (*French*)
+- Alessandro Levati (Oct326) (*Italian*)
+- lamnatos (*Greek*)
+- Sean Young (assanges) (*Chinese Traditional*)
+- tolstoevsky (*Russian*)
+- enolp (*Asturian*)
+- Jasmine Cam Andrever (gourmas) (*Cornish*)
+- gagik_ (*Armenian*)
+- Masoud Abkenar (mabkenar) (*Persian*)
+- arshat (*Kazakh*)
+- Marcin Mikołajczak (mkljczkk) (*Czech, Polish, Russian*)
+- Marek Ľach (mareklach) (*Polish, Slovak*)
+- Ali Demirtaş (alidemirtas) (*Turkish*)
+- Blak Ouille (BlakOuille16) (*French*)
+- Em St Cenydd (cancennau) (*Welsh*)
+- Diluns (*Occitan*)
+- Muha Aliss (muhaaliss) (*Turkish*)
+- Jurica (ahjk) (*Croatian*)
+- Aditoo17 (*Czech*)
+- vishnuvaratharajan (*Tamil*)
+- pulmonarycosignerkindness (*Swedish*)
+- cybergene (cyber-gene) (*Japanese*)
+- Takeçi (polygoat) (*French, Italian*)
+- xatier (*Chinese Traditional*)
+- Ihor Hordiichuk (ihor_ck) (*Ukrainian*)
+- regulartranslator (*Portuguese, Brazilian*)
+- ozzii (*French, Serbian (Cyrillic)*)
+- Irfan (Irfan_Radz) (*Malay*)
+- Saederup92 (*Danish*)
+- Akarshan Biswas (biswasab) (*Bengali, Sanskrit*)
+- Yi-Jyun Pan (pan93412) (*Chinese Traditional*)
+- Rafael H L Moretti (Moretti) (*Portuguese, Brazilian*)
+- d5Ziif3K (*Ukrainian*)
+- GiorgioHerbie (*Italian*)
+- christalleras (*Norwegian Nynorsk*)
+- Taloran (*Norwegian Nynorsk*)
+- ThibG (*French, Icelandic*)
+- otrapersona (*Spanish, Spanish, Mexico*)
+- Store (HelaBasa) (*Sinhala*)
+- Mauzi (*German, Swedish*)
+- atarashiako (*Chinese Simplified*)
+- 101010 (101010pl) (*Polish*)
+- erictapen (*German*)
+- Tagomago (tagomago) (*French, Spanish*)
+- Jaz-Michael King (jazmichaelking) (*Welsh*)
+- coxde (*Chinese Simplified*)
+- T. E. Kalaycı (tekrei) (*Turkish*)
+- silkevicious (*Italian*)
+- Floxu (fredrikdim1) (*Norwegian Nynorsk*)
+- Ryo (DrRyo) (*Korean*)
+- Bertil Hedkvist (Berrahed) (*Swedish*)
+- William(ѕ)ⁿ (wmlgr) (*Spanish*)
+- norayr (*Armenian*)
+- Satnam S Virdi (pika10singh) (*Punjabi*)
+- Tiago Epifânio (tfve) (*Portuguese*)
+- Balázs Meskó (mesko.balazs) (*Hungarian*)
+- Sokratis Alichanidis (alichani) (*Greek*)
+- Mentor Gashi (mentorgashi.com) (*Albanian*)
+- carolinagiorno (*Portuguese, Brazilian*)
+- Hayk Khachatryan (brutusromanus123) (*Armenian*)
+- Roby Thomas (roby.thomas) (*Malayalam*)
+- Bharat Kumar (Marwari) (*Hindi*)
+- Austra Muizniece (aus_m) (*Latvian*)
+- ThonyVezbe (*Breton*)
+- v4vachan (*Malayalam*)
+- dkdarshan760 (*Sanskrit*)
+- tykayn (*French*)
+- axi (*Finnish*)
+- Selyan Slimane AMIRI (SelyanKab) (*Kabyle*)
+- Timur Seber (seber) (*Tatar*)
+- taoxvx (*Danish*)
+- Hrach Mkrtchyan (mhrach87) (*Armenian*)
+- sabri (thetomatoisavegetable) (*Spanish, Spanish, Argentina*)
+- Dewi (Unkorneg) (*French, Breton*)
+- CoelacanthusHex (*Chinese Simplified*)
+- syncopams (*Chinese Simplified, Chinese Traditional, Chinese Traditional, Hong Kong*)
+- Rhys Harrison (rhedders) (*Esperanto*)
+- Hakim Oubouali (zenata1) (*Standard Moroccan Tamazight*)
+- SteinarK (*Norwegian Nynorsk*)
+- Lalo Tafolla (lalotafo) (*Spanish, Spanish, Mexico*)
+- Mathias B. Vagnes (vagnes) (*Norwegian*)
+- dashersyed (*Urdu (Pakistan)*)
+- Acolyte (666noob404) (*Ukrainian*)
+- Conight Wang (xfddwhh) (*Chinese Simplified*)
+- liffon (*Swedish*)
+- Damjan Dimitrioski (gnud) (*Macedonian*)
+- PPNplus (*Thai*)
+- shioko (*Chinese Simplified*)
+- ZiriSut (*Kabyle*)
+- Evgeny Petrov (kondra007) (*Russian*)
+- Gwenn (Belvar) (*Breton*)
+- StanleyFrew (*French*)
+- Nikita Epifanov (Nikets) (*Russian*)
+- jaranta (*Finnish*)
+- Slobodan Simić (Слободан Симић) (slsimic) (*Serbian (Cyrillic)*)
+- Felicia Jongleur (midsommar) (*Swedish*)
+- Denys (dector) (*Ukrainian*)
+- iVampireSP (*Chinese Simplified, Chinese Traditional*)
+- Pukima (pukimaaa) (*German*)
+- 游荡 (MamaShip) (*Chinese Simplified*)
+- Vanege (*Esperanto*)
+- Rikard Linde (rikardlinde) (*Swedish*)
+- Jess Rafn (therealyez) (*Danish*)
+- strubbl (*German*)
+- Stasiek Michalski (hellcp) (*Polish*)
+- dxwc (*Bengali*)
+- jmontane (*Catalan*)
+- Liboide (*Spanish*)
+- Hexandcube (hexandcube) (*Polish*)
+- Chris Kay (chriskarasoulis) (*Greek*)
+- Johan Schiff (schyffel) (*Swedish*)
+- Arunmozhi (tecoholic) (*Tamil*)
+- zer0-x (ZER0-X) (*Arabic*)
+- kat (katktv) (*Russian, Ukrainian*)
+- Lauren Liberda (selfisekai) (*Polish*)
+- mynameismonkey (*Welsh*)
+- oti4500 (*Hungarian, Ukrainian*)
+- Mats Gunnar Ahlqvist (goqbi) (*Swedish*)
+- diazepan (*Spanish, Spanish, Argentina*)
+- marzuquccen (*Kabyle*)
+- VictorCorreia (victorcorreia1984) (*Afrikaans*)
+- Tigran (tigransimonyan) (*Armenian*)
+- Juan José Salvador Piedra (JuanjoSalvador) (*Spanish*)
+- BurekzFinezt (*Serbian (Cyrillic)*)
+- SHeija (*Finnish*)
+- Gearguy (*Finnish*)
+- atriix (*Swedish*)
+- Jack R (isaac.97_WT) (*Spanish*)
+- antonyho (*Chinese Traditional, Hong Kong*)
+- asnomgtu (*Hungarian*)
+- ahangarha (*Persian*)
+- andruhov (*Russian, Ukrainian*)
+- phena109 (*Chinese Traditional, Hong Kong*)
+- Aryamik Sharma (Aryamik) (*Swedish, Hindi*)
+- Unmual (*Spanish*)
+- 森の子リスのミーコの大冒険 (Phroneris) (*Japanese*)
+- るいーね (ruine) (*Japanese*)
+- Sam Tux (imahbub) (*Bengali*)
+- Kristoffer Grundström (Umeaboy) (*Swedish*)
+- igordrozniak (*Polish*)
+- Isaac Huang (caasih) (*Chinese Traditional*)
+- AW Unad (awcodify) (*Indonesian*)
+- Allen Zhong (AstroProfundis) (*Chinese Simplified*)
+- Cutls (cutls) (*Japanese*)
+- Falling Snowdin (tghgg) (*Vietnamese*)
+- Ray (Ipsumry) (*Spanish*)
+- Gianfranco Fronteddu (gianfro.gianfro) (*Sardinian*)
+- Rasmus Lindroth (RasmusLindroth) (*Swedish*)
+- Andrea Lo Iacono (niels0n) (*Italian*)
+- Parodper (*Galician*)
+- fucsia (*Italian*)
+- NadieAishi (*Spanish, Spanish, Mexico*)
+- Kinshuk Sunil (kinshuksunil) (*Hindi*)
+- Ullas Joseph (ullasjoseph) (*Malayalam*)
+- Goudarz Jafari (Goudarz) (*Persian*)
+- Yu-Pai Liu (tedliou) (*Chinese Traditional*)
+- Amarin Cemthong (acitmaster) (*Thai*)
+- Johannes Nilsson (nlssn) (*Swedish*)
+- juanda097 (juanda-097) (*Spanish*)
+- Anunnakey (*Macedonian*)
+- erikkemp (*Dutch*)
+- erikstl (*Esperanto*)
+- bobchao (*Chinese Traditional*)
+- twpenguin (*Chinese Traditional*)
+- MadeInSteak (*Finnish*)
+- Esther (esthermations) (*Portuguese*)
+- t_aus_m (*German*)
+- Heimen Stoffels (Vistaus) (*Dutch*)
+- Rajarshi Guha (rajarshiguha) (*Bengali*)
+- Mo_der Steven (SakuraPuare) (*Chinese Simplified*)
+- Gopal Sharma (gopalvirat) (*Hindi*)
+- arethsu (*Swedish*)
+- Carlos Solís (csolisr) (*Esperanto*)
+- Tofiq Abdula (Xwla) (*Sorani (Kurdish)*)
+- Parthan S Ramanujam (parthan) (*Tamil*)
+- Kasper Nymand (KasperNymand) (*Danish*)
+- Jeff Huang (s8321414) (*Chinese Traditional*)
+- TS (morte) (*Finnish*)
+- subram (*Turkish*)
+- SensDeViata (*Ukrainian*)
+- Ptrcmd (ptrcmd) (*Chinese Traditional*)
+- SergioFMiranda (*Portuguese, Brazilian*)
+- Percy (scvoet) (*Chinese Simplified*)
+- Vivek K J (Vivekkj) (*Malayalam*)
+- hiroTS (*Chinese Traditional*)
+- johne32rus23 (*Russian*)
+- AzureNya (*Chinese Simplified*)
+- OctolinGamer (octolingamer) (*Portuguese, Brazilian*)
+- Ram varma (ram4varma) (*Tamil*)
+- 北䑓如法 (Nyoho) (*Japanese*)
+- Pukima (Pukimaa) (*German*)
+- diorama (*Italian*)
+- Daniel Dimitrov (daniel.dimitrov) (*Bulgarian*)
+- frumble (*German*)
+- kekkepikkuni (*Tamil*)
+- oorsutri (*Tamil*)
+- Neo_Chen (NeoChen1024) (*Chinese Traditional*)
+- Nithin V (Nithin896) (*Tamil*)
+- Marcus Myge (mygg-priv) (*Norwegian*)
+- Miro Rauhala (mirorauhala) (*Finnish*)
+- AlexKoala (alexkoala) (*Korean*)
+- ಚಿರಾಗ್ ನಟರಾಜ್ (chiraag-nataraj) (*Kannada*)
+- Aswin C (officialcjunior) (*Malayalam*)
+- Guillaume Turchini (orion78fr) (*French*)
+- Ganesh D (auntgd) (*Marathi*)
+- mawoka-myblock (mawoka) (*German*)
+- dragnucs2 (*Arabic*)
+- Ryan Ho (koungho) (*Chinese Traditional*)
+- Pedro Henrique (exploronauta) (*Portuguese, Brazilian*)
+- Tejas Harad (h_tejas) (*Marathi*)
+- Vasanthan (vasanthan) (*Tamil*)
+- 硫酸鶏 (acid_chicken) (*Japanese*)
+- clarmin b8 (clarminb8) (*Sorani (Kurdish)*)
+- programizer (*German*)
+- manukp (*Malayalam*)
+- earth dweller (sanethoughtyt) (*Marathi*)
+- psymyn (*Hebrew*)
+- meijerivoi (toilet) (*Finnish*)
+- essaar (*Tamil*)
+- serubeena (*Swedish*)
+- Rintan (*Japanese*)
+- Karol Kosek (krkkPL) (*Polish*)
+- Khó͘ Tiat-lêng (khotiatleng) (*Chinese Traditional, Taigi*)
+- Hernik (hernik27) (*Czech*)
+- valarivan (*Tamil*)
+- kuchengrab (*German*)
+- friedbeans (*Croatian*)
+- Abi Turi (abi123) (*Georgian*)
+- Hinaloe (hinaloe) (*Japanese*)
+- Sebastián Andil (Selrond) (*Slovak*)
+- KEINOS (*Japanese*)
+- filippodb (*Italian*)
+- Asbjørn Olling (a2) (*Danish*)
+- Balázs Meskó (meskobalazs) (*Hungarian*)
+- Bottle (suryasalem2010) (*Tamil*)
+- Wrya ali (John12) (*Sorani (Kurdish)*)
+- JzshAC (*Chinese Simplified*)
+- Antillion (antillion99) (*Spanish*)
+- Steven Tappert (sammy8806) (*German*)
+- Reg3xp (*Persian*)
+- Wassim EL BOUHAMIDI (elbouhamidiw) (*Arabic*)
+- gowthamanb (*Tamil*)
+- hiphipvargas (*Portuguese*)
+- Ch. (sftblw) (*Korean*)
+- Arttu Ylhävuori (arttu.ylhavuori) (*Finnish*)
+- tctovsli (*Norwegian Nynorsk*)
+- Timo Tijhof (Krinkle) (*Dutch*)
+- Mikkel B. Goldschmidt (mikkelbjoern) (*Danish*)
+- mecqor labi (mecqorlabi) (*Persian*)
+- Odyssey346 (alexader612) (*Norwegian*)
+- Yamagishi Kazutoshi (ykzts) (*Japanese, Icelandic, Sorani (Kurdish)*)
+- Eban (ebanDev) (*French, Esperanto*)
+- vjasiegd (*Polish*)
+- SamitiMed (samiti3d) (*Thai*)
+- Nícolas Lavinicki (nclavinicki) (*Portuguese, Brazilian*)
+- snatcher (*Portuguese, Brazilian*)
+- Rekan Adl (rekan-adl1) (*Sorani (Kurdish)*)
+- VSx86 (*Russian*)
+- umelard (*Hebrew*)
+- Antara2Cinta (Se7enTime) (*Indonesian*)
+- parnikkapore (*Thai*)
+- Sherwan Othman (sherwanothman11) (*Sorani (Kurdish)*)
+- Yassine Aït-El-Mouden (yaitelmouden) (*Standard Moroccan Tamazight*)
+- SKELET (*Danish*)
+- Fei Yang (Fei1Yang) (*Chinese Traditional*)
+- Ğani (freegnu) (*Tatar*)
+- Renato "Lond" Cerqueira (renatolond) (*Portuguese, Brazilian*)
+- enipra (*Armenian*)
+- ALEM FARID (faridatcemlulaqbayli) (*Kabyle*)
+- musix (*Persian*)
+- ギャラ (gyara) (*Japanese, Chinese Simplified*)
+- Hougo (hougo) (*French*)
+- ybardapurkar (*Marathi*)
+- 亜緯丹穂 (ayiniho) (*Japanese*)
+- Adrián Lattes (haztecaso) (*Spanish*)
+- Mordi Sacks (MordiSacks) (*Hebrew*)
+- Trinsec (*Dutch*)
+- Tigran's Tips (tigrank08) (*Armenian*)
+- TracyJacks (*Chinese Simplified*)
+- Szabolcs Gál (galszabolcs810624) (*Hungarian*)
+- Vladislav Săcrieriu (vladislavs14) (*Romanian*)
+- danreznik (*Hebrew*)
+- rasheedgm (*Kannada*)
+- omquylzu (*Latvian*)
+- c6ristian (*German*)
+- Belkacem Mohammed (belkacem77) (*Kabyle*)
+- lexxai (*Ukrainian*)
+- Navjot Singh (nspeaks) (*Hindi*)
+- Ozai (*German*)
+- Sahak Petrosyan (petrosyan) (*Armenian*)
+- Oymate (*Bengali*)
+- Viorel-Cătălin Răpițeanu (rapiteanu) (*Romanian*)
+- siamano (*Thai, Esperanto*)
+- Siddhartha Sarathi Basu (quinoa_biryani) (*Bengali*)
+- Pachara Chantawong (pachara2202) (*Thai*)
+- Zijian Zhao (jobs2512821228) (*Chinese Simplified*)
+- Skew (noan.perrot) (*French*)
+- mkljczk (*Polish*)
+- Guru Prasath Anandapadmanaban (guruprasath) (*Tamil*)
+- turtle836 (*German*)
+- Marcepanek_ (thekingmarcepan) (*Polish*)
+- Lamin (laminne) (*Japanese*)
+- Yann Aguettaz (yann-a) (*French*)
+- Feruz Oripov (FeruzOripov) (*Russian*)
+- serapolis (*Chinese Simplified, Chinese Traditional*)
+- Mick Onio (xgc.redes) (*Asturian*)
+- Malik Mann (dermalikmann) (*German*)
+- dadosch (*German*)
+- r3dsp1 (*Chinese Traditional, Hong Kong*)
+- hg6 (*Hindi*)
+- Tianqi Zhang (tina.zhang040609) (*Chinese Simplified*)
+- padulafacundo (*Spanish*)
+- johannes hove-henriksen (J0hsHH) (*Norwegian*)
+- Orlando Murcio (Atos20) (*Spanish, Mexico*)
+- Padraic Calpin (padraic-padraic) (*Slovenian*)
+- cenegd (*Chinese Simplified*)
+- piupiupiudiu (*Chinese Simplified*)
+- shdy (*German*)
+- Ильзира Рахматуллина (rahmatullinailzira53) (*Tatar*)
+- Hugh Liu (youloveonlymeh) (*Chinese Simplified*)
+- Pixelcode (realpixelcode) (*German*)
+- Yogesh K S (yogi) (*Kannada*)
+- Adithya K (adithyak04) (*Malayalam*)
+- Dennis Reimund (reimunddennis7) (*German*)
+- Rakino (rakino) (*Chinese Simplified*)
+- Michał Sidor (michcioperz) (*Polish*)
+- AmazighNM (*Kabyle*)
+- Miquel Sabaté Solà (mssola) (*Catalan*)
+- Jothipazhani Nagarajan (jothipazhani.n) (*Tamil*)
+- hallomaurits (*Dutch*)
+- alnd hezh (alndhezh) (*Sorani (Kurdish)*)
+- Clash Clans (KURD12345) (*Sorani (Kurdish)*)
+- Solid Rhino (SolidRhino) (*Dutch*)
+- Metehan Özyürek (MetehanOzyurek) (*Turkish*)
+- 林水溶 (shuiRong) (*Chinese Simplified*)
+- Sébastien Feugère (smonff) (*French*)
+- Y.Yamashiro (uist1idrju3i) (*Japanese*)
+- Takeshi Umeda (noellabo) (*Japanese*)
+- k_taka (peaceroad) (*Japanese*)
+- hussama (*Portuguese, Brazilian*)
+- Hallo Abdullah (hallo_hamza12) (*Sorani (Kurdish)*)
+- Ashok314 (ashok314) (*Hindi*)
+- PifyZ (*French*)
+- OminousCry (*Russian*)
+- Robert Yano (throwcalmbobaway) (*Spanish, Mexico*)
+- Tom_ (*Czech*)
+- Tagada (Tagadda) (*French*)
+- shafouz (*Portuguese, Brazilian*)
+- Yasin İsa YILDIRIM (redsfyre) (*Turkish*)
+- eichkat3r (*German*)
+- SnDer (*Dutch*)
+- Kahina Mess (K_hina) (*Kabyle*)
+- Swati Sani (swatisani) (*Urdu (Pakistan)*)
+- Kk (kishorkumara3) (*Kannada*)
+- Daniel M. (daniconil) (*Catalan*)
+- Shrinivasan T (tshrinivasan) (*Tamil*)
+- 夜楓Yoka (Yoka2627) (*Chinese Simplified*)
+- Nathaël Noguès (NatNgs) (*French*)
+- さっかりんにーさん (saccharin23) (*Japanese*)
+- Rex_sa (rex07) (*Arabic*)
+- Robin van der Vliet (RobinvanderVliet) (*Esperanto*)
+- Vikatakavi (*Kannada*)
+- Tradjincal (tradjincal) (*French*)
+- pullopen (*Chinese Simplified*)
+- SusVersiva (*Catalan*)
+- Marvin (magicmarvman) (*German*)
+- Zinkokooo (*Basque*)
+- Livingston Samuel (livingston) (*Tamil*)
+- CyberAmoeba (pseudoobscura) (*Chinese Simplified*)
+- tsundoker (*Malayalam*)
+- eorn (*Breton*)
+- prabhjot (*Hindi*)
+- mmokhi (*Persian*)
+- sergioaraujo1 (*Portuguese, Brazilian*)
+- Entelekheia-ousia (*Chinese Simplified*)
+- Pierre Morvan (Iriep) (*Breton*)
+- oscfd (*Spanish*)
+- skaaarrr (*German*)
+- mkljczk (mykylyjczyk) (*Polish*)
+- fedot (*Russian*)
+- Paz Galindo (paz.almendra.g) (*Spanish*)
+- Ricardo Colin (rysard) (*Spanish*)
+- Philipp Fischbeck (PFischbeck) (*German*)
+- Zoé Bőle (zoe1337) (*German*)
+- EzigboOmenana (*Cornish*)
+- GaggiX (*Italian*)
+- Lukas Fülling (lfuelling) (*German*)
+- JackXu (Merman-Jack) (*Chinese Simplified*)
+- ralozkolya (*Georgian*)
+- Apple (blackteaovo) (*Chinese Simplified*)
+- asala4544 (*Basque*)
+- Xurxo Guerra (xguerrap) (*Galician*)
+- qwerty287 (*German*)
+- Anoop (anoopp) (*Malayalam*)
+- pezcurrel (*Italian*)
+- Samir Tighzert (samir_t7) (*Kabyle*)
+- Dremski (*Bulgarian*)
+- Dennis Reimund (reimund_dennis) (*German*)
+- ru_mactunnag (*Scottish Gaelic*)
+- Nocta (*French*)
+- Aymeric (AymBroussier) (*French*)
+- mashirozx (*Chinese Simplified*)
+- Albatroz Jeremias (albjeremias) (*Portuguese*)
+- Matias Lavik (matiaslavik) (*Norwegian Nynorsk*)
+- Amith Raj Shetty (amithraj1989) (*Kannada*)
+- abidin toumi (Zet24) (*Arabic*)
+- mikel (mikelalas) (*Spanish*)
+- OpenAlgeria (*Arabic*)
+- random_person (*Spanish*)
+- Sais Lakshmanan (Saislakshmanan) (*Tamil*)
+- Trond Boksasp (boksasp) (*Norwegian*)
+- xpac1985 (xpac) (*German*)
+- Zlr- (cZeler) (*French*)
+- Mohammad Adnan Mahmood (adnanmig) (*Arabic*)
+- mimikun (*Japanese*)
+- smedvedev (*Russian*)
+- asretro (*Chinese Traditional, Hong Kong*)
+- tamaina (*Japanese*)
+- Aman Alam (aalam) (*Punjabi*)
+- ÀŘǾŚ PÀŚĦÀÍ (arospashai) (*Sorani (Kurdish)*)
+- Kaede (kaedech) (*Japanese*)
+- Doug (douglasalvespe) (*Portuguese, Brazilian*)
+- Fleva (*Sardinian*)
+- Abijeet Patro (Abijeet) (*Basque*)
+- SamOak (*Portuguese, Brazilian*)
+- Aries (orlea) (*Japanese*)
+- Bartek Fijałkowski (brateq) (*Polish*)
+- NeverMine17 (*Russian*)
+- Brodi (brodi1) (*Dutch*)
+- Ács Zoltán (zoli111) (*Hungarian*)
+- capiscuas (*Spanish*)
+- Benjamin Cobb (benjamincobb) (*German*)
+- djoerd (*Dutch*)
+- waweic (*German*)
+- Amir Kurdo (kuraking202) (*Sorani (Kurdish)*)
+- dobrado (*Portuguese, Brazilian*)
+- Baban Abdulrahman (baban.abdulrehman) (*Sorani (Kurdish)*)
+- dcapillae (*Spanish*)
+- Azad ahmad (dashty) (*Sorani (Kurdish)*)
+- Salh_haji6 (*Sorani (Kurdish)*)
+- Ranj A Abdulqadir (RanjAhmed) (*Sorani (Kurdish)*)
+- tateisu (*Japanese*)
+- Savarín Electrográfico Marmota Intergalactica (herrero.maty) (*Spanish*)
+- ebrezhoneg (*Breton*)
+- 于晚霞 (xissshawww) (*Chinese Simplified*)
+- silverscat_3 (SilversCat) (*Japanese*)
+- centumix (*Japanese*)
+- umonaca (*Chinese Simplified*)
+- Ni Futchi (futchitwo) (*Japanese*)
+- おさ (osapon) (*Japanese*)
+- kavitha129 (*Tamil*)
+- Hannah (Aniqueper1) (*Chinese Simplified*)
+- Jiniux (*Italian*)
+- Jari Ronkainen (ronchaine) (*Finnish*)
+- Nithya Mary (nithyamary25) (*Tamil*)

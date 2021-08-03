@@ -6,48 +6,111 @@ describe ResolveURLService, type: :service do
   subject { described_class.new }
 
   describe '#call' do
-    it 'returns nil when there is no atom url' do
-      url = 'http://example.com/missing-atom'
+    it 'returns nil when there is no resource url' do
+      url     = 'http://example.com/missing-resource'
       service = double
-      allow(FetchAtomService).to receive(:new).and_return service
+
+      allow(FetchResourceService).to receive(:new).and_return service
       allow(service).to receive(:call).with(url).and_return(nil)
 
-      result = subject.call(url)
-      expect(result).to be_nil
+      expect(subject.call(url)).to be_nil
     end
 
-    it 'fetches remote accounts for feed types' do
-      url = 'http://example.com/atom-feed'
-      service = double
-      allow(FetchAtomService).to receive(:new).and_return service
-      feed_url = 'http://feed-url'
-      feed_content = '<feed>contents</feed>'
-      allow(service).to receive(:call).with(url).and_return([feed_url, { prefetched_body: feed_content }])
+    context 'searching for a remote private status' do
+      let(:account)  { Fabricate(:account) }
+      let(:poster)   { Fabricate(:account, domain: 'example.com') }
+      let(:url)      { 'https://example.com/@foo/42' }
+      let(:uri)      { 'https://example.com/users/foo/statuses/42' }
+      let!(:status)  { Fabricate(:status, url: url, uri: uri, account: poster, visibility: :private) }
 
-      account_service = double
-      allow(FetchRemoteAccountService).to receive(:new).and_return(account_service)
-      allow(account_service).to receive(:call)
+      before do
+        stub_request(:get, url).to_return(status: 404) if url.present?
+        stub_request(:get, uri).to_return(status: 404)
+      end
 
-      _result = subject.call(url)
+      context 'when the account follows the poster' do
+        before do
+          account.follow!(poster)
+        end
 
-      expect(account_service).to have_received(:call).with(feed_url, feed_content, nil)
+        context 'when the status uses Mastodon-style URLs' do
+          let(:url) { 'https://example.com/@foo/42' }
+          let(:uri) { 'https://example.com/users/foo/statuses/42' }
+
+          it 'returns status by url' do
+            expect(subject.call(url, on_behalf_of: account)).to eq(status)
+          end
+
+          it 'returns status by uri' do
+            expect(subject.call(uri, on_behalf_of: account)).to eq(status)
+          end
+        end
+
+        context 'when the status uses pleroma-style URLs' do
+          let(:url) { nil }
+          let(:uri) { 'https://example.com/objects/0123-456-789-abc-def' }
+
+          it 'returns status by uri' do
+            expect(subject.call(uri, on_behalf_of: account)).to eq(status)
+          end
+        end
+      end
+
+      context 'when the account does not follow the poster' do
+        context 'when the status uses Mastodon-style URLs' do
+          let(:url) { 'https://example.com/@foo/42' }
+          let(:uri) { 'https://example.com/users/foo/statuses/42' }
+
+          it 'does not return the status by url' do
+            expect(subject.call(url, on_behalf_of: account)).to be_nil
+          end
+
+          it 'does not return the status by uri' do
+            expect(subject.call(uri, on_behalf_of: account)).to be_nil
+          end
+        end
+
+        context 'when the status uses pleroma-style URLs' do
+          let(:url) { nil }
+          let(:uri) { 'https://example.com/objects/0123-456-789-abc-def' }
+
+          it 'returns status by uri' do
+            expect(subject.call(uri, on_behalf_of: account)).to be_nil
+          end
+        end
+      end
     end
 
-    it 'fetches remote statuses for entry types' do
-      url = 'http://example.com/atom-entry'
-      service = double
-      allow(FetchAtomService).to receive(:new).and_return service
-      feed_url = 'http://feed-url'
-      feed_content = '<entry>contents</entry>'
-      allow(service).to receive(:call).with(url).and_return([feed_url, { prefetched_body: feed_content }])
+    context 'searching for a local private status' do
+      let(:account) { Fabricate(:account) }
+      let(:poster)  { Fabricate(:account) }
+      let!(:status) { Fabricate(:status, account: poster, visibility: :private) }
+      let(:url)     { ActivityPub::TagManager.instance.url_for(status) }
+      let(:uri)     { ActivityPub::TagManager.instance.uri_for(status) }
 
-      account_service = double
-      allow(FetchRemoteStatusService).to receive(:new).and_return(account_service)
-      allow(account_service).to receive(:call)
+      context 'when the account follows the poster' do
+        before do
+          account.follow!(poster)
+        end
 
-      _result = subject.call(url)
+        it 'returns status by url' do
+          expect(subject.call(url, on_behalf_of: account)).to eq(status)
+        end
 
-      expect(account_service).to have_received(:call).with(feed_url, feed_content, nil)
+        it 'returns status by uri' do
+          expect(subject.call(uri, on_behalf_of: account)).to eq(status)
+        end
+      end
+
+      context 'when the account does not follow the poster' do
+        it 'does not return the status by url' do
+          expect(subject.call(url, on_behalf_of: account)).to be_nil
+        end
+
+        it 'does not return the status by uri' do
+          expect(subject.call(uri, on_behalf_of: account)).to be_nil
+        end
+      end
     end
   end
 end

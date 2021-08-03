@@ -58,6 +58,16 @@ td {
   vertical-align: top;
 }
 
+.auto-dir {
+  p {
+    unicode-bidi: plaintext;
+  }
+
+  a {
+    unicode-bidi: isolate;
+  }
+}
+
 .email-table,
 .content-section,
 .column,
@@ -96,7 +106,7 @@ body {
 .col-3,
 .col-4,
 .col-5,
-.col-6, {
+.col-6 {
   font-size: 0;
   display: inline-block;
   width: 100%;
@@ -248,7 +258,6 @@ h5 {
     padding: 16px;
     line-height: 20px;
     mso-line-height-rule: exactly;
-    border-radius: 4px;
     text-align: center;
     font-weight: 500;
     font-size: 17px;
@@ -279,6 +288,8 @@ h5 {
 }
 
 .hero-with-button {
+  padding-bottom: 16px;
+
   h1 {
     margin-bottom: 4px;
   }
@@ -286,8 +297,6 @@ h5 {
   p.lead {
     margin-bottom: 32px;
   }
-
-  padding-bottom: 16px;
 }
 
 .header {
@@ -456,6 +465,13 @@ h5 {
 
 .status {
   padding-bottom: 32px;
+
+  &--highlighted {
+    border: 1px solid lighten($ui-base-color, 8%);
+    border-radius: 4px;
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+  }
 
   .status-header {
     td {

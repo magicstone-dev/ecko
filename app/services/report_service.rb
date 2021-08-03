@@ -1,12 +1,16 @@
 # frozen_string_literal: true
 
 class ReportService < BaseService
+  include Payloadable
+
   def call(source_account, target_account, options = {})
     @source_account = source_account
     @target_account = target_account
     @status_ids     = options.delete(:status_ids) || []
     @comment        = options.delete(:comment) || ''
     @options        = options
+
+    raise ActiveRecord::RecordNotFound if @target_account.suspended?
 
     create_report!
     notify_staff!
@@ -22,7 +26,8 @@ class ReportService < BaseService
       target_account: @target_account,
       status_ids: @status_ids,
       comment: @comment,
-      uri: @options[:uri]
+      uri: @options[:uri],
+      forwarded: ActiveModel::Type::Boolean.new.cast(@options[:forward])
     )
   end
 
@@ -44,12 +49,7 @@ class ReportService < BaseService
   end
 
   def payload
-    Oj.dump(ActiveModelSerializers::SerializableResource.new(
-      @report,
-      serializer: ActivityPub::FlagSerializer,
-      adapter: ActivityPub::Adapter,
-      account: some_local_account
-    ).as_json)
+    Oj.dump(serialize_payload(@report, ActivityPub::FlagSerializer, account: some_local_account))
   end
 
   def some_local_account

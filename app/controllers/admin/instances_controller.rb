@@ -2,43 +2,75 @@
 
 module Admin
   class InstancesController < BaseController
+    before_action :set_instances, only: :index
+    before_action :set_instance, except: :index
+    before_action :set_exhausted_deliveries_days, only: :show
+
     def index
       authorize :instance, :index?
-
-      @instances = ordered_instances
     end
 
     def show
       authorize :instance, :show?
+    end
 
-      @instance        = Instance.new(Account.by_domain_accounts.find_by(domain: params[:id]) || DomainBlock.find_by!(domain: params[:id]))
-      @following_count = Follow.where(account: Account.where(domain: params[:id])).count
-      @followers_count = Follow.where(target_account: Account.where(domain: params[:id])).count
-      @reports_count   = Report.where(target_account: Account.where(domain: params[:id])).count
-      @blocks_count    = Block.where(target_account: Account.where(domain: params[:id])).count
-      @available       = DeliveryFailureTracker.available?(Account.select(:shared_inbox_url).where(domain: params[:id]).first&.shared_inbox_url)
-      @media_storage   = MediaAttachment.where(account: Account.where(domain: params[:id])).sum(:file_file_size)
-      @domain_block    = DomainBlock.find_by(domain: params[:id])
+    def clear_delivery_errors
+      authorize :delivery, :clear_delivery_errors?
+
+      @instance.delivery_failure_tracker.clear_failures!
+      redirect_to admin_instance_path(@instance.domain)
+    end
+
+    def restart_delivery
+      authorize :delivery, :restart_delivery?
+
+      last_unavailable_domain = unavailable_domain
+
+      if last_unavailable_domain.present?
+        @instance.delivery_failure_tracker.track_success!
+        log_action :destroy, last_unavailable_domain
+      end
+
+      redirect_to admin_instance_path(@instance.domain)
+    end
+
+    def stop_delivery
+      authorize :delivery, :stop_delivery?
+
+      UnavailableDomain.create(domain: @instance.domain)
+      log_action :create, unavailable_domain
+      redirect_to admin_instance_path(@instance.domain)
     end
 
     private
 
+    def set_instance
+      @instance = Instance.find(params[:id])
+    end
+
+    def set_exhausted_deliveries_days
+      @exhausted_deliveries_days = @instance.delivery_failure_tracker.exhausted_deliveries_days
+    end
+
+    def set_instances
+      @instances = filtered_instances.page(params[:page])
+      warning_domains_map = DeliveryFailureTracker.warning_domains_map
+
+      @instances.each do |instance|
+        instance.failure_days = warning_domains_map[instance.domain]
+      end
+    end
+
+    def unavailable_domain
+      UnavailableDomain.find_by(domain: @instance.domain)
+    end
+
     def filtered_instances
-      InstanceFilter.new(filter_params).results
-    end
-
-    def paginated_instances
-      filtered_instances.page(params[:page])
-    end
-
-    helper_method :paginated_instances
-
-    def ordered_instances
-      paginated_instances.map { |resource| Instance.new(resource) }
+      InstanceFilter.new(whitelist_mode? ? { allowed: true } : filter_params).results
     end
 
     def filter_params
-      params.permit(:limited, :by_domain)
+      params.slice(*InstanceFilter::KEYS).permit(*InstanceFilter::KEYS)
     end
   end
 end

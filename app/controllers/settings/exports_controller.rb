@@ -3,9 +3,7 @@
 class Settings::ExportsController < Settings::BaseController
   include Authorization
 
-  layout 'admin'
-
-  before_action :authenticate_user!
+  skip_before_action :require_functional!
 
   def show
     @export  = Export.new(current_account)
@@ -13,8 +11,6 @@ class Settings::ExportsController < Settings::BaseController
   end
 
   def create
-    raise Mastodon::NotPermittedError unless user_signed_in?
-
     backup = nil
 
     RedisLock.acquire(lock_options) do |lock|

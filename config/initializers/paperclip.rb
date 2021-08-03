@@ -1,15 +1,35 @@
 # frozen_string_literal: true
 
-Paperclip.options[:read_timeout] = 60
+Paperclip::DataUriAdapter.register
+Paperclip::ResponseWithLimitAdapter.register
 
 Paperclip.interpolates :filename do |attachment, style|
-  return attachment.original_filename if style == :original
-  [basename(attachment, style), extension(attachment, style)].delete_if(&:blank?).join('.')
+  if style == :original
+    attachment.original_filename
+  else
+    [basename(attachment, style), extension(attachment, style)].delete_if(&:blank?).join('.')
+  end
+end
+
+Paperclip.interpolates :prefix_path do |attachment, style|
+  if attachment.storage_schema_version >= 1 && attachment.instance.respond_to?(:local?) && !attachment.instance.local?
+    'cache' + File::SEPARATOR
+  else
+    ''
+  end
+end
+
+Paperclip.interpolates :prefix_url do |attachment, style|
+  if attachment.storage_schema_version >= 1 && attachment.instance.respond_to?(:local?) && !attachment.instance.local?
+    'cache/'
+  else
+    ''
+  end
 end
 
 Paperclip::Attachment.default_options.merge!(
   use_timestamp: false,
-  path: ':class/:attachment/:id_partition/:style/:filename',
+  path: ':prefix_url:class/:attachment/:id_partition/:style/:filename',
   storage: :fog
 )
 
@@ -24,29 +44,36 @@ if ENV['S3_ENABLED'] == 'true'
     storage: :s3,
     s3_protocol: s3_protocol,
     s3_host_name: s3_hostname,
+
     s3_headers: {
+      'X-Amz-Multipart-Threshold' => ENV.fetch('S3_MULTIPART_THRESHOLD') { 15.megabytes }.to_i,
       'Cache-Control' => 'public, max-age=315576000, immutable',
     },
+
     s3_permissions: ENV.fetch('S3_PERMISSION') { 'public-read' },
     s3_region: s3_region,
+
     s3_credentials: {
       bucket: ENV['S3_BUCKET'],
       access_key_id: ENV['AWS_ACCESS_KEY_ID'],
       secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
     },
+
     s3_options: {
       signature_version: ENV.fetch('S3_SIGNATURE_VERSION') { 'v4' },
-      http_open_timeout: 5,
-      http_read_timeout: 5,
+      http_open_timeout: ENV.fetch('S3_OPEN_TIMEOUT'){ '5' }.to_i,
+      http_read_timeout: ENV.fetch('S3_READ_TIMEOUT'){ '5' }.to_i,
       http_idle_timeout: 5,
+      retry_limit: 0,
     }
   )
 
   if ENV.has_key?('S3_ENDPOINT')
     Paperclip::Attachment.default_options[:s3_options].merge!(
       endpoint: ENV['S3_ENDPOINT'],
-      force_path_style: true
+      force_path_style: ENV['S3_OVERRIDE_PATH_STYLE'] != 'true',
     )
+
     Paperclip::Attachment.default_options[:url] = ':s3_path_url'
   end
 
@@ -72,6 +99,7 @@ elsif ENV['SWIFT_ENABLED'] == 'true'
       openstack_region: ENV['SWIFT_REGION'],
       openstack_cache_ttl: ENV.fetch('SWIFT_CACHE_TTL') { 60 },
     },
+
     fog_directory: ENV['SWIFT_CONTAINER'],
     fog_host: ENV['SWIFT_OBJECT_URL'],
     fog_public: true
@@ -79,8 +107,22 @@ elsif ENV['SWIFT_ENABLED'] == 'true'
 else
   Paperclip::Attachment.default_options.merge!(
     storage: :filesystem,
-    use_timestamp: true,
-    path: (ENV['PAPERCLIP_ROOT_PATH'] || ':rails_root/public/system') + '/:class/:attachment/:id_partition/:style/:filename',
-    url: (ENV['PAPERCLIP_ROOT_URL'] || '/system') + '/:class/:attachment/:id_partition/:style/:filename',
+    path: File.join(ENV.fetch('PAPERCLIP_ROOT_PATH', File.join(':rails_root', 'public', 'system')), ':prefix_path:class', ':attachment', ':id_partition', ':style', ':filename'),
+    url: ENV.fetch('PAPERCLIP_ROOT_URL', '/system') + '/:prefix_url:class/:attachment/:id_partition/:style/:filename',
   )
+end
+
+Rails.application.reloader.to_prepare do
+  Paperclip.options[:content_type_mappings] = { csv: Import::FILE_TYPES }
+end
+
+# In some places in the code, we rescue this exception, but we don't always
+# load the S3 library, so it may be an undefined constant:
+
+unless defined?(Seahorse)
+  module Seahorse
+    module Client
+      class NetworkingError < StandardError; end
+    end
+  end
 end

@@ -7,7 +7,9 @@
         %strong= account.user_email
         = "(@#{account.username})"
       %br/
-      = account.user_current_sign_in_ip
+      %samp= account.user_current_sign_in_ip
+      •
+      = t 'admin.accounts.time_in_queue', time: time_ago_in_words(account.user&.created_at)
 
     - if account.user&.invite_request&.text&.present?
       .pending-account__body

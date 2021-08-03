@@ -14,9 +14,15 @@
 #  target_account_id          :bigint(8)        not null
 #  assigned_account_id        :bigint(8)
 #  uri                        :string
+#  forwarded                  :boolean
 #
 
 class Report < ApplicationRecord
+  include Paginable
+  include RateLimitable
+
+  rate_limit by: :account, family: :reports
+
   belongs_to :account
   belongs_to :target_account, class_name: 'Account'
   belongs_to :action_taken_by_account, class_name: 'Account', optional: true
@@ -26,6 +32,7 @@ class Report < ApplicationRecord
 
   scope :unresolved, -> { where(action_taken: false) }
   scope :resolved,   -> { where(action_taken: true) }
+  scope :with_accounts, -> { includes([:account, :target_account, :action_taken_by_account, :assigned_account].index_with({ user: [:invite_request, :invite] })) }
 
   validates :comment, length: { maximum: 1000 }
 
@@ -40,7 +47,7 @@ class Report < ApplicationRecord
   end
 
   def statuses
-    Status.where(id: status_ids).includes(:account, :media_attachments, :mentions)
+    Status.with_discarded.where(id: status_ids).includes(:account, :media_attachments, :mentions)
   end
 
   def media_attachments
@@ -56,6 +63,15 @@ class Report < ApplicationRecord
   end
 
   def resolve!(acting_account)
+    if account_id == -99 && target_account.trust_level == Account::TRUST_LEVELS[:untrusted]
+      # This is an automated report and it is being dismissed, so it's
+      # a false positive, in which case update the account's trust level
+      # to prevent further spam checks
+
+      target_account.update(trust_level: Account::TRUST_LEVELS[:trusted])
+    end
+
+    RemovalWorker.push_bulk(Status.with_discarded.discarded.where(id: status_ids).pluck(:id)) { |status_id| [status_id, { immediate: true }] }
     update!(action_taken: true, action_taken_by_account_id: acting_account.id)
   end
 

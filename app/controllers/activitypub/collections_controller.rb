@@ -1,63 +1,73 @@
 # frozen_string_literal: true
 
-class ActivityPub::CollectionsController < Api::BaseController
+class ActivityPub::CollectionsController < ActivityPub::BaseController
   include SignatureVerification
+  include AccountOwnedConcern
 
-  before_action :set_account
+  before_action :require_signature!, if: :authorized_fetch_mode?
+  before_action :set_items
   before_action :set_size
-  before_action :set_statuses
+  before_action :set_type
   before_action :set_cache_headers
 
   def show
-    skip_session!
-
-    render_cached_json(['activitypub', 'collection', @account, params[:id]], content_type: 'application/activity+json') do
-      ActiveModelSerializers::SerializableResource.new(
-        collection_presenter,
-        serializer: ActivityPub::CollectionSerializer,
-        adapter: ActivityPub::Adapter,
-        skip_activities: true
-      )
-    end
+    expires_in 3.minutes, public: public_fetch_mode?
+    render_with_cache json: collection_presenter, content_type: 'application/activity+json', serializer: ActivityPub::CollectionSerializer, adapter: ActivityPub::Adapter
   end
 
   private
 
-  def set_account
-    @account = Account.find_local!(params[:account_username])
-  end
-
-  def set_statuses
-    @statuses = scope_for_collection
-    @statuses = cache_collection(@statuses, Status)
+  def set_items
+    case params[:id]
+    when 'featured'
+      @items = for_signed_account { cache_collection(@account.pinned_statuses, Status) }
+    when 'tags'
+      @items = for_signed_account { @account.featured_tags }
+    when 'devices'
+      @items = @account.devices
+    else
+      not_found
+    end
   end
 
   def set_size
     case params[:id]
-    when 'featured'
-      @account.pinned_statuses.count
+    when 'featured', 'devices', 'tags'
+      @size = @items.size
     else
-      raise ActiveRecord::RecordNotFound
+      not_found
     end
   end
 
-  def scope_for_collection
+  def set_type
     case params[:id]
     when 'featured'
-      @account.statuses.permitted_for(@account, signed_request_account).tap do |scope|
-        scope.merge!(@account.pinned_statuses)
-      end
+      @type = :ordered
+    when 'devices', 'tags'
+      @type = :unordered
     else
-      raise ActiveRecord::RecordNotFound
+      not_found
     end
   end
 
   def collection_presenter
     ActivityPub::CollectionPresenter.new(
       id: account_collection_url(@account, params[:id]),
-      type: :ordered,
+      type: @type,
       size: @size,
-      items: @statuses
+      items: @items
     )
+  end
+
+  def for_signed_account
+    # Because in public fetch mode we cache the response, there would be no
+    # benefit from performing the check below, since a blocked account or domain
+    # would likely be served the cache from the reverse proxy anyway
+
+    if authorized_fetch_mode? && !signed_request_account.nil? && (@account.blocking?(signed_request_account) || (!signed_request_account.domain.nil? && @account.domain_blocking?(signed_request_account.domain)))
+      []
+    else
+      yield
+    end
   end
 end

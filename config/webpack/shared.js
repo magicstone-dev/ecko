@@ -30,7 +30,7 @@ module.exports = {
     Object.keys(themes).reduce((themePaths, name) => {
       themePaths[name] = resolve(join(settings.source_path, themes[name]));
       return themePaths;
-    }, {})
+    }, {}),
   ),
 
   output: {
@@ -72,14 +72,15 @@ module.exports = {
         // temporary fix for https://github.com/ReactTraining/react-router/issues/5576
         // to reduce bundle size
         resource.request = resource.request.replace(/^history/, 'history/es');
-      }
+      },
     ),
     new MiniCssExtractPlugin({
       filename: 'css/[name]-[contenthash:8].css',
       chunkFilename: 'css/[name]-[contenthash:8].chunk.css',
     }),
     new AssetsManifestPlugin({
-      integrity: false,
+      integrity: true,
+      integrityHashes: ['sha256'],
       entrypoints: true,
       writeToDisk: true,
       publicPath: true,

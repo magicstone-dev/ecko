@@ -19,6 +19,7 @@ const messages = defineMessages({
 const mapStateToProps = state => ({
   accountIds: state.getIn(['user_lists', 'mutes', 'items']),
   hasMore: !!state.getIn(['user_lists', 'mutes', 'next']),
+  isLoading: state.getIn(['user_lists', 'mutes', 'isLoading'], true),
 });
 
 export default @connect(mapStateToProps)
@@ -28,10 +29,11 @@ class Mutes extends ImmutablePureComponent {
   static propTypes = {
     params: PropTypes.object.isRequired,
     dispatch: PropTypes.func.isRequired,
-    shouldUpdateScroll: PropTypes.func,
     hasMore: PropTypes.bool,
+    isLoading: PropTypes.bool,
     accountIds: ImmutablePropTypes.list,
     intl: PropTypes.object.isRequired,
+    multiColumn: PropTypes.bool,
   };
 
   componentWillMount () {
@@ -43,7 +45,7 @@ class Mutes extends ImmutablePureComponent {
   }, 300, { leading: true });
 
   render () {
-    const { intl, shouldUpdateScroll, hasMore, accountIds } = this.props;
+    const { intl, hasMore, accountIds, multiColumn, isLoading } = this.props;
 
     if (!accountIds) {
       return (
@@ -56,17 +58,18 @@ class Mutes extends ImmutablePureComponent {
     const emptyMessage = <FormattedMessage id='empty_column.mutes' defaultMessage="You haven't muted any users yet." />;
 
     return (
-      <Column icon='volume-off' heading={intl.formatMessage(messages.heading)}>
+      <Column bindToDocument={!multiColumn} icon='volume-off' heading={intl.formatMessage(messages.heading)}>
         <ColumnBackButtonSlim />
         <ScrollableList
           scrollKey='mutes'
           onLoadMore={this.handleLoadMore}
           hasMore={hasMore}
-          shouldUpdateScroll={shouldUpdateScroll}
+          isLoading={isLoading}
           emptyMessage={emptyMessage}
+          bindToDocument={!multiColumn}
         >
           {accountIds.map(id =>
-            <AccountContainer key={id} id={id} />
+            <AccountContainer key={id} id={id} />,
           )}
         </ScrollableList>
       </Column>

@@ -1,11 +1,12 @@
 import React from 'react';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import PropTypes from 'prop-types';
-import { isRtl } from '../rtl';
 import { FormattedMessage } from 'react-intl';
 import Permalink from './permalink';
 import classnames from 'classnames';
+import PollContainer from 'mastodon/containers/poll_container';
 import Icon from 'mastodon/components/icon';
+import { autoPlayGif } from 'mastodon/initial_state';
 
 const MAX_HEIGHT = 642; // 20px * 32 (+ 2px padding at the top)
 
@@ -18,14 +19,15 @@ export default class StatusContent extends React.PureComponent {
   static propTypes = {
     status: ImmutablePropTypes.map.isRequired,
     expanded: PropTypes.bool,
+    showThread: PropTypes.bool,
     onExpandedToggle: PropTypes.func,
     onClick: PropTypes.func,
     collapsable: PropTypes.bool,
+    onCollapsedToggle: PropTypes.func,
   };
 
   state = {
     hidden: true,
-    collapsed: null, //  `collapsed: null` indicates that an element doesn't need collapsing, while `true` or `false` indicates that it does (and is/isn't).
   };
 
   _updateStatusLinks () {
@@ -53,20 +55,49 @@ export default class StatusContent extends React.PureComponent {
         link.addEventListener('click', this.onHashtagClick.bind(this, link.text), false);
       } else {
         link.setAttribute('title', link.href);
+        link.classList.add('unhandled-link');
       }
 
       link.setAttribute('target', '_blank');
-      link.setAttribute('rel', 'noopener');
+      link.setAttribute('rel', 'noopener noreferrer');
     }
 
-    if (
-      this.props.collapsable
-      && this.props.onClick
-      && this.state.collapsed === null
-      && node.clientHeight > MAX_HEIGHT
-      && this.props.status.get('spoiler_text').length === 0
-    ) {
-      this.setState({ collapsed: true });
+    if (this.props.status.get('collapsed', null) === null) {
+      let collapsed =
+          this.props.collapsable
+          && this.props.onClick
+          && node.clientHeight > MAX_HEIGHT
+          && this.props.status.get('spoiler_text').length === 0;
+
+      if(this.props.onCollapsedToggle) this.props.onCollapsedToggle(collapsed);
+
+      this.props.status.set('collapsed', collapsed);
+    }
+  }
+
+  handleMouseEnter = ({ currentTarget }) => {
+    if (autoPlayGif) {
+      return;
+    }
+
+    const emojis = currentTarget.querySelectorAll('.custom-emoji');
+
+    for (var i = 0; i < emojis.length; i++) {
+      let emoji = emojis[i];
+      emoji.src = emoji.getAttribute('data-original');
+    }
+  }
+
+  handleMouseLeave = ({ currentTarget }) => {
+    if (autoPlayGif) {
+      return;
+    }
+
+    const emojis = currentTarget.querySelectorAll('.custom-emoji');
+
+    for (var i = 0; i < emojis.length; i++) {
+      let emoji = emojis[i];
+      emoji.src = emoji.getAttribute('data-static');
     }
   }
 
@@ -86,7 +117,7 @@ export default class StatusContent extends React.PureComponent {
   }
 
   onHashtagClick = (hashtag, e) => {
-    hashtag = hashtag.replace(/^#/, '').toLowerCase();
+    hashtag = hashtag.replace(/^#/, '');
 
     if (this.context.router && e.button === 0 && !(e.ctrlKey || e.metaKey)) {
       e.preventDefault();
@@ -106,8 +137,12 @@ export default class StatusContent extends React.PureComponent {
     const [ startX, startY ] = this.startXY;
     const [ deltaX, deltaY ] = [Math.abs(e.clientX - startX), Math.abs(e.clientY - startY)];
 
-    if (e.target.localName === 'button' || e.target.localName === 'a' || (e.target.parentNode && (e.target.parentNode.localName === 'button' || e.target.parentNode.localName === 'a'))) {
-      return;
+    let element = e.target;
+    while (element) {
+      if (element.localName === 'button' || element.localName === 'a' || element.localName === 'label') {
+        return;
+      }
+      element = element.parentNode;
     }
 
     if (deltaX + deltaY < 5 && e.button === 0 && this.props.onClick) {
@@ -128,11 +163,6 @@ export default class StatusContent extends React.PureComponent {
     }
   }
 
-  handleCollapsedClick = (e) => {
-    e.preventDefault();
-    this.setState({ collapsed: !this.state.collapsed });
-  }
-
   setRef = (c) => {
     this.node = c;
   }
@@ -140,24 +170,23 @@ export default class StatusContent extends React.PureComponent {
   render () {
     const { status } = this.props;
 
-    if (status.get('content').length === 0) {
-      return null;
-    }
-
     const hidden = this.props.onExpandedToggle ? !this.props.expanded : this.state.hidden;
+    const renderReadMore = this.props.onClick && status.get('collapsed');
+    const renderViewThread = this.props.showThread && status.get('in_reply_to_id') && status.get('in_reply_to_account_id') === status.getIn(['account', 'id']);
 
     const content = { __html: status.get('contentHtml') };
     const spoilerContent = { __html: status.get('spoilerHtml') };
-    const directionStyle = { direction: 'ltr' };
     const classNames = classnames('status__content', {
       'status__content--with-action': this.props.onClick && this.context.router,
       'status__content--with-spoiler': status.get('spoiler_text').length > 0,
-      'status__content--collapsed': this.state.collapsed === true,
+      'status__content--collapsed': renderReadMore,
     });
 
-    if (isRtl(status.get('search_index'))) {
-      directionStyle.direction = 'rtl';
-    }
+    const showThreadButton = (
+      <button className='status__content__read-more-button' onClick={this.props.onClick}>
+        <FormattedMessage id='status.show_thread' defaultMessage='Show thread' />
+      </button>
+    );
 
     const readMoreButton = (
       <button className='status__content__read-more-button' onClick={this.props.onClick} key='read-more'>
@@ -181,48 +210,47 @@ export default class StatusContent extends React.PureComponent {
       }
 
       return (
-        <div className={classNames} ref={this.setRef} tabIndex='0' style={directionStyle} onMouseDown={this.handleMouseDown} onMouseUp={this.handleMouseUp}>
+        <div className={classNames} ref={this.setRef} tabIndex='0' onMouseDown={this.handleMouseDown} onMouseUp={this.handleMouseUp} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
           <p style={{ marginBottom: hidden && status.get('mentions').isEmpty() ? '0px' : null }}>
-            <span dangerouslySetInnerHTML={spoilerContent} lang={status.get('language')} />
+            <span dangerouslySetInnerHTML={spoilerContent} className='translate' />
             {' '}
             <button tabIndex='0' className={`status__content__spoiler-link ${hidden ? 'status__content__spoiler-link--show-more' : 'status__content__spoiler-link--show-less'}`} onClick={this.handleSpoilerClick}>{toggleText}</button>
           </p>
 
           {mentionsPlaceholder}
 
-          <div tabIndex={!hidden ? 0 : null} className={`status__content__text ${!hidden ? 'status__content__text--visible' : ''}`} style={directionStyle} dangerouslySetInnerHTML={content} lang={status.get('language')} />
+          <div tabIndex={!hidden ? 0 : null} className={`status__content__text ${!hidden ? 'status__content__text--visible' : ''} translate`} dangerouslySetInnerHTML={content} />
+
+          {!hidden && !!status.get('poll') && <PollContainer pollId={status.get('poll')} />}
+
+          {renderViewThread && showThreadButton}
         </div>
       );
     } else if (this.props.onClick) {
       const output = [
-        <div
-          ref={this.setRef}
-          tabIndex='0'
-          key='content'
-          className={classNames}
-          style={directionStyle}
-          dangerouslySetInnerHTML={content}
-          lang={status.get('language')}
-          onMouseDown={this.handleMouseDown}
-          onMouseUp={this.handleMouseUp}
-        />,
+        <div className={classNames} ref={this.setRef} tabIndex='0' onMouseDown={this.handleMouseDown} onMouseUp={this.handleMouseUp} key='status-content' onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
+          <div className='status__content__text status__content__text--visible translate' dangerouslySetInnerHTML={content} />
+
+          {!!status.get('poll') && <PollContainer pollId={status.get('poll')} />}
+
+          {renderViewThread && showThreadButton}
+        </div>,
       ];
 
-      if (this.state.collapsed) {
+      if (renderReadMore) {
         output.push(readMoreButton);
       }
 
       return output;
     } else {
       return (
-        <div
-          tabIndex='0'
-          ref={this.setRef}
-          className='status__content'
-          style={directionStyle}
-          dangerouslySetInnerHTML={content}
-          lang={status.get('language')}
-        />
+        <div className={classNames} ref={this.setRef} tabIndex='0' onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
+          <div className='status__content__text status__content__text--visible translate' dangerouslySetInnerHTML={content} />
+
+          {!!status.get('poll') && <PollContainer pollId={status.get('poll')} />}
+
+          {renderViewThread && showThreadButton}
+        </div>
       );
     }
   }

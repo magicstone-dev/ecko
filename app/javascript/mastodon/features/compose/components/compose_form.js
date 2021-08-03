@@ -60,6 +60,7 @@ class ComposeForm extends ImmutablePureComponent {
     onPickEmoji: PropTypes.func.isRequired,
     showSearch: PropTypes.bool,
     anyMedia: PropTypes.bool,
+    singleColumn: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -76,6 +77,18 @@ class ComposeForm extends ImmutablePureComponent {
     }
   }
 
+  getFulltextForCharacterCounting = () => {
+    return [this.props.spoiler? this.props.spoilerText: '', countableText(this.props.text)].join('');
+  }
+
+  canSubmit = () => {
+    const { isSubmitting, isChangingUpload, isUploading, anyMedia } = this.props;
+    const fulltext = this.getFulltextForCharacterCounting();
+    const isOnlyWhitespace = fulltext.length !== 0 && fulltext.trim().length === 0;
+
+    return !(isSubmitting || isUploading || isChangingUpload || length(fulltext) > 500 || (isOnlyWhitespace && !anyMedia));
+  }
+
   handleSubmit = () => {
     if (this.props.text !== this.autosuggestTextarea.textarea.value) {
       // Something changed the text inside the textarea (e.g. browser extensions like Grammarly)
@@ -83,11 +96,7 @@ class ComposeForm extends ImmutablePureComponent {
       this.props.onChange(this.autosuggestTextarea.textarea.value);
     }
 
-    // Submit disabled:
-    const { isSubmitting, isChangingUpload, isUploading, anyMedia } = this.props;
-    const fulltext = [this.props.spoilerText, countableText(this.props.text)].join('');
-
-    if (isSubmitting || isUploading || isChangingUpload || length(fulltext) > 500 || (fulltext.length !== 0 && fulltext.trim().length === 0 && !anyMedia)) {
+    if (!this.canSubmit()) {
       return;
     }
 
@@ -114,7 +123,24 @@ class ComposeForm extends ImmutablePureComponent {
     this.props.onChangeSpoilerText(e.target.value);
   }
 
+  handleFocus = () => {
+    if (this.composeForm && !this.props.singleColumn) {
+      const { left, right } = this.composeForm.getBoundingClientRect();
+      if (left < 0 || right > (window.innerWidth || document.documentElement.clientWidth)) {
+        this.composeForm.scrollIntoView();
+      }
+    }
+  }
+
+  componentDidMount () {
+    this._updateFocusAndSelection({ });
+  }
+
   componentDidUpdate (prevProps) {
+    this._updateFocusAndSelection(prevProps);
+  }
+
+  _updateFocusAndSelection = (prevProps) => {
     // This statement does several things:
     // - If we're beginning a reply, and,
     //     - Replying to zero or one users, places the cursor at the end of the textbox.
@@ -155,6 +181,10 @@ class ComposeForm extends ImmutablePureComponent {
     this.spoilerText = c;
   }
 
+  setRef = c => {
+    this.composeForm = c;
+  };
+
   handleEmojiPick = (data) => {
     const { text }     = this.props;
     const position     = this.autosuggestTextarea.textarea.selectionStart;
@@ -164,10 +194,8 @@ class ComposeForm extends ImmutablePureComponent {
   }
 
   render () {
-    const { intl, onPaste, showSearch, anyMedia } = this.props;
+    const { intl, onPaste, showSearch } = this.props;
     const disabled = this.props.isSubmitting;
-    const text     = [this.props.spoilerText, countableText(this.props.text)].join('');
-    const disabledButton = disabled || this.props.isUploading || this.props.isChangingUpload || length(text) > 500 || (text.length !== 0 && text.trim().length === 0 && !anyMedia);
     let publishText = '';
 
     if (this.props.privacy === 'private' || this.props.privacy === 'direct') {
@@ -182,7 +210,7 @@ class ComposeForm extends ImmutablePureComponent {
 
         <ReplyIndicatorContainer />
 
-        <div className={`spoiler-input ${this.props.spoiler ? 'spoiler-input--visible' : ''}`}>
+        <div className={`spoiler-input ${this.props.spoiler ? 'spoiler-input--visible' : ''}`} ref={this.setRef}>
           <AutosuggestInput
             placeholder={intl.formatMessage(messages.spoiler_placeholder)}
             value={this.props.spoilerText}
@@ -200,29 +228,27 @@ class ComposeForm extends ImmutablePureComponent {
           />
         </div>
 
-        <div className='compose-form__autosuggest-wrapper'>
-          <AutosuggestTextarea
-            ref={this.setAutosuggestTextarea}
-            placeholder={intl.formatMessage(messages.placeholder)}
-            disabled={disabled}
-            value={this.props.text}
-            onChange={this.handleChange}
-            suggestions={this.props.suggestions}
-            onKeyDown={this.handleKeyDown}
-            onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-            onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-            onSuggestionSelected={this.onSuggestionSelected}
-            onPaste={onPaste}
-            autoFocus={!showSearch && !isMobile(window.innerWidth)}
-          />
-
+        <AutosuggestTextarea
+          ref={this.setAutosuggestTextarea}
+          placeholder={intl.formatMessage(messages.placeholder)}
+          disabled={disabled}
+          value={this.props.text}
+          onChange={this.handleChange}
+          suggestions={this.props.suggestions}
+          onFocus={this.handleFocus}
+          onKeyDown={this.handleKeyDown}
+          onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+          onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+          onSuggestionSelected={this.onSuggestionSelected}
+          onPaste={onPaste}
+          autoFocus={!showSearch && !isMobile(window.innerWidth)}
+        >
           <EmojiPickerDropdown onPickEmoji={this.handleEmojiPick} />
-        </div>
-
-        <div className='compose-form__modifiers'>
-          <UploadFormContainer />
-          <PollFormContainer />
-        </div>
+          <div className='compose-form__modifiers'>
+            <UploadFormContainer />
+            <PollFormContainer />
+          </div>
+        </AutosuggestTextarea>
 
         <div className='compose-form__buttons-wrapper'>
           <div className='compose-form__buttons'>
@@ -231,11 +257,11 @@ class ComposeForm extends ImmutablePureComponent {
             <PrivacyDropdownContainer />
             <SpoilerButtonContainer />
           </div>
-          <div className='character-counter__wrapper'><CharacterCounter max={500} text={text} /></div>
+          <div className='character-counter__wrapper'><CharacterCounter max={500} text={this.getFulltextForCharacterCounting()} /></div>
         </div>
 
         <div className='compose-form__publish'>
-          <div className='compose-form__publish-button-wrapper'><Button text={publishText} onClick={this.handleSubmit} disabled={disabledButton} block /></div>
+          <div className='compose-form__publish-button-wrapper'><Button text={publishText} onClick={this.handleSubmit} disabled={!this.canSubmit()} block /></div>
         </div>
       </div>
     );

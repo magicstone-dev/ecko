@@ -9,6 +9,18 @@ bg:
       imports:
         data: CSV файл, експортиран от друга инстанция на Mastodon
     labels:
+      account:
+        fields:
+          value: Съдържание
+      account_warning_preset:
+        title: Заглавие
+      admin_account_action:
+        type: Действие
+        types:
+          disable: Замразяване
+          sensitive: Деликатно
+          silence: Ограничение
+          suspend: Спиране
       defaults:
         avatar: Аватар
         confirm_new_password: Потвърди новата парола
@@ -39,6 +51,5 @@ bg:
         reblog: Изпращай e-mail, когато някой сподели твоя публикация
     'no': Не
     required:
-      mark: "*"
       text: задължително
     'yes': Да

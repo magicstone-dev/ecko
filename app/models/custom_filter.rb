@@ -20,6 +20,7 @@ class CustomFilter < ApplicationRecord
     notifications
     public
     thread
+    account
   ).freeze
 
   include Expireable
@@ -35,10 +36,17 @@ class CustomFilter < ApplicationRecord
   before_validation :clean_up_contexts
   after_commit :remove_cache
 
+  def expires_in
+    return @expires_in if defined?(@expires_in)
+    return nil if expires_at.nil?
+
+    [30.minutes, 1.hour, 6.hours, 12.hours, 1.day, 1.week].find { |expires_in| expires_in.from_now >= expires_at }
+  end
+
   private
 
   def clean_up_contexts
-    self.context = Array(context).map(&:strip).map(&:presence).compact
+    self.context = Array(context).map(&:strip).filter_map(&:presence)
   end
 
   def remove_cache

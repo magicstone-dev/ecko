@@ -5,7 +5,9 @@ class Admin::SuspensionWorker
 
   sidekiq_options queue: 'pull'
 
-  def perform(account_id, remove_user = false)
-    SuspendAccountService.new.call(Account.find(account_id), including_user: remove_user)
+  def perform(account_id)
+    SuspendAccountService.new.call(Account.find(account_id))
+  rescue ActiveRecord::RecordNotFound
+    true
   end
 end

@@ -21,7 +21,7 @@ class SearchPopout extends React.PureComponent {
     const { style } = this.props;
     const extraInformation = searchEnabled ? <FormattedMessage id='search_popout.tips.full_text' defaultMessage='Simple text returns statuses you have written, favourited, boosted, or have been mentioned in, as well as matching usernames, display names, and hashtags.' /> : <FormattedMessage id='search_popout.tips.text' defaultMessage='Simple text returns matching display names, usernames and hashtags' />;
     return (
-      <div style={{ ...style, position: 'absolute', width: 285 }}>
+      <div style={{ ...style, position: 'absolute', width: 285, zIndex: 2 }}>
         <Motion defaultStyle={{ opacity: 0, scaleX: 0.85, scaleY: 0.75 }} style={{ opacity: spring(1, { damping: 35, stiffness: 400 }), scaleX: spring(1, { damping: 35, stiffness: 400 }), scaleY: spring(1, { damping: 35, stiffness: 400 }) }}>
           {({ opacity, scaleX, scaleY }) => (
             <div className='search-popout' style={{ opacity: opacity, transform: `scale(${scaleX}, ${scaleY})` }}>
@@ -60,11 +60,16 @@ class Search extends React.PureComponent {
     onShow: PropTypes.func.isRequired,
     openInRoute: PropTypes.bool,
     intl: PropTypes.object.isRequired,
+    singleColumn: PropTypes.bool,
   };
 
   state = {
     expanded: false,
   };
+
+  setRef = c => {
+    this.searchForm = c;
+  }
 
   handleChange = (e) => {
     this.props.onChange(e.target.value);
@@ -95,6 +100,13 @@ class Search extends React.PureComponent {
   handleFocus = () => {
     this.setState({ expanded: true });
     this.props.onShow();
+
+    if (this.searchForm && !this.props.singleColumn) {
+      const { left, right } = this.searchForm.getBoundingClientRect();
+      if (left < 0 || right > (window.innerWidth || document.documentElement.clientWidth)) {
+        this.searchForm.scrollIntoView();
+      }
+    }
   }
 
   handleBlur = () => {
@@ -111,6 +123,7 @@ class Search extends React.PureComponent {
         <label>
           <span style={{ display: 'none' }}>{intl.formatMessage(messages.placeholder)}</span>
           <input
+            ref={this.setRef}
             className='search__input'
             type='text'
             placeholder={intl.formatMessage(messages.placeholder)}

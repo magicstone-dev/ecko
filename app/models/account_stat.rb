@@ -14,21 +14,10 @@
 #
 
 class AccountStat < ApplicationRecord
+  self.locking_column = nil
+  self.ignored_columns = %w(lock_version)
+
   belongs_to :account, inverse_of: :account_stat
 
-  def increment_count!(key)
-    update(attributes_for_increment(key))
-  end
-
-  def decrement_count!(key)
-    update(key => [public_send(key) - 1, 0].max)
-  end
-
-  private
-
-  def attributes_for_increment(key)
-    attrs = { key => public_send(key) + 1 }
-    attrs[:last_status_at] = Time.now.utc if key == :statuses_count
-    attrs
-  end
+  update_index('accounts#account', :account)
 end

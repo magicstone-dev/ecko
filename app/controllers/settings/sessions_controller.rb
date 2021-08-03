@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 class Settings::SessionsController < Settings::BaseController
-  before_action :authenticate_user!
+  skip_before_action :require_functional!
+
+  before_action :require_not_suspended!
   before_action :set_session, only: :destroy
 
   def destroy

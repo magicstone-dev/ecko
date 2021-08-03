@@ -16,12 +16,16 @@ class InstancePresenter
     Account.find_local(Setting.site_contact_username.strip.gsub(/\A@/, ''))
   end
 
+  def rules
+    Rule.ordered
+  end
+
   def user_count
     Rails.cache.fetch('user_count') { User.confirmed.joins(:account).merge(Account.without_suspended).count }
   end
 
-  def active_user_count
-    Rails.cache.fetch('active_user_count') { Redis.current.pfcount(*(0..3).map { |i| "activity:logins:#{i.weeks.ago.utc.to_date.cweek}" }) }
+  def active_user_count(weeks = 4)
+    Rails.cache.fetch("active_user_count/#{weeks}") { Redis.current.pfcount(*(0...weeks).map { |i| "activity:logins:#{i.weeks.ago.utc.to_date.cweek}" }) }
   end
 
   def status_count
@@ -29,11 +33,11 @@ class InstancePresenter
   end
 
   def domain_count
-    Rails.cache.fetch('distinct_domain_count') { Account.distinct.count(:domain) }
+    Rails.cache.fetch('distinct_domain_count') { Instance.count }
   end
 
   def sample_accounts
-    Rails.cache.fetch('sample_accounts', expires_in: 12.hours) { Account.discoverable.popular.limit(3) }
+    Rails.cache.fetch('sample_accounts', expires_in: 12.hours) { Account.local.discoverable.popular.limit(3) }
   end
 
   def version_number

@@ -5,39 +5,21 @@ lt:
     about_mastodon_html: Mastodon, tai socialinis tinklas pagrįstas atviro kodo programavimu, ir atvirais web protokolais. Visiškai nemokamas. Ši sistema decantrilizuota kaip jūsų elektroninis paštas.
     about_this: Apie
     administered_by: 'Administruoja:'
-    api: API
     apps: Mobilioji Aplikacija
     contact: Kontaktai
     contact_missing: Nenustatyta
-    contact_unavailable: N/A
     documentation: Dokumentacija
-    extended_description_html: |
-      <h3>Taisyklės</h3>
-      <p>Ilgas aprašymas dar nėra sudartyas</p>
-    generic_description: "%{domain} yra vienas serveris tinkle"
     hosted_on: Mastodon palaikomas naudojantis %{domain} talpinimu
     learn_more: Daugiau
     privacy_policy: Privatumo Politika
     source_code: Šaltinio kodas
-    status_count_after:
-      few: statusai
-      one: statusas
-      other: statusai
     status_count_before: Autorius
     terms: Naudojimo sąlygos
-    user_count_after:
-      few: vartotojai
-      one: vartotojas
-      other: vartotojai
     user_count_before: Namai
     what_is_mastodon: Kas tai, Mastodon?
   accounts:
     choices_html: "%{name} pasirinkimai:"
     follow: Sekti
-    followers:
-      few: Sekėjai
-      one: Sekėjas
-      other: Sekėjai
     following: Sekami
     joined: Prisijungiai %{date}
     last_active: paskutinį kartą aktyvus
@@ -50,13 +32,8 @@ lt:
     people_who_follow: Žmonės kurie seka %{name}
     pin_errors:
       following: Privalai sekti žmogų kurį nori pagerbti
-    posts:
-      few: Tootai
-      one: Tootas
-      other: Tootai
     posts_tab_heading: Tootai
     posts_with_replies: Tootai ir atsakymai
-    reserved_username: Vartotojo vardas rezervuotas
     roles:
       admin: Administratorius
       bot: Bot'as
@@ -97,14 +74,11 @@ lt:
       email_status: El pašto statusas
       enable: Įjungti
       enabled: Įjungta
-      feed_url: Srauto URL
       followers: Sekėjai
-      followers_url: Sekėjų URL
       follows: Seka
       header: Antraštė
       inbox_url: Gautųjų URL
       invited_by: Pakvietė
-      ip: IP
       joined: Prisijungė
       location:
         all: Visi
@@ -125,9 +99,7 @@ lt:
       most_recent_ip: Paskutinis IP
       no_limits_imposed: Be limitu
       not_subscribed: Ne prenumeruota
-      outbox_url: Išsiustųjų URL
       perform_full_suspension: Užrakinti
-      profile_url: Profilio URL
       promote: Paaukštinti
       protocol: Protokolas
       public: Viešas
@@ -148,7 +120,6 @@ lt:
         moderator: Moderatorius
         staff: Personalas
         user: Vartotojas
-      salmon_url: Lašišos URL
       search: Ieškoti
       shared_inbox_url: Bendroji gautųjų URL
       show:
@@ -166,39 +137,7 @@ lt:
       unsubscribe: Nebeprenumeruoti
       username: Slapyvardis
       warn: Įspėti
-      web: Web
     action_logs:
-      actions:
-        assigned_to_self_report: "%{name} paskyrė reportą %{target} saviems"
-        change_email_user: "%{name} pakeitė el pašto adresą vartotojui %{target}"
-        confirm_user: "%{name} patvirtino el pašto adresą vartotojui %{target}"
-        create_account_warning: "%{name} išsiuntė įspėjimą %{target}"
-        create_custom_emoji: "%{name} įkėlė naują jaustuką %{target}"
-        create_domain_block: "%{name} užblokavo domena %{target}"
-        create_email_domain_block: "%{name} įkėlė į juodajį sąrašą el pašto domena %{target}"
-        demote_user: "%{name} pažemino %{target}"
-        destroy_custom_emoji: "%{name} sunaikino jaustuką %{target}"
-        destroy_domain_block: "%{name} atrakino domeną %{target}"
-        destroy_email_domain_block: "%{name} pašalino iš juodojo sąrašo el pašto domeną %{target}"
-        destroy_status: "%{name} pašalino statusą %{target}"
-        disable_2fa_user: "%{name} išjungė 2 faktorių autentikavimo sistemos reikalavimus vartotojui  %{target}"
-        disable_custom_emoji: "%{name} išjungė jaustuką %{target}"
-        disable_user: "%{name} išjungė prisijungimą vartotojui %{target}"
-        enable_custom_emoji: "%{name} įjungė jaustuką %{target}"
-        enable_user: "%{name} įjungė prisijungimą vartotojui %{target}"
-        memorialize_account: "%{name} pavertė vartotojo %{target} paskyrą į prisiminimų puslapį"
-        promote_user: "%{name} paaukštino vartotoją %{target}"
-        remove_avatar_user: "%{name} panaikino vartotojo %{target} profilio nuotrauką"
-        reopen_report: "%{name} atidarė skundą %{target}"
-        reset_password_user: "%{name} atstatyti slaptažodį vartotojui %{target}"
-        resolve_report: "%{name} išsprendė skundą %{target}"
-        silence_account: "%{name} pritildė vartotojo %{target} paskyrą"
-        suspend_account: "%{name} laikinai užblokavo vartotojo %{target} paskyrą"
-        unassigned_report: "%{name} nepaskirtas skundas %{target}"
-        unsilence_account: "%{name} atitildė vartotojo %{target} paskyrą"
-        unsuspend_account: "%{name} atblokavo vartotojo %{target} paskyrą"
-        update_custom_emoji: "%{name} atnaujino jaustuką %{target}"
-        update_status: "%{name} pakeitė statusą %{target}"
       deleted_status: "(panaikintas statusas)"
       title: Audito žurnalas
     custom_emojis:
@@ -274,10 +213,6 @@ lt:
         silence: užtildytas
         suspend: uždraustas
       show:
-        affected_accounts:
-          few: "%{count} vartotojai duomenų bazėje yra paveikti"
-          one: Vienas vartotojas duomenų bazėje paveiktas
-          other: "%{count} vartotojai duomenų bazėje yra paveikti"
         retroactive:
           silence: Atitildyti visus egzistuojančius vartotojus šiame domene
           suspend: Atblokuotis visus egzistuojančius vartotojus šiame domene
@@ -294,16 +229,9 @@ lt:
         create: Pridėto domeną
         title: Naujas el pašto juodojo sąrašo įtraukimas
       title: El pašto juodasis sąrašas
-    followers:
-      back_to_account: Atgal Į Paskyrą
-      title: "%{acct} Sekėjai"
     instances:
       by_domain: Domenas
       delivery_available: Pristatymas galimas
-      known_accounts:
-        few: "%{count} žinomos paskyros"
-        one: "%{count} žinoma paskyra"
-        other: "%{count} žinomos paskyros"
       moderation:
         all: Visi
         limited: Limituotas
@@ -341,9 +269,6 @@ lt:
       created_msg: Skundo žinutė sekmingai sukurta!
       destroyed_msg: Skundo žinutė sekmingai ištrinta!
     reports:
-      account:
-        note: raštelis
-        report: skundas
       action_taken_by: Veiksmo ėmėsi
       are_you_sure: Ar tu įsitikinęs?
       assign_to_self: Paskirti man
@@ -447,26 +372,12 @@ lt:
       no_status_selected: Jokie statusai nebuvo pakeisti, nes niekas nepasirinkta
       title: Paskyros statusai
       with_media: Su medija
-    subscriptions:
-      callback_url: Atgalinė URL
-      confirmed: Patvirtinta
-      expires_in: Pasibaigia
-      last_delivery: Paskutinis pristatymas
-      title: WebSub protokolas
-      topic: Tema
     tags:
-      accounts: Paskyros
-      hidden: Paslėpti
-      hide: Paslėpti iš direktorijos
-      name: Saitažodis(#)
       title: Saitažodžiai(#)
-      unhide: Rodyti direktorijoje
-      visible: Matomas
     title: Administracija
     warning_presets:
       add_new: Pridėti naują
       delete: Ištrinti
-      edit: Keisti
       edit_preset: Keisti įspėjimo nustatymus
       title: Valdyti įspėjimo nustatymus
   admin_mailer:
@@ -476,7 +387,6 @@ lt:
       subject: Naujas skundas %{instance} (#%{id})
   application_mailer:
     notification_preferences: Keisti el pašto parinktis
-    salutation: "%{name},"
     settings: 'Keisti el pašto parinktis: %{link}'
     view: 'Peržiūra:'
     view_profile: Peržiurėti profilį
@@ -491,7 +401,6 @@ lt:
     your_token: Jūsų prieigos žetonas
   auth:
     change_password: Slaptažodis
-    confirm_email: Patvirtinti el paštą
     delete_account: Ištrinti paskyrą
     delete_account_html: Jeigu norite ištrinti savo paskyrą, galite eiti <a href="%{path}">čia</a>. Jūsų prašys patvirtinti pasirinkimą.
     didnt_get_confirmation: Negavote patvirtinimo instrukcijų?
@@ -502,9 +411,6 @@ lt:
     migrate_account: Prisijungti prie kitos paskyros
     migrate_account_html: Jeigu norite nukreipti šią paskyrą į kita, galite tai <a href="%{path}">konfiguruoti čia</a>.
     or_log_in_with: Arba prisijungti su
-    providers:
-      cas: CAS
-      saml: SAML
     register: Užsiregistruoti
     resend_confirmation: Išsiųsti dar kartą patvirtinimo instrukcijas
     reset_password: Atstatyti slaptažodį
@@ -536,27 +442,18 @@ lt:
       x_months: "%{count}mėn"
       x_seconds: "%{count}sek"
   deletes:
-    bad_password_msg: Geras bandymas, programišiau! Neteisingas slaptažodis
     confirm_password: Kad patvirtintumėte savo tapatybę, įveskite dabartini slaptažodį
-    description_html: Tai <strong>be sugrąžinimo, visam laikui</strong> panaikins visa turini iš Jūsų paskyros ir deaktyvuos ją. Jūsų vartotojo vardas paliks rezervuotas, kad išvengtumėme tapatybės pavagimo ateityje.
     proceed: Ištrinti paskyrą
     success_msg: Jūsų paskyra sėkmingai ištrinta
-    warning_html: Tiktai panaikinimas turinio iš šio serverio garantuotas. Turinys, kuris buvo viešai prieinamas ir dalinamas kituose serveriuose paliks pėdsakus. Serveriai, kurie neseka jūsų, kurie nėra tinkle, nepakeis savo duomenų sistemos.
-    warning_title: Platinamo turinio prieinamumas
   directories:
     directory: Profilio direktorija
-    enabled: Jūs esate rodomas šioje direktorijoje.
-    enabled_but_waiting: Jūs pasirinkote būti įtrauktas į direktorija, bet jūs neturite minimalaus sekėjų skaičiaus (%{min_followers}), kad būtumėte rodomas.
     explanation: Raskite vartotojus, remiantis tuo, kuo jie domisi
     explore_mastodon: Naršyti %{title}
-    how_to_enable: Jūs nesate prisijungęs prie šios direktorijos. Galite prisijungti žemiau. Naudokite saitažodžius savo biografiniame tekste, kad būtumėte rastas naudojantis specifinius saitažodžius!
-    people:
-      few: "%{count} žmonės"
-      one: "%{count} žmogus"
-      other: "%{count} žmonės"
   errors:
+    '400': The request you submitted was invalid or malformed.
     '403': Jūs neturie prieigos matyti šiam puslapiui.
     '404': Puslapis nerastas.
+    '406': This page is not available in the requested format.
     '410': Puslapis neegzistuoja.
     '422':
       content: Apsaugos patvirtinmas klaidingas. Ar jūs blokuojate sausainius?
@@ -565,6 +462,7 @@ lt:
     '500':
       content: Atsiprašome, tačiau mūsų pusėje įvyko klaida.
       title: Netinkamas puslapis
+    '503': The page could not be served due to a temporary server failure.
     noscript_html: Kad naudotumėtės Mastodon web aplikacija, prašome įsijungti JavaScript. Alternatyviai, pabandykite viena iš <a href="%{apps_path}">vietinių aplikacijų</a> Mastodon savo platformai.
   exports:
     archive_takeout:
@@ -575,9 +473,7 @@ lt:
       request: Prašyti savo archyvo
       size: Dydis
     blocks: Jūs blokuojate
-    csv: CSV
     domain_blocks: Domeno blokai
-    follows: Jūs sekate
     lists: Sąrašai
     mutes: Jūs tildote
     storage: Medijos sandėlis
@@ -609,10 +505,6 @@ lt:
     changes_saved_msg: Pakeitimai sėkmingai išsaugoti!
     copy: Kopijuoti
     save_changes: Išsaugoti pakeitimus
-    validation_errors:
-      few: Kažkas negerai! Prašau patikrinti %{count} klaidas žemiau
-      one: Kažkas negerai! Peržiūrėk klaidas žemiau
-      other: Kažkas negerai! Prašau patikrinti %{count} klaidas žemiau
   imports:
     modes:
       merge: Sulieti
@@ -641,10 +533,6 @@ lt:
     expires_in_prompt: Niekada
     generate: Generuoti
     invited_by: 'Jus pakvietė:'
-    max_uses:
-      few: "%{count} naudojimai"
-      one: 1 naudojimas
-      other: "%{count} naudojimai"
     max_uses_prompt: Be limito
     prompt: Generuoti ir dalintis įrašais su kitais, kad sukurti prieigą prie serverio
     table:
@@ -660,9 +548,6 @@ lt:
       too_many: Negalima pridėti daugiau nei 4 failų
   migrations:
     acct: slapyvardis@domenas naujam vartotojui
-    currently_redirecting: 'Jūsų profilis nustatytas nukreipimui į:'
-    proceed: Išsaugoti
-    updated_msg: Jūsų paskyros migracijos nustatymai sėkmingai pakeisti!
   moderation:
     title: Moderacija
   notification_mailer:
@@ -670,14 +555,6 @@ lt:
       action: Peržiurėti visus pranešimus
       body: Čia yra trumpa santrauka žinutės, kurią jūs praleidote nuo jūsų paskutinio apsilankymo %{since}
       mention: "%{name} paminėjo jus:"
-      new_followers_summary:
-        few: Beje, jūs gavote %{count} naujų sekėjų, nuo jūsų paskutinio apsilankymo! Nuostabu!
-        one: Beje, jūs gavote naują sekėją, kol buvote atsijungęs! Yay!
-        other: Beje, jūs gavote %{count} naujų sekėjų, nuo jūsų paskutinio apsilankymo! Nuostabu!
-      subject:
-        few: "%{count} nauji pranešimai, nuo paskutinio apsilankymo\U0001F418"
-        one: "1 naujas pranešimas nuo paskutinio apsilankymo \U0001F418"
-        other: "%{count} nauji pranešimai, nuo paskutinio apsilankymo\U0001F418"
       title: Kol jūsų nebuvo...
     favourite:
       body: 'Jūsų statusą pamėgo %{name}:'
@@ -701,27 +578,13 @@ lt:
       body: 'Jūsų statusą pakėlė %{name}:'
       subject: "%{name} pakėlė Jūsų statusą"
       title: Naujas pakėlimas
-  number:
-    human:
-      decimal_units:
-        format: "%n%u"
-        units:
-          billion: B
-          million: M
-          quadrillion: Q
-          thousand: K
-          trillion: T
   pagination:
     newer: Naujesnis
     next: Kitas
     older: Senesnis
     prev: Ankstesnis
-    truncate: "&hellip;"
   preferences:
-    languages: Kalbos
     other: Kita
-    publishing: Skelbiama
-    web: Tinklas
   remote_follow:
     acct: Įveskite Jūsų slapyvardį@domenas kurį norite naudoti
     missing_resource: Jūsų paskyros nukreipimo URL nerasta
@@ -739,10 +602,6 @@ lt:
     reply:
       proceed: Atsakyti
       prompt: 'Jūs norite atsakyti šiam toot''ui:'
-  remote_unfollow:
-    error: Klaida
-    title: Pavadinimas
-    unfollowed: Nebesekama
   scheduled_statuses:
     over_daily_limit: Jūs pasieketė limitą (%{limit}) galimų toot'ų per dieną
     over_total_limit: Jūs pasieketė %{limit} limitą galimų toot'ų
@@ -751,40 +610,12 @@ lt:
     activity: Paskutinė veikla
     browser: Naršyklė
     browsers:
-      alipay: Alipay
-      blackberry: Blackberry
-      chrome: Chrome
-      edge: Microsoft Edge
-      electron: Electron
-      firefox: Firefox
       generic: Nežinoma naršyklė
-      ie: Internet Explorer
-      micro_messenger: MicroMessenger
-      nokia: Nokia S40 Ovi Browser
-      opera: Opera
-      otter: Otter
-      phantom_js: PhantomJS
-      qq: QQ Browser
-      safari: Safari
-      uc_browser: UCBrowser
-      weibo: Weibo
     current_session: Dabartinė sesija
     description: "%{browser} ant %{platform}"
     explanation: Čia rodomos web naršyklės prijungtos prie Jūsų Mastodon paskyros.
-    ip: IP
     platforms:
-      adobe_air: Adobe Air
-      android: Android
-      blackberry: Blackberry
-      chrome_os: ChromeOS
-      firefox_os: Firefox OS
-      ios: iOS
-      linux: Linux
-      mac: Mac
       other: nežinoma platforma
-      windows: Windows
-      windows_mobile: Windows Mobile
-      windows_phone: Windows Phone
     revoke: Atšaukti
     revoke_success: Sesija sėkmingai atšaukta
     title: Sesijos
@@ -804,20 +635,8 @@ lt:
   statuses:
     attached:
       description: 'Pridėta: %{attached}'
-      image:
-        few: "%{count} nuotraukos"
-        one: "%{count} nuotrauka"
-        other: "%{count} nuotraukos"
-      video:
-        few: "%{count} vaizdo įrašai"
-        one: "%{count} video"
-        other: "%{count} vaizdo įrašai"
     boosted_from_html: Pakelta iš %{acct_link}
     content_warning: 'Turinio įspėjimas: %{warning}'
-    disallowed_hashtags:
-      few: 'rasti neleistini saitąžodžiai: %{tags}'
-      one: 'rastas neleistinas saitažodis : %{tags}'
-      other: 'rasti neleistini saitąžodžiai: %{tags}'
     language_detection: Automatiškai nustatyti kalbą
     open_in_web: Atidaryti naudojan Web
     over_character_limit: pasiektas %{max} simbolių limitas
@@ -828,7 +647,6 @@ lt:
       reblog: Pakeltos žinutės negali būti prisegtos
     show_more: Daugiau
     sign_in_to_participate: Prisijunkite jeigu norite dalyvauti pokalbyje
-    title: '%{name}: "%{quote}"'
     visibilities:
       private: Tik sekėjams
       private_long: Rodyti tik sekėjams
@@ -925,26 +743,15 @@ lt:
     contrast: Mastodon (Didelio Kontrasto)
     default: Mastodon (Tamsus)
     mastodon-light: Mastodon (Šviesus)
-  time:
-    formats:
-      default: "%b %d, %Y, %H:%M"
-      month: "%b %Y"
   two_factor_authentication:
-    code_hint: Įveskite autentikacijos aplikacijos sugeneruotą kodą kad galėtumete tęsti
-    description_html: Jeigu įjungiate <strong>dviejų veiksnių autentikaciją</strong>, prisijungiant jums reikės turėti su savimi savo telefoną, kuris jums generuos prisijungimo žetonus.
     disable: Išjungti
-    enable: Įjungti
     enabled: Dviejų veiksnių autentikacija įjungta
     enabled_success: Dviejų veiksnių autentikacija sėkmingai įjungta
     generate_recovery_codes: Sugeneruoti atkūrimo kodus
-    instructions_html: "<strong>Nuskenuokite šį QR kodą į Google Autentikatorių arba panašią TOTP aplikaciją jūsų telefone</strong>. Nuo šiol, ši aplikacija jums generuos žetonus, kurių reikės norint prisijungti."
     lost_recovery_codes: Atkūrimo kodai jums leidžia atgauti prisijungimą prie Jūsų paskyros, jeigu prarandate telefoną. Jeigu praradote atkūrimo kodus, juos galite sugeneruoti čia. Jūsų senieji atkūrimo kodai nebeveiks.
-    manual_instructions: 'Jeigu jūs negalite nuskenuoti QR kodo ir turite jį įvesti savarankiškai, štai čia yra tekstas šiam kodui:'
     recovery_codes: Atsarginio atkūrimo kodai
     recovery_codes_regenerated: Atkūrimo kodai sėkmingai sugeneruoti
     recovery_instructions_html: Jeigu prarandate prieiga prie telefono, jūs galite naudoti atkūrimo kodus esančius žemiau, kad atgautumėte priega prie savo paskyros.<strong>Laikykite atkūrimo kodus saugiai</strong> Pavyzdžiui, galite norėti juos išspausdinti, ir laikyti kartu su kitais svarbiais dokumentais.
-    setup: Nustatyti
-    wrong_code: Koda netinkamas! Ar serverio laikas ir prietaiso laikas vienodi?
   user_mailer:
     backup_ready:
       explanation: Jūs prašėte pilnos Mastodon paskyros atsarginės kopijos. Ji paruošta parsisiuntimui!
@@ -985,7 +792,6 @@ lt:
       title: Sveiki atvykę, %{name}!
   users:
     follow_limit_reached: Negalite sekti daugiau nei %{limit} žmonių
-    invalid_email: Netinkamas el pašto adresas
     invalid_otp_token: Netinkamas dviejų veiksnių kodas
     otp_lost_help_html: Jeigu praradote prieiga prie abiejų, susisiekite su mumis per %{email}
     seamless_external_login: Jūs esate prisijungę per išorini įrenginį, todėl slaptąžodis ir el pašto nustatymai neprieinami.

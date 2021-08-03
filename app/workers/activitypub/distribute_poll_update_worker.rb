@@ -2,8 +2,9 @@
 
 class ActivityPub::DistributePollUpdateWorker
   include Sidekiq::Worker
+  include Payloadable
 
-  sidekiq_options queue: 'push', unique: :until_executed, retry: 0
+  sidekiq_options queue: 'push', lock: :until_executed, retry: 0
 
   def perform(status_id)
     @status  = Status.find(status_id)
@@ -41,20 +42,8 @@ class ActivityPub::DistributePollUpdateWorker
     @inboxes
   end
 
-  def signed_payload
-    Oj.dump(ActivityPub::LinkedDataSignature.new(unsigned_payload).sign!(@account))
-  end
-
-  def unsigned_payload
-    ActiveModelSerializers::SerializableResource.new(
-      @status,
-      serializer: ActivityPub::UpdatePollSerializer,
-      adapter: ActivityPub::Adapter
-    ).as_json
-  end
-
   def payload
-    @payload ||= @status.distributable? ? signed_payload : Oj.dump(unsigned_payload)
+    @payload ||= Oj.dump(serialize_payload(@status, ActivityPub::UpdatePollSerializer, signer: @account))
   end
 
   def relay!

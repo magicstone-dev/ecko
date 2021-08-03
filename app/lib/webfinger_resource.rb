@@ -3,6 +3,8 @@
 class WebfingerResource
   attr_reader :resource
 
+  class InvalidRequest < StandardError; end
+
   def initialize(resource)
     @resource = resource
   end
@@ -14,7 +16,7 @@ class WebfingerResource
     when /\@/
       username_from_acct
     else
-      raise(ActiveRecord::RecordNotFound)
+      raise InvalidRequest
     end
   end
 
@@ -23,9 +25,15 @@ class WebfingerResource
   def username_from_url
     if account_show_page?
       path_params[:username]
+    elsif instance_actor_page?
+      Rails.configuration.x.local_domain
     else
       raise ActiveRecord::RecordNotFound
     end
+  end
+
+  def instance_actor_page?
+    path_params[:controller] == 'instance_actors'
   end
 
   def account_show_page?

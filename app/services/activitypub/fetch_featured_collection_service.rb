@@ -4,13 +4,12 @@ class ActivityPub::FetchFeaturedCollectionService < BaseService
   include JsonLdHelper
 
   def call(account)
-    return if account.featured_collection_url.blank?
+    return if account.featured_collection_url.blank? || account.suspended? || account.local?
 
     @account = account
     @json    = fetch_resource(@account.featured_collection_url, true)
 
     return unless supported_context?
-    return if @account.suspended? || @account.local?
 
     case @json['type']
     when 'Collection', 'CollectionPage'
@@ -24,12 +23,8 @@ class ActivityPub::FetchFeaturedCollectionService < BaseService
 
   def process_items(items)
     status_ids = items.map { |item| value_or_id(item) }
-                      .reject { |uri| ActivityPub::TagManager.instance.local_uri?(uri) }
-                      .map { |uri| ActivityPub::FetchRemoteStatusService.new.call(uri) }
-                      .compact
-                      .select { |status| status.account_id == @account.id }
-                      .map(&:id)
-
+                      .filter_map { |uri| ActivityPub::FetchRemoteStatusService.new.call(uri) unless ActivityPub::TagManager.instance.local_uri?(uri) }
+                      .filter_map { |status| status.id if status.account_id == @account.id }
     to_remove = []
     to_add    = status_ids
 

@@ -13,13 +13,13 @@ class Api::V1::FollowRequestsController < Api::BaseController
 
   def authorize
     AuthorizeFollowService.new.call(account, current_account)
-    NotifyService.new.call(current_account, Follow.find_by(account: account, target_account: current_account))
-    render_empty
+    NotifyService.new.call(current_account, :follow, Follow.find_by(account: account, target_account: current_account))
+    render json: account, serializer: REST::RelationshipSerializer, relationships: relationships
   end
 
   def reject
     RejectFollowService.new.call(account, current_account)
-    render_empty
+    render json: account, serializer: REST::RelationshipSerializer, relationships: relationships
   end
 
   private
@@ -28,12 +28,16 @@ class Api::V1::FollowRequestsController < Api::BaseController
     Account.find(params[:id])
   end
 
+  def relationships(**options)
+    AccountRelationshipsPresenter.new([params[:id]], current_user.account_id, **options)
+  end
+
   def load_accounts
     default_accounts.merge(paginated_follow_requests).to_a
   end
 
   def default_accounts
-    Account.includes(:follow_requests, :account_stat).references(:follow_requests)
+    Account.without_suspended.includes(:follow_requests, :account_stat).references(:follow_requests)
   end
 
   def paginated_follow_requests

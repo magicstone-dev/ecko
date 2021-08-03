@@ -1,9 +1,9 @@
 import React from 'react';
 import AutosuggestAccountContainer from '../features/compose/containers/autosuggest_account_container';
 import AutosuggestEmoji from './autosuggest_emoji';
+import AutosuggestHashtag from './autosuggest_hashtag';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import PropTypes from 'prop-types';
-import { isRtl } from '../rtl';
 import ImmutablePureComponent from 'react-immutable-pure-component';
 import Textarea from 'react-textarea-autosize';
 import classNames from 'classnames';
@@ -138,8 +138,11 @@ export default class AutosuggestTextarea extends ImmutablePureComponent {
     this.setState({ suggestionsHidden: true, focused: false });
   }
 
-  onFocus = () => {
+  onFocus = (e) => {
     this.setState({ focused: true });
+    if (this.props.onFocus) {
+      this.props.onFocus(e);
+    }
   }
 
   onSuggestionClick = (e) => {
@@ -170,15 +173,15 @@ export default class AutosuggestTextarea extends ImmutablePureComponent {
     const { selectedSuggestion } = this.state;
     let inner, key;
 
-    if (typeof suggestion === 'object') {
+    if (suggestion.type === 'emoji') {
       inner = <AutosuggestEmoji emoji={suggestion} />;
       key   = suggestion.id;
-    } else if (suggestion[0] === '#') {
-      inner = suggestion;
-      key   = suggestion;
-    } else {
-      inner = <AutosuggestAccountContainer id={suggestion} />;
-      key   = suggestion;
+    } else if (suggestion.type === 'hashtag') {
+      inner = <AutosuggestHashtag tag={suggestion} />;
+      key   = suggestion.name;
+    } else if (suggestion.type === 'account') {
+      inner = <AutosuggestAccountContainer id={suggestion.id} />;
+      key   = suggestion.id;
     }
 
     return (
@@ -189,42 +192,42 @@ export default class AutosuggestTextarea extends ImmutablePureComponent {
   }
 
   render () {
-    const { value, suggestions, disabled, placeholder, onKeyUp, autoFocus } = this.props;
+    const { value, suggestions, disabled, placeholder, onKeyUp, autoFocus, children } = this.props;
     const { suggestionsHidden } = this.state;
-    const style = { direction: 'ltr' };
 
-    if (isRtl(value)) {
-      style.direction = 'rtl';
-    }
+    return [
+      <div className='compose-form__autosuggest-wrapper' key='autosuggest-wrapper'>
+        <div className='autosuggest-textarea'>
+          <label>
+            <span style={{ display: 'none' }}>{placeholder}</span>
 
-    return (
-      <div className='autosuggest-textarea'>
-        <label>
-          <span style={{ display: 'none' }}>{placeholder}</span>
+            <Textarea
+              ref={this.setTextarea}
+              className='autosuggest-textarea__textarea'
+              disabled={disabled}
+              placeholder={placeholder}
+              autoFocus={autoFocus}
+              value={value}
+              onChange={this.onChange}
+              onKeyDown={this.onKeyDown}
+              onKeyUp={onKeyUp}
+              onFocus={this.onFocus}
+              onBlur={this.onBlur}
+              onPaste={this.onPaste}
+              dir='auto'
+              aria-autocomplete='list'
+            />
+          </label>
+        </div>
+        {children}
+      </div>,
 
-          <Textarea
-            inputRef={this.setTextarea}
-            className='autosuggest-textarea__textarea'
-            disabled={disabled}
-            placeholder={placeholder}
-            autoFocus={autoFocus}
-            value={value}
-            onChange={this.onChange}
-            onKeyDown={this.onKeyDown}
-            onKeyUp={onKeyUp}
-            onFocus={this.onFocus}
-            onBlur={this.onBlur}
-            onPaste={this.onPaste}
-            style={style}
-            aria-autocomplete='list'
-          />
-        </label>
-
+      <div className='autosuggest-textarea__suggestions-wrapper' key='suggestions-wrapper'>
         <div className={`autosuggest-textarea__suggestions ${suggestionsHidden || suggestions.isEmpty() ? '' : 'autosuggest-textarea__suggestions--visible'}`}>
           {suggestions.map(this.renderSuggestion)}
         </div>
-      </div>
-    );
+      </div>,
+    ];
   }
 
 }

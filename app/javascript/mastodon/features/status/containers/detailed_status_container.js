@@ -1,7 +1,6 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import DetailedStatus from '../components/detailed_status';
-import { makeGetStatus } from '../../../selectors';
+import { makeGetStatus, makeGetPictureInPicture } from '../../../selectors';
 import {
   replyCompose,
   mentionCompose,
@@ -15,7 +14,6 @@ import {
   pin,
   unpin,
 } from '../../../actions/interactions';
-import { blockAccount } from '../../../actions/accounts';
 import {
   muteStatus,
   unmuteStatus,
@@ -24,9 +22,11 @@ import {
   revealStatus,
 } from '../../../actions/statuses';
 import { initMuteModal } from '../../../actions/mutes';
+import { initBlockModal } from '../../../actions/blocks';
+import { initBoostModal } from '../../../actions/boosts';
 import { initReport } from '../../../actions/reports';
 import { openModal } from '../../../actions/modal';
-import { defineMessages, injectIntl, FormattedMessage } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 import { boostModal, deleteModal } from '../../../initial_state';
 import { showAlertForError } from '../../../actions/alerts';
 
@@ -35,18 +35,18 @@ const messages = defineMessages({
   deleteMessage: { id: 'confirmations.delete.message', defaultMessage: 'Are you sure you want to delete this status?' },
   redraftConfirm: { id: 'confirmations.redraft.confirm', defaultMessage: 'Delete & redraft' },
   redraftMessage: { id: 'confirmations.redraft.message', defaultMessage: 'Are you sure you want to delete this status and re-draft it? Favourites and boosts will be lost, and replies to the original post will be orphaned.' },
-  blockConfirm: { id: 'confirmations.block.confirm', defaultMessage: 'Block' },
   replyConfirm: { id: 'confirmations.reply.confirm', defaultMessage: 'Reply' },
   replyMessage: { id: 'confirmations.reply.message', defaultMessage: 'Replying now will overwrite the message you are currently composing. Are you sure you want to proceed?' },
-  blockAndReport: { id: 'confirmations.block.block_and_report', defaultMessage: 'Block & Report' },
 });
 
 const makeMapStateToProps = () => {
   const getStatus = makeGetStatus();
+  const getPictureInPicture = makeGetPictureInPicture();
 
   const mapStateToProps = (state, props) => ({
     status: getStatus(state, props),
     domain: state.getIn(['meta', 'domain']),
+    pictureInPicture: getPictureInPicture(state, props),
   });
 
   return mapStateToProps;
@@ -69,8 +69,8 @@ const mapDispatchToProps = (dispatch, { intl }) => ({
     });
   },
 
-  onModalReblog (status) {
-    dispatch(reblog(status));
+  onModalReblog (status, privacy) {
+    dispatch(reblog(status, privacy));
   },
 
   onReblog (status, e) {
@@ -80,7 +80,7 @@ const mapDispatchToProps = (dispatch, { intl }) => ({
       if (e.shiftKey || !boostModal) {
         this.onModalReblog(status);
       } else {
-        dispatch(openModal('BOOST', { status, onReblog: this.onModalReblog }));
+        dispatch(initBoostModal({ status, onReblog: this.onModalReblog }));
       }
     }
   },
@@ -132,22 +132,13 @@ const mapDispatchToProps = (dispatch, { intl }) => ({
     dispatch(openModal('MEDIA', { media, index }));
   },
 
-  onOpenVideo (media, time) {
-    dispatch(openModal('VIDEO', { media, time }));
+  onOpenVideo (media, options) {
+    dispatch(openModal('VIDEO', { media, options }));
   },
 
   onBlock (status) {
     const account = status.get('account');
-    dispatch(openModal('CONFIRM', {
-      message: <FormattedMessage id='confirmations.block.message' defaultMessage='Are you sure you want to block {name}?' values={{ name: <strong>@{account.get('acct')}</strong> }} />,
-      confirm: intl.formatMessage(messages.blockConfirm),
-      onConfirm: () => dispatch(blockAccount(account.get('id'))),
-      secondary: intl.formatMessage(messages.blockAndReport),
-      onSecondary: () => {
-        dispatch(blockAccount(account.get('id')));
-        dispatch(initReport(account, status));
-      },
-    }));
+    dispatch(initBlockModal(account));
   },
 
   onReport (status) {

@@ -2,6 +2,8 @@
 
 class ActivityPub::DeliveryWorker
   include Sidekiq::Worker
+  include RoutingHelper
+  include JsonLdHelper
 
   STOPLIGHT_FAILURE_THRESHOLD = 10
   STOPLIGHT_COOLDOWN = 60
@@ -11,33 +13,52 @@ class ActivityPub::DeliveryWorker
   HEADERS = { 'Content-Type' => 'application/activity+json' }.freeze
 
   def perform(json, source_account_id, inbox_url, options = {})
-    return if DeliveryFailureTracker.unavailable?(inbox_url)
+    return unless DeliveryFailureTracker.available?(inbox_url)
 
     @options        = options.with_indifferent_access
     @json           = json
     @source_account = Account.find(source_account_id)
     @inbox_url      = inbox_url
+    @host           = Addressable::URI.parse(inbox_url).normalized_site
+    @performed      = false
 
     perform_request
-
-    failure_tracker.track_success!
-  rescue => e
-    failure_tracker.track_failure!
-    raise e.class, "Delivery failed for #{inbox_url}: #{e.message}", e.backtrace[0]
+  ensure
+    if @inbox_url.present?
+      if @performed
+        failure_tracker.track_success!
+      else
+        failure_tracker.track_failure!
+      end
+    end
   end
 
   private
 
-  def build_request
-    request = Request.new(:post, @inbox_url, body: @json)
-    request.on_behalf_of(@source_account, :uri, sign_with: @options[:sign_with])
-    request.add_headers(HEADERS)
+  def build_request(http_client)
+    Request.new(:post, @inbox_url, body: @json, http_client: http_client).tap do |request|
+      request.on_behalf_of(@source_account, :uri, sign_with: @options[:sign_with])
+      request.add_headers(HEADERS)
+      request.add_headers({ 'Collection-Synchronization' => synchronization_header }) if ENV['DISABLE_FOLLOWERS_SYNCHRONIZATION'] != 'true' && @options[:synchronize_followers]
+    end
+  end
+
+  def synchronization_header
+    "collectionId=\"#{account_followers_url(@source_account)}\", digest=\"#{@source_account.remote_followers_hash(inbox_url_prefix)}\", url=\"#{account_followers_synchronization_url(@source_account)}\""
+  end
+
+  def inbox_url_prefix
+    @inbox_url[/http(s?):\/\/[^\/]+\//]
   end
 
   def perform_request
     light = Stoplight(@inbox_url) do
-      build_request.perform do |response|
-        raise Mastodon::UnexpectedResponseError, response unless response_successful?(response) || response_error_unsalvageable?(response)
+      request_pool.with(@host) do |http_client|
+        build_request(http_client).perform do |response|
+          raise Mastodon::UnexpectedResponseError, response unless response_successful?(response) || response_error_unsalvageable?(response)
+
+          @performed = true
+        end
       end
     end
 
@@ -46,15 +67,11 @@ class ActivityPub::DeliveryWorker
          .run
   end
 
-  def response_successful?(response)
-    (200...300).cover?(response.code)
-  end
-
-  def response_error_unsalvageable?(response)
-    (400...500).cover?(response.code) && ![401, 408, 429].include?(response.code)
-  end
-
   def failure_tracker
     @failure_tracker ||= DeliveryFailureTracker.new(@inbox_url)
+  end
+
+  def request_pool
+    RequestPool.current
   end
 end

@@ -12,15 +12,17 @@ class UpdateAccountService < BaseService
       check_links(account)
       process_hashtags(account)
     end
-  rescue Mastodon::DimensionsValidationError => de
-    account.errors.add(:avatar, de.message)
+  rescue Mastodon::DimensionsValidationError, Mastodon::StreamValidationError => e
+    account.errors.add(:avatar, e.message)
     false
   end
 
   private
 
   def authorize_all_follow_requests(account)
-    AuthorizeFollowWorker.push_bulk(FollowRequest.where(target_account: account).select(:account_id, :target_account_id)) do |req|
+    follow_requests = FollowRequest.where(target_account: account)
+    follow_requests = follow_requests.preload(:account).select { |req| !req.account.silenced? }
+    AuthorizeFollowWorker.push_bulk(follow_requests) do |req|
       [req.account_id, req.target_account_id]
     end
   end

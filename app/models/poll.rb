@@ -16,6 +16,7 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  lock_version    :integer          default(0), not null
+#  voters_count    :bigint(8)
 #
 
 class Poll < ApplicationRecord
@@ -24,7 +25,7 @@ class Poll < ApplicationRecord
   belongs_to :account
   belongs_to :status
 
-  has_many :votes, class_name: 'PollVote', inverse_of: :poll, dependent: :destroy
+  has_many :votes, class_name: 'PollVote', inverse_of: :poll, dependent: :delete_all
 
   has_many :notifications, as: :activity, dependent: :destroy
 
@@ -35,7 +36,7 @@ class Poll < ApplicationRecord
   scope :attached, -> { where.not(status_id: nil) }
   scope :unattached, -> { where(status_id: nil) }
 
-  before_validation :prepare_options
+  before_validation :prepare_options, if: :local?
   before_validation :prepare_votes_count
 
   after_initialize :prepare_cached_tallies
@@ -54,6 +55,10 @@ class Poll < ApplicationRecord
     account.id == account_id || votes.where(account: account).exists?
   end
 
+  def own_votes(account)
+    votes.where(account: account).pluck(:choice)
+  end
+
   delegate :local?, to: :account
 
   def remote?
@@ -68,10 +73,12 @@ class Poll < ApplicationRecord
     attributes :id, :title, :votes_count, :poll
 
     def initialize(poll, id, title, votes_count)
-      @poll        = poll
-      @id          = id
-      @title       = title
-      @votes_count = votes_count
+      super(
+        poll:        poll,
+        id:          id,
+        title:       title,
+        votes_count: votes_count,
+      )
     end
   end
 

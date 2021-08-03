@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 class ActivityPub::NoteSerializer < ActivityPub::Serializer
-  context_extensions :atom_uri, :conversation, :sensitive,
-                     :hashtag, :emoji, :focal_point, :blurhash
+  context_extensions :atom_uri, :conversation, :sensitive, :voters_count
 
   attributes :id, :type, :summary,
              :in_reply_to, :published, :url,
@@ -23,6 +22,8 @@ class ActivityPub::NoteSerializer < ActivityPub::Serializer
 
   attribute :end_time, if: :poll_and_expires?
   attribute :closed, if: :poll_and_expired?
+
+  attribute :voters_count, if: :poll_and_voters_count?
 
   def id
     ActivityPub::TagManager.instance.uri_for(object)
@@ -55,7 +56,7 @@ class ActivityPub::NoteSerializer < ActivityPub::Serializer
         type: :unordered,
         part_of: ActivityPub::TagManager.instance.replies_uri_for(object),
         items: replies.map(&:second),
-        next: last_id ? ActivityPub::TagManager.instance.replies_uri_for(object, page: true, min_id: last_id) : nil
+        next: last_id ? ActivityPub::TagManager.instance.replies_uri_for(object, page: true, min_id: last_id) : ActivityPub::TagManager.instance.replies_uri_for(object, page: true, only_other_accounts: true)
       )
     )
   end
@@ -92,6 +93,10 @@ class ActivityPub::NoteSerializer < ActivityPub::Serializer
 
   def cc
     ActivityPub::TagManager.instance.cc(object)
+  end
+
+  def sensitive
+    object.account.sensitized? || object.sensitive
   end
 
   def virtual_tags
@@ -142,6 +147,10 @@ class ActivityPub::NoteSerializer < ActivityPub::Serializer
 
   alias end_time closed
 
+  def voters_count
+    object.preloadable_poll.voters_count
+  end
+
   def poll_and_expires?
     object.preloadable_poll&.expires_at&.present?
   end
@@ -150,11 +159,21 @@ class ActivityPub::NoteSerializer < ActivityPub::Serializer
     object.preloadable_poll&.expired?
   end
 
+  def poll_and_voters_count?
+    object.preloadable_poll&.voters_count
+  end
+
   class MediaAttachmentSerializer < ActivityPub::Serializer
+    context_extensions :blurhash, :focal_point
+
     include RoutingHelper
 
     attributes :type, :media_type, :url, :name, :blurhash
     attribute :focal_point, if: :focal_point?
+    attribute :width, if: :width?
+    attribute :height, if: :height?
+
+    has_one :icon, serializer: ActivityPub::ImageSerializer, if: :thumbnail?
 
     def type
       'Document'
@@ -179,6 +198,30 @@ class ActivityPub::NoteSerializer < ActivityPub::Serializer
     def focal_point
       [object.file.meta['focus']['x'], object.file.meta['focus']['y']]
     end
+
+    def icon
+      object.thumbnail
+    end
+
+    def thumbnail?
+      object.thumbnail.present?
+    end
+
+    def width?
+      object.file.meta&.dig('original', 'width').present?
+    end
+
+    def height?
+      object.file.meta&.dig('original', 'height').present?
+    end
+
+    def width
+      object.file.meta.dig('original', 'width')
+    end
+
+    def height
+      object.file.meta.dig('original', 'height')
+    end
   end
 
   class MentionSerializer < ActivityPub::Serializer
@@ -198,6 +241,8 @@ class ActivityPub::NoteSerializer < ActivityPub::Serializer
   end
 
   class TagSerializer < ActivityPub::Serializer
+    context_extensions :hashtag
+
     include RoutingHelper
 
     attributes :type, :href, :name

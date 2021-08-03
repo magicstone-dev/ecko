@@ -4,36 +4,26 @@ he:
     about_hashtag_html: אלו סטטוסים פומביים המתוייגים בתור<strong>#%{hashtag}</strong>. ניתן להגיב, להדהד או לחבב אותם אם יש לך חשבון בכל מקום בפדרציה.
     about_mastodon_html: מסטודון היא רשת חברתית <em>חופשית, מבוססת תוכנה חופשית ("קוד פתוח")</em>. כאלטרנטיבה <em>בלתי ריכוזית</em> לפלטפרומות המסחריות, מסטודון מאפשרת להמנע מהסיכונים הנלווים להפקדת התקשורת שלך בידי חברה יחידה. שמת את מבטחך בשרת אחד &mdash; לא משנה במי בחרת, תמיד אפשר לדבר עם כל שאר המשתמשים. לכל מי שרוצה יש את האפשרות להקים שרת מסטודון עצמאי, ולהשתתף ב<em>רשת החברתית</em> באופן חלק.
     about_this: אודות שרת זה
-    api: API
     apps: יישומונים לנייד
     contact: יצירת קשר
     contact_missing: ללא הגדרה
     contact_unavailable: לא רלוונטי/חסר
     documentation: תיעוד
-    extended_description_html: |
-      <h3>מקום טוב לכללים</h3>
-      <p>התיאור המורחב טרם הוגדר.</p>
-    generic_description: "%{domain} הוא שרת אחד בתוך הרשת"
     hosted_on: מסטודון שיושב בכתובת %{domain}
     learn_more: מידע נוסף
     source_code: קוד מקור
-    status_count_after: הודעות
     status_count_before: שכתבו
-    user_count_after: משתמשים
     user_count_before: ביתם של
     what_is_mastodon: מה זה מסטודון?
   accounts:
     follow: לעקוב
-    followers: עוקבים
     following: נעקבים
     media: מדיה
     moved_html: "%{name} עבר(ה) אל %{new_profile_link}:"
     nothing_here: אין פה שום דבר!
     people_followed_by: הנעקבים של %{name}
     people_who_follow: העוקבים של %{name}
-    posts: הודעות
     posts_with_replies: חצרוצים ותגובות
-    reserved_username: שם המשתמש שמור
     roles:
       admin: מנהל
       moderator: מנחה
@@ -61,9 +51,7 @@ he:
       email_status: סטטוס דוא"ל
       enable: לאפשר
       enabled: מאופשר
-      feed_url: כתובת פיד
       followers: עוקבים
-      followers_url: כתובת עוקבים
       follows: נעקבים
       inbox_url: כתובת תיבה נכנסת
       ip: כתובת IP
@@ -84,9 +72,7 @@ he:
       most_recent_activity: פעילות עדכנית
       most_recent_ip: כתובות אחרונות
       not_subscribed: לא רשום
-      outbox_url: כתובת תיבת דואר יוצא
       perform_full_suspension: ביצוע השעייה מלאה
-      profile_url: כתובת פרופיל
       promote: להעלות בדרגה
       protocol: פרטיכל
       public: פומבי
@@ -104,7 +90,6 @@ he:
         admin: מנהל מערכת
         moderator: מנחה דיונים
         user: משתמש(ת)
-      salmon_url: כתובת סלמון
       search: חיפוש
       shared_inbox_url: תיבה משותפת לדואר נכנס
       show:
@@ -119,17 +104,6 @@ he:
       unsubscribe: הפסקת הרשמה
       username: שם משתמש
       web: רשת
-    action_logs:
-      actions:
-        confirm_user: יש אישור מאת %{name} על כתובת הדוא"ל של %{target}
-        create_custom_emoji: "%{name} תרמה/תרם אמוג'י חדש %{target}"
-        create_domain_block: "%{name} חסמה/חסם את שם המתחם %{target}"
-        create_email_domain_block: מתחם דוא"ל %{target} הוסף לרשימה השחורה ע"י %{name}
-        demote_user: '%{name} הורד(ה) בדרגה ע"י %{target}'
-        destroy_domain_block: החסימה על מתחם %{target} הוסרה ע"י %{name}
-        destroy_email_domain_block: מתחם דוא"ל %{target} הוכנס לרשימה הלבנה ע"י %{name}
-        destroy_status: ההודעה של  %{target} הוסרה ע"י %{name}
-        disable_2fa_user: אימות דו שלבי של  %{target} הוסר ע"י %{name}
     domain_blocks:
       add_new: הוספת חדש
       created_msg: חסימת שרת בתהליך
@@ -146,9 +120,6 @@ he:
       reject_media: חסימת קבצי מדיה
       reject_media_hint: מסירה קבצי מדיה השמורים מקומית ומונעת מהורדת קבצים נוספים בעתיד. לא רלוונטי להשעיות
       show:
-        affected_accounts:
-          one: חשבון אחד במסד הנתונים מושפע
-          other: "%{count} חשהבונות במסד הנתונים מושפעים"
         retroactive:
           silence: הסרת השתקה מכל החשבונות על שרת זה
           suspend: הסרת השעייה מכל החשבונות על שרת זה
@@ -185,13 +156,6 @@ he:
         title: תיאור אתר מורחב
       site_title: כותרת האתר
       title: הגדרות אתר
-    subscriptions:
-      callback_url: קישורית Callback
-      confirmed: מאושר
-      expires_in: פג תוקף ב-
-      last_delivery: משלוח אחרון
-      title: מנוי WebSub
-      topic: נושא
     title: ניהול
   application_mailer:
     settings: 'שינוי הגדרות דוא"ל: %{link}'
@@ -227,25 +191,24 @@ he:
       x_months: "%{count} חודשים"
       x_seconds: "%{count} שניות"
   errors:
+    '400': The request you submitted was invalid or malformed.
     '403': חסרות לך הרשאות לצפיה בעמוד זה.
     '404': הדף המבוקש לא קיים.
+    '406': This page is not available in the requested format.
     '410': הדף המבוקש כבר לא קיים.
     '422':
       content: בדיקת אבטחה נכשלה. החסמת עוגיותיך מפנינו?
       title: בדיקת בטיחות נכשלה
     '429': הוחנק
+    '500': 
+    '503': The page could not be served due to a temporary server failure.
   exports:
     blocks: רשימת חסימות
-    csv: CSV
-    follows: רשימת נעקבים
     mutes: רשימת השתקות
     storage: אחסון מדיה
   generic:
     changes_saved_msg: השינויים נשמרו בהצלחה!
     save_changes: שמור שינויים
-    validation_errors:
-      one: משהו לא לגמרי בסדר עדיין! אנא הציצו על השגיאה מטה
-      other: משהו לא לגמרי בסדר עדיין! אנא הציצו על %{count} השגיאות מטה
   imports:
     preface: ניתן ליבא מידע מסויים כגון כל הנעקבים או המשתמשים החסומים לתוך חשבונך על שרת זה, מתוך קבצים שנוצרו על ידי יצוא משרת אחר כגון רשימת הנעקבים והחסומים שלך.
     success: כל המידע יובא בהצלחה, ויעובד בזמן הקרוב
@@ -262,12 +225,6 @@ he:
     digest:
       body: להלן סיכום זריז של הדברים שקרו על מאז ביקורך האחרון ב-%{since}
       mention: "%{name} פנה אליך ב:"
-      new_followers_summary:
-        one: נוסף לך עוקב! סחתיין!
-        other: נוספו לך %{count} עוקבים חדשים! מעולה!
-      subject:
-        one: "התראה חדשה אחת מאז ביקורך האחרון \U0001F418"
-        other: "%{count} התראות חדשות \U0001F418"
     favourite:
       body: 'חצרוצך חובב על ידי %{name}:'
       subject: חצרוצך חובב על ידי %{name}
@@ -283,21 +240,9 @@ he:
     reblog:
       body: 'חצרוצך הודהד על ידי %{name}:'
       subject: חצרוצך הודהד על ידי%{name}
-  number:
-    human:
-      decimal_units:
-        format: "%n%u"
-        units:
-          billion: B
-          million: M
-          quadrillion: Q
-          thousand: K
-          trillion: T
-          unit: ''
   pagination:
     next: הבא
     prev: הקודם
-    truncate: "&hellip;"
   remote_follow:
     acct: נא להקליד שם_משתמש@קהילה מהם ברצונך לעקוב
     missing_resource: לא ניתן למצוא קישורית להפניה לחשבונך
@@ -329,19 +274,11 @@ he:
     formats:
       default: "%d %b %Y, %H:%M"
   two_factor_authentication:
-    code_hint: לאישור, יש להקליד את הקוד שיוצר על ידי ישום האימות
-    description_html: לאחר הפעלת <strong>אימות דו-שלבי</strong>, ניתן יהיה להכנס רק כל עוד ברשותך טלפון, שייצר עבורך קודים שיאפשרו כניסה.
     disable: כיבוי
-    enable: הפעלה
     enabled_success: אימות דו-שלבי הופעל בהצלחה
     generate_recovery_codes: ייצור קודי אחזור
-    instructions_html: "<strong>יש לסרוק קוד QR זה בעזרת Google Authenticator או ישום TOTP דומה על טלפונך</strong>. מעתה ואילך, ישום זה יוכל ליצר קודים לשימוש לצורך כניסה."
     lost_recovery_codes: קודי האחזור מאפשרים אחזור גישה לחשבון במידה ומכשירך אבד. במידה וקודי האחזור אבדו, ניתן לייצרם מחדש כאן. תוקף קודי האחזור הישנים יפוג.
-    manual_instructions: 'במידה ולא ניתן לסרוק את קוד ה-QR אלא יש צורך להקליד אותו ידנית, להלן סוד כמוס בלתי מוצפן:'
     recovery_codes_regenerated: קודי האחזור יוצרו בהצלחה
     recovery_instructions_html: במידה והגישה למכשירך תאבד, ניתן לייצר קודי אחזור למטה על מנת לאחזר גישה לחשבונך בכל עת. <strong>נא לשמור על קודי הגישה במקום בטוח</strong>. לדוגמא על ידי הדפסתם ושמירתם עם מסמכים חשובים אחרים, או שימוש בתוכנה ייעודית לניהול סיסמאות וסודות.
-    setup: הכנה
-    wrong_code: הקוד שהוזן שגוי! האם הזמן בשרת והזמן במכשירך נכונים?
   users:
-    invalid_email: כתובת הדוא"ל אינה חוקית
     invalid_otp_token: קוד דו-שלבי שגוי

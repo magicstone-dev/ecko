@@ -7,7 +7,7 @@ class ManifestSerializer < ActiveModel::Serializer
   attributes :name, :short_name, :description,
              :icons, :theme_color, :background_color,
              :display, :start_url, :scope,
-             :share_target
+             :share_target, :shortcuts
 
   def name
     object.site_title
@@ -55,11 +55,51 @@ class ManifestSerializer < ActiveModel::Serializer
     {
       url_template: 'share?title={title}&text={text}&url={url}',
       action: 'share',
+      method: 'GET',
+      enctype: 'application/x-www-form-urlencoded',
       params: {
         title: 'title',
         text: 'text',
         url: 'url',
       },
     }
+  end
+
+  def shortcuts
+    [
+      {
+        name: 'New toot',
+        url: '/web/statuses/new',
+        icons: [
+          {
+            src: '/shortcuts/new-status.png',
+            type: 'image/png',
+            sizes: '192x192',
+          },
+        ],
+      },
+      {
+        name: 'Notifications',
+        url: '/web/notifications',
+        icons: [
+          {
+            src: '/shortcuts/notifications.png',
+            type: 'image/png',
+            sizes: '192x192',
+          },
+        ],
+      },
+      {
+        name: 'Direct messages',
+        url: '/web/timelines/direct',
+        icons: [
+          {
+            src: '/shortcuts/direct.png',
+            type: 'image/png',
+            sizes: '192x192',
+          },
+        ],
+      },
+    ]
   end
 end

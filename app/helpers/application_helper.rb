@@ -7,6 +7,24 @@ module ApplicationHelper
     follow
   ).freeze
 
+  RTL_LOCALES = %i(
+    ar
+    fa
+    he
+    ku
+  ).freeze
+
+  def friendly_number_to_human(number, **options)
+    # By default, the number of precision digits used by number_to_human
+    # is looked up from the locales definition, and rails-i18n comes with
+    # values that don't seem to make much sense for many languages, so
+    # override these values with a default of 3 digits of precision.
+    options[:precision] = 3
+    options[:strip_insignificant_zeros] = true
+
+    number_to_human(number, **options)
+  end
+
   def active_nav_class(*paths)
     paths.any? { |path| current_page?(path) } ? 'active' : ''
   end
@@ -44,7 +62,7 @@ module ApplicationHelper
   end
 
   def locale_direction
-    if [:ar, :fa, :he].include?(I18n.locale)
+    if RTL_LOCALES.include?(I18n.locale)
       'rtl'
     else
       'ltr'
@@ -77,8 +95,34 @@ module ApplicationHelper
     content_tag(:i, nil, attributes.merge(class: class_names.join(' ')))
   end
 
-  def custom_emoji_tag(custom_emoji)
-    image_tag(custom_emoji.image.url, class: 'emojione', alt: ":#{custom_emoji.shortcode}:")
+  def visibility_icon(status)
+    if status.public_visibility?
+      fa_icon('globe', title: I18n.t('statuses.visibilities.public'))
+    elsif status.unlisted_visibility?
+      fa_icon('unlock', title: I18n.t('statuses.visibilities.unlisted'))
+    elsif status.private_visibility? || status.limited_visibility?
+      fa_icon('lock', title: I18n.t('statuses.visibilities.private'))
+    elsif status.direct_visibility?
+      fa_icon('envelope', title: I18n.t('statuses.visibilities.direct'))
+    end
+  end
+
+  def interrelationships_icon(relationships, account_id)
+    if relationships.following[account_id] && relationships.followed_by[account_id]
+      fa_icon('exchange', title: I18n.t('relationships.mutual'), class: 'fa-fw active passive')
+    elsif relationships.following[account_id]
+      fa_icon(locale_direction == 'ltr' ? 'arrow-right' : 'arrow-left', title: I18n.t('relationships.following'), class: 'fa-fw active')
+    elsif relationships.followed_by[account_id]
+      fa_icon(locale_direction == 'ltr' ? 'arrow-left' : 'arrow-right', title: I18n.t('relationships.followers'), class: 'fa-fw passive')
+    end
+  end
+
+  def custom_emoji_tag(custom_emoji, animate = true)
+    if animate
+      image_tag(custom_emoji.image.url, class: 'emojione', alt: ":#{custom_emoji.shortcode}:")
+    else
+      image_tag(custom_emoji.image.url(:static), class: 'emojione custom-emoji', alt: ":#{custom_emoji.shortcode}", 'data-original' => full_asset_url(custom_emoji.image.url), 'data-static' => full_asset_url(custom_emoji.image.url(:static)))
+    end
   end
 
   def opengraph(property, content)
@@ -121,5 +165,33 @@ module ApplicationHelper
   def quote_wrap(text, line_width: 80, break_sequence: "\n")
     text = word_wrap(text, line_width: line_width - 2, break_sequence: break_sequence)
     text.split("\n").map { |line| '> ' + line }.join("\n")
+  end
+
+  def render_initial_state
+    state_params = {
+      settings: {
+        known_fediverse: Setting.show_known_fediverse_at_about_page,
+      },
+
+      text: [params[:title], params[:text], params[:url]].compact.join(' '),
+    }
+
+    permit_visibilities = %w(public unlisted private direct)
+    default_privacy     = current_account&.user&.setting_default_privacy
+    permit_visibilities.shift(permit_visibilities.index(default_privacy) + 1) if default_privacy.present?
+    state_params[:visibility] = params[:visibility] if permit_visibilities.include? params[:visibility]
+
+    if user_signed_in?
+      state_params[:settings]          = state_params[:settings].merge(Web::Setting.find_by(user: current_user)&.data || {})
+      state_params[:push_subscription] = current_account.user.web_push_subscription(current_session)
+      state_params[:current_account]   = current_account
+      state_params[:token]             = current_session.token
+      state_params[:admin]             = Account.find_local(Setting.site_contact_username.strip.gsub(/\A@/, ''))
+    end
+
+    json = ActiveModelSerializers::SerializableResource.new(InitialStatePresenter.new(state_params), serializer: InitialStateSerializer).to_json
+    # rubocop:disable Rails/OutputSafety
+    content_tag(:script, json_escape(json).html_safe, id: 'initial-state', type: 'application/json')
+    # rubocop:enable Rails/OutputSafety
   end
 end

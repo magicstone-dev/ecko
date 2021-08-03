@@ -1,155 +1,103 @@
 # frozen_string_literal: true
 
 class SuspendAccountService < BaseService
-  ASSOCIATIONS_ON_SUSPEND = %w(
-    account_pins
-    active_relationships
-    block_relationships
-    blocked_by_relationships
-    conversation_mutes
-    conversations
-    custom_filters
-    domain_blocks
-    favourites
-    follow_requests
-    list_accounts
-    media_attachments
-    mute_relationships
-    muted_by_relationships
-    notifications
-    owned_lists
-    passive_relationships
-    report_notes
-    scheduled_statuses
-    status_pins
-    stream_entries
-    subscriptions
-  ).freeze
+  include Payloadable
 
-  ASSOCIATIONS_ON_DESTROY = %w(
-    reports
-    targeted_moderation_notes
-    targeted_reports
-  ).freeze
-
-  # Suspend an account and remove as much of its data as possible
-  # @param [Account]
-  # @param [Hash] options
-  # @option [Boolean] :including_user Remove the user record as well
-  # @option [Boolean] :destroy Remove the account record instead of suspending
-  def call(account, **options)
+  def call(account)
     @account = account
-    @options = options
 
-    reject_follows!
-    purge_user!
-    purge_profile!
-    purge_content!
+    suspend!
+    reject_remote_follows!
+    distribute_update_actor!
+    unmerge_from_home_timelines!
+    unmerge_from_list_timelines!
+    privatize_media_attachments!
   end
 
   private
 
-  def reject_follows!
+  def suspend!
+    @account.suspend! unless @account.suspended?
+  end
+
+  def reject_remote_follows!
     return if @account.local? || !@account.activitypub?
 
-    ActivityPub::DeliveryWorker.push_bulk(Follow.where(account: @account)) do |follow|
-      [build_reject_json(follow), follow.target_account_id, follow.account.inbox_url]
+    # When suspending a remote account, the account obviously doesn't
+    # actually become suspended on its origin server, i.e. unlike a
+    # locally suspended account it continues to have access to its home
+    # feed and other content. To prevent it from being able to continue
+    # to access toots it would receive because it follows local accounts,
+    # we have to force it to unfollow them. Unfortunately, there is no
+    # counterpart to this operation, i.e. you can't then force a remote
+    # account to re-follow you, so this part is not reversible.
+
+    follows = Follow.where(account: @account).to_a
+
+    ActivityPub::DeliveryWorker.push_bulk(follows) do |follow|
+      [Oj.dump(serialize_payload(follow, ActivityPub::RejectFollowSerializer)), follow.target_account_id, @account.inbox_url]
+    end
+
+    follows.each(&:destroy)
+  end
+
+  def distribute_update_actor!
+    return unless @account.local?
+
+    account_reach_finder = AccountReachFinder.new(@account)
+
+    ActivityPub::DeliveryWorker.push_bulk(account_reach_finder.inboxes) do |inbox_url|
+      [signed_activity_json, @account.id, inbox_url]
     end
   end
 
-  def purge_user!
-    return if !@account.local? || @account.user.nil?
-
-    if @options[:including_user]
-      @account.user.destroy
-    else
-      @account.user.disable!
+  def unmerge_from_home_timelines!
+    @account.followers_for_local_distribution.find_each do |follower|
+      FeedManager.instance.unmerge_from_home(@account, follower)
     end
   end
 
-  def purge_content!
-    distribute_delete_actor! if @account.local? && !@options[:skip_distribution]
-
-    @account.statuses.reorder(nil).find_in_batches do |statuses|
-      BatchedRemoveStatusService.new.call(statuses, skip_side_effects: @options[:destroy])
-    end
-
-    associations_for_destruction.each do |association_name|
-      destroy_all(@account.public_send(association_name))
-    end
-
-    @account.destroy if @options[:destroy]
-  end
-
-  def purge_profile!
-    # If the account is going to be destroyed
-    # there is no point wasting time updating
-    # its values first
-
-    return if @options[:destroy]
-
-    @account.silenced_at      = nil
-    @account.suspended_at     = @options[:suspended_at] || Time.now.utc
-    @account.locked           = false
-    @account.display_name     = ''
-    @account.note             = ''
-    @account.fields           = []
-    @account.statuses_count   = 0
-    @account.followers_count  = 0
-    @account.following_count  = 0
-    @account.moved_to_account = nil
-    @account.avatar.destroy
-    @account.header.destroy
-    @account.save!
-  end
-
-  def destroy_all(association)
-    association.in_batches.destroy_all
-  end
-
-  def distribute_delete_actor!
-    ActivityPub::DeliveryWorker.push_bulk(delivery_inboxes) do |inbox_url|
-      [delete_actor_json, @account.id, inbox_url]
-    end
-
-    ActivityPub::LowPriorityDeliveryWorker.push_bulk(low_priority_delivery_inboxes) do |inbox_url|
-      [delete_actor_json, @account.id, inbox_url]
+  def unmerge_from_list_timelines!
+    @account.lists_for_local_distribution.find_each do |list|
+      FeedManager.instance.unmerge_from_list(@account, list)
     end
   end
 
-  def delete_actor_json
-    return @delete_actor_json if defined?(@delete_actor_json)
+  def privatize_media_attachments!
+    attachment_names = MediaAttachment.attachment_definitions.keys
 
-    payload = ActiveModelSerializers::SerializableResource.new(
-      @account,
-      serializer: ActivityPub::DeleteActorSerializer,
-      adapter: ActivityPub::Adapter
-    ).as_json
+    @account.media_attachments.find_each do |media_attachment|
+      attachment_names.each do |attachment_name|
+        attachment = media_attachment.public_send(attachment_name)
+        styles     = [:original] | attachment.styles.keys
 
-    @delete_actor_json = Oj.dump(ActivityPub::LinkedDataSignature.new(payload).sign!(@account))
-  end
+        next if attachment.blank?
 
-  def build_reject_json(follow)
-    ActiveModelSerializers::SerializableResource.new(
-      follow,
-      serializer: ActivityPub::RejectFollowSerializer,
-      adapter: ActivityPub::Adapter
-    ).to_json
-  end
+        styles.each do |style|
+          case Paperclip::Attachment.default_options[:storage]
+          when :s3
+            begin
+              attachment.s3_object(style).acl.put(acl: 'private')
+            rescue Aws::S3::Errors::NoSuchKey
+              Rails.logger.warn "Tried to change acl on non-existent key #{attachment.s3_object(style).key}"
+            end
+          when :fog
+            # Not supported
+          when :filesystem
+            begin
+              FileUtils.chmod(0o600 & ~File.umask, attachment.path(style)) unless attachment.path(style).nil?
+            rescue Errno::ENOENT
+              Rails.logger.warn "Tried to change permission on non-existent file #{attachment.path(style)}"
+            end
+          end
 
-  def delivery_inboxes
-    @delivery_inboxes ||= @account.followers.inboxes + Relay.enabled.pluck(:inbox_url)
-  end
-
-  def low_priority_delivery_inboxes
-    Account.inboxes - delivery_inboxes
-  end
-
-  def associations_for_destruction
-    if @options[:destroy]
-      ASSOCIATIONS_ON_SUSPEND + ASSOCIATIONS_ON_DESTROY
-    else
-      ASSOCIATIONS_ON_SUSPEND
+          CacheBusterWorker.perform_async(attachment.path(style)) if Rails.configuration.x.cache_buster_enabled
+        end
+      end
     end
+  end
+
+  def signed_activity_json
+    @signed_activity_json ||= Oj.dump(serialize_payload(@account, ActivityPub::UpdateSerializer, signer: @account))
   end
 end

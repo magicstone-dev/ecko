@@ -8,7 +8,8 @@ module Admin
       authorize @user, :disable_2fa?
       @user.disable_two_factor!
       log_action :disable_2fa, @user
-      redirect_to admin_accounts_path
+      UserMailer.two_factor_disabled(@user).deliver_later!
+      redirect_to admin_account_path(@user.account_id)
     end
 
     private

@@ -6,6 +6,8 @@ module ExportControllerConcern
   included do
     before_action :authenticate_user!
     before_action :load_export
+
+    skip_before_action :require_functional!
   end
 
   private

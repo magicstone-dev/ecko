@@ -68,12 +68,17 @@
         margin: 0;
         border-radius: 4px;
         background: darken($ui-base-color, 8%);
+        object-fit: cover;
       }
     }
 
     .display-name {
       margin-left: 15px;
       text-align: left;
+
+      i[data-hidden] {
+        display: none;
+      }
 
       strong {
         font-size: 15px;
@@ -196,7 +201,8 @@
   }
 }
 
-.account-role {
+.account-role,
+.simple_form .recommended {
   display: inline-block;
   padding: 4px 6px;
   cursor: default;
@@ -222,6 +228,7 @@
 }
 
 .account__header__fields {
+  max-width: 100vw;
   padding: 0;
   margin: 15px -15px -15px;
   border: 0 none;

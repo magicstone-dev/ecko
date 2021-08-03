@@ -1,12 +1,12 @@
 import { debounce } from 'lodash';
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import PropTypes from 'prop-types';
 import StatusContainer from '../containers/status_container';
 import ImmutablePureComponent from 'react-immutable-pure-component';
 import LoadGap from './load_gap';
 import ScrollableList from './scrollable_list';
+import RegenerationIndicator from 'mastodon/components/regeneration_indicator';
 
 export default class StatusList extends ImmutablePureComponent {
 
@@ -18,7 +18,6 @@ export default class StatusList extends ImmutablePureComponent {
     onScrollToTop: PropTypes.func,
     onScroll: PropTypes.func,
     trackScroll: PropTypes.bool,
-    shouldUpdateScroll: PropTypes.func,
     isLoading: PropTypes.bool,
     isPartial: PropTypes.bool,
     hasMore: PropTypes.bool,
@@ -77,22 +76,11 @@ export default class StatusList extends ImmutablePureComponent {
   }
 
   render () {
-    const { statusIds, featuredStatusIds, shouldUpdateScroll, onLoadMore, timelineId, ...other }  = this.props;
+    const { statusIds, featuredStatusIds, onLoadMore, timelineId, ...other }  = this.props;
     const { isLoading, isPartial } = other;
 
     if (isPartial) {
-      return (
-        <div className='regeneration-indicator'>
-          <div>
-            <div className='regeneration-indicator__figure' />
-
-            <div className='regeneration-indicator__label'>
-              <FormattedMessage id='regeneration_indicator.label' tagName='strong' defaultMessage='Loading&hellip;' />
-              <FormattedMessage id='regeneration_indicator.sublabel' defaultMessage='Your home feed is being prepared!' />
-            </div>
-          </div>
-        </div>
-      );
+      return <RegenerationIndicator />;
     }
 
     let scrollableContent = (isLoading || statusIds.size > 0) ? (
@@ -110,6 +98,7 @@ export default class StatusList extends ImmutablePureComponent {
           onMoveUp={this.handleMoveUp}
           onMoveDown={this.handleMoveDown}
           contextType={timelineId}
+          scrollKey={this.props.scrollKey}
           showThread
         />
       ))
@@ -130,7 +119,7 @@ export default class StatusList extends ImmutablePureComponent {
     }
 
     return (
-      <ScrollableList {...other} showLoading={isLoading && statusIds.size === 0} onLoadMore={onLoadMore && this.handleLoadOlder} shouldUpdateScroll={shouldUpdateScroll} ref={this.setRef}>
+      <ScrollableList {...other} showLoading={isLoading && statusIds.size === 0} onLoadMore={onLoadMore && this.handleLoadOlder} ref={this.setRef}>
         {scrollableContent}
       </ScrollableList>
     );

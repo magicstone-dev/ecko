@@ -58,8 +58,8 @@ RSpec.describe Admin::AccountAction, type: :model do
       end.to change { Admin::ActionLog.count }.by 1
     end
 
-    it 'calls queue_email!' do
-      expect(account_action).to receive(:queue_email!)
+    it 'calls process_email!' do
+      expect(account_action).to receive(:process_email!)
       subject
     end
 
@@ -115,16 +115,16 @@ RSpec.describe Admin::AccountAction, type: :model do
     context 'account.local?' do
       let(:account) { Fabricate(:account, domain: nil) }
 
-      it 'returns ["none", "disable", "silence", "suspend"]' do
-        expect(subject).to eq %w(none disable silence suspend)
+      it 'returns ["none", "disable", "sensitive", "silence", "suspend"]' do
+        expect(subject).to eq %w(none disable sensitive silence suspend)
       end
     end
 
     context '!account.local?' do
       let(:account) { Fabricate(:account, domain: 'hoge.com') }
 
-      it 'returns ["silence", "suspend"]' do
-        expect(subject).to eq %w(silence suspend)
+      it 'returns ["sensitive", "silence", "suspend"]' do
+        expect(subject).to eq %w(sensitive silence suspend)
       end
     end
   end

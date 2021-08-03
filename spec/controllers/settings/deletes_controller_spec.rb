@@ -15,6 +15,15 @@ describe Settings::DeletesController do
         get :show
         expect(response).to have_http_status(200)
       end
+
+      context 'when suspended' do
+        let(:user) { Fabricate(:user, account_attributes: { username: 'alice', suspended_at: Time.now.utc }) }
+
+        it 'returns http forbidden' do
+          get :show
+          expect(response).to have_http_status(403)
+        end
+      end
     end
 
     context 'when not signed in' do
@@ -49,6 +58,18 @@ describe Settings::DeletesController do
         it 'marks account as suspended' do
           expect(user.account.reload).to be_suspended
         end
+
+        it 'does not create an email block' do
+          expect(CanonicalEmailBlock.block?(user.email)).to be false
+        end
+
+        context 'when suspended' do
+          let(:user) { Fabricate(:user, account_attributes: { username: 'alice', suspended_at: Time.now.utc }) }
+
+          it 'returns http forbidden' do
+            expect(response).to have_http_status(403)
+          end
+        end
       end
 
       context 'with incorrect password' do
@@ -60,26 +81,26 @@ describe Settings::DeletesController do
           expect(response).to redirect_to settings_delete_path
         end
       end
+
+      context 'when account deletions are disabled' do
+        around do |example|
+          open_deletion = Setting.open_deletion
+          example.run
+          Setting.open_deletion = open_deletion
+        end
+
+        it 'redirects' do
+          Setting.open_deletion = false
+          delete :destroy
+          expect(response).to redirect_to root_path
+        end
+      end
     end
 
     context 'when not signed in' do
       it 'redirects' do
         delete :destroy
         expect(response).to redirect_to '/auth/sign_in'
-      end
-    end
-
-    context do
-      around do |example|
-        open_deletion = Setting.open_deletion
-        example.run
-        Setting.open_deletion = open_deletion
-      end
-
-      it 'redirects' do
-        Setting.open_deletion = false
-        delete :destroy
-        expect(response).to redirect_to root_path
       end
     end
   end

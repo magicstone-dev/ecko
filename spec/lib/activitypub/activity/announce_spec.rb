@@ -58,12 +58,13 @@ RSpec.describe ActivityPub::Activity::Announce do
         end
       end
 
-      context 'self-boost of a previously unknown status with missing attributedTo' do
+      context 'self-boost of a previously unknown status with correct attributedTo' do
         let(:object_json) do
           {
             id: 'https://example.com/actor#bar',
             type: 'Note',
             content: 'Lorem ipsum',
+            attributedTo: 'https://example.com/actor',
             to: 'http://example.com/followers',
           }
         end
@@ -73,14 +74,18 @@ RSpec.describe ActivityPub::Activity::Announce do
         end
       end
 
-      context 'self-boost of a previously unknown status with correct attributedTo' do
+      context 'self-boost of a previously unknown status with correct attributedTo, inlined Collection in audience' do
         let(:object_json) do
           {
             id: 'https://example.com/actor#bar',
             type: 'Note',
             content: 'Lorem ipsum',
             attributedTo: 'https://example.com/actor',
-            to: 'http://example.com/followers',
+            to: {
+              'type': 'OrderedCollection',
+              'id': 'http://example.com/followers',
+              'first': 'http://example.com/followers?page=true',
+            }
           }
         end
 
@@ -122,6 +127,7 @@ RSpec.describe ActivityPub::Activity::Announce do
             type: 'Note',
             content: 'Lorem ipsum',
             to: 'http://example.com/followers',
+            attributedTo: 'https://example.com/actor',
           }
         end
 
@@ -141,6 +147,7 @@ RSpec.describe ActivityPub::Activity::Announce do
             type: 'Note',
             content: 'Lorem ipsum',
             to: 'http://example.com/followers',
+            attributedTo: 'https://example.com/actor',
           }
         end
 
@@ -161,6 +168,7 @@ RSpec.describe ActivityPub::Activity::Announce do
           type: 'Note',
           content: 'Lorem ipsum',
           to: 'http://example.com/followers',
+          attributedTo: 'https://example.com/actor',
         }
       end
 

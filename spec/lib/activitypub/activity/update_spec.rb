@@ -13,13 +13,13 @@ RSpec.describe ActivityPub::Activity::Update do
   end
 
   let(:modified_sender) do
-    sender.dup.tap do |modified_sender|
+    sender.tap do |modified_sender|
       modified_sender.display_name = 'Totally modified now'
     end
   end
 
   let(:actor_json) do
-    ActiveModelSerializers::SerializableResource.new(modified_sender, serializer: ActivityPub::ActorSerializer, key_transform: :camel_lower).as_json
+    ActiveModelSerializers::SerializableResource.new(modified_sender, serializer: ActivityPub::ActorSerializer, adapter: ActivityPub::Adapter).as_json
   end
 
   let(:json) do

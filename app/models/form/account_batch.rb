@@ -3,11 +3,14 @@
 class Form::AccountBatch
   include ActiveModel::Model
   include Authorization
+  include Payloadable
 
   attr_accessor :account_ids, :action, :current_account
 
   def save
     case action
+    when 'follow'
+      follow!
     when 'unfollow'
       unfollow!
     when 'remove_from_followers'
@@ -18,10 +21,20 @@ class Form::AccountBatch
       approve!
     when 'reject'
       reject!
+    when 'suppress_follow_recommendation'
+      suppress_follow_recommendation!
+    when 'unsuppress_follow_recommendation'
+      unsuppress_follow_recommendation!
     end
   end
 
   private
+
+  def follow!
+    accounts.find_each do |target_account|
+      FollowService.new.call(current_account, target_account)
+    end
+  end
 
   def unfollow!
     accounts.find_each do |target_account|
@@ -42,7 +55,7 @@ class Form::AccountBatch
   end
 
   def account_domains
-    accounts.pluck(Arel.sql('distinct domain')).compact
+    accounts.group(:domain).pluck(:domain).compact
   end
 
   def accounts
@@ -54,13 +67,7 @@ class Form::AccountBatch
 
     return unless follow.account.activitypub?
 
-    json = ActiveModelSerializers::SerializableResource.new(
-      follow,
-      serializer: ActivityPub::RejectFollowSerializer,
-      adapter: ActivityPub::Adapter
-    ).to_json
-
-    ActivityPub::DeliveryWorker.perform_async(json, current_account.id, follow.account.inbox_url)
+    ActivityPub::DeliveryWorker.perform_async(Oj.dump(serialize_payload(follow, ActivityPub::RejectFollowSerializer)), current_account.id, follow.account.inbox_url)
   end
 
   def approve!
@@ -74,6 +81,20 @@ class Form::AccountBatch
     records = accounts.includes(:user)
 
     records.each { |account| authorize(account.user, :reject?) }
-           .each { |account| SuspendAccountService.new.call(account, including_user: true, destroy: true, skip_distribution: true) }
+           .each { |account| DeleteAccountService.new.call(account, reserve_email: false, reserve_username: false) }
+  end
+
+  def suppress_follow_recommendation!
+    authorize(:follow_recommendation, :suppress?)
+
+    accounts.each do |account|
+      FollowRecommendationSuppression.create(account: account)
+    end
+  end
+
+  def unsuppress_follow_recommendation!
+    authorize(:follow_recommendation, :unsuppress?)
+
+    FollowRecommendationSuppression.where(account_id: account_ids).destroy_all
   end
 end

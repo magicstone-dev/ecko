@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import Upload from '../components/upload';
-import { undoUploadCompose, changeUploadCompose } from '../../../actions/compose';
-import { openModal } from '../../../actions/modal';
+import { undoUploadCompose, initMediaEditModal } from '../../../actions/compose';
 import { submitCompose } from '../../../actions/compose';
 
 const mapStateToProps = (state, { id }) => ({
@@ -14,12 +13,8 @@ const mapDispatchToProps = dispatch => ({
     dispatch(undoUploadCompose(id));
   },
 
-  onDescriptionChange: (id, description) => {
-    dispatch(changeUploadCompose(id, { description }));
-  },
-
   onOpenFocalPoint: id => {
-    dispatch(openModal('FOCAL_POINT', { id }));
+    dispatch(initMediaEditModal(id));
   },
 
   onSubmit (router) {

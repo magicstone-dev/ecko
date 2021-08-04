@@ -46,7 +46,7 @@ class ActivityPub::Activity::Create < ActivityPub::Activity
     return reject_payload! if unsupported_object_type? || invalid_origin?(object_uri) || tombstone_exists? || !related_to_local_activity?
 
     lock_or_fail("create:#{object_uri}") do
-      return if delete_arrived_first?(object_uri) || poll_vote? # rubocop:disable Lint/NonLocalExitFromIterator
+      return if delete_arrived_first?(object_uri) || poll_vote?
 
       @status = find_existing_status
 
@@ -223,8 +223,8 @@ class ActivityPub::Activity::Create < ActivityPub::Activity
     emoji ||= CustomEmoji.new(domain: @account.domain, shortcode: shortcode, uri: uri)
     emoji.image_remote_url = image_url
     emoji.save
-  rescue Seahorse::Client::NetworkingError
-    nil
+  rescue Seahorse::Client::NetworkingError => e
+    Rails.logger.warn "Error storing emoji: #{e}"
   end
 
   def process_attachments
@@ -247,8 +247,8 @@ class ActivityPub::Activity::Create < ActivityPub::Activity
         media_attachment.save
       rescue Mastodon::UnexpectedResponseError, HTTP::TimeoutError, HTTP::ConnectionError, OpenSSL::SSL::SSLError
         RedownloadMediaWorker.perform_in(rand(30..600).seconds, media_attachment.id)
-      rescue Seahorse::Client::NetworkingError
-        nil
+      rescue Seahorse::Client::NetworkingError => e
+        Rails.logger.warn "Error storing media attachment: #{e}"
       end
     end
 

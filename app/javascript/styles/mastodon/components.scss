@@ -1006,6 +1006,14 @@
     outline: 0;
     background: lighten($ui-base-color, 4%);
 
+    .status.status-direct {
+      background: lighten($ui-base-color, 12%);
+
+      &.muted {
+        background: transparent;
+      }
+    }
+
     .detailed-status,
     .detailed-status__action-bar {
       background: lighten($ui-base-color, 8%);
@@ -1038,6 +1046,11 @@
   .video-player,
   .audio-player {
     margin-top: 8px;
+  }
+
+  &.status-direct:not(.read) {
+    background: lighten($ui-base-color, 8%);
+    border-bottom-color: lighten($ui-base-color, 12%);
   }
 
   &.light {
@@ -1073,6 +1086,16 @@
           background: lighten($ui-primary-color, 8%);
         }
       }
+    }
+  }
+}
+
+.notification-favourite {
+  .status.status-direct {
+    background: transparent;
+
+    .icon-button.disabled {
+      color: lighten($action-button-color, 13%);
     }
   }
 }
@@ -2822,7 +2845,7 @@ a.account__display-name {
   transition: background-color 0.2s ease;
 }
 
-.react-toggle:hover:not(.react-toggle--disabled) .react-toggle-track {
+.react-toggle:is(:hover, :focus-within):not(.react-toggle--disabled) .react-toggle-track {
   background-color: darken($ui-base-color, 10%);
 }
 
@@ -2830,7 +2853,7 @@ a.account__display-name {
   background-color: $ui-highlight-color;
 }
 
-.react-toggle--checked:hover:not(.react-toggle--disabled) .react-toggle-track {
+.react-toggle--checked:is(:hover, :focus-within):not(.react-toggle--disabled) .react-toggle-track {
   background-color: lighten($ui-highlight-color, 10%);
 }
 
@@ -3548,10 +3571,15 @@ a.status-card.compact:hover {
 }
 
 .column-header__setting-btn {
-  &:hover {
+  &:hover,
+  &:focus {
     color: $darker-text-color;
     text-decoration: underline;
   }
+}
+
+.column-header__collapsible__extra + .column-header__setting-btn {
+  padding-top: 5px;
 }
 
 .column-header__permission-btn {
@@ -3564,10 +3592,15 @@ a.status-card.compact:hover {
   float: right;
 
   .column-header__setting-btn {
-    padding: 0 10px;
+    padding: 5px;
+
+    &:first-child {
+      padding-right: 7px;
+    }
 
     &:last-child {
-      padding-right: 0;
+      padding-left: 7px;
+      margin-left: 5px;
     }
   }
 }
@@ -3990,6 +4023,53 @@ a.status-card.compact:hover {
   margin-bottom: 14px;
   margin-left: 8px;
   vertical-align: middle;
+}
+
+.column-settings__pillbar {
+  display: flex;
+  overflow: hidden;
+  background-color: transparent;
+  border: 0;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  align-items: stretch;
+}
+
+.pillbar-button {
+  border: 0;
+  color: #fafafa;
+  padding: 4px;
+  margin: 0;
+  margin-left: 2px;
+  font-size: inherit;
+  flex: auto;
+  background-color: $ui-base-color;
+  transition: background-color 0.2s ease;
+
+  &[disabled] {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  &:not([disabled]) {
+    &:hover,
+    &:focus {
+      background-color: darken($ui-base-color, 10%);
+    }
+
+    &.active {
+      background-color: $ui-highlight-color;
+
+      &:hover,
+      &:focus {
+        background-color: lighten($ui-highlight-color, 10%);
+      }
+    }
+  }
+
+  &:first-child {
+    margin-left: 0;
+  }
 }
 
 .empty-column-indicator,

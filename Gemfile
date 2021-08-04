@@ -6,7 +6,7 @@ ruby '>= 2.5.0', '< 3.1.0'
 gem 'pkg-config', '~> 1.4'
 
 gem 'puma', '~> 5.3'
-gem 'rails', '~> 6.1.3'
+gem 'rails', '~> 6.1.4'
 gem 'sprockets', '~> 3.7.2'
 gem 'thor', '~> 1.1'
 gem 'rack', '~> 2.2.3'
@@ -24,7 +24,7 @@ gem 'paperclip', '~> 6.0'
 gem 'blurhash', '~> 0.1'
 
 gem 'active_model_serializers', '~> 0.10'
-gem 'addressable', '~> 2.7'
+gem 'addressable', '~> 2.8'
 gem 'bootsnap', '~> 1.6.0', require: false
 gem 'browser'
 gem 'charlock_holmes', '~> 0.7.7'
@@ -62,7 +62,7 @@ gem 'link_header', '~> 0.0'
 gem 'mime-types', '~> 3.3.1', require: 'mime/types/columnar'
 gem 'nokogiri', '~> 1.11'
 gem 'nsa', '~> 0.2'
-gem 'oj', '~> 3.11'
+gem 'oj', '~> 3.12'
 gem 'ox', '~> 2.14'
 gem 'parslet'
 gem 'parallel', '~> 1.20'
@@ -81,7 +81,7 @@ gem 'sanitize', '~> 5.2'
 gem 'scenic', '~> 1.5'
 gem 'sidekiq', '~> 6.2'
 gem 'sidekiq-scheduler', '~> 3.1'
-gem 'sidekiq-unique-jobs', '~> 7.0'
+gem 'sidekiq-unique-jobs', '~> 7.1'
 gem 'sidekiq-bulk', '~>0.2.0'
 gem 'simple-navigation', '~> 4.3'
 gem 'simple_form', '~> 5.1'
@@ -134,9 +134,9 @@ group :development do
   gem 'letter_opener', '~> 1.7'
   gem 'letter_opener_web', '~> 1.4'
   gem 'memory_profiler'
-  gem 'rubocop', '~> 1.17', require: false
+  gem 'rubocop', '~> 1.18', require: false
   gem 'rubocop-rails', '~> 2.11', require: false
-  gem 'brakeman', '~> 5.0', require: false
+  gem 'brakeman', '~> 5.1', require: false
   gem 'bundler-audit', '~> 0.8', require: false
 
   gem 'capistrano', '~> 3.16'
@@ -155,5 +155,3 @@ gem 'concurrent-ruby', require: false
 gem 'connection_pool', require: false
 
 gem 'xorcist', '~> 1.1'
-
-gem 'resolv', '~> 0.1.0'

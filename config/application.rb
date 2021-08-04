@@ -116,6 +116,7 @@ module Mastodon
       :ru,
       :sa,
       :sc,
+      :sgs,
       :si,
       :sk,
       :sl,

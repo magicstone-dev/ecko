@@ -16,8 +16,8 @@ RUN echo "Etc/UTC" > /etc/localtime && \
 
 ENV PATH="/opt/ruby/bin:/opt/node/bin:/opt/mastodon/bin:${PATH}"
 
-# Install Node v12 (LTS)
-ENV NODE_VER="12.21.0"
+# Install Node v14 (LTS)
+ENV NODE_VER="14.17.4"
 RUN ARCH= && \
     dpkgArch="$(dpkg --print-architecture)" && \
   case "${dpkgArch##*-}" in \
@@ -53,8 +53,9 @@ RUN npm install -g yarn && \
 
 COPY Gemfile* package.json yarn.lock /opt/mastodon/
 RUN cd /opt/mastodon && \
-	bundle config set deployment 'true' && \
-	bundle config set without 'development test' && \
+  bundle config set deployment 'true' && \
+  bundle config set without 'development test' && \
+  bundle config set silence_root_warning true && \
 	bundle install -j"$(nproc)" && \
 	yarn install --pure-lockfile
 

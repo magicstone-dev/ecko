@@ -1,4 +1,10 @@
-module Twitter
+module Twitter::TwitterText
+  class Configuration
+    def emoji_parsing_enabled
+      false
+    end
+  end
+
   class Regex
     REGEXEN[:valid_general_url_path_chars] = /[^\p{White_Space}<>\(\)\?]/iou
     REGEXEN[:valid_url_path_ending_chars] = /[^\p{White_Space}\(\)\?!\*"'「」<>;:=\,\.\$%\[\]~&\|@]|(?:#{REGEXEN[:valid_url_balanced_parens]})/iou
@@ -18,6 +24,10 @@ module Twitter
         )
       \)
     /iox
+    REGEXEN[:valid_iri_ucschar] = /[\u{A0}-\u{D7FF}\u{F900}-\u{FDCF}\u{FDF0}-\u{FFEF}\u{10000}-\u{1FFFD}\u{20000}-\u{2FFFD}\u{30000}-\u{3FFFD}\u{40000}-\u{4FFFD}\u{50000}-\u{5FFFD}\u{60000}-\u{6FFFD}\u{70000}-\u{7FFFD}\u{80000}-\u{8FFFD}\u{90000}-\u{9FFFD}\u{A0000}-\u{AFFFD}\u{B0000}-\u{BFFFD}\u{C0000}-\u{CFFFD}\u{D0000}-\u{DFFFD}\u{E1000}-\u{EFFFD}]/iou
+    REGEXEN[:valid_iri_iprivate] = /[\u{E000}-\u{F8FF}\u{F0000}-\u{FFFFD}\u{100000}-\u{10FFFD}]/iou
+    REGEXEN[:valid_url_query_chars] = /(?:#{REGEXEN[:valid_iri_ucschar]})|(?:#{REGEXEN[:valid_iri_iprivate]})|[a-z0-9!?\*'\(\);:&=\+\$\/%#\[\]\-_\.,~|@]/iou
+    REGEXEN[:valid_url_query_ending_chars] = /(?:#{REGEXEN[:valid_iri_ucschar]})|(?:#{REGEXEN[:valid_iri_iprivate]})|[a-z0-9_&=#\/\-]/iou
     REGEXEN[:valid_url_path] = /(?:
       (?:
         #{REGEXEN[:valid_general_url_path_chars]}*
@@ -75,11 +85,11 @@ module Twitter
     # XMPP or magnet URIs an empty array will be returned.
     #
     # If a block is given then it will be called for each XMPP URI.
-    def extract_extra_uris_with_indices(text, options = {}) # :yields: uri, start, end
+    def extract_extra_uris_with_indices(text, _options = {}) # :yields: uri, start, end
       return [] unless text && text.index(":")
       urls = []
 
-      text.to_s.scan(Twitter::Regex[:valid_extended_uri]) do
+      text.to_s.scan(Twitter::TwitterText::Regex[:valid_extended_uri]) do
         valid_uri_match_data = $~
 
         start_position = valid_uri_match_data.char_begin(3)

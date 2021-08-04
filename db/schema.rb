@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_16_200740) do
+ActiveRecord::Schema.define(version: 2021_06_30_000137) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -111,17 +111,7 @@ ActiveRecord::Schema.define(version: 2021_04_16_200740) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "last_status_at"
-    t.integer "lock_version", default: 0, null: false
     t.index ["account_id"], name: "index_account_stats_on_account_id", unique: true
-  end
-
-  create_table "account_tag_stats", force: :cascade do |t|
-    t.bigint "tag_id", null: false
-    t.bigint "accounts_count", default: 0, null: false
-    t.boolean "hidden", default: false, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["tag_id"], name: "index_account_tag_stats_on_tag_id", unique: true
   end
 
   create_table "account_warning_presets", force: :cascade do |t|
@@ -145,12 +135,8 @@ ActiveRecord::Schema.define(version: 2021_04_16_200740) do
   create_table "accounts", id: :bigint, default: -> { "timestamp_id('accounts'::text)" }, force: :cascade do |t|
     t.string "username", default: "", null: false
     t.string "domain"
-    t.string "secret", default: "", null: false
     t.text "private_key"
     t.text "public_key", default: "", null: false
-    t.string "remote_url", default: "", null: false
-    t.string "salmon_url", default: "", null: false
-    t.string "hub_url", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "note", default: "", null: false
@@ -508,6 +494,18 @@ ActiveRecord::Schema.define(version: 2021_04_16_200740) do
     t.index ["account_id"], name: "index_lists_on_account_id"
   end
 
+  create_table "login_activities", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "authentication_method"
+    t.string "provider"
+    t.boolean "success"
+    t.string "failure_reason"
+    t.inet "ip"
+    t.string "user_agent"
+    t.datetime "created_at"
+    t.index ["user_id"], name: "index_login_activities_on_user_id"
+  end
+
   create_table "markers", force: :cascade do |t|
     t.bigint "user_id"
     t.string "timeline", default: "", null: false
@@ -541,7 +539,7 @@ ActiveRecord::Schema.define(version: 2021_04_16_200740) do
     t.integer "thumbnail_file_size"
     t.datetime "thumbnail_updated_at"
     t.string "thumbnail_remote_url"
-    t.index ["account_id"], name: "index_media_attachments_on_account_id"
+    t.index ["account_id", "status_id"], name: "index_media_attachments_on_account_id_and_status_id", order: { status_id: :desc }
     t.index ["scheduled_status_id"], name: "index_media_attachments_on_scheduled_status_id"
     t.index ["shortcode"], name: "index_media_attachments_on_shortcode", unique: true
     t.index ["status_id"], name: "index_media_attachments_on_status_id"
@@ -862,7 +860,7 @@ ActiveRecord::Schema.define(version: 2021_04_16_200740) do
     t.datetime "last_status_at"
     t.float "max_score"
     t.datetime "max_score_at"
-    t.index "lower((name)::text)", name: "index_tags_on_name_lower", unique: true
+    t.index "lower((name)::text) text_pattern_ops", name: "index_tags_on_name_lower_btree", unique: true
   end
 
   create_table "tombstones", force: :cascade do |t|
@@ -929,6 +927,7 @@ ActiveRecord::Schema.define(version: 2021_04_16_200740) do
     t.datetime "sign_in_token_sent_at"
     t.string "webauthn_id"
     t.inet "sign_up_ip"
+    t.boolean "skip_sign_in_token"
     t.index ["account_id"], name: "index_users_on_account_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["created_by_application_id"], name: "index_users_on_created_by_application_id"
@@ -985,7 +984,6 @@ ActiveRecord::Schema.define(version: 2021_04_16_200740) do
   add_foreign_key "account_pins", "accounts", column: "target_account_id", on_delete: :cascade
   add_foreign_key "account_pins", "accounts", on_delete: :cascade
   add_foreign_key "account_stats", "accounts", on_delete: :cascade
-  add_foreign_key "account_tag_stats", "tags", on_delete: :cascade
   add_foreign_key "account_warnings", "accounts", column: "target_account_id", on_delete: :cascade
   add_foreign_key "account_warnings", "accounts", on_delete: :nullify
   add_foreign_key "accounts", "accounts", column: "moved_to_account_id", on_delete: :nullify
@@ -1000,7 +998,7 @@ ActiveRecord::Schema.define(version: 2021_04_16_200740) do
   add_foreign_key "blocks", "accounts", name: "fk_4269e03e65", on_delete: :cascade
   add_foreign_key "bookmarks", "accounts", on_delete: :cascade
   add_foreign_key "bookmarks", "statuses", on_delete: :cascade
-  add_foreign_key "canonical_email_blocks", "accounts", column: "reference_account_id"
+  add_foreign_key "canonical_email_blocks", "accounts", column: "reference_account_id", on_delete: :cascade
   add_foreign_key "conversation_mutes", "accounts", name: "fk_225b4212bb", on_delete: :cascade
   add_foreign_key "conversation_mutes", "conversations", on_delete: :cascade
   add_foreign_key "custom_filters", "accounts", on_delete: :cascade
@@ -1025,6 +1023,7 @@ ActiveRecord::Schema.define(version: 2021_04_16_200740) do
   add_foreign_key "list_accounts", "follows", on_delete: :cascade
   add_foreign_key "list_accounts", "lists", on_delete: :cascade
   add_foreign_key "lists", "accounts", on_delete: :cascade
+  add_foreign_key "login_activities", "users", on_delete: :cascade
   add_foreign_key "markers", "users", on_delete: :cascade
   add_foreign_key "media_attachments", "accounts", name: "fk_96dd81e81b", on_delete: :nullify
   add_foreign_key "media_attachments", "scheduled_statuses", on_delete: :nullify
@@ -1114,30 +1113,34 @@ ActiveRecord::Schema.define(version: 2021_04_16_200740) do
   SQL
   add_index "account_summaries", ["account_id"], name: "index_account_summaries_on_account_id", unique: true
 
-  create_view "follow_recommendations", sql_definition: <<-SQL
+  create_view "follow_recommendations", materialized: true, sql_definition: <<-SQL
       SELECT t0.account_id,
       sum(t0.rank) AS rank,
       array_agg(t0.reason) AS reason
-     FROM ( SELECT accounts.id AS account_id,
+     FROM ( SELECT account_summaries.account_id,
               ((count(follows.id))::numeric / (1.0 + (count(follows.id))::numeric)) AS rank,
               'most_followed'::text AS reason
-             FROM ((follows
-               JOIN accounts ON ((accounts.id = follows.target_account_id)))
+             FROM (((follows
+               JOIN account_summaries ON ((account_summaries.account_id = follows.target_account_id)))
                JOIN users ON ((users.account_id = follows.account_id)))
-            WHERE ((users.current_sign_in_at >= (now() - 'P30D'::interval)) AND (accounts.suspended_at IS NULL) AND (accounts.moved_to_account_id IS NULL) AND (accounts.silenced_at IS NULL) AND (accounts.locked = false) AND (accounts.discoverable = true))
-            GROUP BY accounts.id
+               LEFT JOIN follow_recommendation_suppressions ON ((follow_recommendation_suppressions.account_id = follows.target_account_id)))
+            WHERE ((users.current_sign_in_at >= (now() - 'P30D'::interval)) AND (account_summaries.sensitive = false) AND (follow_recommendation_suppressions.id IS NULL))
+            GROUP BY account_summaries.account_id
            HAVING (count(follows.id) >= 5)
           UNION ALL
-           SELECT accounts.id AS account_id,
+           SELECT account_summaries.account_id,
               (sum((status_stats.reblogs_count + status_stats.favourites_count)) / (1.0 + sum((status_stats.reblogs_count + status_stats.favourites_count)))) AS rank,
               'most_interactions'::text AS reason
-             FROM ((status_stats
+             FROM (((status_stats
                JOIN statuses ON ((statuses.id = status_stats.status_id)))
-               JOIN accounts ON ((accounts.id = statuses.account_id)))
-            WHERE ((statuses.id >= (((date_part('epoch'::text, (now() - 'P30D'::interval)) * (1000)::double precision))::bigint << 16)) AND (accounts.suspended_at IS NULL) AND (accounts.moved_to_account_id IS NULL) AND (accounts.silenced_at IS NULL) AND (accounts.locked = false) AND (accounts.discoverable = true))
-            GROUP BY accounts.id
+               JOIN account_summaries ON ((account_summaries.account_id = statuses.account_id)))
+               LEFT JOIN follow_recommendation_suppressions ON ((follow_recommendation_suppressions.account_id = statuses.account_id)))
+            WHERE ((statuses.id >= (((date_part('epoch'::text, (now() - 'P30D'::interval)) * (1000)::double precision))::bigint << 16)) AND (account_summaries.sensitive = false) AND (follow_recommendation_suppressions.id IS NULL))
+            GROUP BY account_summaries.account_id
            HAVING (sum((status_stats.reblogs_count + status_stats.favourites_count)) >= (5)::numeric)) t0
     GROUP BY t0.account_id
     ORDER BY (sum(t0.rank)) DESC;
   SQL
+  add_index "follow_recommendations", ["account_id"], name: "index_follow_recommendations_on_account_id", unique: true
+
 end

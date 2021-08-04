@@ -16,6 +16,8 @@ class RemoveStatusService < BaseService
     @account  = status.account
     @options  = options
 
+    @status.discard
+
     RedisLock.acquire(lock_options) do |lock|
       if lock.acquired?
         remove_from_self if @account.local?
@@ -100,7 +102,7 @@ class RemoveStatusService < BaseService
     # because once original status is gone, reblogs will disappear
     # without us being able to do all the fancy stuff
 
-    @status.reblogs.includes(:account).find_each do |reblog|
+    @status.reblogs.includes(:account).reorder(nil).find_each do |reblog|
       RemoveStatusService.new.call(reblog, original_removed: true)
     end
   end
@@ -139,6 +141,6 @@ class RemoveStatusService < BaseService
   end
 
   def lock_options
-    { redis: Redis.current, key: "distribute:#{@status.id}" }
+    { redis: Redis.current, key: "distribute:#{@status.id}", autorelease: 5.minutes.seconds }
   end
 end

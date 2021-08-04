@@ -14,6 +14,17 @@ module ApplicationHelper
     ku
   ).freeze
 
+  def friendly_number_to_human(number, **options)
+    # By default, the number of precision digits used by number_to_human
+    # is looked up from the locales definition, and rails-i18n comes with
+    # values that don't seem to make much sense for many languages, so
+    # override these values with a default of 3 digits of precision.
+    options[:precision] = 3
+    options[:strip_insignificant_zeros] = true
+
+    number_to_human(number, **options)
+  end
+
   def active_nav_class(*paths)
     paths.any? { |path| current_page?(path) } ? 'active' : ''
   end
@@ -91,6 +102,8 @@ module ApplicationHelper
       fa_icon('unlock', title: I18n.t('statuses.visibilities.unlisted'))
     elsif status.private_visibility? || status.limited_visibility?
       fa_icon('lock', title: I18n.t('statuses.visibilities.private'))
+    elsif status.direct_visibility?
+      fa_icon('envelope', title: I18n.t('statuses.visibilities.direct'))
     end
   end
 

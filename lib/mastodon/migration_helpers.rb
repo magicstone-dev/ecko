@@ -41,6 +41,20 @@
 
 module Mastodon
   module MigrationHelpers
+    class CorruptionError < StandardError
+      def initialize(message = nil)
+        super(message.presence || 'Migration failed because of index corruption, see https://docs.joinmastodon.org/admin/troubleshooting/index-corruption/#fixing')
+      end
+
+      def cause
+        nil
+      end
+
+      def backtrace
+        []
+      end
+    end
+
     # Model that can be used for querying permissions of a SQL user.
     class Grant < ActiveRecord::Base
       self.table_name = 'information_schema.role_table_grants'
@@ -95,7 +109,7 @@ module Mastodon
             allow_null: options[:null]
           )
         else
-          add_column(table_name, column_name, :datetime_with_timezone, options)
+          add_column(table_name, column_name, :datetime_with_timezone, **options)
         end
       end
     end
@@ -120,7 +134,7 @@ module Mastodon
       options = options.merge({ algorithm: :concurrently })
       disable_statement_timeout
 
-      add_index(table_name, column_name, options)
+      add_index(table_name, column_name, **options)
     end
 
     # Removes an existed index, concurrently when supported
@@ -144,7 +158,7 @@ module Mastodon
         disable_statement_timeout
       end
 
-      remove_index(table_name, options.merge({ column: column_name }))
+      remove_index(table_name, **options.merge({ column: column_name }))
     end
 
     # Removes an existing index, concurrently when supported
@@ -168,7 +182,7 @@ module Mastodon
         disable_statement_timeout
       end
 
-      remove_index(table_name, options.merge({ name: index_name }))
+      remove_index(table_name, **options.merge({ name: index_name }))
     end
 
     # Only available on Postgresql >= 9.2
@@ -472,7 +486,7 @@ module Mastodon
         col_opts[:limit] = old_col.limit
       end
 
-      add_column(table, new, new_type, col_opts)
+      add_column(table, new, new_type, **col_opts)
 
       # We set the default value _after_ adding the column so we don't end up
       # updating any existing data with the default value. This isn't
@@ -510,10 +524,10 @@ module Mastodon
         new_pk_index_name = "index_#{table}_on_#{column}_cm"
 
         unless indexes_for(table, column).find{|i| i.name == old_pk_index_name}
-          add_concurrent_index(table, [temp_column], {
+          add_concurrent_index(table, [temp_column],
             unique: true,
             name: new_pk_index_name
-          })
+          )
         end
       end
     end
@@ -763,7 +777,7 @@ module Mastodon
         options[:using] = index.using if index.using
         options[:where] = index.where if index.where
 
-        add_concurrent_index(table, new_columns, options)
+        add_concurrent_index(table, new_columns, **options)
       end
     end
 

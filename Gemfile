@@ -62,7 +62,7 @@ gem 'link_header', '~> 0.0'
 gem 'mime-types', '~> 3.3.1', require: 'mime/types/columnar'
 gem 'nokogiri', '~> 1.11'
 gem 'nsa', '~> 0.2'
-gem 'oj', '~> 3.11'
+gem 'oj', '~> 3.12'
 gem 'ox', '~> 2.14'
 gem 'parslet'
 gem 'parallel', '~> 1.20'
@@ -136,7 +136,7 @@ group :development do
   gem 'memory_profiler'
   gem 'rubocop', '~> 1.18', require: false
   gem 'rubocop-rails', '~> 2.11', require: false
-  gem 'brakeman', '~> 5.0', require: false
+  gem 'brakeman', '~> 5.1', require: false
   gem 'bundler-audit', '~> 0.8', require: false
 
   gem 'capistrano', '~> 3.16'

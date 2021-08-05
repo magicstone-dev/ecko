@@ -1,15 +1,27 @@
+# C4 fork of Mastodon
+
+WARNING: This codebase should be considered `unstable`. If you find a bug, please [make an issue](https://github.com/weex/mastodon/issues/new) with a [clear problem statement](https://rfc.zeromq.org/spec/42/#24-development-process).
+
+The idea here is to increase speed of development by maintaining a fork according to the [C4 process](https://rfc.zeromq.org/spec/42/). Tooling can be found [here](https://github.com/weex/c4-tools).
+
+Each pull request that was merged has a comment (i.e. [UpstreamPR16568](https://github.com/mastodon/mastodon/pull/16568)) that helps find the original PR without unnecessary spam.
+
+As of 2021-08-04, every valid PR on upstream has been merged.
+
+----
+
 ![Mastodon](https://i.imgur.com/NhZc40l.png)
 ========
 
 [![GitHub release](https://img.shields.io/github/release/mastodon/mastodon.svg)][releases]
-[![Build Status](https://img.shields.io/circleci/project/github/mastodon/mastodon.svg)][circleci]
-[![Code Climate](https://img.shields.io/codeclimate/maintainability/mastodon/mastodon.svg)][code_climate]
+[![Build Status](https://img.shields.io/circleci/project/github/weex/mastodon.svg)][circleci]
+[![Code Climate](https://img.shields.io/codeclimate/maintainability/weex/mastodon.svg)][code_climate]
 [![Crowdin](https://d322cqt584bo4o.cloudfront.net/mastodon/localized.svg)][crowdin]
 [![Docker Pulls](https://img.shields.io/docker/pulls/tootsuite/mastodon.svg)][docker]
 
 [releases]: https://github.com/mastodon/mastodon/releases
-[circleci]: https://circleci.com/gh/mastodon/mastodon
-[code_climate]: https://codeclimate.com/github/mastodon/mastodon
+[circleci]: https://circleci.com/gh/weex/mastodon
+[code_climate]: https://codeclimate.com/github/weex/mastodon
 [crowdin]: https://crowdin.com/project/mastodon
 [docker]: https://hub.docker.com/r/tootsuite/mastodon/
 

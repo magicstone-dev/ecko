@@ -12,8 +12,6 @@ The idea here is to increase speed of development by maintaining a fork accordin
 
 Each pull request that was merged has a comment (i.e. [UpstreamPR16568](https://github.com/mastodon/mastodon/pull/16568)) that helps find the original PR without unnecessary spam.
 
-As of 2021-08-04, every valid PR on upstream has been merged.
-
 ----
 
 ![Mastodon](https://i.imgur.com/NhZc40l.png)

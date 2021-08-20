@@ -2,8 +2,8 @@
 
 lock '3.16.0'
 
-set :repo_url, ENV.fetch('REPO', 'https://github.com/mastodon/mastodon.git')
-set :branch, ENV.fetch('BRANCH', 'master')
+set :repo_url, ENV.fetch('REPO', 'https://github.com/weex/mastodon.git')
+set :branch, ENV.fetch('BRANCH', 'c4')
 
 set :application, 'mastodon'
 set :rbenv_type, :user

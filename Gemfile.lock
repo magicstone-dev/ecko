@@ -245,7 +245,7 @@ GEM
     fuubar (2.5.1)
       rspec-core (~> 3.0)
       ruby-progressbar (~> 1.4)
-    gitlab-omniauth-openid-connect (0.5.0)
+    gitlab-omniauth-openid-connect (0.8.0)
       addressable (~> 2.7)
       omniauth (~> 1.9)
       openid_connect (~> 1.2)
@@ -458,7 +458,7 @@ GEM
       rack (>= 1.0, < 3)
     rack-cors (1.1.1)
       rack (>= 2.0.0)
-    rack-oauth2 (1.16.0)
+    rack-oauth2 (1.18.0)
       activesupport
       attr_required
       httpclient
@@ -746,7 +746,7 @@ DEPENDENCIES
   fog-core (<= 2.1.0)
   fog-openstack (~> 0.3)
   fuubar (~> 2.5)
-  gitlab-omniauth-openid-connect (~> 0.5.0)
+  gitlab-omniauth-openid-connect (~> 0.8.0)
   hamlit-rails (~> 0.2)
   hiredis (~> 0.6)
   htmlentities (~> 4.3)

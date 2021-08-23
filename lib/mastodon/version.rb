@@ -33,7 +33,7 @@ module Mastodon
     end
 
     def repository
-      ENV.fetch('GITHUB_REPOSITORY', 'weex/mastodon')
+      ENV.fetch('GITHUB_REPOSITORY', 'c4social/mastodon')
     end
 
     def source_base_url

@@ -1,7 +1,7 @@
 {
   "name": "Mastodon",
   "description": "C4 fork of a GNU Social-compatible microblogging server",
-  "repository": "https://github.com/weex/mastodon",
+  "repository": "https://github.com/c4social/mastodon",
   "logo": "https://github.com/mastodon.png",
   "env": {
     "HEROKU": {

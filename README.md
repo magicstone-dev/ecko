@@ -1,10 +1,14 @@
 # C4 fork of Mastodon
 
+[![GitHub release](https://c4social.org/assets/no-releases-for-c4.svg)][releases]
 [![Build Status](https://img.shields.io/circleci/project/github/c4social/mastodon.svg)][circleci]
 [![Code Climate](https://img.shields.io/codeclimate/maintainability/c4social/mastodon.svg)][code_climate]
+[![Docker Pulls](https://img.shields.io/docker/pulls/dsterry/mastodon.svg)][docker]
 
+[releases]: https://github.com/c4social/mastodon/releases
 [circleci]: https://circleci.com/gh/c4social/mastodon
 [code_climate]: https://codeclimate.com/github/c4social/mastodon
+[docker]: https://hub.docker.com/r/dsterry/mastodon/
 
 WARNING: This codebase should be considered `unstable`. If you find a bug, please [make an issue](https://github.com/c4social/mastodon/issues/new) with a [clear problem statement](https://rfc.zeromq.org/spec/42/#24-development-process).
 
@@ -17,17 +21,17 @@ Each pull request that was merged has a comment (i.e. [UpstreamPR16568](https://
 ![Mastodon](https://i.imgur.com/NhZc40l.png)
 ========
 
-[![GitHub release](https://img.shields.io/github/release/mastodon/mastodon.svg)][releases]
-[![Build Status](https://img.shields.io/circleci/project/github/mastodon/mastodon.svg)][circleci]
-[![Code Climate](https://img.shields.io/codeclimate/maintainability/mastodon/mastodon.svg)][code_climate]
-[![Crowdin](https://d322cqt584bo4o.cloudfront.net/mastodon/localized.svg)][crowdin]
-[![Docker Pulls](https://img.shields.io/docker/pulls/tootsuite/mastodon.svg)][docker]
+[![GitHub release](https://img.shields.io/github/release/mastodon/mastodon.svg)][releases2]
+[![Build Status](https://img.shields.io/circleci/project/github/mastodon/mastodon.svg)][circleci2]
+[![Code Climate](https://img.shields.io/codeclimate/maintainability/mastodon/mastodon.svg)][code_climate2]
+[![Crowdin](https://d322cqt584bo4o.cloudfront.net/mastodon/localized.svg)][crowdin2]
+[![Docker Pulls](https://img.shields.io/docker/pulls/tootsuite/mastodon.svg)][docker2]
 
-[releases]: https://github.com/mastodon/mastodon/releases
-[circleci]: https://circleci.com/gh/mastodon/mastodon
-[code_climate]: https://codeclimate.com/github/mastodon/mastodon
-[crowdin]: https://crowdin.com/project/mastodon
-[docker]: https://hub.docker.com/r/tootsuite/mastodon/
+[releases2]: https://github.com/mastodon/mastodon/releases
+[circleci2]: https://circleci.com/gh/mastodon/mastodon
+[code_climate2]: https://codeclimate.com/github/mastodon/mastodon
+[crowdin2]: https://crowdin.com/project/mastodon
+[docker2]: https://hub.docker.com/r/tootsuite/mastodon/
 
 Mastodon is a **free, open-source social network server** based on ActivityPub where users can follow friends and discover new ones. On Mastodon, users can publish anything they want: links, pictures, text, video. All Mastodon servers are interoperable as a federated network (users on one server can seamlessly communicate with users from another one, including non-Mastodon software that implements ActivityPub)!
 

@@ -1,4 +1,4 @@
-# C4 fork of Mastodon
+# C4Social fork of Mastodon
 
 [![GitHub release](https://c4social.org/assets/no-releases-for-c4.svg)][releases]
 [![Build Status](https://img.shields.io/circleci/project/github/c4social/mastodon.svg)][circleci]
@@ -10,11 +10,14 @@
 [code_climate]: https://codeclimate.com/github/c4social/mastodon
 [docker]: https://hub.docker.com/r/dsterry/mastodon/
 
-WARNING: This codebase should be considered `unstable`. If you find a bug, please [make an issue](https://github.com/c4social/mastodon/issues/new) with a [clear problem statement](https://rfc.zeromq.org/spec/42/#24-development-process).
+This is a dynamic version of Mastodon which was forked in August of 2021.
 
-The idea here is to increase speed of development by maintaining a fork according to the [C4 process](https://rfc.zeromq.org/spec/42/). Tooling can be found [here](https://github.com/c4social/c4-tools).
+|For everyone|Instance administrators|Contributors (all skill levels)|
+|:----:|:----:|:----:|
+|  Try it at https://c4.social | Install your own from https://github.com/C4Social/mastodon | Report an issue, submit code or docs, or solve a problem at the  [Issue tracker](https://github.com/C4Social/mastodon/issues) |
 
-Each pull request that was merged has a comment (i.e. [UpstreamPR16568](https://github.com/mastodon/mastodon/pull/16568)) that helps find the original PR without unnecessary spam.
+
+Learn more at [C4Social.org](https://c4social.org)
 
 ----
 

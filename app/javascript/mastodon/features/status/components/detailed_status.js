@@ -23,7 +23,7 @@ const messages = defineMessages({
   private_short: { id: 'privacy.private.short', defaultMessage: 'Followers-only' },
   direct_short: { id: 'privacy.direct.short', defaultMessage: 'Direct' },
   local_only: { id: 'status.local_only', defaultMessage: 'This post is only visible by other users of your instance' },
-  });
+});
 
 export default  @injectIntl
 class DetailedStatus extends ImmutablePureComponent {

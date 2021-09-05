@@ -83,6 +83,7 @@ RSpec.describe StatusPolicy, type: :model do
     it 'denies access when local-only and the viewer is from another domain' do
       viewer = Fabricate(:account, domain: 'remote-domain')
       allow(status).to receive(:local_only?) { true }
+      
       expect(subject).to_not permit(viewer, status)
     end
   end

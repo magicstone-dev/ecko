@@ -14,7 +14,6 @@
 #  sensitive              :boolean          default(FALSE), not null
 #  visibility             :integer          default("public"), not null
 #  local_only             :boolean
-#  activity_pub_type      :string
 #  spoiler_text           :text             default(""), not null
 #  reply                  :boolean          default(FALSE), not null
 #  language               :string

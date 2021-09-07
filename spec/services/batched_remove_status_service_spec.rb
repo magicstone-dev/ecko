@@ -47,7 +47,7 @@ RSpec.describe BatchedRemoveStatusService, type: :service do
     expect(Redis.current).to have_received(:publish).with('timeline:public', any_args).at_least(:once)
   end
 
-  it 'sends delete activity to followers' do
-    expect(a_request(:post, 'http://example.com/inbox')).to have_been_made.at_least_once
+  it 'doesn\'t send delete activity to followers' do
+    expect(a_request(:post, 'http://example.com/inbox')).not_to have_been_made.at_least_once
   end
 end

@@ -450,6 +450,10 @@
         "id": "status.cannot_reblog"
       },
       {
+        "defaultMessage": "This post is only visible by other users of your instance",
+        "id": "status.local_only"
+      },
+      {
         "defaultMessage": "Favourite",
         "id": "status.favourite"
       },
@@ -1132,6 +1136,31 @@
       }
     ],
     "path": "app/javascript/mastodon/features/compose/components/emoji_picker_dropdown.json"
+  },
+  {
+    "descriptors": [
+      {
+        "defaultMessage": "Federated",
+        "id": "federation.federated.short"
+      },
+      {
+        "defaultMessage": "Allow post to reach other instances",
+        "id": "federation.federated.long"
+      },
+      {
+        "defaultMessage": "Local-only",
+        "id": "federation.local_only.short"
+      },
+      {
+        "defaultMessage": "Restrict this post only to my instance",
+        "id": "federation.local_only.long"
+      },
+      {
+        "defaultMessage": "Adjust status federation",
+        "id": "federation.change"
+      }
+    ],
+    "path": "app/javascript/mastodon/features/compose/components/federation_dropdown.json"
   },
   {
     "descriptors": [
@@ -2661,6 +2690,10 @@
   {
     "descriptors": [
       {
+        "defaultMessage": "This post is only visible by other users of your instance",
+        "id": "status.local_only"
+      },
+      {
         "defaultMessage": "Sensitive content",
         "id": "status.sensitive_warning"
       }
@@ -2684,6 +2717,10 @@
       {
         "defaultMessage": "Direct",
         "id": "privacy.direct.short"
+      },
+      {
+        "defaultMessage": "This post is only visible by other users of your instance",
+        "id": "status.local_only"
       }
     ],
     "path": "app/javascript/mastodon/features/status/components/detailed_status.json"

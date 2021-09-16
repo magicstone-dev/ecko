@@ -246,6 +246,7 @@ en:
         destroy_domain_allow: Delete Domain Allow
         destroy_domain_block: Delete Domain Block
         destroy_email_domain_block: Delete E-mail Domain Block
+        destroy_instance: Purge Domain
         destroy_ip_block: Delete IP rule
         destroy_registration_filter: Destroy Registration Text Filter
         destroy_status: Delete Post
@@ -295,6 +296,7 @@ en:
         destroy_domain_allow_html: "%{name} disallowed federation with domain %{target}"
         destroy_domain_block_html: "%{name} unblocked domain %{target}"
         destroy_email_domain_block_html: "%{name} unblocked e-mail domain %{target}"
+        destroy_instance_html: "%{name} purged domain %{target}"
         destroy_ip_block_html: "%{name} deleted rule for IP %{target}"
         destroy_registration_filter_html: "%{name} unblocked registrations with request text matching %{target}"
         destroy_status_html: "%{name} removed post by %{target}"
@@ -491,6 +493,7 @@ en:
       back_to_limited: Limited
       back_to_warning: Warning
       by_domain: Domain
+      confirm_purge: Are you sure you want to permanently delete data from this domain?
       delivery:
         all: All
         clear: Clear delivery errors
@@ -506,6 +509,7 @@ en:
       delivery_available: Delivery is available
       delivery_error_days: Delivery error days
       delivery_error_hint: If delivery is not possible for %{count} days, it will be automatically marked as undeliverable.
+      destroyed_msg: Data from %{domain} is now queued for imminent deletion.
       empty: No domains found.
       known_accounts:
         one: "%{count} known account"
@@ -516,6 +520,7 @@ en:
         title: Moderation
       private_comment: Private comment
       public_comment: Public comment
+      purge: Purge
       title: Federation
       total_blocked_by_us: Blocked by us
       total_followed_by_them: Followed by them

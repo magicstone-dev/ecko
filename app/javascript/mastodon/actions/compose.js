@@ -37,6 +37,7 @@ export const THUMBNAIL_UPLOAD_PROGRESS = 'THUMBNAIL_UPLOAD_PROGRESS';
 export const COMPOSE_SUGGESTIONS_CLEAR = 'COMPOSE_SUGGESTIONS_CLEAR';
 export const COMPOSE_SUGGESTIONS_READY = 'COMPOSE_SUGGESTIONS_READY';
 export const COMPOSE_SUGGESTION_SELECT = 'COMPOSE_SUGGESTION_SELECT';
+export const COMPOSE_SUGGESTION_IGNORE = 'COMPOSE_SUGGESTION_IGNORE';
 export const COMPOSE_SUGGESTION_TAGS_UPDATE = 'COMPOSE_SUGGESTION_TAGS_UPDATE';
 
 export const COMPOSE_TAG_HISTORY_UPDATE = 'COMPOSE_TAG_HISTORY_UPDATE';
@@ -48,6 +49,7 @@ export const COMPOSE_SENSITIVITY_CHANGE = 'COMPOSE_SENSITIVITY_CHANGE';
 export const COMPOSE_SPOILERNESS_CHANGE = 'COMPOSE_SPOILERNESS_CHANGE';
 export const COMPOSE_SPOILER_TEXT_CHANGE = 'COMPOSE_SPOILER_TEXT_CHANGE';
 export const COMPOSE_VISIBILITY_CHANGE  = 'COMPOSE_VISIBILITY_CHANGE';
+export const COMPOSE_FEDERATION_CHANGE  = 'COMPOSE_FEDERATION_CHANGE';
 export const COMPOSE_LISTABILITY_CHANGE = 'COMPOSE_LISTABILITY_CHANGE';
 export const COMPOSE_COMPOSING_CHANGE = 'COMPOSE_COMPOSING_CHANGE';
 
@@ -153,6 +155,7 @@ export function submitCompose(routerHistory) {
       spoiler_text: getState().getIn(['compose', 'spoiler']) ? getState().getIn(['compose', 'spoiler_text'], '') : '',
       visibility: getState().getIn(['compose', 'privacy']),
       poll: getState().getIn(['compose', 'poll'], null),
+      local_only: !getState().getIn(['compose', 'federation']),
     }, {
       headers: {
         'Idempotency-Key': getState().getIn(['compose', 'idempotencyKey']),
@@ -534,13 +537,25 @@ export function selectComposeSuggestion(position, token, suggestion, path) {
       startPosition = position;
     }
 
-    dispatch({
-      type: COMPOSE_SUGGESTION_SELECT,
-      position: startPosition,
-      token,
-      completion,
-      path,
-    });
+    // We don't want to replace hashtags that vary only in case due to accessibility, but we need to fire off an event so that
+    // the suggestions are dismissed and the cursor moves forward.
+    if (suggestion.type !== 'hashtag' || token.slice(1).localeCompare(suggestion.name, undefined, { sensitivity: 'accent' }) !== 0) {
+      dispatch({
+        type: COMPOSE_SUGGESTION_SELECT,
+        position: startPosition,
+        token,
+        completion,
+        path,
+      });
+    } else {
+      dispatch({
+        type: COMPOSE_SUGGESTION_IGNORE,
+        position: startPosition,
+        token,
+        completion,
+        path,
+      });
+    }
   };
 };
 
@@ -620,6 +635,13 @@ export function changeComposeSpoilerText(text) {
 export function changeComposeVisibility(value) {
   return {
     type: COMPOSE_VISIBILITY_CHANGE,
+    value,
+  };
+};
+
+export function changeComposeFederation(value) {
+  return {
+    type: COMPOSE_FEDERATION_CHANGE,
     value,
   };
 };

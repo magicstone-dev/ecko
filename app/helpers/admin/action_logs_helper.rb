@@ -33,6 +33,8 @@ module Admin::ActionLogsHelper
       "#{record.ip}/#{record.ip.prefix} (#{I18n.t("simple_form.labels.ip_block.severities.#{record.severity}")})"
     when 'Instance'
       record.domain
+    when 'RegistrationFilter'
+      link_to "#{truncate(record.phrase)} (#{I18n.t("admin.registration_filters.types.#{record.type}")})", edit_admin_registration_filter_path(record.id)
     end
   end
 
@@ -56,6 +58,8 @@ module Admin::ActionLogsHelper
       "#{attributes['ip']}/#{attributes['ip'].prefix} (#{I18n.t("simple_form.labels.ip_block.severities.#{attributes['severity']}")})"
     when 'Instance'
       attributes['domain']
+    when 'RegistrationFilter'
+      "#{truncate(attributes['phrase'])} (#{I18n.t("admin.registration_filters.types.#{attributes['type']}")})"
     end
   end
 end

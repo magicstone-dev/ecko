@@ -1,17 +1,40 @@
+# C4Social fork of Mastodon
+
+[![GitHub release](https://c4social.org/assets/no-releases-for-c4.svg)][releases]
+[![Build Status](https://img.shields.io/circleci/project/github/c4social/mastodon.svg)][circleci]
+[![Code Climate](https://img.shields.io/codeclimate/maintainability/c4social/mastodon.svg)][code_climate]
+[![Docker Pulls](https://img.shields.io/docker/pulls/dsterry/mastodon.svg)][docker]
+
+[releases]: https://github.com/c4social/mastodon/releases
+[circleci]: https://circleci.com/gh/c4social/mastodon
+[code_climate]: https://codeclimate.com/github/c4social/mastodon
+[docker]: https://hub.docker.com/r/dsterry/mastodon/
+
+This is a dynamic version of Mastodon which was forked in August of 2021.
+
+|For everyone|Instance administrators|Contributors (all skill levels)|
+|:----:|:----:|:----:|
+|  Try it at https://c4.social | Install your own from https://github.com/C4Social/mastodon | Report an issue, submit code or docs, or solve a problem at the  [Issue tracker](https://github.com/C4Social/mastodon/issues) |
+
+
+Learn more at [C4Social.org](https://c4social.org)
+
+----
+
 ![Mastodon](https://i.imgur.com/NhZc40l.png)
 ========
 
-[![GitHub release](https://img.shields.io/github/release/mastodon/mastodon.svg)][releases]
-[![Build Status](https://img.shields.io/circleci/project/github/mastodon/mastodon.svg)][circleci]
-[![Code Climate](https://img.shields.io/codeclimate/maintainability/mastodon/mastodon.svg)][code_climate]
-[![Crowdin](https://d322cqt584bo4o.cloudfront.net/mastodon/localized.svg)][crowdin]
-[![Docker Pulls](https://img.shields.io/docker/pulls/tootsuite/mastodon.svg)][docker]
+[![GitHub release](https://img.shields.io/github/release/mastodon/mastodon.svg)][releases2]
+[![Build Status](https://img.shields.io/circleci/project/github/mastodon/mastodon.svg)][circleci2]
+[![Code Climate](https://img.shields.io/codeclimate/maintainability/mastodon/mastodon.svg)][code_climate2]
+[![Crowdin](https://d322cqt584bo4o.cloudfront.net/mastodon/localized.svg)][crowdin2]
+[![Docker Pulls](https://img.shields.io/docker/pulls/tootsuite/mastodon.svg)][docker2]
 
-[releases]: https://github.com/mastodon/mastodon/releases
-[circleci]: https://circleci.com/gh/mastodon/mastodon
-[code_climate]: https://codeclimate.com/github/mastodon/mastodon
-[crowdin]: https://crowdin.com/project/mastodon
-[docker]: https://hub.docker.com/r/tootsuite/mastodon/
+[releases2]: https://github.com/mastodon/mastodon/releases
+[circleci2]: https://circleci.com/gh/mastodon/mastodon
+[code_climate2]: https://codeclimate.com/github/mastodon/mastodon
+[crowdin2]: https://crowdin.com/project/mastodon
+[docker2]: https://hub.docker.com/r/tootsuite/mastodon/
 
 Mastodon is a **free, open-source social network server** based on ActivityPub where users can follow friends and discover new ones. On Mastodon, users can publish anything they want: links, pictures, text, video. All Mastodon servers are interoperable as a federated network (users on one server can seamlessly communicate with users from another one, including non-Mastodon software that implements ActivityPub)!
 
@@ -74,7 +97,12 @@ Mastodon acts as an OAuth2 provider so 3rd party apps can use the REST and Strea
 
 The repository includes deployment configurations for **Docker and docker-compose**, but also a few specific platforms like **Heroku**, **Scalingo**, and **Nanobox**. The [**stand-alone** installation guide](https://docs.joinmastodon.org/admin/install/) is available in the documentation.
 
-A **Vagrant** configuration is included for development purposes.
+A **Vagrant** configuration is included for development purposes. To use it, complete following steps:
+
+- Install Vagrant and Virtualbox
+- Run `vagrant up`
+- Run `vagrant ssh -c "cd /vagrant && foreman start"`
+- Open `http://mastodon.local` in your browser
 
 ## Contributing
 

@@ -30,6 +30,7 @@ class RemoveStatusService < BaseService
         # of it. The Delete activity of the original is forwarded
         # separately.
         remove_from_remote_reach if @account.local? && !@options[:original_removed]
+        remove_from_remote_reach if !status.local_only? && @account.local? && !@options[:original_removed]
 
         # Since reblogs don't mention anyone, don't get reblogged,
         # favourited and don't contain their own media attachments

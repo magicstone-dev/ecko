@@ -2,7 +2,7 @@
 
 lock '3.16.0'
 
-set :repo_url, ENV.fetch('REPO', 'https://github.com/c4social/mastodon.git')
+set :repo_url, ENV.fetch('REPO', 'https://github.com/magicstone-dev/ecko.git')
 set :branch, ENV.fetch('BRANCH', 'main')
 
 set :application, 'mastodon'

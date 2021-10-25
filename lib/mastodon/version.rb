@@ -33,7 +33,7 @@ module Mastodon
     end
 
     def repository
-      ENV.fetch('GITHUB_REPOSITORY', 'c4social/mastodon')
+      ENV.fetch('GITHUB_REPOSITORY', 'magicstone-dev/ecko')
     end
 
     def source_base_url

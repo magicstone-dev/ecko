@@ -1,6 +1,6 @@
 apiVersion: v2
-name: mastodon
-description: Mastodon is a free, open-source social network server based on ActivityPub.
+name: ecko
+description: Ecko is a free, open-source social network server based on Mastodon and ActivityPub.
 
 # A chart can be either an 'application' or a 'library' chart.
 #

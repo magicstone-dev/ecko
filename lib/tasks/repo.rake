@@ -11,7 +11,7 @@ namespace :repo do
       Authors
       =======
 
-      Mastodon is available on [GitHub](https://github.com/#{REPOSITORY_NAME})
+      Ecko is available on [GitHub](https://github.com/#{REPOSITORY_NAME})
       and provided thanks to the work of the following contributors:
 
     HEADER

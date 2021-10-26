@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: tootsuite/mastodon
+  repository: dsterry/ecko
   # https://hub.docker.com/r/tootsuite/mastodon/tags
   #
   # alternatively, use `latest` for the latest release or `edge` for the image
@@ -26,7 +26,7 @@ mastodon:
       schedule: "0 0 * * 0"
   # available locales: https://github.com/tootsuite/mastodon/blob/master/config/application.rb#L43
   locale: en
-  local_domain: mastodon.local
+  local_domain: ecko.local
   persistence:
     assets:
       # ReadWriteOnce is more widely supported than ReadWriteMany, but limits
@@ -94,13 +94,13 @@ ingress:
     #   for the NGINX ingress controller:
     # nginx.org/client-max-body-size: 40m
   hosts:
-    - host: mastodon.local
+    - host: ecko.local
       paths:
         - path: '/'
   tls:
-    - secretName: mastodon-tls
+    - secretName: ecko-tls
       hosts:
-        - mastodon.local
+        - ecko.local
 
 # https://github.com/bitnami/charts/tree/master/bitnami/elasticsearch#parameters
 elasticsearch:

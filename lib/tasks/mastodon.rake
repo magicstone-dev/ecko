@@ -33,7 +33,7 @@ namespace :mastodon do
 
       prompt.say "\n"
 
-      using_docker        = prompt.yes?('Are you using Docker to run Mastodon?')
+      using_docker        = prompt.yes?('Are you using Docker to run Ecko?')
       db_connection_works = false
 
       prompt.say "\n"
@@ -53,13 +53,13 @@ namespace :mastodon do
 
         env['DB_NAME'] = prompt.ask('Name of PostgreSQL database:') do |q|
           q.required true
-          q.default using_docker ? 'postgres' : 'mastodon_production'
+          q.default using_docker ? 'postgres' : 'ecko_production'
           q.modify :strip
         end
 
         env['DB_USER'] = prompt.ask('Name of PostgreSQL user:') do |q|
           q.required true
-          q.default using_docker ? 'postgres' : 'mastodon'
+          q.default using_docker ? 'postgres' : 'ecko'
           q.modify :strip
         end
 
@@ -295,7 +295,7 @@ namespace :mastodon do
 
         env['SMTP_FROM_ADDRESS'] = prompt.ask('E-mail address to send e-mails "from":') do |q|
           q.required true
-          q.default "Mastodon <notifications@#{env['LOCAL_DOMAIN']}>"
+          q.default "Ecko <notifications@#{env['LOCAL_DOMAIN']}>"
           q.modify :strip
         end
 
@@ -319,7 +319,7 @@ namespace :mastodon do
             from: env['SMTP_FROM_ADDRESS'],
           }
 
-          mail = ActionMailer::Base.new.mail to: send_to, subject: 'Test', body: 'Mastodon SMTP configuration works!'
+          mail = ActionMailer::Base.new.mail to: send_to, subject: 'Test', body: 'Ecko SMTP configuration works!'
           mail.deliver
           break
         rescue StandardError => e
@@ -389,7 +389,7 @@ namespace :mastodon do
         end
 
         prompt.say "\n"
-        prompt.ok 'All done! You can now power on the Mastodon server 🐘'
+        prompt.ok 'All done! You can now power on the Ecko server'
         prompt.say "\n"
 
         if db_connection_works && prompt.yes?('Do you want to create an admin user straight away?')

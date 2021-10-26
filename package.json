@@ -1,5 +1,5 @@
 {
-  "name": "@c4social/mastodon",
+  "name": "@magicstone-dev/ecko",
   "license": "AGPL-3.0-or-later",
   "engines": {
     "node": ">=12"
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/c4social/mastodon.git"
+    "url": "https://github.com/magicstone-dev/ecko.git"
   },
   "browserslist": [
     "last 2 versions",

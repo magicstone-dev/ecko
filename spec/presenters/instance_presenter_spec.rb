@@ -91,8 +91,8 @@ describe InstancePresenter do
   end
 
   describe '#source_url' do
-    it 'returns "https://github.com/c4social/mastodon"' do
-      expect(instance_presenter.source_url).to eq('https://github.com/c4social/mastodon')
+    it 'returns "https://github.com/magicstone-dev/ecko"' do
+      expect(instance_presenter.source_url).to eq('https://github.com/magicstone-dev/ecko')
     end
   end
 

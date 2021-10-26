@@ -20,7 +20,7 @@ echo iptables-persistent iptables-persistent/autosave_v4 boolean true | sudo deb
 echo iptables-persistent iptables-persistent/autosave_v6 boolean true | sudo debconf-set-selections
 sudo apt-get install iptables-persistent -y
 
-# Add packages to build and run Mastodon
+# Add packages to build and run Ecko
 sudo apt-get install \
   git-core \
   g++ \
@@ -56,14 +56,14 @@ rvm reinstall ruby-$RUBY_VERSION --disable-binary
 
 # Configure database
 sudo -u postgres createuser -U postgres vagrant -s
-sudo -u postgres createdb -U postgres mastodon_development
+sudo -u postgres createdb -U postgres ecko_development
 
 # Install gems and node modules
 gem install bundler foreman
 bundle install
 yarn install
 
-# Build Mastodon
+# Build Ecko
 export RAILS_ENV=development 
 export $(cat ".env.vagrant" | xargs)
 bundle exec rails db:setup
@@ -88,7 +88,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "ubuntu/bionic64"
 
   config.vm.provider :virtualbox do |vb|
-    vb.name = "mastodon"
+    vb.name = "ecko"
     vb.customize ["modifyvm", :id, "--memory", "2048"]
     # Increase the number of CPUs. Uncomment and adjust to
     # increase performance
@@ -106,13 +106,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   # This uses the vagrant-hostsupdater plugin, and lets you
-  # access the development site at http://mastodon.local.
+  # access the development site at http://ecko.local.
   # If you change it, also change it in .env.vagrant before provisioning
   # the vagrant server to update the development build.
   #
   # To install:
   #   $ vagrant plugin install vagrant-hostsupdater
-  config.vm.hostname = "mastodon.local"
+  config.vm.hostname = "ecko.local"
 
   if defined?(VagrantPlugins::HostsUpdater)
     config.vm.network :private_network, ip: "192.168.42.42", nictype: "virtio"

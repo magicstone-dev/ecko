@@ -1,11 +1,11 @@
 {
-  "name": "Mastodon",
-  "description": "A GNU Social-compatible microblogging server",
-  "repository": "https://github.com/mastodon/mastodon",
+  "name": "Ecko",
+  "description": "A GNU Social and Mastodon-compatible microblogging server",
+  "repository": "https://github.com/magicstone-dev/ecko",
   "logo": "https://github.com/mastodon.png",
   "env": {
     "LOCAL_DOMAIN": {
-      "description": "The domain that your Mastodon instance will run on (this can be appname.scalingo.io or a custom domain)",
+      "description": "The domain that your Ecko instance will run on (this can be appname.scalingo.io or a custom domain)",
       "required": true
     },
     "SECRET_KEY_BASE": {
@@ -22,7 +22,7 @@
       "required": true
     },
     "S3_ENABLED": {
-      "description": "Should Mastodon use Amazon S3 for storage? This is highly recommended, as Scalingo does not have persistent file storage (files will be lost).",
+      "description": "Should Ecko use Amazon S3 for storage? This is highly recommended, as Scalingo does not have persistent file storage (files will be lost).",
       "value": "true",
       "required": false
     },

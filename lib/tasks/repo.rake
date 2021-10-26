@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-REPOSITORY_NAME = 'c4social/mastodon'
+REPOSITORY_NAME = 'magicstone-dev/ecko'
 
 namespace :repo do
   desc 'Generate the AUTHORS.md file'
@@ -11,7 +11,7 @@ namespace :repo do
       Authors
       =======
 
-      Mastodon is available on [GitHub](https://github.com/#{REPOSITORY_NAME})
+      Ecko is available on [GitHub](https://github.com/#{REPOSITORY_NAME})
       and provided thanks to the work of the following contributors:
 
     HEADER
@@ -34,7 +34,7 @@ namespace :repo do
 
     file << <<~FOOTER
 
-      This document is provided for informational purposes only. Since it is only updated periodically, the version you are looking at may be currently out of date. To see the full list of contributors, consider looking at the [git history](https://github.com/c4social/mastodon/graphs/contributors) instead.
+      This document is provided for informational purposes only. Since it is only updated periodically, the version you are looking at may be currently out of date. To see the full list of contributors, consider looking at the [git history](https://github.com/magicstone-dev/ecko/graphs/contributors) instead.
     FOOTER
   end
 

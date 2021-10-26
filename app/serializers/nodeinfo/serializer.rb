@@ -10,7 +10,7 @@ class NodeInfo::Serializer < ActiveModel::Serializer
   end
 
   def software
-    { name: 'mastodon', version: Mastodon::Version.to_s }
+    { name: 'ecko', version: Mastodon::Version.to_s }
   end
 
   def services

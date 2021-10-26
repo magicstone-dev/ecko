@@ -1,3 +1,7 @@
+Note: Below is the changelog for Mastodon at the time Ecko was forked. The file has been kept for historical reasons but currently, there are no plans to update this file. The best way to review recent changees in Ecko is the commit log at https://github.com/magicstone-dev/ecko/commits/main.
+
+----
+
 Changelog
 =========
 

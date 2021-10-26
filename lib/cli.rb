@@ -74,7 +74,7 @@ module Mastodon
     long_desc <<~LONG_DESC
       Erase the server from the federation by broadcasting account delete
       activities to all known other servers. This allows a "clean exit" from
-      running a Mastodon server, as it leaves next to no cache behind on
+      running an Ecko server, as it leaves next to no cache behind on
       other servers.
 
       This command is always interactive and requires confirmation twice.

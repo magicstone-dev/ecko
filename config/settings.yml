@@ -2,7 +2,7 @@
 # Most every setting can be adjusted from the admin interface.
 
 defaults: &defaults
-  site_title: Mastodon
+  site_title: Ecko
   site_short_description: ''
   site_description: ''
   site_extended_description: ''

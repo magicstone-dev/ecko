@@ -1,7 +1,7 @@
 {
-  "name": "Mastodon",
-  "description": "C4 fork of a GNU Social-compatible microblogging server",
-  "repository": "https://github.com/c4social/mastodon",
+  "name": "Ecko",
+  "description": "Ecko, a GNU Social and Mastodon-compatible microblogging server",
+  "repository": "https://github.com/magicstone-dev/ecko",
   "logo": "https://github.com/mastodon.png",
   "env": {
     "HEROKU": {
@@ -10,7 +10,7 @@
       "required": true
     },
     "LOCAL_DOMAIN": {
-      "description": "The domain that your Mastodon instance will run on (this can be appname.herokuapp.com or a custom domain)",
+      "description": "The domain that your Ecko instance will run on (this can be appname.herokuapp.com or a custom domain)",
       "required": true
     },
     "SECRET_KEY_BASE": {

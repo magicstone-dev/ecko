@@ -70,7 +70,7 @@ en:
       form_challenge:
         current_password: You are entering a secure area
       imports:
-        data: CSV file exported from another Ecko or Mastodon server, Please make sure that any existing domains will be merged with the new configuration. You can also add csv with only domains which will take in default values
+        data: CSV file exported from another Ecko or Mastodon server. Please be aware that this will merge new domains with existing ones. You can also upload a list of domains one-per-line which will be given the following defaults: severity of Silence, blank public comment, and obfuscated domain names (if shown).
       invite_request:
         text: This will help us review your application
       ip_block:

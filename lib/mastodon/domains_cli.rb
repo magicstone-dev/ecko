@@ -157,6 +157,48 @@ module Mastodon
       end
     end
 
+    option :url, type: :string, default: '', aliases: [:u]
+    desc 'import [URL]', 'Import blocked domains based on the csv url provided'
+    long_desc <<-LONG_DESC
+      Imports all the block list in the form of csv response
+      There are two ways to import a csv, the exported pattern of the csv
+      and the domain only way of pattern
+    LONG_DESC
+    def import_blocked(url)
+      domains_csv = HTTP.get(url).body.readpartial
+      default_headers = %w(#domain #severity #reject_media #reject_reports #public_comment #obfuscate)
+
+      domains = CSV.parse(domains_csv, headers: default_headers)
+      created = 0
+      merged = 0
+
+      domains.each do |row|
+        domain = row['#domain'].strip
+
+        if DomainBlock.rule_for(domain).present?
+          say("#{domain} is already present in the block list or is ruled out", :red)
+          next
+        end
+
+        domain_block = DomainBlock.new(
+          domain: domain,
+          severity: default_block_param(row, '#severity', 'silence'),
+          reject_media: default_block_param(row, '#reject_media', false),
+          reject_reports: default_block_param(row, '#reject_reports', false),
+          public_comment: default_block_param(row, '#public_comment', nil),
+          obfuscate: default_block_param(row, '#obfuscate', true)
+        )
+
+        created += 1
+        DomainBlockWorker.perform_async(domain_block.id) if domain_block.save
+        say("Domain block with domain: #{domain} has been created", :green)
+      end
+
+      say("#{created - merged} new domains created", :green)
+      say("#{domains.length - created} domains ruled out", :red)
+    end
+
+
     private
 
     def stats_to_summary(stats, processed, failed, start_at)
@@ -181,6 +223,12 @@ module Mastodon
     def stats_to_json(stats)
       stats.compact!
       say(Oj.dump(stats))
+    end
+
+    def default_block_param(row, key, default)
+      return default if row[key].nil?
+
+      row[key].strip
     end
   end
 end

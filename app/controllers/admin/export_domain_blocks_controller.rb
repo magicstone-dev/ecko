@@ -30,11 +30,11 @@ module Admin
           next if DomainBlock.rule_for(domain).present?
 
           domain_block = DomainBlock.new(domain: domain,
-                                         severity: default_block_param(row, '#severity', 'suspend'),
+                                         severity: default_block_param(row, '#severity', 'silence'),
                                          reject_media: default_block_param(row, '#reject_media', false),
                                          reject_reports: default_block_param(row, '#reject_reports', false),
                                          public_comment: default_block_param(row, '#public_comment', nil),
-                                         obfuscate: default_block_param(row, '#obfuscate', false))
+                                         obfuscate: default_block_param(row, '#obfuscate', true))
 
           if domain_block.save
             DomainBlockWorker.perform_async(domain_block.id)

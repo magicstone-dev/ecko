@@ -157,15 +157,15 @@ module Mastodon
       end
     end
 
-    option :url, type: :string, default: 'https://csv.rathersafe.space/f.php?d=1&h=39IM2DCd', aliases: [:u]
-    desc 'crawl [START]', 'Crawl all known peers, optionally beginning at START'
+    option :url, type: :string, default: '', aliases: [:u]
+    desc 'import [URL]', 'Import blocked domains based on the csv url provided'
     long_desc <<-LONG_DESC
       Imports all the block list in the form of csv response
       There are two ways to import a csv, the exported pattern of the csv
       and the domain only way of pattern
     LONG_DESC
-    def import_blocked
-      domains_csv = HTTP.get(options[:url]).body.readpartial
+    def import_blocked(url)
+      domains_csv = HTTP.get(url).body.readpartial
       default_headers = %w(#domain #severity #reject_media #reject_reports #public_comment #obfuscate)
 
       domains = CSV.parse(domains_csv, headers: default_headers)

@@ -158,11 +158,11 @@ module Mastodon
     end
 
     option :url, type: :string, default: '', aliases: [:u]
-    desc 'import [URL]', 'Import blocked domains based on the csv url provided'
+    desc 'import [URL]', 'Import blocked domains from CSV file hosted at URL'
     long_desc <<-LONG_DESC
-      Imports all the block list in the form of csv response
-      There are two ways to import a csv, the exported pattern of the csv
-      and the domain only way of pattern
+      Imports a list of domains to block from a URL to a CSV file.
+      Acccepts two CSV formats: As exported from the admin panel OR
+      a file with domains listed one-per-line.
     LONG_DESC
     def import_blocked(url)
       domains_csv = HTTP.get(url).body.readpartial
@@ -170,7 +170,6 @@ module Mastodon
 
       domains = CSV.parse(domains_csv, headers: default_headers)
       created = 0
-      merged = 0
 
       domains.each do |row|
         domain = row['#domain'].strip
@@ -194,7 +193,7 @@ module Mastodon
         say("Domain block with domain: #{domain} has been created", :green)
       end
 
-      say("#{created - merged} new domains created", :green)
+      say("#{created} new domains created", :green)
       say("#{domains.length - created} domains ruled out", :red)
     end
 

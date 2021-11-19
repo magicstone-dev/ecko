@@ -670,6 +670,9 @@ en:
       mascot:
         desc_html: Displayed on multiple pages. At least 293×205px recommended. When not set, falls back to default mascot
         title: Mascot image
+      favicon:
+        desc_html: Displayed on every page. At least 192×192px recommended. When not set, falls back to default favicon
+        title: Favicon image
       peers_api_enabled:
         desc_html: Domain names this server has encountered in the fediverse
         title: Publish list of discovered servers in the API

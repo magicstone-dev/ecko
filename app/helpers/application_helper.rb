@@ -70,6 +70,9 @@ module ApplicationHelper
   end
 
   def favicon_path
+    site_upload = SiteUpload.find_by(var: 'favicon')
+    return site_upload.file.url unless site_upload.nil?
+
     env_suffix = Rails.env.production? ? '' : '-dev'
     "/favicon#{env_suffix}.ico"
   end

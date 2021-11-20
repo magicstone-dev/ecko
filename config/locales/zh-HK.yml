@@ -20,7 +20,7 @@ zh-HK:
     documentation: 說明文件
     federation_hint_html: 你只需要擁有 %{instance} 的帳戶，就可以追蹤任何 Mastodon 服務站上的人！
     get_apps: 嘗試使用手機 App
-    hosted_on: 在 %{domain} 運作的 Mastodon 伺服器
+    hosted_on: Ecko
     instance_actor_flash: |
       這個帳戶是代表伺服器，而非代表任何個人用戶的虛擬帳號。
       此帳戶是為聯盟協定而設。除非你想封鎖整個伺服器的話，否則請不要封鎖這個帳戶。如果你想封鎖伺服器，請使用網域封鎖以達到相同效果。

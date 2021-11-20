@@ -17,7 +17,7 @@ kab:
     documentation: Amnir
     federation_hint_html: S umiḍan deg %{instance} tzemreḍ ad tḍefṛeḍ imdanen deg yal aqeddac Maṣṭudun d wugar n waya.
     get_apps: Ɛreḍ asnas aziraz
-    hosted_on: Maṣṭudun yersen deg %{domain}
+    hosted_on: Ecko
     learn_more: Issin ugar
     privacy_policy: Tasertit tabaḍnit
     see_whats_happening: Ẓer d acu i iḍerrun
@@ -474,7 +474,7 @@ kab:
     '404': The page you are looking for isn't here.
     '406': This page is not available in the requested format.
     '410': The page you were looking for doesn't exist here anymore.
-    '422': 
+    '422':
     '429': Too many requests
     '500':
       title: Asebter-ayi d arameγtu

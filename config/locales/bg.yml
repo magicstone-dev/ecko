@@ -19,7 +19,7 @@ bg:
     documentation: Документация
     federation_hint_html: С акаунт в %{instance} ще можете да последвате хората от всеки сървър на Mastodon и отвъд.
     get_apps: Опитайте мобилно приложение
-    hosted_on: Mastodon е хостван на %{domain}
+    hosted_on: Ecko
     learn_more: Още информация
     privacy_policy: Политика за поверителност
     see_whats_happening: Вижте какво се случва
@@ -219,9 +219,9 @@ bg:
     '404': The page you are looking for isn't here.
     '406': This page is not available in the requested format.
     '410': The page you were looking for doesn't exist here anymore.
-    '422': 
+    '422':
     '429': Too many requests
-    '500': 
+    '500':
     '503': The page could not be served due to a temporary server failure.
   exports:
     blocks: Вашите блокирания

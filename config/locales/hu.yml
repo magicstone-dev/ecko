@@ -20,7 +20,7 @@ hu:
     documentation: Dokumentáció
     federation_hint_html: Egy %{instance} fiókkal bármely más Mastodon szerveren vagy a föderációban lévő felhasználót követni tudsz.
     get_apps: Próbálj ki egy mobil appot
-    hosted_on: "%{domain} Mastodon szerver"
+    hosted_on: Ecko
     instance_actor_flash: |
       Ez a fiók virtuális, magát a szervert reprezentálja, nem pedig konkrét
       felhasználót. Föderációs célokra szolgál, nem szabad tehát felfüggeszteni, hacsak nem akarod a teljes szervert kitiltani, mely esetben a domain tiltásának használata javasolt.

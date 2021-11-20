@@ -10,7 +10,7 @@ ms:
     contact_missing: Tidak ditetapkan
     contact_unavailable: Tidak tersedia
     documentation: Pendokumenan
-    hosted_on: Mastodon dihoskan di %{domain}
+    hosted_on: Ecko
     learn_more: Ketahui lebih lanjut
     privacy_policy: Polisi privasi
     source_code: Kod sumber
@@ -451,9 +451,9 @@ ms:
     '404': The page you are looking for isn't here.
     '406': This page is not available in the requested format.
     '410': The page you were looking for doesn't exist here anymore.
-    '422': 
+    '422':
     '429': Too many requests
-    '500': 
+    '500':
     '503': The page could not be served due to a temporary server failure.
   exports:
     archive_takeout:

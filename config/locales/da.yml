@@ -20,7 +20,7 @@ da:
     documentation: Dokumentation
     federation_hint_html: Med en konto på %{instance} vil du kunne følge andre på en hvilken som helst Mastodon-server.
     get_apps: Prøv en mobil-app
-    hosted_on: Mostodon hostet på %{domain}
+    hosted_on: Ecko
     instance_actor_flash: |
       Denne konto er en virtuel skuespiller, der bruges til at repræsentere selve serveren og ikke nogen individuel bruger.
       Det bruges til føderationsformål og bør ikke blokeres, medmindre du vil blokere hele forekomsten og i så tilfælde bør bruge en domæneblokering.

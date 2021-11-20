@@ -20,7 +20,7 @@ gd:
     documentation: Docamaideadh
     federation_hint_html: Le cunntas air %{instance}, ’s urrainn dhut leantainn air daoine air frithealaiche Mastodon sam bith is a bharrachd.
     get_apps: Feuch aplacaid mobile
-    hosted_on: Mastodon ’ga òstadh air %{domain}
+    hosted_on: Ecko
     instance_actor_flash: |
       ’S e actar biortail a tha sa chunntas seo a riochdaicheas am frithealaiche fhèin seach cleachdaiche sònraichte.
       Tha e ’ga chleachdadh a chùm co-nasgaidh agus cha bu chòir dhut a bhacadh ach ma tha thu airson an t-ionstans gu lèir a bhacadh agus b’ fheàirrde thu bacadh àrainne a chleachdadh an àite sin.

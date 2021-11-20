@@ -14,7 +14,7 @@ ast:
     documentation: Documentación
     federation_hint_html: Con una cuenta en %{instance} vas ser a siguir a persones de cualesquier sirvidor de Mastodon y más.
     get_apps: En preseos móviles
-    hosted_on: Mastodon ta agospiáu en %{domain}
+    hosted_on: Ecko
     learn_more: Deprender más
     privacy_policy: Política de privacidá
     server_stats: 'Estadístiques del sirvidor:'
@@ -213,7 +213,7 @@ ast:
       content: Falló la verificación de seguranza. ¿Tas bloquiando les cookies?
       title: Falló la verificación de seguranza
     '429': Ficiéronse milenta solicitúes
-    '500': 
+    '500':
     '503': The page could not be served due to a temporary server failure.
   exports:
     archive_takeout:

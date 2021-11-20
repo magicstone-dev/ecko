@@ -15,7 +15,7 @@ fi:
     discover_users: Löydä käyttäjiä
     documentation: Dokumentaatio
     get_apps: Kokeile mobiilisovellusta
-    hosted_on: Mastodon palvelimella %{domain}
+    hosted_on: Ecko
     learn_more: Lisätietoja
     privacy_policy: Tietosuojaseloste
     see_whats_happening: Näe mitä tapahtuu

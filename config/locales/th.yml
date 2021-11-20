@@ -20,7 +20,7 @@ th:
     documentation: เอกสารประกอบ
     federation_hint_html: ด้วยบัญชีที่ %{instance} คุณจะสามารถติดตามผู้คนในเซิร์ฟเวอร์ Mastodon และอื่น ๆ
     get_apps: ลองแอปมือถือ
-    hosted_on: Mastodon ที่โฮสต์ที่ %{domain}
+    hosted_on: Ecko
     learn_more: เรียนรู้เพิ่มเติม
     privacy_policy: นโยบายความเป็นส่วนตัว
     rules: กฎของเซิร์ฟเวอร์

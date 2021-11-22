@@ -70,7 +70,7 @@ en:
       form_challenge:
         current_password: You are entering a secure area
       imports:
-        data: CSV file exported from another Ecko or Mastodon server. Please be aware that this will merge new domains with existing ones. You can also upload a list of domains one-per-line (will be given default values of severity of Silence, a blank public comment, and obfuscated domain names).
+        data: CSV file exported from another Ecko or Mastodon server
       invite_request:
         text: This will help us review your application
       ip_block:

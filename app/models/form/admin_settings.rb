@@ -28,6 +28,7 @@ class Form::AdminSettings
     thumbnail
     hero
     mascot
+    favicon
     trends
     trendable_by_default
     show_domain_blocks
@@ -55,6 +56,7 @@ class Form::AdminSettings
     thumbnail
     hero
     mascot
+    favicon
   ).freeze
 
   attr_accessor(*KEYS)

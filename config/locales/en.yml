@@ -664,6 +664,9 @@ en:
         users: To logged-in local users
       domain_blocks_rationale:
         title: Show rationale
+      favicon:
+        desc_html: Displayed on every page. At least 192×192px recommended. When not set, falls back to default favicon
+        title: Favicon image
       hero:
         desc_html: Displayed on the frontpage. At least 600x100px recommended. When not set, falls back to server thumbnail
         title: Hero image

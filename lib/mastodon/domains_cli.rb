@@ -182,5 +182,11 @@ module Mastodon
       stats.compact!
       say(Oj.dump(stats))
     end
+
+    def default_block_param(row, key, default)
+      return default if row[key].nil?
+
+      row[key].strip
+    end
   end
 end

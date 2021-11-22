@@ -30,11 +30,12 @@ module Admin
           next if DomainBlock.rule_for(domain).present?
 
           domain_block = DomainBlock.new(domain: domain,
-                                         severity: row['#severity'].strip,
-                                         reject_media: row['#reject_media'].strip,
-                                         reject_reports: row['#reject_reports'].strip,
-                                         public_comment: row['#public_comment'].strip,
-                                         obfuscate: row['#obfuscate'].strip)
+                                         severity: default_block_param(row, '#severity', 'silence'),
+                                         reject_media: default_block_param(row, '#reject_media', false),
+                                         reject_reports: default_block_param(row, '#reject_reports', false),
+                                         public_comment: default_block_param(row, '#public_comment', nil),
+                                         obfuscate: default_block_param(row, '#obfuscate', true))
+
           if domain_block.save
             DomainBlockWorker.perform_async(domain_block.id)
             log_action :create, domain_block
@@ -63,6 +64,12 @@ module Admin
           content << [instance.domain, instance.severity, instance.reject_media, instance.reject_reports, instance.public_comment, instance.obfuscate]
         end
       end
+    end
+
+    def default_block_param(row, key, default)
+      return default if row[key].nil?
+
+      row[key].strip
     end
   end
 end

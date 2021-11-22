@@ -157,6 +157,46 @@ module Mastodon
       end
     end
 
+    option :url, type: :string, default: '', aliases: [:u]
+    desc 'import [URL]', 'Import blocked domains from CSV file hosted at URL'
+    long_desc <<-LONG_DESC
+      Imports a list of domains to block from a URL to a CSV file.
+      Acccepts two CSV formats: As exported from the admin panel OR
+      a file with domains listed one-per-line.
+    LONG_DESC
+    def import_blocked(url)
+      domains_csv = HTTP.get(url).body.readpartial
+      default_headers = %w(#domain #severity #reject_media #reject_reports #public_comment #obfuscate)
+
+      domains = CSV.parse(domains_csv, headers: default_headers)
+      created = 0
+
+      domains.each do |row|
+        domain = row['#domain'].strip
+
+        if DomainBlock.rule_for(domain).present?
+          say("#{domain} is already present in the block list or is ruled out", :red)
+          next
+        end
+
+        domain_block = DomainBlock.new(
+          domain: domain,
+          severity: default_block_param(row, '#severity', 'silence'),
+          reject_media: default_block_param(row, '#reject_media', false),
+          reject_reports: default_block_param(row, '#reject_reports', false),
+          public_comment: default_block_param(row, '#public_comment', nil),
+          obfuscate: default_block_param(row, '#obfuscate', true)
+        )
+
+        created += 1
+        DomainBlockWorker.perform_async(domain_block.id) if domain_block.save
+        say("Domain block with domain: #{domain} has been created", :green)
+      end
+
+      say("#{created} new domains created", :green)
+      say("#{domains.length - created} domains ruled out", :red)
+    end
+
     private
 
     def stats_to_summary(stats, processed, failed, start_at)

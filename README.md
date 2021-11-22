@@ -17,3 +17,7 @@ Ecko was forked from Mastodon in August 2021. The idea for the fork is to optimi
 |  Try it at https://c4.social | Install your own from https://github.com/magicstone-dev/ecko | Report an issue, submit code or docs, or solve a problem at the  [Issue tracker](https://github.com/magicstone-dev/ecko/issues) |
 
 Learn more at [magicstone.dev](https://magicstone.dev)
+
+Check the ways to setup demo server for Ecko.
+
+[Demo Server](DEMO_SERVER_SETUP.md)

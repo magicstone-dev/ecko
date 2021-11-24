@@ -14,6 +14,10 @@ module Ecko
         def stripe_api_key
           schema[:stripe_api_key]
         end
+
+        def state_secret
+          schema[:state_secret]
+        end
       end
     end
   end

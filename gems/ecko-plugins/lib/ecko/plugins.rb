@@ -17,17 +17,19 @@ module Ecko
 
         registered_plugin = Ecko::Plugins::Registry.const_set(name.capitalize, Class.new(engine))
         Ecko::Plugins.registry[name] = { schema: schema, engine: engine, engine_stub: registered_plugin }
+        register_method(name, registered_plugin)
         execute_pipeline(registered_plugin, schema)
       end
 
       def execute_pipeline(registered_plugin, schema)
-        define_singleton_method('stripe') do
-          registered_plugin
-        end
-
         registered_plugin.configure(schema)
+      end
+
+      def register_method(name, engine)
+        define_singleton_method name do
+          engine
+        end
       end
     end
   end
 end
-

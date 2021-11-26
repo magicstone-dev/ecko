@@ -1,3 +1,9 @@
+PATH
+  remote: gems/ecko-plugins
+  specs:
+    ecko-plugins (0.1.0)
+      stripe (~> 5.39)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -623,6 +629,7 @@ GEM
     stackprof (0.2.17)
     statsd-ruby (1.5.0)
     stoplight (2.2.1)
+    stripe (5.41.0)
     strong_migrations (0.7.8)
       activerecord (>= 5)
     swd (1.2.0)
@@ -740,6 +747,7 @@ DEPENDENCIES
   discard (~> 1.2)
   doorkeeper (~> 5.5)
   dotenv-rails (~> 2.7)
+  ecko-plugins!
   ed25519 (~> 1.2)
   fabrication (~> 2.22)
   faker (~> 2.19)
@@ -833,3 +841,9 @@ DEPENDENCIES
   webpacker (~> 5.4)
   webpush (~> 0.3)
   xorcist (~> 1.1)
+
+RUBY VERSION
+   ruby 2.7.4p191
+
+BUNDLED WITH
+   2.2.31

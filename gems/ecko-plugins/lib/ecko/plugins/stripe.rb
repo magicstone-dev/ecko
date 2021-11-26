@@ -1,5 +1,6 @@
 require 'stripe'
 require 'ecko/plugins/stripe/engine'
+require 'ecko/plugins/stripe/rails/routes'
 
 module Ecko
   module Plugins

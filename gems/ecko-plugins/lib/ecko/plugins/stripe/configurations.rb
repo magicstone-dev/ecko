@@ -18,6 +18,10 @@ module Ecko
         def state_secret
           schema[:state_secret]
         end
+
+        def currency
+          schema[:currency] || 'USD'
+        end
       end
     end
   end

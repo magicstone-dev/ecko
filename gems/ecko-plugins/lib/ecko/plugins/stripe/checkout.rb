@@ -28,11 +28,32 @@ module Ecko
         end
 
         def line_items
+          raise Ecko::Plugins::Stripe::InvalidLineItemError unless valid_line_items?
+
+          params[:line_items].map do |line_item|
+            amount = line_item[:amount].to_i
+
+            raise Ecko::Plugins::Stripe::InvalidAmountError if amount.zero?
+
+            quantity = line_item[:quantity].to_i
+
+            raise Ecko::Plugins::Stripe::InvalidQuantityError if quantity.zero?
+
+            {
+              name: line_item[:name],
+              description: line_item[:description],
+              images: line_item[:images],
+              amount: amount,
+              currency: line_item[:currency] || default_currency,
+              quantity: quantity,
+            }
+          end
+
           params[:line_items]
         end
 
         def success_url
-          "http://localhost:3000/stripe/callbacks/success?state=#{state}&session_id={CHECKOUT_SESSION_ID}"
+          "http://localhost:3000/stripe_success?state=#{state}&session_id={CHECKOUT_SESSION_ID}"
         end
 
         def cancel_url
@@ -41,6 +62,14 @@ module Ecko
 
         def state
           { intent: 'intent_id' }
+        end
+
+        def default_currency
+          Ecko::Plugins::Stripe::Configurations.instance.currency
+        end
+
+        def valid_line_items?
+          params[:line_items].present? && params[:line_items].is_a?(Array)
         end
       end
     end

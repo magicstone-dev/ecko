@@ -8,6 +8,17 @@ module Ecko
 
       class ExecutionError < StandardError; end
 
+      # This error will be thrown when line items are not provided
+      class InvalidLineItemError < StandardError; end
+
+      # This error will be thrown if amount is not provided or it is 0
+      # or string is provided
+      class InvalidAmountError < StandardError; end
+
+      # This error will be thrown if quantity is set to zero
+      class InvalidQuantityError < StandardError; end
+
+
       class << self
         def register(schema)
           Ecko::Plugins.register(name: 'stripe', schema: schema, engine: Ecko::Plugins::Stripe::Engine)

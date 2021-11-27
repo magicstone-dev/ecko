@@ -39,17 +39,17 @@ module Ecko
 
             raise Ecko::Plugins::Stripe::InvalidQuantityError if quantity.zero?
 
+            raise Ecko::Plugins::Stripe::InvalidNameError if line_item[:name].nil?
+
             {
               name: line_item[:name],
               description: line_item[:description],
               images: line_item[:images],
-              amount: amount,
+              amount: amount * 100.to_f, # Stripe takes values for cents
               currency: line_item[:currency] || default_currency,
               quantity: quantity,
             }
           end
-
-          params[:line_items]
         end
 
         def success_url

@@ -18,6 +18,9 @@ module Ecko
       # This error will be thrown if quantity is set to zero
       class InvalidQuantityError < StandardError; end
 
+      # This error will be thrown if name of a line item is not provided
+      class InvalidNameError < StandardError; end
+
 
       class << self
         def register(schema)

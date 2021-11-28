@@ -10,6 +10,6 @@ class CreatePayableIntent < ActiveRecord::Migration[6.1]
       t.jsonb :metadata, null: false
     end
     add_index :payment_intentions, [:code], unique: true
-    add_index :payment_intentions, [:category]
+    add_index :payment_intentions, [:reference]
   end
 end

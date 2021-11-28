@@ -17,7 +17,6 @@ module Ecko
           end
 
           def checkout(params)
-            binding.pry
             Ecko::Plugins::Stripe::Checkout.execute(params)
           end
         end

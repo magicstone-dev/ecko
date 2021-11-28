@@ -1,6 +1,5 @@
 require 'stripe'
 require 'ecko/plugins/stripe/engine'
-require 'ecko/plugins/stripe/rails/routes'
 require 'ecko/plugins/stripe/generators/payment_intent_generator'
 
 module Ecko
@@ -22,6 +21,8 @@ module Ecko
       # This error will be thrown if name of a line item is not provided
       class InvalidNameError < StandardError; end
 
+      # When payment Intent is not found this error is thrown
+      class InvalidPaymentIntent < StandardError; end
 
       class << self
         def register(schema)

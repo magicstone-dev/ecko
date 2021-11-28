@@ -33,3 +33,5 @@ module Ecko
     end
   end
 end
+
+require 'ecko/plugins/rails'

@@ -45,7 +45,7 @@ module Ecko
               name: line_item[:name],
               description: line_item[:description],
               images: line_item[:images],
-              amount: amount * 100.to_f, # Stripe takes values for cents
+              amount: amount * 100, # Stripe takes values for cents
               currency: line_item[:currency] || default_currency,
               quantity: quantity,
             }
@@ -61,7 +61,7 @@ module Ecko
         end
 
         def state
-          { intent: 'intent_id' }
+          payment_intent.code
         end
 
         def default_currency
@@ -70,6 +70,19 @@ module Ecko
 
         def valid_line_items?
           params[:line_items].present? && params[:line_items].is_a?(Array)
+        end
+
+        def intent
+          params[:intent]
+        end
+
+        def payment_intent
+          @payment_intent ||= intent || ::StripePaymentIntent.create(
+            reference: 'payment_only',
+            metadata: params.as_json,
+            payable_type: 'StripePaymentIntent',
+            payable_id: 1
+          )
         end
       end
     end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_13_190457) do
+ActiveRecord::Schema.define(version: 2021_11_30_104215) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -811,6 +811,16 @@ ActiveRecord::Schema.define(version: 2021_09_13_190457) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["var"], name: "index_site_uploads_on_var", unique: true
+  end
+
+  create_table "static_settings", force: :cascade do |t|
+    t.integer "max_post_character"
+    t.integer "max_poll_options"
+    t.integer "max_poll_option_character"
+    t.integer "user_fields"
+    t.integer "min_profile_description_character"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "status_pins", force: :cascade do |t|

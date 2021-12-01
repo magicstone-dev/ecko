@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class PollValidator < ActiveModel::Validator
-  MAX_OPTIONS      = (StaticSetting.last&.max_poll_ || ENV['MAX_POLL_OPTIONS'] || 4).to_i
-  MAX_OPTION_CHARS = (StaticSetting.last&.max_poll_option_character || ENV['MAX_POLL_OPTION_CHARS'] || 50).to_i
+  MAX_OPTIONS      = (((ActiveRecord::Base.connection.data_source_exists? 'static_settings') ? StaticSetting.last&.max_poll_options : nil) || ENV['MAX_POLL_OPTIONS'] || 4).to_i
+  MAX_OPTION_CHARS = (((ActiveRecord::Base.connection.data_source_exists? 'static_settings') ? StaticSetting.last&.max_poll_option_character : nil) || ENV['MAX_POLL_OPTION_CHARS'] || 50).to_i
   MAX_EXPIRATION   = 1.month.freeze
   MIN_EXPIRATION   = 5.minutes.freeze
 

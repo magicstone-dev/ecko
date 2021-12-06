@@ -7,3 +7,6 @@ body:
         Please state any feature requests or non-security bug reports in terms of a problem you are experiencing.
         
         The Magic Stone community uses the Collective Code Construction Contract. As such we define issues in terms of accurate and valuable problems. You may propose a solution but it is up to the implementor how each problem may be solved, and of course multiple solutions may be implemented and refined with further work.
+  - type: textarea
+    attributes:
+      label: "Please describe the problem"

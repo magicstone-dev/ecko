@@ -51,6 +51,7 @@ RUN cd ~ && \
 RUN npm install -g yarn && \
 	gem install bundler
 
+COPY . /opt/mastodon/
 COPY Gemfile* package.json yarn.lock /opt/mastodon/
 RUN cd /opt/mastodon && \
   bundle config set deployment 'true' && \
@@ -59,7 +60,6 @@ RUN cd /opt/mastodon && \
 	bundle install -j"$(nproc)" && \
 	yarn install --pure-lockfile
 
-COPY . /opt/mastodon/
 RUN cd /opt/mastodon && \
 	RAILS_ENV=production OTP_SECRET=precompile_placeholder SECRET_KEY_BASE=precompile_placeholder \
 		rails assets:precompile && \

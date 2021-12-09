@@ -1,6 +1,5 @@
 require "active_support/core_ext/object/try"
 require "active_support/core_ext/hash/slice"
-require 'pry'
 
 module ActionDispatch::Routing
   class Mapper

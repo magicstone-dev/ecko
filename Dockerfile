@@ -60,6 +60,7 @@ RUN cd /opt/mastodon && \
 	bundle install -j"$(nproc)" && \
 	yarn install --pure-lockfile
 
+COPY . /opt/mastodon/
 RUN cd /opt/mastodon && \
 	RAILS_ENV=production OTP_SECRET=precompile_placeholder SECRET_KEY_BASE=precompile_placeholder \
 		rails assets:precompile && \

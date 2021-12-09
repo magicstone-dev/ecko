@@ -51,6 +51,7 @@ RUN cd ~ && \
 RUN npm install -g yarn && \
 	gem install bundler
 
+COPY . /opt/mastodon/
 COPY Gemfile* package.json yarn.lock /opt/mastodon/
 RUN cd /opt/mastodon && \
   bundle config set deployment 'true' && \

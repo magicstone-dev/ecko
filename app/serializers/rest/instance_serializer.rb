@@ -43,7 +43,7 @@ class REST::InstanceSerializer < ActiveModel::Serializer
   end
 
   def max_toot_chars
-    StatusLengthValidator::MAX_CHARS
+    static_settings.max_post_character
   end
 
   def stats
@@ -61,7 +61,7 @@ class REST::InstanceSerializer < ActiveModel::Serializer
   def configuration
     {
       statuses: {
-        max_characters: StatusLengthValidator::MAX_CHARS,
+        max_characters: static_settings.max_post_character,
         max_media_attachments: 4,
         characters_reserved_per_url: StatusLengthValidator::URL_PLACEHOLDER_CHARS,
       },
@@ -76,8 +76,8 @@ class REST::InstanceSerializer < ActiveModel::Serializer
       },
 
       polls: {
-        max_options: PollValidator::MAX_OPTIONS,
-        max_characters_per_option: PollValidator::MAX_OPTION_CHARS,
+        max_options: static_settings.max_poll_options,
+        max_characters_per_option: static_settings.max_poll_option_character,
         min_expiration: PollValidator::MIN_EXPIRATION,
         max_expiration: PollValidator::MAX_EXPIRATION,
       },
@@ -101,6 +101,10 @@ class REST::InstanceSerializer < ActiveModel::Serializer
   end
 
   private
+
+  def static_settings
+    @static_settings ||= StaticSetting.registry
+  end
 
   def instance_presenter
     @instance_presenter ||= InstancePresenter.new

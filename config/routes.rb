@@ -167,7 +167,7 @@ Rails.application.routes.draw do
     resources :sessions, only: [:destroy]
     resources :featured_tags, only: [:index, :create, :destroy]
     resources :login_activities, only: [:index]
-    resource :static_settings, only: [:show, :update]
+    resource :static_settings, only: [:index, :show, :update]
   end
 
   resources :media, only: [:show] do

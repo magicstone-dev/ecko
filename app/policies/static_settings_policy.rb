@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 class StaticSettingsPolicy < ApplicationPolicy
+  def index?
+    admin?
+  end
+
   def update?
     admin?
   end
@@ -8,5 +12,4 @@ class StaticSettingsPolicy < ApplicationPolicy
   def show?
     admin?
   end
-
 end

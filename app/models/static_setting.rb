@@ -17,4 +17,18 @@ class StaticSetting < ApplicationRecord
 	validates :max_poll_option_character, numericality: { greater_than: 0, less_than_or_equal_to: 1000}, unless: -> { max_poll_option_character.blank? }
 	validates :user_fields, numericality: { greater_than: 0, less_than_or_equal_to: 10}, unless: -> { user_fields.blank? }
 	validates :min_profile_description_character, numericality: { greater_than: 0, less_than_or_equal_to: 1000}, unless: -> { min_profile_description_character.blank? }
+
+	def self.registry
+		StaticSetting.last || StaticSetting.create(StaticSetting.default_settings)
+	end
+
+	def self.default_settings
+		{
+			max_post_character: ENV['MAX_TOOT_CHARS'] || 500,
+			max_poll_options: ENV['MAX_POLL_OPTIONS'] || 4,
+			max_poll_option_character: ENV['MAX_POLL_OPTION_CHARS'] || 50,
+			user_fields: 4,
+			min_profile_description_character: 0
+		}
+	end
 end

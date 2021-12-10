@@ -91,8 +91,9 @@ class Account < ApplicationRecord
   # Local user validations
   validates :username, format: { with: /\A[a-z0-9_]+\z/i }, length: { maximum: 30 }, if: -> { local? && will_save_change_to_username? && actor_type != 'Application' }
   validates_with UnreservedUsernameValidator, if: -> { local? && will_save_change_to_username? }
+  validates_with UnreservedUsernameValidator, if: -> { local? && will_save_change_to_username? }
   validates :display_name, length: { maximum: 30 }, if: -> { local? && will_save_change_to_display_name? }
-  validates :note, note_length: { maximum: 500 }, length: { minimum: ((ActiveRecord::Base.connection.data_source_exists? 'static_settings') ? StaticSetting.last&.min_profile_description_character : nil) || 0}, if: -> { local? && will_save_change_to_note? }
+  validates :note, note_length: { maximum: 500 }, length: { minimum: lambda { |_obj| StaticSetting.registry.min_profile_description_character } }, if: -> { local? && will_save_change_to_note? }
   validates :fields, length: { maximum: 4 }, if: -> { local? && will_save_change_to_fields? }
 
   scope :remote, -> { where.not(domain: nil) }
@@ -325,15 +326,15 @@ class Account < ApplicationRecord
     self[:fields] = fields
   end
 
-  DEFAULT_FIELDS_SIZE = ((ActiveRecord::Base.connection.data_source_exists? 'static_settings') ? StaticSetting.last&.user_fields : nil) || 4
-
   def build_fields
-    return if fields.size >= DEFAULT_FIELDS_SIZE
+    field_size = StaticSetting.registry.user_fields
+
+    return if fields.size >= field_size
 
     tmp = self[:fields] || []
     tmp = [] if tmp.is_a?(Hash)
 
-    (DEFAULT_FIELDS_SIZE - tmp.size).times do
+    (field_size - tmp.size).times do
       tmp << { name: '', value: '' }
     end
 

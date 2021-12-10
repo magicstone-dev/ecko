@@ -1,21 +1,21 @@
 # frozen_string_literal: true
 
 class StatusLengthValidator < ActiveModel::Validator
-  MAX_CHARS = (((ActiveRecord::Base.connection.data_source_exists? 'static_settings') ? StaticSetting.last&.max_post_character : nil) || ENV['MAX_TOOT_CHARS'] || 500).to_i
   URL_PLACEHOLDER_CHARS = 23
   URL_PLACEHOLDER = "\1#{'x' * URL_PLACEHOLDER_CHARS}"
 
   def validate(status)
     return unless status.local? && !status.reblog?
 
+    max_characters = StaticSetting.registry.max_post_character
     @status = status
-    status.errors.add(:text, I18n.t('statuses.over_character_limit', max: MAX_CHARS)) if too_long?
+    status.errors.add(:text, I18n.t('statuses.over_character_limit', max: max_characters)) if too_long?(max_characters)
   end
 
   private
 
-  def too_long?
-    countable_length > MAX_CHARS
+  def too_long?(max_characters)
+    countable_length > max_characters
   end
 
   def countable_length

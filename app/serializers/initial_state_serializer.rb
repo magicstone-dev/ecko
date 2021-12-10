@@ -8,15 +8,15 @@ class InitialStateSerializer < ActiveModel::Serializer
   has_one :push_subscription, serializer: REST::WebPushSubscriptionSerializer
 
   def max_toot_chars
-    StatusLengthValidator::MAX_CHARS
+    static_settings.max_post_character
   end
 
   def max_poll_options
-    PollValidator::MAX_OPTIONS
+    static_settings.max_poll_options
   end
 
   def max_poll_option_chars
-    PollValidator::MAX_OPTION_CHARS
+    static_settings.max_poll_option_character
   end
 
   def meta
@@ -92,6 +92,10 @@ class InitialStateSerializer < ActiveModel::Serializer
   end
 
   private
+
+  def static_settings
+    @static_settings ||= StaticSetting.registry
+  end
 
   def instance_presenter
     @instance_presenter ||= InstancePresenter.new

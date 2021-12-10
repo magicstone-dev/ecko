@@ -1,10 +1,12 @@
 # Description
 This document helps in deploying a demo server to a web server.
-It will showcase few things which are essential for the demo server.
+It will showcase a few things which are essential for the demo server.
 
 1. User Signup should be disabled
 2. Mails should not be triggered.
 3. All data needs to be refreshed every 24 hours.
+
+It's best to perform the following steps after installing from source. See [INSTALL.md](./INSTALL.md)
 
 ## Disable user signup
 

@@ -197,6 +197,32 @@ module Mastodon
       say("#{domains.length - created} domains ruled out", :red)
     end
 
+    option :method, type: :string, default: 'post', aliases: [:m]
+    desc 'export [URL]', 'Exports blocked domains from CSV file hosted to a URL'
+    long_desc <<-LONG_DESC
+      Exports a list of domains to block from a CSV file to a url.
+    LONG_DESC
+    def export_blocked(url)
+      domains = 0
+      csv = CSV.generate do |content|
+        DomainBlock.with_user_facing_limitations.each do |instance|
+          content << [instance.domain]
+          domains += 1
+        end
+      end
+
+      if domains.positive?
+        response = HTTP.post(url, body: csv)
+
+        if response.status.success?
+          say("#{domains} domains published", :green)
+        else
+          say("Domains couldn't be exported due to error from the url", :red)
+        end
+      else
+        say('No domains exported, None in the block list', :red)
+      end
+    end
 
     private
 

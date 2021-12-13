@@ -37,7 +37,7 @@ ca:
         digest: Només s'envia després d'un llarg període d'inactivitat amb un resum de les mencions que has rebut en la teva absència
         discoverable: El directori de perfils és una altra manera per quin el teu compte pot assolir una audiència més àmplia
         email: Se t'enviarà un correu electrònic de confirmació
-        fields: Pots tenir fins a 4 elements que es mostren com a taula al teu perfil
+        fields: Pots tenir fins a %{size} elements que es mostren com a taula al teu perfil
         header: PNG, GIF o JPG. Màxim %{size}. S'escalarà a %{dimensions}px
         inbox_url: Copia l'URL des de la pàgina principal del relay que vols utilitzar
         irreversible: Els tuts filtrats desapareixeran de manera irreversible, fins i tot si el filtre es retira més tard

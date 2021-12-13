@@ -37,7 +37,7 @@ sq:
         digest: I dërguar vetëm pas një periudhe të gjatë pasiviteti dhe vetëm nëse keni marrë ndonjë mesazh personal gjatë mungesës tuaj
         discoverable: Drejtoria e profileve është një rrugë tjetër përmes së cilës llogaria juaj mund të mbërrijë te një publik më i gjerë
         email: Do t’ju dërgohet një email ripohimi
-        fields: Te profili juaj mund të keni deri në 4 objekte të shfaqur si tabelë
+        fields: Te profili juaj mund të keni deri në ${size} objekte të shfaqur si tabelë
         header: PNG, GIF ose JPG. E shumta %{size}. Do të ripërmasohet në %{dimensions}px
         inbox_url: Kopjoni URL-në prej faqes ballore të relesë që doni të përdorni
         irreversible: Mesazhet e filtruar do të zhduken në mënyrë të pakthyeshme, edhe nëse filtri hiqet më vonë

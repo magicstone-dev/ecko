@@ -37,7 +37,7 @@ da:
         digest: Sendes kun efter en lang inaktivitetsperiode, og kun hvis du har modtaget personlige beskeder i dit fravær
         discoverable: Tillad din konto at blive fundet af fremmede via anbefalinger og øvrige funktioner
         email: Du tilsendes en bekræftelsese-mail
-        fields: Du kan have op til 4 elementer vist som en tabel på din profil
+        fields: Du kan have op til %{size} elementer vist som en tabel på din profil
         header: PNG, GIF eller JPG. Maks. %{size}. Auto-nedskaleres til %{dimensions}px
         inbox_url: Kopiér URL'en fra forsiden af den videreformidler, du ønsker at bruge
         irreversible: Filtrerede indlæg forsvinder helt, selv hvis filteret senere fjernes

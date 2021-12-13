@@ -34,7 +34,7 @@ zh-TW:
         digest: 僅在你長時間未登入且在未登入期間收到私訊時傳送
         discoverable: 加入個人資料目錄能接觸更多閱聽眾
         email: 您將收到一封確認電子郵件
-        fields: 您可在個人資料上有至多 ${size} 個以表格形式顯示的項目
+        fields: 您可在個人資料上有至多 %{size} 個以表格形式顯示的項目
         header: 支援 PNG, GIF 或 JPG 圖片，檔案最大為 %{size}，會按比例縮小成 %{dimensions} 像素
         inbox_url: 從您想要使用的中繼首頁複製網址
         irreversible: 已過濾的嘟文將會不可逆的消失，即便過濾器移除之後也一樣

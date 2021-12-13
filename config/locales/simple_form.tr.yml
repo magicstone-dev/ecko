@@ -37,7 +37,7 @@ tr:
         digest: Sadece uzun bir süre hareketsiz kaldıktan sonra ve yalnızca yokluğunuzda herhangi bir kişisel mesaj aldıysanız gönderilir
         discoverable: Profil dizini, hesabınızın daha geniş bir kitleye ulaşmasının başka bir yoludur
         email: Onay e-postası gönderilecek
-        fields: Profilinizde tablo olarak görüntülenen en fazla ${size} ögeye sahip olabilirsiniz
+        fields: Profilinizde tablo olarak görüntülenen en fazla %{size} ögeye sahip olabilirsiniz
         header: PNG, GIF ya da JPG. En fazla %{size}. %{dimensions}px boyutuna küçültülecek
         inbox_url: Kullanmak istediğiniz aktarıcının ön sayfasından URL'yi kopyalayın
         irreversible: Filtre uygulanmış tootlar, filtre daha sonra çıkartılsa bile geri dönüşümsüz biçimde kaybolur

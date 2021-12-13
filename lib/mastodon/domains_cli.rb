@@ -205,6 +205,8 @@ module Mastodon
       domains = 0
       csv = CSV.generate do |content|
         DomainBlock.with_user_facing_limitations.each do |instance|
+          next if instance.obfuscate
+
           content << [instance.domain]
           domains += 1
         end

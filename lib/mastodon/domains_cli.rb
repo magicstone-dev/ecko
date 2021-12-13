@@ -197,12 +197,11 @@ module Mastodon
       say("#{domains.length - created} domains ruled out", :red)
     end
 
-    option :method, type: :string, default: 'post', aliases: [:m]
-    desc 'export [URL]', 'Exports blocked domains from CSV file hosted to a URL'
+    desc 'export [CSV]', 'Exports blocked domains from CSV file to public folder'
     long_desc <<-LONG_DESC
       Exports a list of domains to block from a CSV file to a url.
     LONG_DESC
-    def export_blocked(url)
+    def export_blocked
       domains = 0
       csv = CSV.generate do |content|
         DomainBlock.with_user_facing_limitations.each do |instance|
@@ -211,14 +210,16 @@ module Mastodon
         end
       end
 
-      if domains.positive?
-        response = HTTP.post(url, body: csv)
+      directory = Rails.root.join('public', 'moderation').tap do |folder|
+        FileUtils.makedirs(folder) unless File.directory?(folder)
+      end
 
-        if response.status.success?
-          say("#{domains} domains published", :green)
-        else
-          say("Domains couldn't be exported due to error from the url", :red)
+      if domains.positive?
+        File.open(directory.join('blocklist').sub_ext('.csv'), 'w') do |file|
+          file.write(csv)
         end
+
+        say("#{domains} domains exported as csv", :green)
       else
         say('No domains exported, None in the block list', :red)
       end

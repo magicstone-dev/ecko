@@ -3,10 +3,6 @@
 class Settings::StaticSettingsController < Settings::BaseController
   before_action :set_settings
 
-  def index
-    authorize :static_settings, :index?
-  end
-
   def show
     authorize :static_settings, :show?
   end

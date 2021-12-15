@@ -1,6 +1,10 @@
+# frozen_string_literal: true
+
+require_relative "stripe/version"
 require 'stripe'
 require 'ecko/plugins/stripe/engine'
 require 'ecko/plugins/stripe/generators/payment_intent_generator'
+require 'ecko/plugins/stripe/rails'
 
 module Ecko
   module Plugins

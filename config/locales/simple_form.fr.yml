@@ -37,7 +37,7 @@ fr:
         digest: Uniquement envoyé après une longue période d’inactivité et uniquement si vous avez reçu des messages personnels pendant votre absence
         discoverable: L’annuaire des profils est une autre façon pour votre compte d’atteindre une plus grande audience
         email: Vous recevrez un courriel de confirmation
-        fields: Vous pouvez avoir jusqu’à 4 éléments affichés en tant que tableau sur votre profil
+        fields: Vous pouvez avoir jusqu’à %{size} éléments affichés en tant que tableau sur votre profil
         header: Au format PNG, GIF ou JPG. %{size} maximum. Sera réduit à %{dimensions}px
         inbox_url: Copiez l’URL depuis la page d’accueil du relais que vous souhaitez utiliser
         irreversible: Les messages filtrés disparaîtront pour toujours, même si le filtre est supprimé plus tard

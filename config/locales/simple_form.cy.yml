@@ -31,7 +31,7 @@ cy:
         digest: Ond yn cael eu hanfon ar ôl cyfnod hir o anweithgarwch ac ond os ydych wedi derbyn unrhyw negeseuon personol yn eich absenoldeb
         discoverable: Mae'r cyfeirlyfr proffil yn ffordd arall y gall eich cyfrif gyrraedd cynulleidfa ehangach
         email: Byddwch yn derbyn e-bost i gadarnhau
-        fields: Mae modd i chi arddangos hyd at 4 eitem fel tabl ar eich proffil
+        fields: Mae modd i chi arddangos hyd at %{size} eitem fel tabl ar eich proffil
         header: PNG, GIF neu JPG. %{size} ar y mwyaf. Ceith ei israddio i %{dimensions}px
         inbox_url: Copïwch yr URL o dudalen flaen y relái yr ydych am ei ddefnyddio
         irreversible: Bydd tŵtiau wedi eu hidlo yn diflannu am byth, hyd yn oed os ceith yr hidlydd ei ddileu'n hwyrach

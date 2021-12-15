@@ -17,7 +17,7 @@ en_GB:
         digest: Only sent after a long period of inactivity and only if you have received any personal messages in your absence
         discoverable_html: The <a href="%{path}" target="_blank">directory</a> lets people find accounts based on interests and activity. Requires at least %{min_followers} followers
         email: You will be sent a confirmation e-mail
-        fields: You can have up to 4 items displayed as a table on your profile
+        fields: You can have up to %{size} items displayed as a table on your profile
         header: PNG, GIF or JPG. At most %{size}. Will be downscaled to %{dimensions}px
         inbox_url: Copy the URL from the frontpage of the relay you want to use
         irreversible: Filtered toots will disappear irreversibly, even if filter is later removed

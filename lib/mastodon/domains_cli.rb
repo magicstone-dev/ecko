@@ -168,7 +168,10 @@ module Mastodon
       domains_csv = HTTP.get(url).body.readpartial
       default_headers = %w(#domain #severity #reject_media #reject_reports #public_comment #obfuscate)
 
-      domains = CSV.parse(domains_csv, headers: default_headers)
+      data = CSV.parse(domains_csv, headers: true)
+      data = CSV.parse(domains_csv, headers: default_headers) unless data.headers&.first&.strip&.include?(default_headers[0])
+      domains = data.reject(&:blank?)
+
       created = 0
 
       domains.each do |row|

@@ -13,7 +13,7 @@ module Mastodon
     end
 
     def patch
-      1
+      9001
     end
 
     def flags
@@ -33,7 +33,7 @@ module Mastodon
     end
 
     def repository
-      ENV.fetch('GITHUB_REPOSITORY', 'mastodon/mastodon')
+      ENV.fetch('GITHUB_REPOSITORY', 'c4social/mastodon')
     end
 
     def source_base_url

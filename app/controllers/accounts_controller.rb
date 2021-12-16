@@ -28,7 +28,11 @@ class AccountsController < ApplicationController
           return
         end
 
-        @pinned_statuses = cache_collection(@account.pinned_statuses, Status) if show_pinned_statuses?
+        if current_user.nil?
+          @pinned_statuses = cache_collection(@account.pinned_statuses.without_local_only, Status) if show_pinned_statuses?
+        else
+          @pinned_statuses = cache_collection(@account.pinned_statuses, Status) if show_pinned_statuses?
+        end
         @statuses        = cached_filtered_status_page
         @rss_url         = rss_url
 
@@ -42,7 +46,7 @@ class AccountsController < ApplicationController
         expires_in 1.minute, public: true
 
         limit     = params[:limit].present? ? [params[:limit].to_i, PAGE_SIZE_MAX].min : PAGE_SIZE
-        @statuses = filtered_statuses.without_reblogs.limit(limit)
+        @statuses = filtered_statuses.without_reblogs.without_local_only.limit(limit)
         @statuses = cache_collection(@statuses, Status)
         render xml: RSS::AccountSerializer.render(@account, @statuses, params[:tag])
       end
@@ -73,7 +77,11 @@ class AccountsController < ApplicationController
   end
 
   def default_statuses
-    @account.statuses.where(visibility: [:public, :unlisted])
+    if current_user.nil?
+      @account.statuses.without_local_only.where(visibility: [:public, :unlisted])
+    else
+      @account.statuses.where(visibility: [:public, :unlisted])
+    end
   end
 
   def only_media_scope

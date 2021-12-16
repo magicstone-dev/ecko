@@ -1,5 +1,5 @@
-# This file contains default values, and does not need to be edited. All
-# important settings can be changed from the admin interface.
+# This file contains default values, and generally does not need to be edited.
+# Most every setting can be adjusted from the admin interface.
 
 defaults: &defaults
   site_title: Mastodon
@@ -16,6 +16,7 @@ defaults: &defaults
   min_invite_role: 'admin'
   timeline_preview: true
   show_staff_badge: true
+  default_federation: true
   default_sensitive: false
   hide_network: false
   unfollow_modal: false

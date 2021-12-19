@@ -12,7 +12,6 @@ module Ecko
         end
 
         def run
-          binding.pry
         end
 
         class << self

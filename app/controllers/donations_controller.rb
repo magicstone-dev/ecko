@@ -11,7 +11,5 @@ class DonationsController < ApplicationController
 
   def payment_gateways
     processed = Ecko::Plugins.sponsor.process(params[:package], current_account)
-
-    binding.pry
   end
 end

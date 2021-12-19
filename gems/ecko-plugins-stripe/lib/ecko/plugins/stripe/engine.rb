@@ -16,8 +16,12 @@ module Ecko
             ::Stripe.api_key = Ecko::Plugins::Stripe::Configurations.instance.stripe_api_key
           end
 
+          def checkout_reference
+            Ecko::Plugins::Stripe::Checkout
+          end
+
           def checkout(params)
-            Ecko::Plugins::Stripe::Checkout.execute(params)
+            checkout_reference.execute(params)
           end
         end
       end

@@ -22,6 +22,9 @@ Rails.application.routes.draw do
   end
 
   stripe_callbacks 'stripe_callbacks'
+  resources :donations
+  get '/donate', to: 'donations#donate', as: :donate
+  get '/payment_gateways', to: 'donations#payment_gateways', as: :payment_gateways
 
   get '.well-known/host-meta', to: 'well_known/host_meta#show', as: :host_meta, defaults: { format: 'xml' }
   get '.well-known/nodeinfo', to: 'well_known/nodeinfo#index', as: :nodeinfo, defaults: { format: 'json' }

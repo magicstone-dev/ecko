@@ -47,6 +47,8 @@
 #  devices_url                   :string
 #  sensitized_at                 :datetime
 #  suspension_origin             :integer
+#  sponsor                       :integer          default("free_tier")
+#  donation_amount               :float            default(0.0)
 #
 
 class Account < ApplicationRecord
@@ -81,6 +83,12 @@ class Account < ApplicationRecord
 
   enum protocol: [:ostatus, :activitypub]
   enum suspension_origin: [:local, :remote], _prefix: true
+  enum sponsor: {
+    free_tier: 0,
+    silver_tier: 100,
+    gold_tier: 1000,
+    platinum_tier: 2000,
+  }
 
   validates :username, presence: true
   validates_with UniqueUsernameValidator, if: -> { will_save_change_to_username? }

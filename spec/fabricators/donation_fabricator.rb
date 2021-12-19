@@ -1,0 +1,2 @@
+Fabricator(:donation) do
+end

@@ -5,7 +5,7 @@
 #
 #  id         :bigint(8)        not null, primary key
 #  phrase     :text             default(""), not null
-#  type       :integer          default(0), not null
+#  type       :integer          default("text"), not null
 #  whole_word :boolean          default(TRUE), not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_30_104215) do
+ActiveRecord::Schema.define(version: 2021_12_19_013911) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -191,8 +191,10 @@ ActiveRecord::Schema.define(version: 2021_11_30_104215) do
     t.integer "avatar_storage_schema_version"
     t.integer "header_storage_schema_version"
     t.string "devices_url"
-    t.integer "suspension_origin"
     t.datetime "sensitized_at"
+    t.integer "suspension_origin"
+    t.integer "sponsor", default: 0
+    t.float "donation_amount", default: 0.0
     t.index "(((setweight(to_tsvector('simple'::regconfig, (display_name)::text), 'A'::\"char\") || setweight(to_tsvector('simple'::regconfig, (username)::text), 'B'::\"char\")) || setweight(to_tsvector('simple'::regconfig, (COALESCE(domain, ''::character varying))::text), 'C'::\"char\")))", name: "search_index", using: :gin
     t.index "lower((username)::text), COALESCE(lower((domain)::text), ''::text)", name: "index_accounts_on_username_and_domain_lower", unique: true
     t.index ["moved_to_account_id"], name: "index_accounts_on_moved_to_account_id"
@@ -375,6 +377,25 @@ ActiveRecord::Schema.define(version: 2021_11_30_104215) do
     t.index ["domain"], name: "index_domain_blocks_on_domain", unique: true
   end
 
+  create_table "donation_packages", force: :cascade do |t|
+    t.float "amount"
+    t.integer "currency"
+    t.string "title"
+    t.text "description"
+    t.integer "donation_reference", default: 0
+    t.boolean "visible", default: true
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "donations", force: :cascade do |t|
+    t.bigint "account_id", null: false
+    t.float "amount", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["account_id"], name: "index_donations_on_account_id"
+  end
+
   create_table "email_domain_blocks", force: :cascade do |t|
     t.string "domain", default: "", null: false
     t.datetime "created_at", null: false
@@ -485,12 +506,12 @@ ActiveRecord::Schema.define(version: 2021_11_30_104215) do
   end
 
   create_table "ip_blocks", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.datetime "expires_at"
     t.inet "ip", default: "0.0.0.0", null: false
     t.integer "severity", default: 0, null: false
+    t.datetime "expires_at"
     t.text "comment", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "list_accounts", force: :cascade do |t|
@@ -649,6 +670,18 @@ ActiveRecord::Schema.define(version: 2021_11_30_104215) do
     t.datetime "updated_at", null: false
     t.index ["device_id"], name: "index_one_time_keys_on_device_id"
     t.index ["key_id"], name: "index_one_time_keys_on_key_id"
+  end
+
+  create_table "payment_intentions", force: :cascade do |t|
+    t.string "code", null: false
+    t.string "reference", null: false
+    t.string "category", default: "stripe", null: false
+    t.string "payable_type"
+    t.bigint "payable_id"
+    t.jsonb "metadata", null: false
+    t.index ["code"], name: "index_payment_intentions_on_code", unique: true
+    t.index ["payable_type", "payable_id"], name: "index_payment_intentions_on_payable"
+    t.index ["reference"], name: "index_payment_intentions_on_reference"
   end
 
   create_table "pghero_space_stats", force: :cascade do |t|
@@ -826,8 +859,8 @@ ActiveRecord::Schema.define(version: 2021_11_30_104215) do
   create_table "status_pins", force: :cascade do |t|
     t.bigint "account_id", null: false
     t.bigint "status_id", null: false
-    t.datetime "created_at", default: -> { "now()" }, null: false
-    t.datetime "updated_at", default: -> { "now()" }, null: false
+    t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.index ["account_id", "status_id"], name: "index_status_pins_on_account_id_and_status_id", unique: true
   end
 

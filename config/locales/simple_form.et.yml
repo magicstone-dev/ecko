@@ -31,7 +31,7 @@ et:
         digest: Saadetakse ainult pärast pikka perioodi tegevusetust ja ainult siis, kui Teile on saadetud privaatseid sõnumeid
         discoverable: Profiilikataloog on veel üks viis, kuidas Teie konto saab jõuda laiema publikuni
         email: Teile saadetakse kinnituskiri e-posti teel
-        fields: Te saate oma profiilil tabelina kuvada kuni 4 asja
+        fields: Te saate oma profiilil tabelina kuvada kuni %{size} asja
         header: PNG, GIF või JPG. Kõige rohkem %{size}. Vähendatakse %{dimensions} pikslini
         inbox_url: Kopeerige soovitud relee avalehe URL
         irreversible: Filtreeritud tuututused kaovad taastamatult, isegi kui filter on hiljem eemaldatud

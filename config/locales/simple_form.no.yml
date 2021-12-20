@@ -31,7 +31,7 @@
         digest: Kun sendt etter en lang periode med inaktivitet og bare dersom du har mottatt noen personlige meldinger mens du var borte
         discoverable: Profilmappen er en annen måte for kontoen din å nå et bredere publikum på
         email: Du vil bli tilsendt en bekreftelses-E-post
-        fields: Du kan ha opptil 4 gjenstander vist som en tabell på profilsiden din
+        fields: Du kan ha opptil %{size} gjenstander vist som en tabell på profilsiden din
         header: PNG, GIF eller JPG. Maksimalt %{size}. Vil bli nedskalert til %{dimensions}px
         inbox_url: Kopier URLen fra forsiden til overgangen du vil bruke
         irreversible: Filtrerte tuter vil ugjenkallelig forsvinne, selv om filteret senere blir fjernet

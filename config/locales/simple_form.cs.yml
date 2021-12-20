@@ -37,7 +37,7 @@ cs:
         digest: Odesíláno pouze po dlouhé době nečinnosti a pouze, pokud jste při své nepřítomnosti obdrželi osobní zprávy
         discoverable: Umožnit, aby mohli váš účet objevit neznámí lidé pomocí doporučení a dalších funkcí
         email: Bude vám poslán potvrzovací e-mail
-        fields: Na profilu můžete mít až 4 položky zobrazené jako tabulka
+        fields: Na profilu můžete mít až %{size} položky zobrazené jako tabulka
         header: PNG, GIF či JPG. Maximálně %{size}. Bude zmenšen na %{dimensions} px
         inbox_url: Zkopírujte URL z hlavní stránky mostu, který chcete použít
         irreversible: Filtrované příspěvky nenávratně zmizí, i pokud bude filtr později odstraněn

@@ -37,7 +37,7 @@ de:
         digest: Wenn du eine lange Zeit inaktiv bist, wird dir eine Zusammenfassung von Erwähnungen zugeschickt, die du in deiner Abwesenheit empfangen hast
         discoverable: Das Profilverzeichnis ist eine andere Möglichkeit, mit der dein Konto ein größeres Publikum erreichen kann
         email: Du wirst eine Bestätigungs-E-Mail erhalten
-        fields: Du kannst bis zu 4 Elemente auf deinem Profil anzeigen lassen, die als Tabelle dargestellt werden
+        fields: Du kannst bis zu %{size} Elemente auf deinem Profil anzeigen lassen, die als Tabelle dargestellt werden
         header: PNG, GIF oder JPG. Maximal %{size}. Wird auf %{dimensions} px herunterskaliert
         inbox_url: Kopiere die URL von der Startseite des gewünschten Relays
         irreversible: Gefilterte Beiträge werden unwiderruflich gelöscht, selbst wenn der Filter später entfernt wird

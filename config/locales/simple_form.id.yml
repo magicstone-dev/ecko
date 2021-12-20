@@ -37,7 +37,7 @@ id:
         digest: Hanya kirim setelah lama tidak aktif dan hanya jika Anda menerima pesan personal atas absensi Anda
         discoverable: Direktori profil adalah cara lain agar akun Anda menyentuh audiens yang lebih luas
         email: Anda akan dikirimi email konfirmasi
-        fields: Anda bisa memiliki hingga 4 item utk ditampilkan sebagai tabel di profil Anda
+        fields: Anda bisa memiliki hingga %{size} item utk ditampilkan sebagai tabel di profil Anda
         header: PNG, GIF atau JPG. Maksimal %{size}. Ukuran dikecilkan menjadi %{dimensions}px
         inbox_url: Salin URL dari halaman depan relai yang ingin Anda pakai
         irreversible: Toot tersaring akan hilang permanen bahkan jika saringan dihapus kemudian

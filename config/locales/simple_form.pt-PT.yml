@@ -37,7 +37,7 @@ pt-PT:
         digest: Enviado após um longo período de inatividade e apenas se foste mencionado na tua ausência
         discoverable: O diretório de perfis é outra maneira da sua conta alcançar um público mais vasto
         email: Será enviado um e-mail de confirmação
-        fields: Pode ter até 4 itens expostos, em forma de tabela, no seu perfil
+        fields: Pode ter até %{size} itens expostos, em forma de tabela, no seu perfil
         header: PNG, GIF or JPG. Arquivos até %{size}. Vão ser reduzidos para %{dimensions}px
         inbox_url: Copia a URL da página inicial do repetidor que queres usar
         irreversible: Publicações filtradas irão desaparecer irremediavelmente, mesmo que o filtro seja removido posteriormente

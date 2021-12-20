@@ -434,6 +434,15 @@ class Account < ApplicationRecord
     end
   end
 
+  def refresh_sponsorship
+    amount = donations.sum(:amount)
+    sponsor = 'free_tier'
+    sponsor = DonationPackage.where('amount <= ?', amount).last.donation_reference if amount.positive?
+
+    update!(donation_amount: amount, sponsor: sponsor)
+  end
+
+
   class << self
     DISALLOWED_TSQUERY_CHARACTERS = /['?\\:‘’]/.freeze
     TEXTSEARCH = "(setweight(to_tsvector('simple', accounts.display_name), 'A') || setweight(to_tsvector('simple', accounts.username), 'B') || setweight(to_tsvector('simple', coalesce(accounts.domain, '')), 'C'))"

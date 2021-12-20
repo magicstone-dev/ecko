@@ -26,7 +26,7 @@ module Mastodon
           currency: 0,
           title: 'Silver',
           description: 'Silver Packages',
-          donation_reference: 0,
+          donation_reference: 'silver_tier',
           visible: true,
         },
         {
@@ -35,7 +35,7 @@ module Mastodon
           currency: 0,
           title: 'Gold',
           description: 'Gold Packages',
-          donation_reference: 0,
+          donation_reference: 'gold_tier',
           visible: true,
         },
         {
@@ -44,7 +44,7 @@ module Mastodon
           currency: 0,
           title: 'Platinum',
           description: 'Platinum Packages',
-          donation_reference: 0,
+          donation_reference: 'platinum_tier',
           visible: true,
         },
       ]

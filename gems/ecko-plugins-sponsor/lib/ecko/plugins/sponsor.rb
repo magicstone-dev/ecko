@@ -31,3 +31,5 @@ module Ecko
     end
   end
 end
+
+require 'ecko/plugins/sponsor/donated'

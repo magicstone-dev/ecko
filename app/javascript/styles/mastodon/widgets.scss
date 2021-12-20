@@ -678,3 +678,11 @@ $fluid-breakpoint: $maximum-width + 20px;
     color: $classic-primary-color;
   }
 }
+
+.stripe-message {
+  margin: 5% 0 8%;
+  font-size: 20px;
+  line-height: 20px;
+  text-align: center;
+  color: $classic-primary-color;
+}

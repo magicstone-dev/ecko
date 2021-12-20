@@ -3,7 +3,10 @@ module Ecko
     class StripeCallbacksController < 'ApplicationController'.constantize
 
       def success
-        raise InvalidPaymentIntent if intent.nil?
+        raise Ecko::Plugins::Stripe::InvalidPaymentIntent if intent.nil?
+
+        @message = intent.metadata['success_message']
+        Object.const_get(intent.metadata['callback']).process(intent)
 
         view_response
       end

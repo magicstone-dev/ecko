@@ -7,7 +7,6 @@ PATH
   remote: gems/ecko-plugins-stripe
   specs:
     ecko-plugins-stripe (0.1.0)
-      ecko-plugins
       stripe (~> 5.39)
 
 PATH

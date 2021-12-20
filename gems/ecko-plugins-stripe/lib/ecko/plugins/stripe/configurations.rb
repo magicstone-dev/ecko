@@ -22,6 +22,10 @@ module Ecko
         def currency
           schema[:currency] || 'USD'
         end
+
+        def callback
+          schema[:callback]
+        end
       end
     end
   end

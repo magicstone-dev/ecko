@@ -24,7 +24,7 @@ module Ecko
         private
 
         def payment_method_types
-          params[:quantity] || ['card']
+          params[:types] || ['card']
         end
 
         def line_items
@@ -53,11 +53,11 @@ module Ecko
         end
 
         def success_url
-          "http://localhost:3000/stripe_success?state=#{state}&session_id={CHECKOUT_SESSION_ID}"
+          "#{callback}/stripe_success?state=#{state}&session_id={CHECKOUT_SESSION_ID}"
         end
 
         def cancel_url
-          "http://localhost:3000/stripe/callbacks/cancel?state=#{state}"
+          "#{callback}/stripe/callbacks/cancel?state=#{state}"
         end
 
         def state
@@ -66,6 +66,10 @@ module Ecko
 
         def default_currency
           Ecko::Plugins::Stripe::Configurations.instance.currency
+        end
+
+        def callback
+          @callback ||= Ecko::Plugins::Stripe::Configurations.instance.callback
         end
 
         def valid_line_items?
@@ -80,8 +84,8 @@ module Ecko
           @payment_intent ||= intent || ::StripePaymentIntent.create(
             reference: 'payment_only',
             metadata: params.as_json,
-            payable_type: 'StripePaymentIntent',
-            payable_id: 1
+            payable_type: params[:payable_type],
+            payable_id: params[:payable_id]
           )
         end
       end

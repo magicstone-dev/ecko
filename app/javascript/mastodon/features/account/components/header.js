@@ -14,6 +14,7 @@ import ShortNumber from 'mastodon/components/short_number';
 import { NavLink } from 'react-router-dom';
 import DropdownMenuContainer from 'mastodon/containers/dropdown_menu_container';
 import AccountNoteContainer from '../containers/account_note_container';
+import Sponsor from "../../../components/sponsor";
 
 const messages = defineMessages({
   unfollow: { id: 'account.unfollow', defaultMessage: 'Unfollow' },
@@ -299,7 +300,7 @@ class Header extends ImmutablePureComponent {
 
           <div className='account__header__tabs__name'>
             <h1>
-              <span dangerouslySetInnerHTML={displayNameHtml} /> {staffBadge} {badge}
+              <span dangerouslySetInnerHTML={displayNameHtml} /> {staffBadge} {badge} <Sponsor sponsor_category={account.get('sponsor')} />
               <small>@{acct} {lockedIcon}</small>
             </h1>
           </div>

@@ -18,6 +18,11 @@ class StripePaymentIntent < ApplicationRecord
   self.table_name = 'payment_intentions'
   before_create :set_code
 
+  enum status: {
+    pending: 0,
+    closed: 0,
+  }
+
   belongs_to :payable, polymorphic: true
 
   def set_code

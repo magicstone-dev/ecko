@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_19_013911) do
+ActiveRecord::Schema.define(version: 2021_12_20_130738) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -679,6 +679,7 @@ ActiveRecord::Schema.define(version: 2021_12_19_013911) do
     t.string "payable_type"
     t.bigint "payable_id"
     t.jsonb "metadata", null: false
+    t.integer "status", default: 0
     t.index ["code"], name: "index_payment_intentions_on_code", unique: true
     t.index ["payable_type", "payable_id"], name: "index_payment_intentions_on_payable"
     t.index ["reference"], name: "index_payment_intentions_on_reference"

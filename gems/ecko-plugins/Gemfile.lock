@@ -2,7 +2,6 @@ PATH
   remote: .
   specs:
     ecko-plugins (0.1.0)
-      stripe (~> 5.39)
 
 GEM
   remote: https://rubygems.org/
@@ -22,7 +21,6 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.10.0)
     rspec-support (3.10.3)
-    stripe (5.41.0)
 
 PLATFORMS
   x86_64-darwin-20

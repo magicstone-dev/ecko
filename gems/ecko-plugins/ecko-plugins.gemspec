@@ -36,10 +36,10 @@ Gem::Specification.new do |spec|
   # end
   spec.bindir        = 'exe'
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
-  spec.require_paths = ['lib', 'app']
+  spec.require_paths = ['lib']
 
   # spec.add_development_dependency 'bundler', '~> 1.17'
   spec.add_development_dependency 'rake', '~> 13.0'
   spec.add_development_dependency 'rspec', '~> 3.0'
-  spec.add_dependency 'stripe', '~> 5.39'
+  # spec.add_dependency 'stripe', '~> 5.39'
 end

@@ -1,8 +1,18 @@
 PATH
+  remote: gems/ecko-plugins-sponsor
+  specs:
+    ecko-plugins-sponsor (0.1.0)
+
+PATH
+  remote: gems/ecko-plugins-stripe
+  specs:
+    ecko-plugins-stripe (0.1.0)
+      stripe (~> 5.39)
+
+PATH
   remote: gems/ecko-plugins
   specs:
     ecko-plugins (0.1.0)
-      stripe (~> 5.39)
 
 GEM
   remote: https://rubygems.org/
@@ -748,6 +758,8 @@ DEPENDENCIES
   doorkeeper (~> 5.5)
   dotenv-rails (~> 2.7)
   ecko-plugins!
+  ecko-plugins-sponsor!
+  ecko-plugins-stripe!
   ed25519 (~> 1.2)
   fabrication (~> 2.22)
   faker (~> 2.19)

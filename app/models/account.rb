@@ -47,6 +47,8 @@
 #  devices_url                   :string
 #  sensitized_at                 :datetime
 #  suspension_origin             :integer
+#  sponsor                       :integer          default("free_tier")
+#  donation_amount               :float            default(0.0)
 #
 
 class Account < ApplicationRecord
@@ -81,6 +83,12 @@ class Account < ApplicationRecord
 
   enum protocol: [:ostatus, :activitypub]
   enum suspension_origin: [:local, :remote], _prefix: true
+  enum sponsor: {
+    free_tier: 0,
+    silver_tier: 100,
+    gold_tier: 1000,
+    platinum_tier: 2000,
+  }
 
   validates :username, presence: true
   validates_with UniqueUsernameValidator, if: -> { will_save_change_to_username? }
@@ -425,6 +433,15 @@ class Account < ApplicationRecord
       { name: name, value: value, verified_at: verified_at }
     end
   end
+
+  def refresh_sponsorship
+    amount = donations.sum(:amount)
+    sponsor = 'free_tier'
+    sponsor = DonationPackage.where('amount <= ?', amount).last.donation_reference if amount.positive?
+
+    update!(donation_amount: amount, sponsor: sponsor)
+  end
+
 
   class << self
     DISALLOWED_TSQUERY_CHARACTERS = /['?\\:‘’]/.freeze

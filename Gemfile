@@ -97,6 +97,8 @@ gem 'webpush', '~> 0.3'
 gem 'webauthn', '~> 3.0.0.alpha1'
 
 gem 'ecko-plugins', path: 'gems/ecko-plugins'
+gem 'ecko-plugins-stripe', path: 'gems/ecko-plugins-stripe'
+gem 'ecko-plugins-sponsor', path: 'gems/ecko-plugins-sponsor'
 
 gem 'json-ld'
 gem 'json-ld-preloaded', '~> 3.1'

@@ -1,6 +1,7 @@
 import React from 'react';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import PropTypes from 'prop-types';
+import Sponsor from './sponsor';
 import { autoPlayGif } from 'mastodon/initial_state';
 
 export default class DisplayName extends React.PureComponent {
@@ -62,7 +63,7 @@ export default class DisplayName extends React.PureComponent {
       }
 
       displayName = <bdi><strong className='display-name__html' dangerouslySetInnerHTML={{ __html: account.get('display_name_html') }} /></bdi>;
-      suffix      = <span className='display-name__account'>@{acct}</span>;
+      suffix      = <span className='display-name__account'>@{acct}<Sponsor sponsor_category={account.get('sponsor')} /></span>;
     }
 
     return (

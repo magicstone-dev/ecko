@@ -7,6 +7,7 @@ import Permalink from '../../../components/permalink';
 import IconButton from '../../../components/icon_button';
 import { FormattedMessage } from 'react-intl';
 import ImmutablePureComponent from 'react-immutable-pure-component';
+import Sponsor from '../../../components/sponsor';
 
 export default class NavigationBar extends ImmutablePureComponent {
 
@@ -26,7 +27,8 @@ export default class NavigationBar extends ImmutablePureComponent {
 
         <div className='navigation-bar__profile'>
           <Permalink href={this.props.account.get('url')} to={`/accounts/${this.props.account.get('id')}`}>
-            <strong className='navigation-bar__profile-account'>@{this.props.account.get('acct')}</strong>
+            <strong className='navigation-bar__profile-account'>@{this.props.account.get('acct')}
+              <Sponsor sponsor_category={this.props.account.get('sponsor')} /></strong>
           </Permalink>
 
           <a href='/settings/profile' className='navigation-bar__profile-edit'><FormattedMessage id='navigation_bar.edit_profile' defaultMessage='Edit profile' /></a>

@@ -1,5 +1,4 @@
 require "ecko/plugins/version"
-require 'ecko/plugins/stripe'
 
 module Ecko
   module Plugins
@@ -33,5 +32,3 @@ module Ecko
     end
   end
 end
-
-require 'ecko/plugins/rails'

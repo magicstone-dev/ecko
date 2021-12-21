@@ -1,0 +1,13 @@
+.donation
+  .donation-title Please select one of the following to proceed donation.
+  .donation-block.grid-4
+    - @packages.each do |package|
+      = link_to(payment_gateways_path(package: package.id)) do
+        .card.box-widget
+          %h3= "#{package.amount.to_i}$"
+          %p{:class => "card-title #{package.title.downcase }" }= package.title
+          %p.card-description= package.description
+  - if @account.free_tier?
+    .donation-account You have not donated till now, Thanks for coming here to donate.
+  - else
+    .donation-account= "You have donated #{@account.donation_amount.to_i}$ till now. Thanks for considering again."

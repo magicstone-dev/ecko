@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {FormattedMessage} from 'react-intl';
 
 export default class Sponsor extends React.PureComponent {
 
@@ -19,14 +18,14 @@ export default class Sponsor extends React.PureComponent {
   }
 
   render () {
-    if(this.props.sponsor_category === 'free_tier') {
+    if(!this.props.sponsor_category || this.props.sponsor_category === 'free_tier') {
       return null;
     }
 
     let background = this.colors[this.props.sponsor_category];
 
     return (
-      <div className='account-role admin sponsor-badge' style={{ background: background }}><FormattedMessage id='account.badges.sponsor' defaultMessage='Sponsor' /></div>
+      <div className='account-role admin sponsor-badge' style={{ background: background }}><span>Sponsor</span></div>
     );
   }
 

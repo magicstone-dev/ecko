@@ -27,10 +27,10 @@ If you're not making any local code changes or customizations on your instance, 
 2. Add environment variables to the `db` section: 
     ```yaml
     environment:
-      - POSTGRES_PASSWORD: xyz <-- choose a safe one, 20-30 chars
-      - POSTGRES_DB: ecko_production
-      - POSTGRES_USER: ecko
-      - POSTGRES_HOST_AUTH_METHOD: trust
+      - POSTGRES_PASSWORD=xyz <-- choose a safe one, 20-30 chars
+      - POSTGRES_DB=ecko_production
+      - POSTGRES_USER=ecko
+      - POSTGRES_HOST_AUTH_METHOD=trust
     ``` 
 3. To use pre-built images comment out the `build: .` lines for the `web`, `streaming`, and `sidekiq` services.
 4. Save the file and exit the text editor.

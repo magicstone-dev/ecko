@@ -14,6 +14,7 @@ module Ecko
 
           def build
             {
+              submit_type: 'donate',
               success_message: 'Thanks for being part of our community, Your donation was well received', # Need to add translation options,
               callback: 'Ecko::Plugins::Sponsor::Donated',
               package_id: package.id,

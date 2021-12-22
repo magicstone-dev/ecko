@@ -13,9 +13,9 @@ module Mastodon
       true
     end
 
-    desc 'donation packages [URL]', 'Create donation packages'
+    desc 'donation packages', 'Create donation packages'
     long_desc <<-LONG_DESC
-      Creates donation packages which will be used to reference or donation
+      Creates donation packages which will be used to refer for donations
     LONG_DESC
     def create_packages
       DonationPackage.destroy_all

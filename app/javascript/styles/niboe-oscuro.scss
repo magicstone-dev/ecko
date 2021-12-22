@@ -1,0 +1,14 @@
+// Colors
+$ui-base-color: #54546C;
+$ui-base-lighter-color: #b1b1c8; 
+$ui-primary-color: #e1e1eb;
+$ui-secondary-color: #cdc6e8;
+$ui-highlight-color: #37c871;
+
+// Import defaults
+@import 'application';
+
+// Columns width
+.column {
+  flex-grow: 1;
+}

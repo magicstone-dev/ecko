@@ -13,7 +13,7 @@ module Ecko
           @session ||= ::Stripe::Checkout::Session.create(
             payment_method_types: payment_method_types,
             mode: 'payment',
-            submit_type: 'book',
+            submit_type: params[:submit_type] || 'pay',
             client_reference_id: SecureRandom.uuid,
             success_url: success_url,
             cancel_url: cancel_url,

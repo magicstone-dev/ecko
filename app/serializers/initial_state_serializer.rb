@@ -2,7 +2,7 @@
 
 class InitialStateSerializer < ActiveModel::Serializer
   attributes :meta, :compose, :accounts,
-             :media_attachments, :settings,
+             :media_attachments, :settings, :donate,
              :max_toot_chars, :max_poll_options, :max_poll_option_chars
 
   has_one :push_subscription, serializer: REST::WebPushSubscriptionSerializer
@@ -13,6 +13,10 @@ class InitialStateSerializer < ActiveModel::Serializer
 
   def max_poll_options
     static_settings.max_poll_options
+  end
+
+  def donate
+    ENV['STRIPE_API_KEY'].present? && ENV['STRIPE_CALLBACK_URL'].present?
   end
 
   def max_poll_option_chars

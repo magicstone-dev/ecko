@@ -30,5 +30,6 @@ export const cropImages = getMeta('crop_images');
 export const disableSwiping = getMeta('disable_swiping');
 export const maxPollOptions = (initialState && initialState.max_poll_options) || 4;
 export const maxPollOptionChars = (initialState && initialState.max_poll_option_chars) || 50;
+export const canDonate = initialState && initialState.donate;
 
 export default initialState;

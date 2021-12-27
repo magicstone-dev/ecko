@@ -1488,7 +1488,12 @@ en:
   themes:
     contrast: Mastodon (High contrast)
     default: Mastodon (Dark)
+    fairy-floss: Fairy Floss (Pastel dark)
+    macaron: Macaron (Pastel light)
     mastodon-light: Mastodon (Light)
+    merveilles-dark: Merveilles (Dark)
+    niboe-oscuro: Niboe Oscuro
+    witches-colors: Witches Colors
   time:
     formats:
       default: "%b %d, %Y, %H:%M"

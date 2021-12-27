@@ -1,3 +1,8 @@
 default: styles/application.scss
 contrast: styles/contrast.scss
 mastodon-light: styles/mastodon-light.scss
+fairy-floss: styles/fairy-floss.scss
+macaron: styles/macaron.scss
+merveilles-dark: styles/merveilles-dark.scss
+niboe-oscuro: styles/niboe-oscuro.scss
+witches-colors: styles/witches-colors.scss

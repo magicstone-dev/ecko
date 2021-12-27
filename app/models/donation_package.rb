@@ -20,4 +20,8 @@ class DonationPackage < ApplicationRecord
     gold_tier: 1000,
     platinum_tier: 2000,
   }
+  enum currency: {
+    usd: 0,
+    eur: 1,
+  }
 end

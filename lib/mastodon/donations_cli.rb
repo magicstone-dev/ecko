@@ -69,6 +69,7 @@ module Mastodon
         -r, --reference     silver_tier, gold_tier or platinum_tier for badge color
     LONG_DESC
     def create_package(title, amount, description)
+      ActiveRecord::Base.connection.reset_pk_sequence!('donation_packages')
       DonationPackage.create(
         amount: amount,
         currency: options[:currency],

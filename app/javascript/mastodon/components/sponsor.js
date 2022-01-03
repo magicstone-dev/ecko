@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Emoji } from 'emoji-mart';
 
 export default class Sponsor extends React.PureComponent {
 
@@ -11,10 +12,22 @@ export default class Sponsor extends React.PureComponent {
     sponsor_category: PropTypes.string.isRequired,
   };
 
-  colors = {
-    silver_tier: '#C0C0C0',
-    gold_tier: '#FFD700',
-    platinum_tier: '#e5e4e2',
+  configurations = {
+    silver_tier: {
+      color: '#C0C0C0',
+      title: 'Silver Sponsor',
+      emoji: 'second_place_medal',
+    },
+    gold_tier: {
+      color: '#FCD977',
+      title: 'Gold Sponsor',
+      emoji: 'first_place_medal',
+    },
+    platinum_tier: {
+      color: '#e5e4e2',
+      title: 'Platinum Sponsor',
+      emoji: 'medal',
+    },
   }
 
   render () {
@@ -22,10 +35,12 @@ export default class Sponsor extends React.PureComponent {
       return null;
     }
 
-    let background = this.colors[this.props.sponsor_category];
+    let configurations = this.configurations[this.props.sponsor_category];
 
     return (
-      <div className='account-role admin sponsor-badge' style={{ background: background }}><span>Sponsor</span></div>
+      <div className='sponsor-badge' title={configurations.title}>
+        <Emoji emoji={{ id: configurations.emoji }} size={16} />
+      </div>
     );
   }
 

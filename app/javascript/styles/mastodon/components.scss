@@ -7462,6 +7462,6 @@ noscript {
 
 .sponsor-badge {
   color: black !important;
-  border-color: black !important;
-  margin-left: 4px;
+  display: inline-block;
+  position: absolute;
 }

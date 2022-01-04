@@ -70,14 +70,14 @@ module Mastodon
     LONG_DESC
     def create_package(title, amount, description)
       ActiveRecord::Base.connection.reset_pk_sequence!('donation_packages')
-      DonationPackage.create(
+      DonationPackage.create({
         amount: amount,
         currency: options[:currency],
         title: title,
         description: description,
         donation_reference: options[:reference],
         visible: options[:visible]
-      )
+      })
 
       say("#{title} donation package created", :green)
     end

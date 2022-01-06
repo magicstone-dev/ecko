@@ -12,6 +12,8 @@
 #  updated_at                        :datetime         not null
 #
 class StaticSetting < ApplicationRecord
+	DEFAULT_USER_FIELDS = 4
+
 	validates :max_post_character, numericality: { greater_than: 0, less_than_or_equal_to: 5000}, unless: -> { max_post_character.blank? }
 	validates :max_poll_options, numericality: { greater_than: 0, less_than_or_equal_to: 10}, unless: -> { max_poll_options.blank? }
 	validates :max_poll_option_character, numericality: { greater_than: 0, less_than_or_equal_to: 1000}, unless: -> { max_poll_option_character.blank? }
@@ -27,7 +29,7 @@ class StaticSetting < ApplicationRecord
 			max_post_character: ENV['MAX_TOOT_CHARS'] || 500,
 			max_poll_options: ENV['MAX_POLL_OPTIONS'] || 4,
 			max_poll_option_character: ENV['MAX_POLL_OPTION_CHARS'] || 50,
-			user_fields: 4,
+			user_fields: DEFAULT_USER_FIELDS,
 			min_profile_description_character: 0
 		}
 	end

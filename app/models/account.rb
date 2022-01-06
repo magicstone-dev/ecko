@@ -335,7 +335,7 @@ class Account < ApplicationRecord
   end
 
   def build_fields
-    field_size = StaticSetting.registry.user_fields
+    field_size = StaticSetting.registry.user_fields || StaticSetting::DEFAULT_USER_FIELDS
 
     return if fields.size >= field_size
 

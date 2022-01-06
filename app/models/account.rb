@@ -101,7 +101,7 @@ class Account < ApplicationRecord
   validates_with UnreservedUsernameValidator, if: -> { local? && will_save_change_to_username? }
   validates_with UnreservedUsernameValidator, if: -> { local? && will_save_change_to_username? }
   validates :display_name, length: { maximum: 30 }, if: -> { local? && will_save_change_to_display_name? }
-  validates :note, note_length: { maximum: 500 }, length: { minimum: lambda { |_obj| StaticSetting.registry.min_profile_description_character } }, if: -> { local? && will_save_change_to_note? }
+  validates :note, note_length: { maximum: 500 }, length: { minimum: lambda { |_obj| StaticSetting.registry.min_profile_description_character.to_i } }, if: -> { local? && will_save_change_to_note? }
   validates :fields, length: { maximum: 4 }, if: -> { local? && will_save_change_to_fields? }
 
   scope :remote, -> { where.not(domain: nil) }
@@ -335,7 +335,7 @@ class Account < ApplicationRecord
   end
 
   def build_fields
-    field_size = StaticSetting.registry.user_fields
+    field_size = StaticSetting.registry.user_fields || StaticSetting::DEFAULT_USER_FIELDS
 
     return if fields.size >= field_size
 

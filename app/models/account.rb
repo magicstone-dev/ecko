@@ -101,7 +101,7 @@ class Account < ApplicationRecord
   validates_with UnreservedUsernameValidator, if: -> { local? && will_save_change_to_username? }
   validates_with UnreservedUsernameValidator, if: -> { local? && will_save_change_to_username? }
   validates :display_name, length: { maximum: 30 }, if: -> { local? && will_save_change_to_display_name? }
-  validates :note, note_length: { maximum: 500 }, length: { minimum: lambda { |_obj| StaticSetting.registry.min_profile_description_character } }, if: -> { local? && will_save_change_to_note? }
+  validates :note, note_length: { maximum: 500 }, length: { minimum: lambda { |_obj| StaticSetting.registry.min_profile_description_character.to_i } }, if: -> { local? && will_save_change_to_note? }
   validates :fields, length: { maximum: 4 }, if: -> { local? && will_save_change_to_fields? }
 
   scope :remote, -> { where.not(domain: nil) }

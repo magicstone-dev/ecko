@@ -1,12 +1,12 @@
 # Setup Ecko
 
-There are currently a few ways to install Ecko for a production environment.
+Here are some ways to install Ecko in a production environment.
 
 1. [YunoHost](https://install-app.yunohost.org/?app=ecko) - easiest, recommended for beginners and small instances
 
 2. Docker-compose - medium-difficulty, for those familiar with docker - [doc](./INSTALL_DOCKER_COMPOSE.md)
 
-3. Installing from Source - larger or customized instances, see below
+3. Installing from Source - larger or customized instances, continued below
 
 ## Installing from Source
 
@@ -48,7 +48,7 @@ And as suggested by the above script
 
     rbenv install will take a few minutes so grab water, coffee, snacks, or stressball
     RUBY_CONFIGURE_OPTS=--with-jemalloc rbenv install `cat .ruby-version`
-	rbenv global `cat .ruby-version`
+	  rbenv global `cat .ruby-version`
 
     gem install bundler --no-document
     exit
@@ -60,14 +60,14 @@ And as suggested by the above script
 
 ### Set up Ecko
     su - mastodon
-	git clone https://github.com/magicstone-dev/ecko.git live && cd live
+	  git clone https://github.com/magicstone-dev/ecko.git live && cd live
 
     bundle config deployment 'true'
-	bundle config without 'development test'
+	  bundle config without 'development test'
 
 Due to a potential segfault issue [documented here](https://github.com/mastodon/mastodon/issues/17017#issuecomment-975268694) we need to export the location of libjemalloc
-	export LD_PRELOAD=/lib/x86_64-linux-gnu/libjemalloc.so.2
-	bundle install -j$(getconf _NPROCESSORS_ONLN)
+	  export LD_PRELOAD=/lib/x86_64-linux-gnu/libjemalloc.so.2
+	  bundle install -j$(getconf _NPROCESSORS_ONLN)
 
     yarn install --pure-lockfile
     RAILS_ENV=production bundle exec rake mastodon:setup
@@ -89,7 +89,7 @@ Remove `ssl` from the two lines of the server section with listen 443 so that ng
 After certbot is finished, comment out the lines certbot added to the first server section and also the entire final server section which is certbot boilerplate. Finally add `ssl` back to those two `listen 443` lines.
 
 ### Set up systemd services
-cp /home/mastodon/live/dist/mastodon-*.service /etc/systemd/system/
+    cp /home/mastodon/live/dist/mastodon-*.service /etc/systemd/system/
 
 Go into the service files we just copied and make sure the paths are correct. Modify the LD_PRELOAD line with the librjemalloc path where there was an LD_PRELOAD for jemalloc already (in `sidekiq` and `web` service files).
 

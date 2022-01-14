@@ -3,14 +3,16 @@ services:
 
   db:
     restart: always
-    image: postgres:9.6-alpine
+    image: postgres:14-alpine
     shm_size: 256mb
     networks:
       - internal_network
     healthcheck:
       test: ["CMD", "pg_isready", "-U", "postgres"]
     volumes:
-      - ./postgres:/var/lib/postgresql/data
+      - ./postgres14:/var/lib/postgresql/data
+    environment:
+      - "POSTGRES_HOST_AUTH_METHOD=trust"
 
   redis:
     restart: always
@@ -22,28 +24,27 @@ services:
     volumes:
       - ./redis:/data
 
-#  es:
-#    restart: always
-#    image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.8.10
-#    environment:
-#      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-#      - "cluster.name=es-mastodon"
-#      - "discovery.type=single-node"
-#      - "bootstrap.memory_lock=true"
-#    networks:
-#      - internal_network
-#    healthcheck:
-#      test: ["CMD-SHELL", "curl --silent --fail localhost:9200/_cluster/health || exit 1"]
-#    volumes:
-#      - ./elasticsearch:/usr/share/elasticsearch/data
-#    ulimits:
-#      memlock:
-#        soft: -1
-#        hard: -1
+  #  es:
+  #    restart: always
+  #    image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.2
+  #    environment:
+  #      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+  #      - "cluster.name=es-mastodon"
+  #      - "discovery.type=single-node"
+  #      - "bootstrap.memory_lock=true"
+  #    networks:
+  #      - internal_network
+  #    healthcheck:
+  #      test: ["CMD-SHELL", "curl --silent --fail localhost:9200/_cluster/health || exit 1"]
+  #    volumes:
+  #      - ./elasticsearch:/usr/share/elasticsearch/data
+  #    ulimits:
+  #      memlock:
+  #        soft: -1
+  #        hard: -1
 
   web:
     build: .
-    image: dsterry/ecko
     restart: always
     env_file: .env.production
     command: bash -c "rm -f /mastodon/tmp/pids/server.pid; bundle exec rails s -p 3000"
@@ -57,13 +58,12 @@ services:
     depends_on:
       - db
       - redis
-#      - es
+    #      - es
     volumes:
       - ./public/system:/mastodon/public/system
 
   streaming:
     build: .
-    image: dsterry/ecko
     restart: always
     env_file: .env.production
     command: node ./streaming
@@ -80,7 +80,6 @@ services:
 
   sidekiq:
     build: .
-    image: dsterry/ecko
     restart: always
     env_file: .env.production
     command: bundle exec sidekiq

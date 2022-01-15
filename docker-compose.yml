@@ -3,14 +3,14 @@ services:
 
   db:
     restart: always
-    image: postgres:14-alpine
+    image: postgres:9.6-alpine
     shm_size: 256mb
     networks:
       - internal_network
     healthcheck:
       test: ["CMD", "pg_isready", "-U", "postgres"]
     volumes:
-      - ./postgres14:/var/lib/postgresql/data
+      - ./postgres:/var/lib/postgresql/data
     environment:
       - "POSTGRES_HOST_AUTH_METHOD=trust"
 
@@ -45,6 +45,7 @@ services:
 
   web:
     build: .
+    image: dsterry/ecko
     restart: always
     env_file: .env.production
     command: bash -c "rm -f /mastodon/tmp/pids/server.pid; bundle exec rails s -p 3000"
@@ -64,6 +65,7 @@ services:
 
   streaming:
     build: .
+    image: dsterry/ecko
     restart: always
     env_file: .env.production
     command: node ./streaming
@@ -80,6 +82,7 @@ services:
 
   sidekiq:
     build: .
+    image: dsterry/ecko
     restart: always
     env_file: .env.production
     command: bundle exec sidekiq

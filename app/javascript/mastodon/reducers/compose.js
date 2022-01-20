@@ -61,6 +61,7 @@ const initialState = ImmutableMap({
   privacy: null,
   federation: null,
   text: '',
+  content_type: 'text/plain',
   focusDate: null,
   caretPosition: null,
   preselectDate: null,

@@ -469,15 +469,6 @@ ActiveRecord::Schema.define(version: 2022_01_16_082923) do
     t.index ["target_account_id"], name: "index_follows_on_target_account_id"
   end
 
-  create_table "glitch_keyword_mutes", force: :cascade do |t|
-    t.bigint "account_id", null: false
-    t.string "keyword", null: false
-    t.boolean "whole_word", default: true, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["account_id"], name: "index_glitch_keyword_mutes_on_account_id"
-  end
-
   create_table "identities", force: :cascade do |t|
     t.string "provider", default: "", null: false
     t.string "uid", default: "", null: false
@@ -1097,7 +1088,6 @@ ActiveRecord::Schema.define(version: 2022_01_16_082923) do
   add_foreign_key "follow_requests", "accounts", name: "fk_76d644b0e7", on_delete: :cascade
   add_foreign_key "follows", "accounts", column: "target_account_id", name: "fk_745ca29eac", on_delete: :cascade
   add_foreign_key "follows", "accounts", name: "fk_32ed1b5560", on_delete: :cascade
-  add_foreign_key "glitch_keyword_mutes", "accounts", on_delete: :cascade
   add_foreign_key "identities", "users", name: "fk_bea040f377", on_delete: :cascade
   add_foreign_key "imports", "accounts", name: "fk_6db1b6e408", on_delete: :cascade
   add_foreign_key "invites", "users", on_delete: :cascade

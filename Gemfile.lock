@@ -519,6 +519,7 @@ GEM
       link_header (~> 0.0, >= 0.0.8)
     rdf-normalize (0.4.0)
       rdf (~> 3.1)
+    redcarpet (3.5.1)
     redis (4.4.0)
     redis-namespace (1.8.1)
       redis (>= 3.0.4)
@@ -813,6 +814,7 @@ DEPENDENCIES
   rails-i18n (~> 6.0)
   rails-settings-cached (~> 0.6)
   rdf-normalize (~> 0.4)
+  redcarpet (~> 3.5)
   redis (~> 4.4)
   redis-namespace (~> 1.8)
   rqrcode (~> 2.1)
@@ -845,3 +847,4 @@ DEPENDENCIES
   webpacker (~> 5.4)
   webpush (~> 0.3)
   xorcist (~> 1.1)
+

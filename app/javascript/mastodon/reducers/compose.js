@@ -43,7 +43,7 @@ import {
   COMPOSE_POLL_SETTINGS_CHANGE,
   INIT_MEDIA_EDIT_MODAL,
   COMPOSE_CHANGE_MEDIA_DESCRIPTION,
-  COMPOSE_CHANGE_MEDIA_FOCUS,
+  COMPOSE_CHANGE_MEDIA_FOCUS, COMPOSE_CONTENT_TYPE_CHANGE,
 } from '../actions/compose';
 import { TIMELINE_DELETE } from '../actions/timelines';
 import { STORE_HYDRATE } from '../actions/store';
@@ -313,6 +313,10 @@ export default function compose(state = initialState, action) {
   case COMPOSE_VISIBILITY_CHANGE:
     return state
       .set('privacy', action.value)
+      .set('idempotencyKey', uuid());
+  case COMPOSE_CONTENT_TYPE_CHANGE:
+    return state
+      .set('content_type', action.value)
       .set('idempotencyKey', uuid());
   case COMPOSE_CHANGE:
     return state

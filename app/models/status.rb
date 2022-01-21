@@ -13,7 +13,6 @@
 #  url                    :string
 #  sensitive              :boolean          default(FALSE), not null
 #  visibility             :integer          default("public"), not null
-#  local_only             :boolean
 #  spoiler_text           :text             default(""), not null
 #  reply                  :boolean          default(FALSE), not null
 #  language               :string
@@ -24,6 +23,8 @@
 #  in_reply_to_account_id :bigint(8)
 #  poll_id                :bigint(8)
 #  deleted_at             :datetime
+#  local_only             :boolean
+#  content_type           :string           default("text/plain")
 #
 
 class Status < ApplicationRecord

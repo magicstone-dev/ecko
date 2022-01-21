@@ -4,7 +4,7 @@ class REST::StatusSerializer < ActiveModel::Serializer
   attributes :id, :created_at, :in_reply_to_id, :in_reply_to_account_id,
              :sensitive, :spoiler_text, :visibility, :language,
              :uri, :url, :replies_count, :reblogs_count,
-             :favourites_count, :local_only, :content_type
+             :favourites_count, :local_only
 
   attribute :favourited, if: :current_user?
   attribute :reblogged, if: :current_user?
@@ -14,6 +14,7 @@ class REST::StatusSerializer < ActiveModel::Serializer
 
   attribute :content, unless: :source_requested?
   attribute :text, if: :source_requested?
+  attribute :content_type, if: :source_requested?
 
   belongs_to :reblog, serializer: REST::StatusSerializer
   belongs_to :application, if: :show_application?

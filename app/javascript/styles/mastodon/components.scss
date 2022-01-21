@@ -1001,6 +1001,165 @@
   position: absolute;
 }
 
+.status__content {
+  position: relative;
+  margin: 10px 0;
+  font-size: 15px;
+  line-height: 20px;
+  word-wrap: break-word;
+  font-weight: 400;
+  overflow: visible;
+  padding-top: 5px;
+  clear: both;
+
+  &:focus {
+    outline: 0;
+  }
+
+  .emojione {
+    width: 20px;
+    height: 20px;
+    margin: -3px 0 0;
+  }
+
+  p, pre, blockquote {
+    margin-bottom: 20px;
+    white-space: pre-wrap;
+    unicode-bidi: plaintext;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .status__content__text,
+  .e-content {
+    overflow: hidden;
+
+    & > ul,
+    & > ol {
+      margin-bottom: 20px;
+    }
+
+    h1, h2, h3, h4, h5 {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    h1, h2 {
+      font-weight: 700;
+      font-size: 1.2em;
+    }
+
+    h2 {
+      font-size: 1.1em;
+    }
+
+    h3, h4, h5 {
+      font-weight: 500;
+    }
+
+    blockquote {
+      padding-left: 10px;
+      border-left: 3px solid $darker-text-color;
+      color: $darker-text-color;
+      white-space: normal;
+
+      p:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    b, strong {
+      font-weight: 700;
+    }
+
+    em, i {
+      font-style: italic;
+    }
+
+    sub {
+      font-size: smaller;
+      text-align: sub;
+    }
+
+    sup {
+      font-size: smaller;
+      vertical-align: super;
+    }
+
+    ul, ol {
+      margin-left: 1em;
+
+      p {
+        margin: 0;
+      }
+    }
+
+    ul {
+      list-style-type: disc;
+    }
+
+    ol {
+      list-style-type: decimal;
+    }
+  }
+
+  a {
+    color: $secondary-text-color;
+    text-decoration: none;
+    unicode-bidi: isolate;
+
+    &:hover {
+      text-decoration: underline;
+
+      .fa {
+        color: lighten($dark-text-color, 7%);
+      }
+    }
+
+    &.mention {
+      &:hover {
+        text-decoration: none;
+
+        span {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .fa {
+      color: $dark-text-color;
+    }
+  }
+
+  .status__content__spoiler {
+    display: none;
+
+    &.status__content__spoiler--visible {
+      display: block;
+    }
+  }
+
+  a.unhandled-link {
+    color: lighten($ui-highlight-color, 8%);
+
+    .link-origin-tag {
+      color: $gold-star;
+      font-size: 0.8em;
+    }
+  }
+
+  .status__content__spoiler-link {
+    background: lighten($ui-base-color, 30%);
+
+    &:hover {
+      background: lighten($ui-base-color, 33%);
+      text-decoration: none;
+    }
+  }
+}
+
 .focusable {
   &:focus {
     outline: 0;

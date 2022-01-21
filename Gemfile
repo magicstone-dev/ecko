@@ -100,6 +100,8 @@ gem 'ecko-plugins', '~> 0.1.6'
 gem 'ecko-plugins-stripe', '~> 0.1.0'
 gem 'ecko-plugins-sponsor', '~> 0.1.0'
 
+gem 'redcarpet', '~> 3.5'
+
 gem 'json-ld'
 gem 'json-ld-preloaded', '~> 3.1'
 gem 'rdf-normalize', '~> 0.4'

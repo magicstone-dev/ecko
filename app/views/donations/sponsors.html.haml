@@ -1,0 +1,20 @@
+.sponsors-ranking
+  .sponsor-details
+    %h2 Total Donations till now
+    %p{:class =>'total-sponsorship'}
+      =@donations.map(&:amount).inject(0, &:+).to_i
+      USD
+  .sponsor-container
+    .sponsor-listing
+      - @donations.each do |donation|
+        .list
+          %p.name
+            =donation.account.display_name
+          %p
+            donated
+            =donation.amount
+            USD on
+            =donation.created_at.strftime('%d %b, %Y')
+    .sponsor-donation
+      %p Donate to become a sponsor here.
+      = link_to 'Donate', donate_path

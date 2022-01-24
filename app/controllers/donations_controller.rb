@@ -10,6 +10,10 @@ class DonationsController < ApplicationController
     @packages = DonationPackage.visible
   end
 
+  def sponsors
+    @donations = Donation.all
+  end
+
   def payment_gateways
     processed = Ecko::Plugins.sponsor.process(params[:package], current_account)
 

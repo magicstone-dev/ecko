@@ -679,6 +679,87 @@ $fluid-breakpoint: $maximum-width + 20px;
   }
 }
 
+.sponsors-ranking {
+  padding: 20px;
+  text-align: center;
+  color: $classic-primary-color;
+
+  .sponsor-details {
+    background: darken($ui-base-color, 8%);
+    padding: 20px;
+    width: 30%;
+    text-align: center;
+    border: 1px solid;
+    margin: auto;
+    box-shadow: 0 4px 8px 0 $classic-secondary-color;
+    transition: 0.3s;
+
+    h2 {
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    p {
+      font-size: 18px;
+    }
+    &:hover {
+      box-shadow: 0 2px 5px 0 $classic-secondary-color;
+    }
+  }
+
+  .sponsor-container {
+    display: flex;
+    margin-top: 20px;
+
+    .sponsor-donation {
+      width: 60%;
+      padding: 20px;
+
+      p {
+        margin-top: 20px;
+        font-size: 20px;
+        margin-bottom: 40px;
+      }
+
+      a {
+        background: #4a5266;
+        margin-top: 20px;
+        border-radius: 4px;
+        align-items: center;
+        padding: 10px;
+        font-size: 20px;
+        font-weight: 500;
+        text-decoration: none;
+        color: #9baec8;
+        white-space: nowrap;
+        text-align: center;
+      }
+    }
+
+    .sponsor-listing {
+      margin-top: 20px;
+      border-bottom: 1px solid #4e4949;
+      width: 40%;
+
+      .list {
+        padding: 20px;
+        border-top: 1px solid #4e4949;
+
+        p {
+          flex: 1;
+          .name {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+          }
+        }
+      }
+    }
+  }
+
+
+}
+
 .stripe-message {
   margin: 5% 0 8%;
   font-size: 20px;

@@ -24,7 +24,7 @@
 #  poll_id                :bigint(8)
 #  deleted_at             :datetime
 #  local_only             :boolean
-#  content_type           :string           default("text/plain")
+#  content_type           :string
 #
 
 class Status < ApplicationRecord

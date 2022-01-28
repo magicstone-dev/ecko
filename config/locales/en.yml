@@ -1488,6 +1488,8 @@ en:
   themes:
     contrast: Mastodon (High contrast)
     default: Mastodon (Dark)
+    undescribed: Mastodon (Highlight undescribed media)
+    undescribed-subtle: Mastodon (Subtle highlight undescribed media)
     fairy-floss: Fairy Floss (Pastel dark)
     macaron: Macaron (Pastel light)
     mastodon-light: Mastodon (Light)

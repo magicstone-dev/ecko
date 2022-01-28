@@ -1,6 +1,8 @@
 default: styles/application.scss
 contrast: styles/contrast.scss
 mastodon-light: styles/mastodon-light.scss
+undescribed: styles/undescribed.scss
+undescribed-subtle: styles/undescribed-subtle.scss
 fairy-floss: styles/fairy-floss.scss
 macaron: styles/macaron.scss
 merveilles-dark: styles/merveilles-dark.scss

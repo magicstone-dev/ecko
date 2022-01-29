@@ -1,0 +1,15 @@
+// Import defaults
+@import 'application';
+
+/* indicate media without a description
+initial code by Paul (https://linernotes.club/@balrogboogie), expanded upon by FiXato (https://contact.fixato.org)
+related discussion: https://dragonscave.space/@Mayana/106443499687608116.
+Feel free to reuse it; it's public domain (https://linernotes.club/@balrogboogie/106681622019395866) */
+.media-gallery__item-thumbnail img:not([alt]),
+.audio-player__canvas:not([title]),
+.video-player video:not([title]), 
+.media-gallery__gifv video:not([title])
+ {
+    border: 2px solid red;
+    box-sizing: border-box;
+}

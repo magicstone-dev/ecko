@@ -1493,6 +1493,8 @@ en:
     mastodon-light: Mastodon (Light)
     merveilles-dark: Merveilles (Dark)
     niboe-oscuro: Niboe Oscuro
+    undescribed: Mastodon (Highlight undescribed media)
+    undescribed-subtle: Mastodon (Subtle highlight undescribed media)
     witches-colors: Witches Colors
   time:
     formats:

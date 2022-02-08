@@ -19,6 +19,8 @@ const messages = defineMessages({
   direct_short: { id: 'privacy.direct.short', defaultMessage: 'Direct' },
   direct_long: { id: 'privacy.direct.long', defaultMessage: 'Visible for mentioned users only' },
   change_privacy: { id: 'privacy.change', defaultMessage: 'Adjust status privacy' },
+  local_only_long: { id: 'federation.local_only.long', defaultMessage: 'Restrict this post only to my instance' },
+  local_only_short: { id: 'federation.local_only.short', defaultMessage: 'Local-only' },
 });
 
 const listenerOptions = supportsPassiveEvents ? { passive: true } : false;
@@ -32,6 +34,7 @@ class PrivacyDropdownMenu extends React.PureComponent {
     placement: PropTypes.string.isRequired,
     onClose: PropTypes.func.isRequired,
     onChange: PropTypes.func.isRequired,
+    federation: PropTypes.bool.isRequired,
   };
 
   state = {
@@ -94,7 +97,7 @@ class PrivacyDropdownMenu extends React.PureComponent {
     e.preventDefault();
 
     this.props.onClose();
-    this.props.onChange(value);
+    this.props.onChange(value, this.props.federation);
   }
 
   componentDidMount () {
@@ -119,8 +122,7 @@ class PrivacyDropdownMenu extends React.PureComponent {
 
   render () {
     const { mounted } = this.state;
-    const { style, items, placement, value } = this.props;
-
+    const { style, items, placement, value, federation } = this.props;
     return (
       <Motion defaultStyle={{ opacity: 0, scaleX: 0.85, scaleY: 0.75 }} style={{ opacity: spring(1, { damping: 35, stiffness: 400 }), scaleX: spring(1, { damping: 35, stiffness: 400 }), scaleY: spring(1, { damping: 35, stiffness: 400 }) }}>
         {({ opacity, scaleX, scaleY }) => (
@@ -129,7 +131,7 @@ class PrivacyDropdownMenu extends React.PureComponent {
           // react-overlays
           <div className={`privacy-dropdown__dropdown ${placement}`} style={{ ...style, opacity: opacity, transform: mounted ? `scale(${scaleX}, ${scaleY})` : null }} role='listbox' ref={this.setRef}>
             {items.map(item => (
-              <div role='option' tabIndex='0' key={item.value} data-index={item.value} onKeyDown={this.handleKeyDown} onClick={this.handleClick} className={classNames('privacy-dropdown__option', { active: item.value === value })} aria-selected={item.value === value} ref={item.value === value ? this.setFocusRef : null}>
+              <div role='option' tabIndex='0' key={item.value} data-index={item.value} onKeyDown={this.handleKeyDown} onClick={this.handleClick} className={classNames('privacy-dropdown__option', { active: item.value === value || (item.value === 'local' && !federation) })} aria-selected={item.value === value} ref={item.value === value ? this.setFocusRef : null}>
                 <div className='privacy-dropdown__option__icon'>
                   <Icon id={item.icon} fixedWidth />
                 </div>
@@ -159,6 +161,7 @@ class PrivacyDropdown extends React.PureComponent {
     onChange: PropTypes.func.isRequired,
     noDirect: PropTypes.bool,
     container: PropTypes.func,
+    federation: PropTypes.bool,
     intl: PropTypes.object.isRequired,
   };
 
@@ -227,7 +230,7 @@ class PrivacyDropdown extends React.PureComponent {
   }
 
   handleChange = value => {
-    this.props.onChange(value);
+    this.props.onChange(value, this.props.federation);
   }
 
   componentWillMount () {
@@ -244,10 +247,14 @@ class PrivacyDropdown extends React.PureComponent {
         { icon: 'envelope', value: 'direct', text: formatMessage(messages.direct_short), meta: formatMessage(messages.direct_long) },
       );
     }
+
+    // tHis is for federated option
+    this.options.push({ icon: 'chain-broken', value: 'local', text: formatMessage(messages.local_only_short), meta: formatMessage(messages.local_only_long) })
+
   }
 
   render () {
-    const { value, container, intl } = this.props;
+    const { value, container, intl, federation } = this.props;
     const { open, placement } = this.state;
 
     const valueOption = this.options.find(item => item.value === value);
@@ -277,6 +284,7 @@ class PrivacyDropdown extends React.PureComponent {
             onClose={this.handleClose}
             onChange={this.handleChange}
             placement={placement}
+            federation={federation}
           />
         </Overlay>
       </div>

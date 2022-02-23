@@ -1,5 +1,6 @@
-# Ecko
-
+![](/.github/branding/vectors/logo-full-monochrome.svg)
+ecko - Community-driven fork of federated social network software
+=================================================================
 [![GitHub release](https://magicstone.dev/assets/no-releases-for-c4.svg)][releases]
 [![Build Status](https://img.shields.io/circleci/project/github/magicstone-dev/ecko.svg)][circleci]
 [![Code Climate](https://img.shields.io/codeclimate/maintainability/magicstone-dev/ecko.svg)][code_climate]

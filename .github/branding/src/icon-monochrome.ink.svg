@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="171.06mm"
+   height="171.06mm"
+   version="1.1"
+   viewBox="0 0 171.06 171.06"
+   id="svg6"
+   sodipodi:docname="icon-monochrome.ink.svg"
+   inkscape:version="1.2-alpha (0bd5040e63, 2022-02-05)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs10" />
+  <sodipodi:namedview
+     id="namedview8"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:blackoutopacity="0.0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.36502787"
+     inkscape:cx="323.26299"
+     inkscape:cy="323.26299"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg6" />
+  <g
+     transform="translate(-103.24 1.2124)"
+     id="g4">
+    <path
+       d="m188.77-0.69279a85.011 85.011 0 0 0-85.01 85.01 85.011 85.011 0 0 0 85.01 85.011 85.011 85.011 0 0 0 85.011-85.011 85.011 85.011 0 0 0-85.011-85.01zm56.196 31.775c-11.763 26.1 10.157 38.684-0.32039 52.843-8.7334 11.802-25.942 17.886-42.043 13.13 4.3018-20.724 9.8802-30.841 18.184-43.715-20.226 20.824-26.101 60.158-30.206 93.631l-5.4968-19.258 9.7679-34.107c-6.8076-3.1539-9.6679-6.7553-11.518-10.322 5.4544-12.554 3.8168-21.498-6.8854-31.391 15.849-22.284 43.032-19.911 68.517-20.811zm-90.17 16.054c5.2434-0.04609 10.027 0.44024 13.804 1.9306 18.206 7.1842 24.389 29.725 2.1658 46.386 8.3098 16.253 13.921 33.397 18.929 52.352-2.5787 4.868-8.4689 3.05-10.862 1.1322 4.4579-12.211-14.027-67.637-29.014-80.545 5.6378 9.1069 10.527 17.471 14.521 31.099-47.309 12.331-19.469-19.059-40.79-49.555 9.5511-0.68371 21.236-2.7114 31.246-2.7993z"
+       fill="#666"
+       stroke="#666"
+       stroke-width="1.0393"
+       id="path2" />
+  </g>
+</svg>

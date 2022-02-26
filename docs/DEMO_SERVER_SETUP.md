@@ -1,3 +1,4 @@
+![ecko](/.github/branding/vectors/logo-full-monochrome.svg)
 # Description
 This document helps in deploying a demo server to a web server.
 It will showcase a few things which are essential for the demo server.

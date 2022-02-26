@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="170.02126mm"
+   height="170.02122mm"
+   viewBox="0 0 170.02126 170.02122"
+   version="1.1"
+   id="svg13652"
+   inkscape:version="1.2-alpha (0bd5040e63, 2022-02-05)"
+   sodipodi:docname="icon-dark.ink.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview13654"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:blackoutopacity="0.0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.2102413"
+     inkscape:cx="794.32537"
+     inkscape:cy="1227.1614"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs13649" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(105.14622,175.62078)">
+    <path
+       id="path9808"
+       style="fill:#000000;stroke-width:1.0393"
+       d="m 64.87503,-90.61017 a 85.010621,85.010621 0 0 1 -85.01062,85.01062 85.010621,85.010621 0 0 1 -85.01063,-85.01062 85.010621,85.010621 0 0 1 85.01063,-85.01061 85.010621,85.010621 0 0 1 85.01062,85.01061 z"
+       inkscape:export-filename="D:\OneDrive\Obrazy\Scans\ecko3.png"
+       inkscape:export-xdpi="20"
+       inkscape:export-ydpi="20" />
+    <path
+       style="fill:#99ff38;fill-opacity:1;stroke:#000000;stroke-width:0.474456;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       d="m -30.0734,-25.991 c 2.39348,1.91775 8.28372,3.73571 10.86245,-1.13228 -5.00784,-18.95493 -10.61948,-36.09828 -18.92925,-52.35162 22.22305,-16.66162 16.04034,-39.20246 -2.16587,-46.38663 -10.98748,-4.33566 -30.49615,-0.17285 -45.05021,0.86897 21.32096,30.49605 -6.51941,61.8862 40.78955,49.55502 -3.99393,-13.62765 -8.88282,-21.99192 -14.52065,-31.09885 14.98703,12.90827 33.47184,68.33475 29.01398,80.54539 z"
+       id="path9810"
+       sodipodi:nodetypes="cccscccc"
+       inkscape:export-filename="D:\OneDrive\Obrazy\Scans\ecko3.png"
+       inkscape:export-xdpi="20"
+       inkscape:export-ydpi="20" />
+    <path
+       style="fill:#5a912c;fill-opacity:1;stroke:#000000;stroke-width:0.474456;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
+       d="m -23.82245,-47.21397 5.49715,19.25782 c 4.10508,-33.47344 9.97913,-72.80769 30.20559,-93.63162 -8.30366,12.87402 -13.88184,22.99149 -18.18362,43.71511 16.10135,4.75596 33.30939,-1.32868 42.04278,-13.13055 10.47785,-14.15924 -11.44295,-26.74201 0.32026,-52.84243 -25.48534,0.90006 -52.66812,-1.47356 -68.51725,20.81078 10.70219,9.89277 12.33994,18.83709 6.88553,31.39114 1.84973,3.56703 4.70984,7.16848 11.5174,10.32236 z"
+       id="path9812"
+       sodipodi:nodetypes="ccccaccccc"
+       inkscape:export-filename="D:\OneDrive\Obrazy\Scans\ecko3.png"
+       inkscape:export-xdpi="20"
+       inkscape:export-ydpi="20" />
+  </g>
+</svg>

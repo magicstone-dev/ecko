@@ -1,0 +1,14 @@
+![](./bitmaps/logo-full-monochrome.png)
+
+# Ecko branding files
+
+## Contents
+This folder contains all files associated with project's branding - logotype, color schemes, etd. At this time, it consists of:
+- [source files for logotype](./src/)
+- [extracted logo variants in SVG format](./vectors/)
+- [rendered logo variants in PNG format](./bitmaps/)
+
+## File formats
+1. Source files are available in [Inkscape SVG format](https://inkscape.org/develop/about-svg/) to make editing and updating it easier :)
+2. Standalone vector files are exported to optimized, [SVG 1.1 valid](https://en.wikipedia.org/wiki/Scalable_Vector_Graphics) code.
+3. Rendered bitmaps are availalble in full sized, 60 DPI, full color (with transparency) PNGs.

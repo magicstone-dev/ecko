@@ -1,3 +1,4 @@
+![ecko](/.github/branding/vectors/logo-full-monochrome.svg)
 # Setup Ecko using Docker and Docker-compose
 
 ## Prerequisites

@@ -1,3 +1,4 @@
+![ecko](/.github/branding/vectors/logo-full-monochrome.svg)
 # Setup Ecko
 
 Here are some ways to install Ecko in a production environment.

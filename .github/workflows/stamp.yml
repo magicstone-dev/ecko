@@ -17,8 +17,9 @@ jobs:
         with:
           ref: ${{ github.event.release.target_commitish }}
       - name: Update timestamp
-        run: echo "Today's date is" $(date +%F)
-             date +%F > .build
+        run: |
+              echo "Today's date is" $(date +%F)
+              date +%F > .build
       - name: Commit timestamp to main branch
         uses: stefanzweifel/git-auto-commit-action@v4
         with:

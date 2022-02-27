@@ -5,6 +5,7 @@ on:
     types: [closed]
     branches: [main]
   workflow_dispatch:
+  
 jobs:
   Stamp:
     if: github.event.pull_request.merged == true
@@ -16,12 +17,14 @@ jobs:
         uses: actions/checkout@v2
         with:
           ref: ${{ github.event.release.target_commitish }}
+      - name: Get build date
+        run: echo date=`date +%F` > $GITHUB_ENV
+
       - name: Update timestamp
         run: |
-              echo "Today's date is" $(date +%F)
-              date +%F > .build
+              echo 'Today's date is' "${{ env.date }}"
+              echo "${{ env.date }}" > .build
       - name: Commit timestamp to main branch
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           branch: ${{ github.event.release.target_commitish }}
-

@@ -25,11 +25,12 @@ module Mastodon
     end
 
     def to_a
-      [major, minor, patch].compact
+      # [major, minor, patch].compact
+      data = File.read(".build")
     end
 
     def to_s
-      [to_a.join('.'), flags, suffix].join
+      [to_a, flags, suffix].join
     end
 
     def repository

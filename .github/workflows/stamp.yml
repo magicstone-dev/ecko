@@ -1,0 +1,28 @@
+name: Settimestamp
+on:
+  pull_request_target:
+    types: [closed]
+    branches: [main]
+jobs:
+  Stamp:
+    if: github.event.pull_request.merged==true
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        ref: ${{ github.event.release.target_commitish }}
+    - name: Getbuilddate
+      run: echo date=$(date +%F) > $GITHUB_ENV
+    - name: Update timestamp
+      run: |
+        echo Today is ${{env.date}}
+        echo ${{env.date}} > .build
+    - name: Commit timestamp to main branch
+      uses:
+        stefanzweifel/git-auto-commit-action@v4
+      with:
+        branch: ${{ github.event.release.target_commitish }}
+        commit_message: "Add build timestamp ${{env.date}}"
+        commit_user_name: ${{github.actor}}
+        tagging_message: "v${{env.date}}"

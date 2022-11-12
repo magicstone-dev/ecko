@@ -33,9 +33,9 @@ If you're not making any local code changes or customizations on your instance, 
       - POSTGRES_USER=ecko
       - POSTGRES_HOST_AUTH_METHOD=trust
     ``` 
-3. To use pre-built images comment out the `build: .` lines for the `web`, `streaming`, and `sidekiq` services.
+3. (Optional) To use pre-built images, comment out the `build: .` lines for the `web`, `streaming`, and `sidekiq` services.
 4. Save the file and exit the text editor.
-5. Run `docker-compose build` to either pull or build the necessary container images.
+5. If you followed step 3, run `docker-compose pull`. If you skipped step 3, run `docker-compose build` to build the necessary container images.
 6. Create the public/system dir with `mkdir public/system`
 7. Set correct file-owner with `sudo chown -R 991:991 public/system`
 

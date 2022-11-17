@@ -2017,7 +2017,7 @@
         "id": "keyboard_shortcuts.open_media"
       },
       {
-        "defaultMessage": "to show/hide text behind CW",
+        "defaultMessage": "to show/hide text behind CN",
         "id": "keyboard_shortcuts.toggle_hidden"
       },
       {
@@ -2045,7 +2045,7 @@
         "id": "keyboard_shortcuts.toot"
       },
       {
-        "defaultMessage": "to show/hide CW field",
+        "defaultMessage": "to show/hide CN field",
         "id": "keyboard_shortcuts.spoilers"
       },
       {

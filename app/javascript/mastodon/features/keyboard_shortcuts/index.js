@@ -62,7 +62,7 @@ class KeyboardShortcuts extends ImmutablePureComponent {
               </tr>
               <tr>
                 <td><kbd>x</kbd></td>
-                <td><FormattedMessage id='keyboard_shortcuts.toggle_hidden' defaultMessage='to show/hide text behind CW' /></td>
+                <td><FormattedMessage id='keyboard_shortcuts.toggle_hidden' defaultMessage='to show/hide text behind CN' /></td>
               </tr>
               <tr>
                 <td><kbd>h</kbd></td>
@@ -90,7 +90,7 @@ class KeyboardShortcuts extends ImmutablePureComponent {
               </tr>
               <tr>
                 <td><kbd>alt</kbd>+<kbd>x</kbd></td>
-                <td><FormattedMessage id='keyboard_shortcuts.spoilers' defaultMessage='to show/hide CW field' /></td>
+                <td><FormattedMessage id='keyboard_shortcuts.spoilers' defaultMessage='to show/hide CN field' /></td>
               </tr>
               <tr>
                 <td><kbd>backspace</kbd></td>

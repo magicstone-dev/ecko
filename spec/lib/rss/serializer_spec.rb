@@ -36,11 +36,11 @@ describe RSS::Serializer do
       end
     end
 
-    context 'on a toot with a content warning' do
+    context 'on a toot with a content notice' do
       let(:spoiler) { 'long toot' }
 
       it 'displays spoiler text instead of toot content' do
-        expect(subject).to eq "#{account.acct}: CW “long toot”"
+        expect(subject).to eq "#{account.acct}: CN “long toot”"
       end
     end
 

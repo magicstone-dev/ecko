@@ -4,12 +4,12 @@ import { changeComposeSpoilerness } from '../../../actions/compose';
 import { injectIntl, defineMessages } from 'react-intl';
 
 const messages = defineMessages({
-  marked: { id: 'compose_form.spoiler.marked', defaultMessage: 'Text is hidden behind warning' },
+  marked: { id: 'compose_form.spoiler.marked', defaultMessage: 'Text is hidden behind notice' },
   unmarked: { id: 'compose_form.spoiler.unmarked', defaultMessage: 'Text is not hidden' },
 });
 
 const mapStateToProps = (state, { intl }) => ({
-  label: 'CW',
+  label: 'CN',
   title: intl.formatMessage(state.getIn(['compose', 'spoiler']) ? messages.marked : messages.unmarked),
   active: state.getIn(['compose', 'spoiler']),
   ariaControls: 'cw-spoiler-input',

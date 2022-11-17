@@ -44,7 +44,7 @@ it:
         locale: La lingua dell'interfaccia utente, di email e notifiche push
         locked: Richiede che approvi i follower manualmente
         password: Usa almeno 8 caratteri
-        phrase: Il confronto sarà eseguito ignorando minuscole/maiuscole e i content warning
+        phrase: Il confronto sarà eseguito ignorando minuscole/maiuscole e i content notice 
         scopes: A quali API l'applicazione potrà avere accesso. Se selezionate un ambito di alto livello, non c'è bisogno di selezionare quelle singole.
         setting_aggregate_reblogs: Non mostrare nuove condivisioni per toot che sono stati condivisi di recente (ha effetto solo sulle nuove condivisioni)
         setting_default_sensitive: Media con contenuti sensibili sono nascosti in modo predefinito e possono essere rivelati con un click
@@ -159,7 +159,7 @@ it:
         setting_display_media_default: Predefinita
         setting_display_media_hide_all: Nascondi tutti
         setting_display_media_show_all: Mostra tutti
-        setting_expand_spoilers: Espandi sempre toot con content warning
+        setting_expand_spoilers: Espandi sempre toot con content notice 
         setting_hide_network: Nascondi la tua rete
         setting_noindex: Non farti indicizzare dai motori di ricerca
         setting_reduce_motion: Riduci movimento nelle animazioni

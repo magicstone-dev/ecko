@@ -45,7 +45,7 @@ en:
         locale: The language of the user interface, e-mails and push notifications
         locked: Manually control who can follow you by approving follow requests
         password: Use at least 8 characters
-        phrase: Will be matched regardless of casing in text or content warning of a post
+        phrase: Will be matched regardless of casing in text or content notice of a post
         scopes: Which APIs the application will be allowed to access. If you select a top-level scope, you don't need to select individual ones.
         setting_aggregate_reblogs: Do not show new boosts for posts that have been recently boosted (only affects newly-received boosts)
         setting_default_federation: Uncheck to auto-select Local-only when composing posts
@@ -162,7 +162,7 @@ en:
         setting_display_media_default: Default
         setting_display_media_hide_all: Hide all
         setting_display_media_show_all: Show all
-        setting_expand_spoilers: Always expand posts marked with content warnings
+        setting_expand_spoilers: Always expand posts marked with content notices
         setting_hide_network: Hide your social graph
         setting_noindex: Opt-out of search engine indexing
         setting_reduce_motion: Reduce motion in animations

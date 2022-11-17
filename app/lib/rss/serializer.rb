@@ -27,7 +27,7 @@ class RSS::Serializer
       preview = preview[0, preview.index("\n").presence || 30] + '…'
     end
 
-    preview = "#{status.proper.spoiler_text.present? ? 'CW ' : ''}“#{preview}”#{status.proper.sensitive? ? ' (sensitive)' : ''}"
+    preview = "#{status.proper.spoiler_text.present? ? 'CN ' : ''}“#{preview}”#{status.proper.sensitive? ? ' (sensitive)' : ''}"
 
     if status.reblog?
       "#{status.account.acct} boosted #{status.reblog.account.acct}: #{preview}"

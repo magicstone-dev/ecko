@@ -63,8 +63,8 @@ export function normalizeStatus(status, normalOldStatus) {
     normalStatus.spoiler_text = normalOldStatus.get('spoiler_text');
     normalStatus.hidden = normalOldStatus.get('hidden');
   } else {
-    // If the status has a CW but no contents, treat the CW as if it were the
-    // status' contents, to avoid having a CW toggle with seemingly no effect.
+    // If the status has a CN but no contents, treat the CN as if it were the
+    // status' contents, to avoid having a CN toggle with seemingly no effect.
     if (normalStatus.spoiler_text && !normalStatus.content) {
       normalStatus.content = normalStatus.spoiler_text;
       normalStatus.spoiler_text = '';

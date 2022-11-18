@@ -240,7 +240,7 @@
   "keyboard_shortcuts.reply": "vastaa",
   "keyboard_shortcuts.requests": "avaa lista seurauspyynnöistä",
   "keyboard_shortcuts.search": "siirry hakukenttään",
-  "keyboard_shortcuts.spoilers": "näyttääksesi/piilottaaksesi CW kentän",
+  "keyboard_shortcuts.spoilers": "näyttääksesi/piilottaaksesi CN kentän",
   "keyboard_shortcuts.start": "avaa \"Aloitus\" -sarake",
   "keyboard_shortcuts.toggle_hidden": "näytä/piilota sisältövaroituksella merkitty teksti",
   "keyboard_shortcuts.toggle_sensitivity": "näytä/piilota media",

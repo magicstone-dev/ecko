@@ -8,7 +8,7 @@
       - else
         %details<
           %summary><
-            %strong> Content warning: #{Formatter.instance.format_spoiler(status.proper)}
+            %strong> Content notice: #{Formatter.instance.format_spoiler(status.proper)}
           = Formatter.instance.format(status.proper, custom_emojify: true)
 
     - unless status.proper.media_attachments.empty?

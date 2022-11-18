@@ -856,7 +856,7 @@ en_GB:
         one: "%{count} video"
         other: "%{count} videos"
     boosted_from_html: Boosted from %{acct_link}
-    content_warning: 'Content warning: %{warning}'
+    content_warning: 'Content notice: %{warning}'
     disallowed_hashtags:
       one: 'contained a disallowed hashtag: %{tags}'
       other: 'contained the disallowed hashtags: %{tags}'

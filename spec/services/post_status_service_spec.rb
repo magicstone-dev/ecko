@@ -79,7 +79,7 @@ RSpec.describe PostStatusService, type: :service do
     expect(status.spoiler_text).to eq spoiler_text
   end
 
-  it 'creates a sensitive status when there is a CW but no text' do
+  it 'creates a sensitive status when there is a CN but no text' do
     status = subject.call(Fabricate(:account), text: '', spoiler_text: 'foo')
 
     expect(status).to be_persisted

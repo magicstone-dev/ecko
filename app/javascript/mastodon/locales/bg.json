@@ -104,7 +104,7 @@
   "compose_form.sensitive.unmarked": "{count, plural, one {Мултимедията не е маркирана като деликатна} other {Мултимедиите не са маркирани като деликатни}}",
   "compose_form.spoiler.marked": "Текстът е скрит зад предупреждение",
   "compose_form.spoiler.unmarked": "Текстът не е скрит",
-  "compose_form.spoiler_placeholder": "Content warning",
+  "compose_form.spoiler_placeholder": "Content notice",
   "confirmation_modal.cancel": "Отказ",
   "confirmations.block.block_and_report": "Блокиране и докладване",
   "confirmations.block.confirm": "Блокиране",

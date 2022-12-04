@@ -15,6 +15,6 @@ Ecko is a community-driven fork of Mastodon's social network software. The idea 
 
 |For everyone|Instance administrators|Contributors (all skill levels)|
 |:----:|:----:|:----:|
-|  Try Ecko at https://c4.social | [Setup Ecko](./docs/INSTALL.md) (Demo coming soon) | Browse our [Issue tracker](https://github.com/magicstone-dev/ecko/issues) |
+|  Try Ecko at https://c4.social | [Setup Ecko](./docs/INSTALL.md) | Browse our [Issue tracker](https://github.com/magicstone-dev/ecko/issues) |
 
 Learn more about Magic Stone and C4 at [magicstone.dev](https://magicstone.dev)

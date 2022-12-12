@@ -3,7 +3,7 @@ version: 2
 aliases:
   - &defaults
     docker:
-      - image: circleci/ruby:2.7-buster-node
+      - image: cimg/ruby:2.7-buster-node
         environment: &ruby_environment
           BUNDLE_JOBS: 3
           BUNDLE_RETRY: 3
@@ -125,14 +125,14 @@ jobs:
   install-ruby2.6:
     <<: *defaults
     docker:
-      - image: circleci/ruby:2.6-buster-node
+      - image: cimg/ruby:2.6-buster-node
         environment: *ruby_environment
     <<: *install_ruby_dependencies
 
   install-ruby3.0:
     <<: *defaults
     docker:
-      - image: circleci/ruby:3.0-buster-node
+      - image: cimg/ruby:3.0-buster-node
         environment: *ruby_environment
     <<: *install_ruby_dependencies
 
@@ -153,13 +153,13 @@ jobs:
   test-migrations:
     <<: *defaults
     docker:
-      - image: circleci/ruby:2.7-buster-node
+      - image: cimg/ruby:2.7-buster-node
         environment: *ruby_environment
-      - image: circleci/postgres:12.2
+      - image: cimg/postgres:12.2
         environment:
           POSTGRES_USER: root
           POSTGRES_HOST_AUTH_METHOD: trust
-      - image: circleci/redis:5-alpine
+      - image: cimg/redis:5-alpine
     steps:
       - *attach_workspace
       - *install_system_dependencies
@@ -173,43 +173,43 @@ jobs:
   test-ruby2.7:
     <<: *defaults
     docker:
-      - image: circleci/ruby:2.7-buster-node
+      - image: cimg/ruby:2.7-buster-node
         environment: *ruby_environment
-      - image: circleci/postgres:12.2
+      - image: cimg/postgres:12.2
         environment:
           POSTGRES_USER: root
           POSTGRES_HOST_AUTH_METHOD: trust
-      - image: circleci/redis:5-alpine
+      - image: cimg/redis:5-alpine
     <<: *test_steps
 
   test-ruby2.6:
     <<: *defaults
     docker:
-      - image: circleci/ruby:2.6-buster-node
+      - image: cimg/ruby:2.6-buster-node
         environment: *ruby_environment
-      - image: circleci/postgres:12.2
+      - image: cimg/postgres:12.2
         environment:
           POSTGRES_USER: root
           POSTGRES_HOST_AUTH_METHOD: trust
-      - image: circleci/redis:5-alpine
+      - image: cimg/redis:5-alpine
     <<: *test_steps
 
   test-ruby3.0:
     <<: *defaults
     docker:
-      - image: circleci/ruby:3.0-buster-node
+      - image: cimg/ruby:3.0-buster-node
         environment: *ruby_environment
-      - image: circleci/postgres:12.2
+      - image: cimg/postgres:12.2
         environment:
           POSTGRES_USER: root
           POSTGRES_HOST_AUTH_METHOD: trust
-      - image: circleci/redis:5-alpine
+      - image: cimg/redis:5-alpine
     <<: *test_steps
 
   test-webui:
     <<: *defaults
     docker:
-      - image: circleci/node:14-buster
+      - image: cimg/node:14-buster
     steps:
       - *attach_workspace
       - run:

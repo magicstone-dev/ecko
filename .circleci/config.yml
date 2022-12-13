@@ -3,7 +3,7 @@ version: 2
 aliases:
   - &defaults
     docker:
-      - image: cimg/ruby:2.7-buster-node
+      - image: cimg/ruby:2.7-node
         environment: &ruby_environment
           BUNDLE_JOBS: 3
           BUNDLE_RETRY: 3
@@ -125,14 +125,14 @@ jobs:
   install-ruby2.6:
     <<: *defaults
     docker:
-      - image: cimg/ruby:2.6-buster-node
+      - image: cimg/ruby:2.6-node
         environment: *ruby_environment
     <<: *install_ruby_dependencies
 
   install-ruby3.0:
     <<: *defaults
     docker:
-      - image: cimg/ruby:3.0-buster-node
+      - image: cimg/ruby:3.0-node
         environment: *ruby_environment
     <<: *install_ruby_dependencies
 
@@ -153,7 +153,7 @@ jobs:
   test-migrations:
     <<: *defaults
     docker:
-      - image: cimg/ruby:2.7-buster-node
+      - image: cimg/ruby:2.7-node
         environment: *ruby_environment
       - image: cimg/postgres:12.2
         environment:
@@ -173,7 +173,7 @@ jobs:
   test-ruby2.7:
     <<: *defaults
     docker:
-      - image: cimg/ruby:2.7-buster-node
+      - image: cimg/ruby:2.7-node
         environment: *ruby_environment
       - image: cimg/postgres:12.2
         environment:
@@ -185,7 +185,7 @@ jobs:
   test-ruby2.6:
     <<: *defaults
     docker:
-      - image: cimg/ruby:2.6-buster-node
+      - image: cimg/ruby:2.6-node
         environment: *ruby_environment
       - image: cimg/postgres:12.2
         environment:
@@ -197,7 +197,7 @@ jobs:
   test-ruby3.0:
     <<: *defaults
     docker:
-      - image: cimg/ruby:3.0-buster-node
+      - image: cimg/ruby:3.0-node
         environment: *ruby_environment
       - image: cimg/postgres:12.2
         environment:
@@ -209,7 +209,7 @@ jobs:
   test-webui:
     <<: *defaults
     docker:
-      - image: cimg/node:14-buster
+      - image: cimg/node:14.21
     steps:
       - *attach_workspace
       - run:

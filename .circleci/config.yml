@@ -144,9 +144,6 @@ workflows:
       - test-migrations:
           requires:
             - build
-      - test-two-step-migrations:
-          requires:
-            - build
       - node/run:
           cache-version: v1
           name: test-webui

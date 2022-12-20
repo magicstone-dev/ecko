@@ -32,7 +32,7 @@ gem 'iso-639'
 gem 'chewy', '~> 5.2'
 gem 'cld3', '~> 3.4.2'
 gem 'devise', '~> 4.8'
-gem 'devise-two-factor', '~> 4.0'
+gem 'devise-two-factor', '~> 4.0.2'
 
 group :pam_authentication, optional: true do
   gem 'devise_pam_authenticatable2', '~> 9.2'

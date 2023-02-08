@@ -9,6 +9,7 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  replies_policy :integer          default("list"), not null
+#  show_reblogs   :boolean          default(TRUE)
 #
 
 class List < ApplicationRecord

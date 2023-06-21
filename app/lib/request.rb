@@ -24,15 +24,15 @@ class HTTP::Timeout::PerOperation
 
   # Read data from the socket
   def readpartial(size, buffer = nil)
-    @deadline ||= Time.now + @read_timeout
+    @deadline ||= Process.clock_gettime(Process::CLOCK_MONOTONIC) + @read_timeout
 
     timeout = false
     loop do
-      result = @socket.read_nonblock(size, buffer, :exception => false)
+      result = @socket.read_nonblock(size, buffer, exception: false)
 
       return :eof if result.nil?
 
-      remaining_time = @deadline - Time.now
+      remaining_time = @deadline - Process.clock_gettime(Process::CLOCK_MONOTONIC)
       raise HTTP::TimeoutError, "Read timed out after #{@read_timeout} seconds" if timeout || remaining_time <= 0
       return result if result != :wait_readable
 

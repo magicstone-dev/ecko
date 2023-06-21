@@ -157,6 +157,10 @@ module Mastodon
       config.i18n.default_locale = :en
     end
 
+    config.public_file_server.headers = {
+      'X-Content-Type-Options' => 'nosniff',
+    }
+
     # config.paths.add File.join('app', 'api'), glob: File.join('**', '*.rb')
     # config.autoload_paths += Dir[Rails.root.join('app', 'api', '*')]
 

@@ -16,6 +16,7 @@ import MissingIndicator from '../../components/missing_indicator';
 import LoadingIndicator from '../../components/loading_indicator';
 import Icon from 'mastodon/components/icon';
 import RadioButton from 'mastodon/components/radio_button';
+import Toggle from 'react-toggle';
 
 const messages = defineMessages({
   deleteMessage: { id: 'confirmations.delete_list.message', defaultMessage: 'Are you sure you want to permanently delete this list?' },
@@ -141,11 +142,12 @@ class ListTimeline extends React.PureComponent {
   }
 
   render () {
-    const { hasUnread, columnId, multiColumn, list, intl } = this.props;
+    const { hasUnread, columnId, multiColumn, list, intl, onChange } = this.props;
     const { id } = this.props.params;
     const pinned = !!columnId;
     const title  = list ? list.get('title') : id;
     const replies_policy = list ? list.get('replies_policy') : undefined;
+    const show_reblogs_policy = list ? list.get('show_reblogs') : undefined;
 
     if (typeof list === 'undefined') {
       return (
@@ -184,6 +186,12 @@ class ListTimeline extends React.PureComponent {
             <button className='text-btn column-header__setting-btn' tabIndex='0' onClick={this.handleDeleteClick}>
               <Icon id='trash' /> <FormattedMessage id='lists.delete' defaultMessage='Delete list' />
             </button>
+          </div>
+
+          <span className='column-settings__section'><FormattedMessage id='home.column_settings.show_reblogs' defaultMessage='Show boosts' /></span>
+
+          <div className='column-settings__row'>
+            <Toggle id={id} onChange={this.onChange} />
           </div>
 
           { replies_policy !== undefined && (

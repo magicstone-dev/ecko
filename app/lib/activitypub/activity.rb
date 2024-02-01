@@ -213,9 +213,9 @@ class ActivityPub::Activity
       return if ActivityPub::TagManager.instance.local_uri?(object_uri)
 
       if dereferenced?
-        ActivityPub::FetchRemoteStatusService.new.call(object_uri, id: true, prefetched_body: @object)
+        ActivityPub::FetchRemoteStatusService.new.call(object_uri, prefetched_body: @object)
       else
-        ActivityPub::FetchRemoteStatusService.new.call(object_uri, id: true, on_behalf_of: @account.followers.local.first)
+        ActivityPub::FetchRemoteStatusService.new.call(object_uri, on_behalf_of: @account.followers.local.first)
       end
     elsif @object['url'].present?
       ::FetchRemoteStatusService.new.call(@object['url'])

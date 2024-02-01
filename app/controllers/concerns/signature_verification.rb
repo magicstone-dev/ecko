@@ -238,7 +238,7 @@ module SignatureVerification
       stoplight_wrap_request { ResolveAccountService.new.call(key_id.gsub(/\Aacct:/, ''), suppress_errors: false) }
     elsif !ActivityPub::TagManager.instance.local_uri?(key_id)
       account   = ActivityPub::TagManager.instance.uri_to_resource(key_id, Account)
-      account ||= stoplight_wrap_request { ActivityPub::FetchRemoteKeyService.new.call(key_id, id: false, suppress_errors: false) }
+      account ||= stoplight_wrap_request { ActivityPub::FetchRemoteKeyService.new.call(key_id, suppress_errors: false) }
       account
     end
   rescue Mastodon::PrivateNetworkAddressError => e

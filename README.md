@@ -1,3 +1,5 @@
+🔴 IMPORTANT❗ Ecko is scheduled to be archived on Feb 8, 2024. For security reasons, we advise against new installations. 🔴
+
 ![](/.github/branding/vectors/logo-full-monochrome.svg)
 ecko - Community-driven fork of federated social network software
 =================================================================
@@ -15,6 +17,6 @@ Ecko is a community-driven fork of Mastodon's social network software. The idea 
 
 |For everyone|Instance administrators|Contributors (all skill levels)|
 |:----:|:----:|:----:|
-|  Try Ecko at https://c4.social | [Setup Ecko](./docs/INSTALL.md) | Browse our [Issue tracker](https://github.com/magicstone-dev/ecko/issues) |
+|  Try Ecko at https://c4.social | [Setup Ecko](./README.md) | Browse our [Issue tracker](https://github.com/magicstone-dev/ecko/issues) |
 
 Learn more about Magic Stone and C4 at [magicstone.dev](https://magicstone.dev)
